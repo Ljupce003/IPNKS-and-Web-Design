@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script>
+
+        let textArr=["first","second","third","fourth","fifth","sixth","seventh"]
+        let i=0;
+        function Add(){
+            let r=parseInt(document.getElementById("red_val").value);
+            let g=parseInt(document.getElementById("green_val").value);
+            let b=parseInt(document.getElementById("blue_val").value);
+            let text=document.getElementById("Intext").value
+            let p=document.createElement("p");
+            p.innerHTML=text;
+            // i++;
+            // textArr[i]
+            if(i===7)i=0;
+            p.style.color="rgb("+r+","+g+","+","+b+")"
+
+            let radioS =document.getElementsByName("rad").item(0);
+            //let radioE =document.getElementsByName("rad").item(1);
+
+            if(radioS.checked){
+
+                let first=document.getElementById("place").firstChild;
+
+                document.getElementById("place").insertBefore(p,first)
+
+            }
+            else {
+                document.getElementById("place").appendChild(p)
+            }
+
+        }
+
+
+        function Delete(){
+
+
+            let radioS =document.getElementsByName("rad").item(0);
+
+            if(radioS.checked) {
+                document.getElementById("place").removeChild(document.getElementById("place").firstChild)
+
+            }
+            else {
+                document.getElementById("place").removeChild(document.getElementById("place").lastChild)
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+
+<label>Red:<input id="red_val" type="text">(0-255)<br></label>
+<label>Green:<input id="green_val" type="text">(0-255)<br></label>
+<label>Blue:<input id="blue_val" type="text">(0-255)<br></label>
+
+<br><br>
+    <input type="radio" name="rad" title="Start" value="Start" checked>Start<br>
+<label>
+    <input type="radio" name="rad" value="End"  >
+</label>End
+
+<br><br>
+<label>Text:
+    <input id="Intext" type="text">
+</label>
+
+<br><br>
+<input type="button" value="Add" onclick="Add()">  <input type="button" value="Delete" onclick="Delete()">
+
+
+<div id="place" style="width: 400px;height: 500px;margin-top: 10px">
+
+</div>
+</body>
+</html>

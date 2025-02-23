@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+
+        function Create(){
+            let atr_arr=document.getElementById("in_text").value.split(",");
+
+            let new_div=document.createElement("div");
+            new_div.style.background=atr_arr[0];
+            new_div.style.width=atr_arr[1]+"px";
+            new_div.style.height=atr_arr[2]+"px";
+            let name=""
+            for (let i = 0; i < atr_arr[3].length; i++) {
+                if(isNaN(atr_arr[3].charAt(i))){
+                    if(i%2===0) name+=atr_arr[3].charAt(i).toLowerCase();
+                    else name+=atr_arr[3].charAt(i).toUpperCase();
+                }
+                else name+=atr_arr[3].charAt(i);
+            }
+            new_div.innerHTML=name;
+            new_div.onclick=removef;
+            document.getElementById("place").appendChild(new_div);
+
+        }
+
+        function removef(event){
+            event.target.parentNode.removeChild(event.target);
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+<label for="in_text"></label><input type="text" id="in_text">
+<input type="button" value="Postavi" onclick="Create()">
+
+<div id="place" style="margin-top: 10px;width: 100%;height: 600px"></div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="<" onclick="moveright()" size="50px">
+<input type="button" value=">" onclick="moveleft()" size="50px">
+
+<div id="place" style="width: 100%;height: 400px;margin: 10px"></div>
+
+</body>
+
+<script>
+
+    let collors=["blue","red","yellow","green","black","grey","violet","pink","purple"];
+
+    let divce=document.createElement("div");
+    divce.style.height=Math.random()*60+30+"px";
+    divce.style.width=Math.random()*60+30+"px";
+    let r=Math.round(Math.random()*9);
+    divce.style.background=collors[r];
+    divce.id="movingdiv";
+    divce.style.position="absolute";
+    divce.style.left="10px";
+    divce.style.top="40px"
+
+
+    document.getElementById("place").appendChild(divce)
+    function moveleft(){
+        let moving=document.getElementById("movingdiv");
+
+        let og_pos=parseInt(moving.style.left.substring(0,moving.style.left.length-2));
+
+        let inter=setInterval(function (moving){
+            let x_pos=parseInt(moving.style.left.substring(0,moving.style.left.length-2));
+
+            moving.style.left=x_pos+1+"px";
+            if(x_pos+1===og_pos)clearInterval(inter)
+            if(x_pos===1900){
+                moving.style.height=Math.random()*60+30+"px";
+                moving.style.width=Math.random()*60+30+"px";
+                let r=Math.round(Math.random()*9);
+                moving.style.background=collors[r];
+                moving.style.left=-100+"px";
+            }
+        },5,moving)
+
+
+
+    }
+
+
+    function moveright(){
+        let moving=document.getElementById("movingdiv");
+
+        let og_pos=parseInt(moving.style.left.substring(0,moving.style.left.length-2));
+
+        let inter=setInterval(function (moving){
+            let x_pos=parseInt(moving.style.left.substring(0,moving.style.left.length-2));
+
+            moving.style.left=x_pos-1+"px";
+            if(x_pos-1===og_pos)clearInterval(inter)
+            if(x_pos===-100){
+                moving.style.height=Math.random()*60+30+"px";
+                moving.style.width=Math.random()*60+30+"px";
+                let r=Math.round(Math.random()*9);
+                moving.style.background=collors[r];
+                moving.style.left=1900+"px";
+            }
+        },5,moving)
+
+
+
+    }
+
+</script>
+</html>

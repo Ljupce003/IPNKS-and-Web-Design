@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<label for="color">Color</label><select id="color">
+</select>
+
+<label for="width">Color</label><select id="width">
+</select>
+
+<label for="back_color">Color</label><select id="back_color">
+</select><br>
+
+<p id="text_loc">"In the quiet corners of the universe, where stardust whispers its ancient tales, a cosmic dance unfolds. Nebulas waltz with celestial bodies, painting the vast canvas of space with colors unseen. Galaxies, like cosmic poets, pen verses of light across the inky expanse, inviting us to explore the wonders hidden within the cosmic verses."</p>
+
+
+</body>
+
+<script>
+
+    let j_string='{"colors": ["red", "green", "blue", "magenta"],"backgroundColors": ["black", "grey", "purple", "cyan"],"width": ["200px","100px","150px","250px"]}'
+    let pod=JSON.parse(j_string);
+
+
+    for (let i = 0; i < pod.colors.length; i++) {
+        let color_opt=document.createElement("option");
+        color_opt.innerHTML=pod.colors[i];
+        document.getElementById("color").appendChild(color_opt)
+        document.getElementById("color").onchange=updatesett;
+
+    }
+
+    for (let i = 0; i < pod.backgroundColors.length; i++) {
+        let bg_color=document.createElement("option");
+        bg_color.innerHTML=pod.backgroundColors[i];
+        document.getElementById("back_color").appendChild(bg_color)
+        document.getElementById("back_color").onchange=updatesett;
+
+    }
+    for (let i = 0; i < pod.width.length; i++) {
+        let width_op=document.createElement("option");
+        width_op.innerHTML=pod.width[i];
+        document.getElementById("width").appendChild(width_op);
+        document.getElementById("width").onchange=updatesett;
+
+    }
+
+    function updatesett(){
+        let text_area=document.getElementById("text_loc");
+        let sel_w_IDX=document.getElementById("width").selectedIndex;
+        let sel_c_IDX=document.getElementById("color").selectedIndex;
+        let sel_bgc_IDX=document.getElementById("back_color").selectedIndex;
+
+        let s_color=document.getElementById("color").options[sel_c_IDX].value;
+        let s_width=document.getElementById("width").options[sel_w_IDX].value;
+        let s_bg_col=document.getElementById("back_color").options[sel_bgc_IDX].value;
+
+        text_area.style.color=s_color;
+        text_area.style.width=s_width;
+        text_area.style.background=s_bg_col;
+
+    }
+    updatesett();
+
+
+
+</script>
+</html>
