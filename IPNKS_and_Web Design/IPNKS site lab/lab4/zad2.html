@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+
+    #divot{width: 400px;clear: both}
+
+    #M{
+      display: inline-block;
+      width: 350px;
+      clear: right;
+    }
+
+    label[class="1"]{
+      margin-bottom: 5px;
+      text-align: end;
+      display: inline-block;
+      width: 350px;
+
+    }
+    input[type="text"]{
+      float: right;
+      width: 150px;
+    }
+    input[type="button"]{
+      float: right;
+      width: 150px;
+    }
+    option{width: 150px;}
+    select{width: 150px;}
+
+
+  </style>
+
+  <script>
+
+    function vnesi(){
+      let divv =document.getElementById("divot");
+      let itemss=document.getElementById("items").value;
+      let j =document.getElementById("type").options.selectedIndex;
+
+      document.getElementById("items").value="";
+      document.getElementById("type").options.selectedIndex=0;
+
+      if(itemss!==""){
+        let items=itemss.split(",");
+        for(let i=0;i<items.length;i++){
+          if(j===0){
+            divv.innerHTML+="<label><input type=\"radio\" name='b' >"+items[i]+"</label>"
+          }
+          else{
+            divv.innerHTML+="<label><input type=\"checkbox\">"+items[i]+"</label>"
+          }
+        }
+      }
+      else alert("Greska vneseno")
+    }
+
+  </script>
+
+</head>
+<body>
+
+<div id="M">
+  <label class="1">Items: <input type="text" id="items"></label>
+  <label class="1">Type:
+    <select id="type">
+      <option>Radio button</option>
+      <option>Check box</option>
+    </select>
+  </label ><br>
+
+  <input type="button" value="Vnesi" onclick="vnesi()">
+</div>
+
+<div id="divot" >
+
+</div>
+
+
+</body>
+</html>

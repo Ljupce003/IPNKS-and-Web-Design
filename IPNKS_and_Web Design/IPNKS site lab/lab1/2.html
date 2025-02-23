@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let brojce=prompt("vnesete mobilen telefon");
+    if(brojce.length!==9)alert("greska vnesovte");
+    else {
+        brojce=brojce.slice(0,3)+"/"+brojce.slice(3,6)+"-"+brojce.slice(6);
+        let op;
+        if(parseInt(brojce.charAt(2))===0 || parseInt(brojce.charAt(2))===1 || parseInt(brojce.charAt(2))===2) op="T-Mobile";
+        if(parseInt(brojce.charAt(2))===5 || parseInt(brojce.charAt(2))===6 ) op="One";
+        if(parseInt(brojce.charAt(2))===7 || parseInt(brojce.charAt(2))===8 ) op="Vip";
+        alert(brojce+"\n"+op);
+    }
+
+</script>
+</body>
+</html>

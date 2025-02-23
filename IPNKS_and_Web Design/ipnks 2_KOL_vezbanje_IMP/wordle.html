@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .box{
+            border: black solid 3px;
+            height: 120px;
+            width: 120px;
+            font-size: 120px;
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+    <script>
+
+        data='["bukva","jazik","vokal","misla","tablo"]'
+        let w_list=JSON.parse(data);
+        let r=Math.floor(Math.random()*5);
+        let corr_w=w_list[r];
+
+        let tocni=0;
+
+        console.log(corr_w);
+
+        function check(){
+
+            let allchildsArr=Array.from(document.body.children);
+            let inputsArr=allchildsArr.slice(-5);
+
+
+            let inputsVals=[];
+            let corr_letters=[]
+            for (let i = 0; i < inputsArr.length; i++) {
+                inputsVals[i]=inputsArr[i].value
+                corr_letters[i]=corr_w.charAt(i);
+            }
+
+            console.log(corr_w);
+
+            for (let i = 0; i < 5; i++) {
+                if(inputsArr[i].value===corr_letters[i]){
+                    inputsArr[i].style.background="green";
+                    tocni++;
+                }
+                else if(corr_letters.includes(inputsArr[i].value)){
+                    inputsArr[i].style.background="yellow";
+                }
+                else inputsArr[i].style.background="pink";
+            }
+            if(tocni!==5){
+                inputsArr[4].className="box"
+                for (let element of Array.from(document.getElementsByClassName("box"))) {
+                    element.disabled=true;
+                }
+                document.body.appendChild(document.createElement("br"))
+                document.body.appendChild(document.createElement("br"))
+                for (let i = 0; i < 5; i++) {
+                    let input=document.createElement("input");
+                    input.className="box";
+                    input.type="text";
+                    if(i===4){
+                        input.onchange=check;
+                    }
+                    document.body.appendChild(input);
+                }
+                tocni=0;
+            }
+            else {
+                document.body.style.background="green";
+                for (let element of Array.from(document.getElementsByClassName("box"))) {
+                    element.disabled=true;
+                }
+
+            }
+
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+<label>
+    <input type="text" class="box">
+</label>
+<label>
+    <input type="text" class="box">
+</label>
+<label>
+    <input type="text" class="box">
+</label>
+<label>
+    <input type="text" class="box">
+</label>
+<label>
+    <input type="text" class="box last" onchange="check()" >
+</label>
+
+</body>
+
+
+
+</html>

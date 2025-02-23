@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+</body>
+
+<script>
+    let data='[{"width": 50, "height": 50, "color": "#ff0000"}, {"width": 60, "height": 40, "color": "#00ff00"}, {"width": 60, "height": 60, "color": "#0000ff"}]'
+    data=JSON.parse(data);
+
+    for (let i = 0; i < data.length; i++) {
+        let newEL = document.createElement("div");
+        newEL.style.width = data[i].width+"px";
+        newEL.style.background = data[i].color;
+        newEL.style.height = data[i].height+"px";
+        newEL.style.position="absolute";
+        newEL.style.left=Math.random()*500+"px";
+        newEL.style.top=Math.random()*500+"px";
+        newEL.onclick=movef;
+        document.body.appendChild(newEL)
+    }
+
+    function movef(event){
+
+        let this_div=event.target
+
+        let length_x=event.target.style.left.length
+        let x_pos=parseInt(event.target.style.left.substring(0,length_x-2));
+        let length_y=event.target.style.top.length
+        let y_pos=parseInt(event.target.style.top.substring(0,length_y-2));
+
+        let width=parseInt(this_div.style.width.substring(0,this_div.style.width.length-2));
+        let height=parseInt(this_div.style.height.substring(0,this_div.style.height.length-2));
+
+
+        let x_max=width+x_pos;
+        let y_max=height+y_pos;
+
+        let arr=[{x:-width,y:-height},{x:width,y:-height},{x:-width,y:height}];
+
+
+        let inter=setInterval(function (x_max,y_max,this_div){
+            let length_x=this_div.style.left.length
+            let x_pos=parseInt(this_div.style.left.substring(0,length_x-2));
+            let length_y=this_div.style.top.length
+            let y_pos=parseInt(this_div.style.top.substring(0,length_y-2));
+
+            this_div.style.left=x_pos+1+"px";
+            if(x_pos===x_max)clearInterval(inter);
+
+            this_div.style.top=y_pos+1+"px";
+            if(y_pos===y_max)clearInterval(inter);
+        },10,x_max,y_max,this_div)
+
+
+        for(let i=0;i<3;i++){
+            let clone=this_div.cloneNode();
+            // clone.style.width = this_div.width+"px";
+            // clone.style.background = this_div.color;
+            // clone.style.height = this_div.height+"px";
+            // clone.style.position="absolute";
+            // clone.style.left=this_div.style.left;
+            // clone.style.top=this_div.style.top;
+            clone.onclick=movef;
+            document.body.appendChild(clone);
+            let x_pos_c=parseInt(clone.style.left.substring(0,clone.style.left.length-2));
+            let y_pos_c=parseInt(clone.style.top.substring(0,clone.style.top.length-2));
+
+            let n_x_max=x_pos_c+arr[i].x;
+            let n_y_max=y_pos_c+arr[i].y;
+
+
+            let inter=setInterval(function (x_max,y_max,this_div,num){
+                let length_x=this_div.style.left.length
+                let x_pos=parseInt(this_div.style.left.substring(0,length_x-2));
+                let length_y=this_div.style.top.length
+                let y_pos=parseInt(this_div.style.top.substring(0,length_y-2));
+
+
+                if(num===0)this_div.style.left=x_pos-1+"px";
+                if(num===1)this_div.style.left=x_pos+1+"px";
+                if(num===2)this_div.style.left=x_pos-1+"px";
+                if(x_pos===x_max)clearInterval(inter);
+
+                if(num===0)this_div.style.top=y_pos-1+"px";
+                if(num===1)this_div.style.top=y_pos-1+"px";
+                if(num===2)this_div.style.top=y_pos+1+"px";
+                if(y_pos===y_max)clearInterval(inter);
+            },10,n_x_max,n_y_max,clone,i)
+        }
+
+    }
+
+
+
+</script>
+</html>

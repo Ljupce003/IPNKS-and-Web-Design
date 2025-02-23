@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let pics_arr=["s1.png","s2.png","s3.png","s4.png","s5.png","s6.png"];
+
+    let speeds=new Array(6);
+    for (let i = 0; i < 6; i++) {
+        speeds[i]=Math.round(Math.random()*10);
+    }
+
+    for (let i = 0; i < 6; i++) {
+        let pic_div=document.createElement("div");
+        pic_div.style.background="url("+pics_arr[i]+")";
+        pic_div.style.backgroundSize = "cover";
+        pic_div.style.width=100+"px";
+        pic_div.style.height=100+"px";
+        //pic_div.id=i+"a";
+        pic_div.style.position="absolute";
+        pic_div.style.left=Math.random()*1800+"px"
+        pic_div.style.top=Math.random() * 500 + "px";
+        document.body.appendChild(pic_div);
+
+        setInterval(function (Mpc_div){
+
+            let top_pos=parseInt(Mpc_div.style.top.substring(0,Mpc_div.style.top.length))
+
+
+            Mpc_div.style.top=top_pos+1+"px";
+
+            if(top_pos===950){
+                Mpc_div.style.top=-200+"px";
+                Mpc_div.style.left=Math.random()*1800+"px"
+            }
+
+        },speeds[i],pic_div)
+
+    }
+
+
+
+
+
+
+</script>
+</html>

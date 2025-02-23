@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="brojcinjata"> </p><br>
+<label for="inputot"></label><input id="inputot" type="text">
+<input type="button" id="dugme" value="Proveri" onclick="Proveripresmetka()">
+<p>Преостанато време <span id="tajmerot">60</span> секунди</p>
+
+</body>
+<script>
+
+    let inter= setInterval(function (){
+
+        let time=parseInt(document.getElementById("tajmerot").innerHTML);
+        if(time===0){
+            document.getElementById("tajmerot").style.color="red"
+            document.getElementById("tajmerot").innerHTML=0+""
+            document.getElementById("inputot").value="Ti zavrsi vremeto";
+            document.getElementById("dugme").disabled=true;
+            clearInterval(inter);
+            return;
+        }
+        document.getElementById("tajmerot").innerHTML=time-1+""
+
+    },1000)
+
+    let e1=Math.round(Math.random()*9)
+    let e2=Math.round(Math.random()*9)
+    let dv1=parseInt(Math.random()*90+10+"");
+    let dv2=parseInt(Math.random()*90+10+"");
+
+    let tr1=parseInt(Math.random()*900+100+"");
+    let tr2=parseInt(Math.random()*900+100+"");
+    document.getElementById("brojcinjata").innerHTML+=e1+" "+e2+" "+dv1+" "+dv2+" "+tr1+" = "+tr2;
+
+    function Proveripresmetka(){
+        let str=document.getElementById("inputot").value;
+        console.log(eval(str));
+
+        let arr=str.split(/[+\-*()]/);
+        let count=0;
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i]==="")arr[i]=10000;
+            arr[i]=parseInt(arr[i]);
+            if(arr[i]===e1){count++;arr[i]=10000;}
+            if(arr[i]===e2){count++;arr[i]=10000;}
+            if(arr[i]===dv1){count++;arr[i]=10000;}
+            if(arr[i]===dv2){count++;arr[i]=10000;}
+            if(arr[i]===tr1){count++;arr[i]=10000;}
+        }
+
+        if(count===5){
+            if(eval(str)===tr2){
+                clearInterval(inter);
+                document.getElementById("inputot").value="Tocno";
+                document.getElementById("inputot").disabled=true;
+                document.getElementById("dugme").disabled=true;
+
+            }
+            else {
+                document.getElementById("inputot").value="Greska";
+                setTimeout(function (){
+                    document.getElementById("inputot").value="";
+                },400)
+            }
+        }
+    }
+
+    // console.log(e1);
+    // console.log(e2);
+    // console.log(dv1);
+    // console.log(dv2);
+    // console.log(tr1);
+    // console.log(tr2);
+
+</script>
+    </html>

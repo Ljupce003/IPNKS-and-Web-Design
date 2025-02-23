@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let br=prompt("Vnesi cetiricifren br");
+    br=parseInt(br);
+    if(isNaN(br) || br<1000 || br>9999)alert("Ne moze da se proveri vneseniot broj");
+    else {
+        let a=parseInt(br/1000);
+        let b=parseInt(br/100%10);
+        let c=parseInt(br/10%10);
+        let d=parseInt(br%10);
+        if(a===d && b===c){
+            if(br%4===0)alert("Brojot e palindrom i e deliv so 4");
+            else alert("Brojot e palindrom i NE e deliv so 4");
+        }
+        else alert("Brojot ne e palindrom");
+    }
+</script>
+</body>
+</html>

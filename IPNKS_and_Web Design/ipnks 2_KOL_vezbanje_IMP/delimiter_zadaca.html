@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Colors</p>
+<label for="inp"></label><input type="text" id="inp">
+<p>Delimiter</p>
+<label for="delim"></label><input type="text" id="delim">
+<br><br>
+<input type="button" onclick="draw()" value="Draw">
+
+<br>
+<div id="place" style="width: 1000px;height: 500px;clear: both;margin-top: 15px"></div>
+</body>
+
+<script>
+
+
+    function draw(){
+        let delimiter=document.getElementById("delim").value;
+        let colors=document.getElementById("inp").value;
+
+        let arr=colors.split(delimiter);
+
+        for (let i = 0; i < arr.length; i++) {
+            let newdiv=document.createElement("div");
+            newdiv.style.width=50+"px"
+            newdiv.style.height=50+"px"
+            newdiv.style.background=arr[i];
+            newdiv.style.float="left"
+            newdiv.onclick=remove;
+            document.getElementById("place").appendChild(newdiv);
+        }
+
+        function remove(ev){
+            let box=ev.target
+
+            document.getElementById("place").removeChild(box);
+
+            let removecolor=box.style.background;
+            let idx=arr.indexOf(removecolor);
+            arr.splice(idx,1);
+
+            let text=""
+            for (let i = 0; i < arr.length; i++) {
+                text+=arr[i]+delimiter;
+            }
+            document.getElementById("inp").value=text;
+
+        }
+
+    }
+
+
+
+</script>
+</html>

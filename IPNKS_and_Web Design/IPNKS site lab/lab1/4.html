@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        function calculate(){
+            let t = document.getElementById('tez').value;
+            let h = document.getElementById('vis').value;
+            h=h/100;
+            let BMI=t/(h*h);
+            BMI=parseFloat(BMI).toFixed(2);
+            alert("Vasiot BMI e : "+BMI);
+        }
+
+    </script>
+</head>
+<body>
+<label>Внесете <b>Тежина</b><br>
+  <input id="tez" type="text" placeholder="kg"><br>
+</label>
+<label>Внесете <b>Висина</b><br>
+  <input id="vis" type="text" placeholder="cm"><br>
+</label>
+<input type="button" style="margin: 10px 5px" value="Calculate" onclick="calculate()">
+</body>
+</html>

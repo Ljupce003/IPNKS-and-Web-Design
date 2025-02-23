@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<script>
+
+    function calc(){
+        let check=document.getElementsByName('oper')
+        let a=parseFloat(document.getElementById("a").value);
+        let b=parseFloat(document.getElementById("b").value);
+
+        for (let i = 0; i < check.length; i++) {
+            if(check[i].checked){
+
+                let res;
+                switch (check[i].id) {
+                    case 'plus':
+                        res = a + b;
+                        break;
+                    case 'minus':
+                        res = a - b;
+                        break;
+                    case 'mnoz':
+                        res = a * b;
+                        break;
+                    case 'del':
+                        res = a / b;
+                        break;
+                    case 'sin':
+                        res = Math.sin(a);
+                        break;
+                    case 'cos':
+                        res = Math.cos(a);
+                        break;
+                    case 'tg':
+                        res = Math.tan(a);
+                        break;
+                    case 'cel':
+                        res = Math.ceil(a);
+                        break;
+                    case 'stepen':
+                        res = Math.pow(a, b);
+                        break;
+                    case 'koren':
+                        res = Math.sqrt(a);
+                        break;
+                }
+            document.getElementById("rezultat").innerHTML=res;
+            }
+        }
+    }
+
+</script>
+    <title></title>
+</head>
+<body>
+<h1>Калкулатор</h1>
+<div>
+<div style="text-align:left; float:left">
+    <p>а <label for="a"></label><input id="a" style="width:15px"/>
+b <label for="b"></label><input id="b" style="width:15px"/></p>
+    <p>
+        <label for="plus"></label><input id="plus" type="radio" name="oper" checked>a+b
+        <label for="minus"></label><input id="minus" type="radio" name="oper">a-b
+        <label for="mnoz"></label><input id="mnoz" type="radio" name="oper" >a*b
+        <label for="del"></label><input id="del" type="radio" name="oper" >a/b
+    <br>
+        <label for="sin"></label><input id="sin" type="radio" name="oper">sin(a)
+        <label for="cos"></label><input id="cos" type="radio" name="oper">cos(a)
+        <label for="tg"></label><input id="tg" type="radio" name="oper">tg(a)
+    <br>
+        <label for="cel"></label><input id="cel" type="radio" name="oper">[a]
+        <label for="stepen"></label><input id="stepen" type="radio" name="oper">a<sup>b</sup>
+        <label for="koren"></label><input id="koren" type="radio" name="oper">&radic;<span style="text-decoration:overline">a</span>
+    </p>
+        <button onclick="calc()">Пресметај</button>
+        <p id="rezultat"></p>
+</div>
+</div>
+</body>
+</html>

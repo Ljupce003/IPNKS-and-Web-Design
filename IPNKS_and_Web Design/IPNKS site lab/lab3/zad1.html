@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <script>
+
+    function duplicate_removal(List){
+
+      let set=new Set(List);
+
+
+      return Array.from(set);
+
+    }
+
+    let list=[1,2,3,4,5,11,14,4,15,19,15,5,25,1];
+    list=duplicate_removal(list);
+    console.log(list.toString());
+
+    //1,2,3,4,5,11,14,15,19,25
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style> .seg{margin: 10px}</style>
+</head>
+<body>
+<div class="seg">
+<label>
+    <input type="text" id="a1"> <input type="text" id="a2"> <i>i</i> <br>
+</label></div>
+<div class="seg">
+<label>
+    <input type="text" id="b1"> <input type="text" id="b2"> <i>i</i> <br>
+</label>
+</div>
+<input style="margin-left: 10px" type="button" value="Add" onclick="calculate()"><br>
+<div class="seg">
+<label>
+    <input type="text" id="sum1"> <input type="text" id="sum2"> <i>i</i> <br>
+</label>
+</div>
+</body>
+
+<script>
+
+    function calculate(){
+        let a=document.getElementById("a1").value;
+        let b=document.getElementById("b1").value;
+        let sum1;
+        a=parseInt(a);
+        b=parseInt(b);
+        sum1=a+b;
+        document.getElementById("sum1").value=sum1;
+
+        let c=document.getElementById("a2").value;
+        let d=document.getElementById("b2").value;
+        let sum2;
+        c=parseInt(c);
+        d=parseInt(d);
+        sum2=c+d;
+        document.getElementById("sum2").value=sum2;
+    }
+</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<p>Current number <span id="Number"></span></p>
+
+
+
+</body>
+
+
+<script>
+
+    setInterval(function (){
+        let number=Math.round(Math.random()*100)
+
+        document.getElementById("Number").innerHTML=number+""
+
+    },5000)
+
+
+
+    for (let i = 0; i < 3; i++) {
+        let table=document.createElement("table");
+        
+        for (let j = 0; j < 3; j++) {
+            let row = document.createElement("tr");
+            for (let k = 0; k < 5; k++) {
+                let td=document.createElement("td")
+                td.onclick=checknum;
+                td.innerHTML=Math.round(Math.random()*100)+"";
+                td.style.border="1px solid black"
+                row.appendChild(td);
+            }
+            table.appendChild(row);
+        }
+
+        document.body.appendChild(table);
+        document.body.appendChild(document.createElement("br"));
+    }
+
+
+    let count=0;
+    let remove=0;
+    function checknum(event){
+        let table_num=parseInt(event.target.innerHTML);
+
+        let the_random=parseInt(document.getElementById("Number").innerHTML);
+
+        if(table_num===the_random){
+            for (let row of event.target.parentNode.parentNode.children) {
+                for (let cell of row.children) {
+                    cell.style.background="lightblue"
+                }
+            }
+
+            for (let child of event.target.parentNode.children) {
+                child.style.background="blue"
+            }
+            event.target.style.background="green";
+        }
+        else {
+            for (let row of event.target.parentNode.parentNode.children) {
+                for (let cell of row.children) {
+                    if(cell.style.background!=="red")cell.style.background="pink"
+                    else count++;
+
+                }
+            }
+            event.target.style.background="red";
+
+            if (remove>0){
+                event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode.nextSibling)
+                event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode)
+            }
+
+
+            if (count>1){
+                for (let row of event.target.parentNode.parentNode.children) {
+                    for (let cell of row.children) {
+                        cell.style.background="red"
+                    }
+                }
+                remove++;
+
+            }
+
+
+
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<p id="bukvitee"></p>
+<label for="input_zbor"></label><input id="input_zbor" type="text">
+<input type="button" value="Proveri" id="dugme" onclick="proveri()"><br>
+<p>Преостанато време <span id="tajmerot">60</span> секунди.Погодоци <span id="pogodoci"></span></p>
+
+</body>
+
+<script>
+
+
+    var recnik=JSON.parse('["јас","ти","тој","таа","тоа","ние","вие","тие"]');
+
+    let azbuka="АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ"
+    for (let i = 0; i < 10; i++) {
+        let r=Math.trunc(Math.random()*31);
+        document.getElementById("bukvitee").innerHTML+=azbuka.charAt(r)+" "
+    }
+
+    setInterval(function (){
+        let time=parseInt(document.getElementById("tajmerot").innerHTML);
+        if(time===0){
+            document.getElementById("tajmerot").style.color="red"
+            document.getElementById("tajmerot").innerHTML=0+""
+            document.getElementById("inputot").value="Ti zavrsi vremeto";
+            document.getElementById("dugme").disabled=true;
+            clearInterval(inter);
+            return;
+        }
+        document.getElementById("tajmerot").innerHTML=time-1+""
+
+    },1000)
+
+    function proveri(){
+        let inputed=document.getElementById("input_zbor").value;
+        for (let i = 0; i < recnik.length; i++) {
+            if(inputed===recnik[i]){
+                let pogodoci=parseInt(document.getElementById("pogodoci").innerHTML);
+                if(pogodoci===undefined || pogodoci===null || isNaN(pogodoci))pogodoci=0;
+                pogodoci++;
+                document.getElementById("pogodoci").innerHTML=pogodoci+"";
+
+            }
+        }
+
+    }
+</script>
+
+
+</html>

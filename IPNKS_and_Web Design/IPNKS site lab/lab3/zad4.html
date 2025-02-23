@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <script>
+
+    class Book{
+
+      constructor(title,author,alreadyread) {
+        this.title = title;
+        this.author = author;
+        this.alreadyread = alreadyread;
+      }
+
+      gettitle() {
+        return this.title;
+      }
+
+      getauthor() {
+        return this.author;
+      }
+
+      getalreadyread() {
+        return this.alreadyread;
+      }
+
+      // print(){
+      //   return this.title+" "+this.author+"\n"
+      // }
+
+    }
+
+
+    let books=[new Book("The Hobbit 1","J.R.R. Tolkien",0),new Book("The Hobbit 2","J.R.R. Tolkien",1),
+      new Book("The Hobbit 3","J.R.R. Tolkien",0),new Book("Lord of The Rings 1","J.R.R. Tolkien",0),
+      new Book("Lord of The Rings 2","J.R.R. Tolkien",1),new Book("Lord of The Rings 3","J.R.R. Tolkien",1),
+      new Book("Harry Potter 1","J.K. Rowling",1),new Book("Harry Potter 2","J.K. Rowling",0)];
+
+    for (let i = 0; i < books.length; i++) {
+      if(books[i].getalreadyread()===0){
+        document.write("<p>You still need to read \""+books[i].gettitle()+"\" by "+books[i].getauthor()+"</p><br>")
+      }
+      if(books[i].alreadyread===1){
+        document.write("<p>You already read \""+books[i].gettitle()+"\" by "+books[i].getauthor()+"</p><br>")
+      }
+    }
+
+  </script>
+
+  <style>
+    p{
+      margin:5px 0 0 5px;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+</html>

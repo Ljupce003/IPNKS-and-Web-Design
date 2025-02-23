@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td{
+            border: solid black;
+            font-size: 26px;
+            margin: 3px;
+
+        }
+    </style>
+
+    <script>
+
+        let arr=[];
+        let i=0;
+
+        function Roll(){
+
+            let inter=setInterval(function (){
+                let r=Math.round(Math.random()*5+1);
+                let r1=Math.round(Math.random()*5+1);
+                document.getElementById("kocka1").innerHTML=r+""
+                document.getElementById("kocka2").innerHTML=r1+""
+
+                i++;
+                if(i===20){
+                    clearInterval(inter);
+                    i=0;
+                    let input_val=parseInt(document.getElementById("inputt_b").value);
+
+                    if((r+r1)===input_val){
+                        document.getElementById("inputt_b").style.background="green"
+                    }
+                    else {
+                        document.getElementById("inputt_b").style.background="red"
+                    }
+                    let obj={};
+                    obj.dices=[r,r1];
+                    obj.input=input_val;
+                    arr.push(obj);
+                }
+            },150)
+
+        }
+
+        function ToJson(){
+            let jsonstr=JSON.stringify(arr);
+            alert(jsonstr);
+        }
+
+
+    </script>
+</head>
+<body>
+
+
+<label for="inputt_b"></label><input type="text" id="inputt_b">
+<input type="button" value="Roll" onclick="Roll()">
+<table>
+    <tr><td id="kocka1">1</td> <td id="kocka2">1</td></tr>
+</table>
+
+<input type="button" value="History to json" onclick="ToJson()">
+</body>
+</html>
