@@ -1,0 +1,180 @@
+/* Indeks, Ime i Prezime */
+ /*body{
+	background-image: url('main_bg_.gif');
+
+}
+#container{
+	background-image: url('containe.jpg');
+	width: 770px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#pageHeader h1{
+	background-image: url('intro_ti.jpg');
+	background-repeat: no-repeat;
+	width: 40%;
+	height: 110px;
+	float: left;
+	text-indent: -9999px;
+
+}
+#pageHeader h2{
+	background-image: url('intro_bg.jpg');
+	background-repeat: no-repeat;
+	width: 40%;
+	float: right;
+	text-indent: -9999px;
+
+}
+#linkList{
+	width: 40%;
+	float: left;
+}
+#quickSummary {
+	width: 40%;
+	float: right;
+}
+#preamble{
+	width: 40%;
+	float: right;
+}
+#supportingText{
+	width: 40%;
+	float: right;
+}
+  */
+
+body {
+	font-family: verdana;
+	font-size: 11px;
+}
+
+#pageHeader span, #preamble h3, #explanation h3 {
+	font-size: 0px;
+}
+
+#container {
+	background: url("containe.jpg");
+	width: 770px;
+}
+
+body {
+	margin: auto;
+	max-width: 800px;
+	background: url("main_bg_.gif");
+}
+
+#pageHeader {
+	background: url("intro_ti.jpg") no-repeat;
+	width: 277px;
+	height: 110px;
+	margin-left: 58px;
+}
+
+#pageHeader h1{
+	background: url("intro_bg.jpg") no-repeat;
+	margin-left: 275px;
+	width: 395px;
+	height: 110px;
+}
+
+#pageHeader h2{
+	background: url("intro_bh.jpg") no-repeat;
+	margin-left: 275px;
+	width: 395px;
+	height: 106px;
+	margin-top: -15px;
+}
+
+#quickSummary span{
+	float: right;
+	width: 360px;
+}
+
+#quickSummary {
+	background: url("header.gif") no-repeat;
+	width: 395px;
+	height: 30px;
+	margin-left: 330px;
+	padding-top: 35px;
+	margin-top: 110px;
+}
+
+#preamble span{
+	float: right;
+	width: 360px;
+}
+
+#preamble  {
+	background: url("header.gif") no-repeat;
+	width: 395px;
+	height: 30px;
+	margin-left: 330px;
+	padding-top: 35px;
+	margin-top: 110px;
+}
+
+#explanation span{
+	float: right;
+	width: 360px;
+}
+
+#explanation {
+	background: url("header.gif") no-repeat;
+	width: 395px;
+	height: 30px;
+	margin-left: 330px;
+	padding-top: 35px;
+	margin-top: 135px;
+}
+
+#footer {
+	float: right;
+	width: 58%;
+	text-align: center;
+	margin-left: 300px;
+}
+
+#footer a {
+	color: darkolivegreen;
+}
+
+#linkList span {
+	font-size: 0px;
+}
+
+#linkList li {
+	list-style: none;
+}
+
+#lselect  {
+	background: url("select_n.gif") no-repeat;
+	height: 30px;
+	margin-left: 60px;
+}
+
+#larchives  {
+	background: url("archive_.gif") no-repeat;
+	height: 35px;
+	margin-left: 60px;
+	margin-top: 100px;
+}
+
+#lselect a {
+	color: darkolivegreen;
+}
+
+#larchives a {
+	color: gray;
+}
+
+#lselect li {
+	list-style-image: url("li_bg_ta.gif");
+	height: 15px;
+	margin-left: 218px;
+}
+
+a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}

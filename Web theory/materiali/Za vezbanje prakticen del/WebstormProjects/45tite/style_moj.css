@@ -1,0 +1,156 @@
+body {
+    font-family: 'Trebuchet MS', 'Times New Roman',
+    serif;
+    font-size: 12px;
+    background:rgb(224,232,182);
+    color: #2a3616;
+}
+
+#finki-intro h1, #finki-description h3, #finki-more h3,
+#finki-history70 h3, #finki-history80 h3, #finki-decline h3,
+#current-hits h3, #golden-oldies h3 {
+    text-indent: -9999px;
+}
+
+#finki-summary p {
+    display: none;
+}
+
+#banner {
+    background: url("img/top.gif") no-repeat;
+    width: 552px;
+    height: 455px;
+}
+
+.page-wrapper {
+    background: url("img/sidegraphic.gif");
+    width: 100px;
+    height: 1730px;
+}
+
+#finki-summary {
+    background: url("img/bar.gif") no-repeat;
+    width: 325px;
+    height: 35px;
+    margin-left: 100px;
+    text-align: right;
+    padding-left: 58px;
+}
+
+#finki-description h3 {
+    background: url("img/01.gif")no-repeat;
+    width: 400px;
+    height: 60px;
+}
+
+#finki-description {
+    width: 400px;
+    margin-left: 110px;
+}
+
+#finki-more h3 {
+    background: url("img/02.gif")no-repeat;
+    width: 400px;
+    height: 60px;
+}
+
+#finki-more {
+    width: 400px;
+    margin-left: 110px;
+}
+
+#finki-history70 h3 {
+    background: url("img/03.gif")no-repeat;
+    width: 400px;
+    height: 60px;
+}
+
+#finki-history70 {
+    width: 400px;
+    margin-left: 110px;
+}
+
+#finki-history80 h3 {
+    background: url("img/04.gif")no-repeat;
+    width: 400px;
+    height: 60px;
+}
+
+#finki-history80 {
+    width: 400px;
+    margin-left: 110px;
+}
+
+#finki-decline h3 {
+    background: url("img/05.gif")no-repeat;
+    width: 400px;
+    height: 60px;
+}
+
+#finki-decline {
+    width: 400px;
+    margin-left: 110px;
+}
+
+.sidebar {
+    margin-left: 520px;
+    margin-top: -1300px;
+}
+
+#current-hits h3 {
+    background: url("img/playlist.gif")no-repeat;
+    width: 190px;
+    height: 30px;
+}
+
+#golden-oldies h3 {
+    background: url("img/goldenoldies.gif") no-repeat;
+    width: 195px;
+    height: 30px;
+}
+
+#current-hits ul li, #golden-oldies ul li {
+    list-style: none;
+    width: 180px;
+    line-height: 25px;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+#golden-oldies a {
+    color: #2a3616;
+}
+
+.song-name {
+    color: #2a3616;
+}
+
+.artist-name {
+    color: red;
+}
+
+footer {
+    background: url("img/footer.gif") no-repeat;
+    width: 400px;
+    height: 100px;
+    margin-left: 100px;
+}
+
+#golden-oldies a:hover {
+    border-bottom: 1px dotted red;
+    color: darkolivegreen;
+}
+
+.song-name:hover {
+    border-bottom: 1px dotted red;
+    color: darkolivegreen;
+}
+
+.artist-name:hover {
+    border-bottom: 1px dotted red;
+}
+#finki-summary{
+    padding-left: 120px;
+}

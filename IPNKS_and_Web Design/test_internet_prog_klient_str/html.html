@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+   <title>Titla</title>
+    <script src="scripta.js"></script>
+    <!--<script >
+        function chacngecolor(){
+            console.log(1);
+            let a = document.getElementById("H");
+            a.style.color='red';
+
+        }
+        function changecolorback(){
+            console.log(0);
+            let a = document.getElementById("H");
+            a.style.color='black';
+        }
+
+        function hack(){
+            // flag=0;
+            // console.log(flag);
+            // b=document.getElementById('button');
+            // if(flag%2===0)b.style.background='green';
+            // else b.style.background='red';
+            // flag++;
+            let b=document.getElementById('bris');
+            b.style.color='transparent';
+        }
+
+        function changeIMG(){
+            let i=document.getElementById('IMG');
+            if(i.src.match("bulb_off")){
+                i.src="bulb_on.png";
+                i.style.width='100px';
+
+            }
+            else {i.src="bulb_off.png";i.style.width='100px';}
+        }
+
+        function checkval(){
+            let t=document.getElementById('tex');
+            let a=parseFloat(t.value);
+            let x=document.getElementById('resulting_text');
+            let Y="Access granted";
+            let N="Access denied";
+            console.log(a);
+            if(a>0 && a<101)x.innerText=Y;
+            else x.innerText=N;
+        }
+
+        function styleit(){
+            let t=document.getElementById('textt');
+            if(t.style.color.match('blue')){
+                t.style.color='black';
+                t.style.fontStyle='serif';
+                t.style.fontSize='12pt';
+            }
+            else {t.style.color='blue';
+                t.style.fontStyle='serif';
+                t.style.fontSize='18pt';}
+
+        }
+        function backgroundchange(){
+            let t=document.getElementById('textt');
+            if(t.style.background.match('green'))t.style.background='white';
+            else t.style.background='green';
+        }
+        function printts(){
+
+            let n=parseInt(Math.random()*100);
+            console.log(n);
+
+        }
+
+        function highlight(){
+            let h= document.getElementsByTagName('b')
+
+            //if(h[0].style.background.match('white'))
+            for(let i=0;i<h.length;i++){h[i].style.background='green';}
+            //else for(i=0;i<h.length;i++){h[i].style.background='white';}
+        }
+        function highlightBACK(){
+            let h= document.getElementsByTagName('b')
+
+            //if(h[0].style.background.match('white'))
+            for(let i=0;i<h.length;i++){h[i].style.background='white';}
+            //else for(i=0;i<h.length;i++){h[i].style.background='white';}
+        }
+
+        function cout(){
+            let s = document.getElementById('mySelect');
+            const t = document.getElementById('selectionlist');
+            for (let i = 0; i < s.options.length; i++) {
+                t.innerText += s.options[i].text + " \n";
+            }
+        }
+
+
+        function calculateV(){
+             let r = document.getElementById('radiusfield');
+             let v = document.getElementById('volumefield');
+             let radius = r.value;
+             console.log(radius);
+           let  volume=Math.PI*Math.pow(radius,3)*(4/3);
+           console.log(volume)
+             volume = volume.toFixed(4);
+            console.log(volume)
+             v.value=volume;
+
+        }
+
+        function calculateradius( volum){
+            let rad=(Math.cbrt((volum*(3/4))/Math.PI));
+            console.log(rad);
+            rad=rad.toFixed(2);
+            console.log(rad);
+            return rad;
+        }
+        function calculateR(){
+            let r = document.getElementById('radiusfield');
+            let v = document.getElementById('volumefield');
+            let volume = v.value;
+            console.log(volume);
+            //console.log(radius);
+            r.value=calculateradius(volume);
+
+        }
+
+        function capitalise(string){
+            str1=string.slice(1);
+            string=string.charAt(0).toUpperCase();
+            return string+str1;
+
+        }
+
+        //console.log(capitalise("robin Angelovski from maceDONia"));
+
+        function insert(string,string2,num){
+            if(string2===undefined && num===undefined){
+                return string;
+            }
+            else if(num===undefined){
+                return string2+string;
+            }
+            else return string.slice(0,num)+string2+string.slice(num);
+
+        }
+
+        console.log(insert('We are doing some exercises.'));
+        console.log(insert('We are doing some exercises.','JavaScript '));
+        console.log(insert('We are doing some exercises.','JavaScript ',18));
+
+
+
+
+    </script>-->
+    <style>
+
+        td{
+            border: solid black 2px;
+        }
+    </style>
+</head>
+<body>
+<!--
+<h1 onmouseover="chacngecolor()" onmouseout="changecolorback()" id="H">My First Web Page</h1>
+
+<p>Helloooosdasodasodad adasdgrgfgwewef  <span id="bris">Voa treba da se izbrise posle klik</span></p>
+<input id="button" type="button" onclick="hack()" value="Click ME">
+
+<img src="bulb_off.png" onclick="changeIMG()" id="IMG" width="100px" alt="">
+
+<br>
+<p> Vnesete broj izmegu 1 i 100</p>
+<label for="tex"></label><input id="tex" type="text" onchange="checkval()">
+<p id="resulting_text"></p>
+
+<p id="textt" onclick="styleit()" style="width: auto;"  class="prva">Text nedds to be changed.</p>
+
+<input  type="button" onclick="backgroundchange()" >
+<input id="BUTsTON" type="button" onclick="printts()"  style="clear: right" >
+<br>
+<a href="http://www.w3resource.com/javascript-exercises/javascript-dom-exercises.php" onmouseover="highlight()" onmouseout="highlightBACK()">On mouse over here bold words of the following paragraph will be highlighted</a>
+<p>
+    <b>We</b> have just started <b>this</b> section for the users ( <b>beginner</b> to intermediate) who <b>want</b> to work
+    with <b>various</b> JavaScript <b>problems</b> and write scripts online to <b>test</b> their JavaScript <b>skill</b>.
+</p>
+
+<label for="mySelect"></label><select id="mySelect" >
+    <option>Red </option>
+    <option>Green </option>
+    <option>Blue </option>
+    <option>White </option>
+</select>
+<input type="button" onclick="cout()">
+<p id="selectionlist"></p>
+
+<p>Input radius value and get volume of sphere </p>
+<br>
+<label for="radiusfield">Radius<br>
+</label><input id="radiusfield" type="text"><br>
+<label for="volumefield">Volume<br></label><input id="volumefield" type="text"><br>
+<input type="button" value="Calculate Volume" style="margin-top: 3px" onclick="calculateV()">
+<input type="button" value="Calculate Radius" style="margin-top: 3px" onclick="calculateR()">
+-->
+<!--
+<script>
+    function fib(n){
+       if(n<=2)return 1;
+       return fib(n-1)+fib(n-2);
+    }
+
+    console.log(fib(6));;
+    console.log(fib(7));;
+    console.log(fib(8));;
+    console.log(fib(15));;
+
+</script>
+-->
+
+<input type="button" onclick="dodad()" value="Dodaj">
+<input type="button" onclick="odzemi()" value="Odzemi">
+
+<table id="tabla">
+    <tr><td>1</td><td>2</td><td>3</td><td>4</td>
+    </tr>
+
+
+</table>
+
+</body>
+</html>

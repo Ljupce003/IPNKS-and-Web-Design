@@ -1,0 +1,119 @@
+body {
+    font-family: "palatino linotype",palatino,serif;
+    font-size: 14px;
+    background: url("img/bkgr1.jpg");
+    color: #414040;
+}
+
+.intro h1 {
+    text-indent: -9999px;
+    background: url("img/header.jpg") no-repeat;
+    width: 474px;
+    height: 292px;
+}
+
+.intro h2, .intro p:first-child {
+    text-indent: -9999px;
+}
+
+.summary {
+    background: url("img/boy.jpg") no-repeat;
+    width: 296px;
+    height: 240px;
+    margin-left: 474px;
+    margin-top: -375px;
+    padding-top: 165px;
+    color: white;
+    text-align: center;
+}
+
+.summary a {
+    color: white;
+}
+
+.summary a:hover {
+    color: darkblue;
+}
+
+.intro {
+    background: white;
+    width: 474px;
+}
+
+#supporting {
+    background: white;
+    width: 474px;
+    margin-top: -20px;
+}
+
+.intro h3 {
+    text-indent: -9999px;
+    background: url("img/ttls.gif") no-repeat;
+    width: 380px;
+    height: 50px;
+    margin-top: -50px;
+}
+
+.sidebar {
+    margin-left: 510px;
+    margin-top: -2130px;
+    width: 200px;
+}
+
+.selection ul li, .ocupations ul li, .resources ul li {
+    list-style-image: url("img/bull.gif");
+    padding-left: 10px;
+}
+
+.first-cat {
+    color: #676767;
+    font-weight: bolder;
+    display: block;
+}
+
+.ocupations a, .resources a {
+    color: #676767;
+}
+
+.selection h3 {
+    text-indent: -9999px;
+    background: url("img/ttls2.gif") no-repeat;
+    width: 200px;
+    height: 50px;
+}
+
+footer {
+    width: 800px;
+    background: url("img/bkgr1.jpg");
+    height: 50px;
+    border-top: 2px solid #3da4e1;
+    border-image-repeat: repeat;
+    margin-top: 20px;
+    text-align: right;
+}
+
+footer a {
+    background: #3da4e1;
+    color: white;
+    text-decoration-line: none;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+footer a:hover {
+    background: darkblue;
+}
+
+.sidebar a:hover {
+    color: darkblue;
+}
+
+.explanation h3 {
+    text-indent: -9999px;
+    background: url("img/ttls.gif") no-repeat;
+    width: 380px;
+    height: 50px;
+}
+
+

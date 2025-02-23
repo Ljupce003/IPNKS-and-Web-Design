@@ -1,0 +1,1618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-04 Thu 12:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Working with the Box Model</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Boban Joksimoski" />
+<meta name="description" content="box model"
+ />
+<meta name="keywords" content="html, html5, css, css3, selectors" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="./lib/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="./lib/readtheorg.css"/>
+<script src="./lib/jquery.min.jsm"></script>
+<script src="./lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="./lib/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Working with the Box Model</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org13fb1b0">Opening the Box Model</a>
+<ul>
+<li><a href="#org2ce5b5d">How Are Elements Displayed?</a>
+<ul>
+<li><a href="#org7ddf130">Display</a></li>
+</ul>
+</li>
+<li><a href="#org13c7708">What Is the Box Model?</a></li>
+<li><a href="#orge8fc709">Working with the Box Model</a></li>
+<li><a href="#org519b1d2">Width &amp; Height</a>
+<ul>
+<li><a href="#org3f76dd6">Width</a></li>
+<li><a href="#org7d152b2">Height</a></li>
+</ul>
+</li>
+<li><a href="#orgbc035b9">Margin &amp; Padding</a>
+<ul>
+<li><a href="#orgf159363">Margin</a></li>
+<li><a href="#orgea2c54a">Padding</a></li>
+<li><a href="#orgd1cf60a">Margin &amp; Padding Declarations</a></li>
+</ul>
+</li>
+<li><a href="#org55d048d">Borders</a>
+<ul>
+<li><a href="#org75d34a8">Borders Demo</a></li>
+<li><a href="#orgfc2b6bc">Individual Border Sides</a></li>
+<li><a href="#org1c1f776">Border Radius</a></li>
+<li><a href="#org6b1aa02">Border Radius Demo</a></li>
+</ul>
+</li>
+<li><a href="#org55f1dd5">Box Sizing</a>
+<ul>
+<li><a href="#orgc828f86">Content Box</a></li>
+<li><a href="#org51764f0">Padding Box</a></li>
+<li><a href="#org480c206">Border Box</a></li>
+<li><a href="#orga2665e2">Picking a Box Size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7a9fe5c">Developer Tools</a></li>
+<li><a href="#org834c3a5">In Practice</a></li>
+<li><a href="#org4c9e23e">The Universal Selector</a></li>
+<li><a href="#orge2d9104">Summary</a></li>
+<li><a href="#org15a693e">Resources &amp; Links</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org13fb1b0" class="outline-2">
+<h2 id="org13fb1b0">Opening the Box Model</h2>
+<div class="outline-text-2" id="text-org13fb1b0">
+<p>
+We've familiarized ourselves with HTML and CSS; we know what they look
+like and how to accomplish some of the basics. Now we're going to go a
+bit deeper and look at exactly how elements are displayed on a page and
+how they are sized.
+</p>
+
+<p>
+In the process we'll discuss what is known as the box model and how it
+works with HTML and CSS. We're also going to look at a few new CSS
+properties and use some of the length values we covered in Lesson 3.
+Let's begin.
+</p>
+</div>
+
+<div id="outline-container-org2ce5b5d" class="outline-3">
+<h3 id="org2ce5b5d">How Are Elements Displayed?</h3>
+<div class="outline-text-3" id="text-org2ce5b5d">
+<p>
+Before jumping into the box model, it helps to understand how elements
+are displayed. In Lesson 2 we covered the difference between block-level
+and inline-level elements. To quickly recap, block-level elements occupy
+any available width, regardless of their content, and begin on a new
+line. Inline-level elements occupy only the width their content requires
+and line up on the same line, one after the other. Block-level elements
+are generally used for larger pieces of content, such as headings and
+structural elements. Inline-level elements are generally used for
+smaller pieces of content, such as a few words selected to be bold or
+italicized.
+</p>
+</div>
+
+<div id="outline-container-org7ddf130" class="outline-4">
+<h4 id="org7ddf130">Display</h4>
+<div class="outline-text-4" id="text-org7ddf130">
+<p>
+Exactly how elements are displayed&#x2014;as block-level elements, inline
+elements, or something else&#x2014;is determined by the display property.
+Every element has a default <code>display</code> property value; however, as with
+all other property values, that value may be overwritten. There are
+quite a few values for the <code>display</code> property, but the most common are
+<code>block</code>, <code>inline</code>, <code>inline-block</code>, and <code>none</code>.
+</p>
+
+<p>
+We can change an element's <code>display</code> property value by selecting that
+element within CSS and declaring a new <code>display</code> property value. A value
+of <code>block</code> will make that element a block-level element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">p </span>{
+  <span style="color: #F92672;">display</span>: block;
+}
+</pre>
+</div>
+
+<p>
+A value of <code>inline</code> will make that element an inline-level element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">p </span>{
+  <span style="color: #F92672;">display</span>: inline;
+}
+</pre>
+</div>
+
+<p>
+Things get interesting with the <code>inline-block</code> value. Using this value
+will allow an element to behave as a block-level element, accepting all
+box model properties (which we'll cover soon). However, the element will
+be displayed in line with other elements, and it will not begin on a new
+line by default.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">p </span>{
+  <span style="color: #F92672;">display</span>: inline-block;
+}
+</pre>
+</div>
+
+<p>
+Lastly, using a value of <code>none</code> will completely hide an element and
+render the page as if that element doesn't exist. Any elements nested
+within this element will also be hidden.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">display</span>: none;
+}
+</pre>
+</div>
+
+<p>
+Knowing how elements are displayed and how to change their <code>display</code> is
+fairly important, as the <code>display</code> of an element has implications on how
+the box model is rendered. As we discuss the box model, we'll be sure to
+look at these different implications and how they can affect the
+presentation of an element.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">p</span>&gt;Paragraph one.&lt;/<span style="color: #A6E22E;">p</span>&gt;
+
+&lt;<span style="color: #A6E22E;">p</span>&gt;Paragraph two.&lt;/<span style="color: #A6E22E;">p</span>&gt;
+
+&lt;<span style="color: #A6E22E;">p</span>&gt;Paragraph three.&lt;/<span style="color: #A6E22E;">p</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">p </span>{
+  <span style="color: #F92672;">display</span>: inline-block;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-01/demo-01.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<div class="NOTE">
+<p>
+The Space Between Inline-Block Elements
+</p>
+
+<p>
+One important distinction with inline-block elements is that they are
+not always touching, or displayed directly against one another. Usually
+a small space will exist between two inline-block elements. This space,
+though perhaps annoying, is normal. We'll discuss why this space exists
+and how to remove it in the next lesson.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13c7708" class="outline-3">
+<h3 id="org13c7708">What Is the Box Model?</h3>
+<div class="outline-text-3" id="text-org13c7708">
+<p>
+According to the <a href="http://css-tricks.com/the-css-box-model/">box model</a>
+concept, every element on a page is a rectangular box and may have
+width, height, padding, borders, and margins.
+</p>
+
+<p>
+That's worth repeating: <b>Every element on a page is a rectangular box.</b>
+</p>
+
+
+<div id="org7556aad" class="figure">
+<p><img src="./img/boxes.png" alt="boxes.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>When we look at each element individually, we can see how they are all rectangular, regardless of their presented shapes</p>
+</div>
+
+<p>
+Every element on every page conforms to the box model, so it's
+incredibly important. Let's take a look at it, along with a few new CSS
+properties, to better understand what we are working with.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge8fc709" class="outline-3">
+<h3 id="orge8fc709">Working with the Box Model</h3>
+<div class="outline-text-3" id="text-orge8fc709">
+<p>
+Every element is a rectangular box, and there are several properties
+that determine the size of that box. The core of the box is defined by
+the width and height of an element, which may be determined by the
+<code>display</code> property, by the contents of the element, or by specified
+<code>width</code> and <code>height</code> properties. <code>padding</code> and then <code>border</code> expand the
+dimensions of the box outward from the element's width and height.
+Lastly, any <code>margin</code> we have specified will follow the border.
+</p>
+
+<p>
+Each part of the box model corresponds to a CSS property: <code>width</code>,
+<code>height</code>, <code>padding</code>, <code>border</code>, and <code>margin</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border</span>: 6px solid <span style="color: #ffffff; background-color: #949599;">#949599</span>;
+  <span style="color: #F92672;">height</span>: 100px;
+  <span style="color: #F92672;">margin</span>: 20px;
+  <span style="color: #F92672;">padding</span>: 20px;
+  <span style="color: #F92672;">width</span>: 400px;
+}
+</pre>
+</div>
+
+
+<p>
+According to the box model, the total width of an element can be
+calculated using the following formula:
+</p>
+
+<p>
+<i>total-width = margin-right + border-right + padding-right + width + padding-left + border-left + margin-left</i>
+</p>
+
+<p>
+In comparison, according to the box model, the total height of an
+element can be calculated using the following formula:
+</p>
+
+<p>
+<i>total-height = margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom</i>
+</p>
+
+
+
+<div id="orgfbc216e" class="figure">
+<p><img src="./img/box-model.png" alt="box-model.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The box model broken down, including a base height and width plus paddings, borders, and margins</p>
+</div>
+
+
+<p>
+Using the formulas, we can find the total height and width of our
+example code.
+</p>
+
+<dl class="org-dl">
+<dt><b>Width</b></dt><dd><code>492px = 20px + 6px + 20px + 400px + 20px + 6px + 20px</code></dd>
+<dt><b>Height:</b></dt><dd><code>192px = 20px + 6px + 20px + 100px + 20px + 6px + 20px</code></dd>
+</dl>
+
+<p>
+The box model is without question one of the more confusing parts of
+HTML and CSS. We set a <code>width</code> property value of <code>400</code> pixels, but the
+actual width of our element is <code>492</code> pixels. By default the box model is
+additive; thus to determine the actual size of a box we need to take
+into account padding, borders, and margins for all four sides of the
+box. Our width not only includes the <code>width</code> property value, but also
+the size of the left and right padding, left and right borders, and left
+and right margins.
+</p>
+
+<p>
+So far a lot of these properties might not make a whole lot of sense,
+and that's all right. To clarify things, let's take a close look at all
+of the properties&#x2014; <code>width</code>, <code>height</code>, <code>padding</code>, <code>border</code>, and
+<code>margin</code> &#x2014;that go into forming the box model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org519b1d2" class="outline-3">
+<h3 id="org519b1d2">Width &amp; Height</h3>
+<div class="outline-text-3" id="text-org519b1d2">
+<p>
+Every element has default width and height. That width and height may be
+<code>0</code> pixels, but browsers, by default, will render every element with
+size. Depending on how an element is displayed, the default width and
+height may be adequate. If an element is key to the layout of a page, it
+may require specified <code>width</code> and <code>height</code> property values. In this
+case, the property values for non-inline elements may be specified.
+</p>
+</div>
+
+<div id="outline-container-org3f76dd6" class="outline-4">
+<h4 id="org3f76dd6">Width</h4>
+<div class="outline-text-4" id="text-org3f76dd6">
+<p>
+The default width of an element depends on its display value.
+Block-level elements have a default width of <code>100%</code>, consuming the
+entire horizontal space available. Inline and inline-block elements
+expand and contract horizontally to accommodate their content.
+Inline-level elements cannot have a fixed size, thus the <code>width</code> and
+<code>height</code> properties are only relevant to non-inline elements. To set a
+specific width for a non-inline element, use the width property:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">width</span>: 400px;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7d152b2" class="outline-4">
+<h4 id="org7d152b2">Height</h4>
+<div class="outline-text-4" id="text-org7d152b2">
+<p>
+The default height of an element is determined by its content. An
+element will expand and contract vertically as necessary to accommodate
+its content. To set a specific height for a non-inline element, use the
+<code>height</code> property:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">height</span>: 100px;
+}
+</pre>
+</div>
+
+<div class="NOTE">
+<p>
+Sizing Inline-Level Elements
+</p>
+
+<p>
+Please keep in mind that inline-level elements will not accept the
+<code>width</code> and <code>height</code> properties or any values tied to them. Block and
+inline-block elements will, however, accept the <code>width</code> and <code>height</code>
+properties and their corresponding values.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbc035b9" class="outline-3">
+<h3 id="orgbc035b9">Margin &amp; Padding</h3>
+<div class="outline-text-3" id="text-orgbc035b9">
+<p>
+Depending on the element, browsers may apply default margins and padding
+to an element to help with legibility and clarity. We will generally see
+this with text-based elements. The default margins and padding for these
+elements may differ from browser to browser and element to element. In
+Lesson 1 we discussed using a CSS reset to tone all of these default values
+down to zero. Doing so allows us to work from the ground up and to specify
+our own values.
+</p>
+</div>
+
+<div id="outline-container-orgf159363" class="outline-4">
+<h4 id="orgf159363">Margin</h4>
+<div class="outline-text-4" id="text-orgf159363">
+<p>
+The <code>margin</code> property allows us to set the amount of space that
+surrounds an element. Margins for an element fall outside of any border
+and are completely transparent in color. Margins can be used to help
+position elements in a particular place on a page or to provide
+breathing room, keeping all other elements a safe distance away. Here's
+the <code>margin</code> property in action:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">margin</span>: 20px;
+}
+</pre>
+</div>
+
+<p>
+One oddity with the <code>margin</code> property is that vertical margins, <code>top</code>
+and <code>bottom</code>, are not accepted by inline-level elements. These vertical
+margins are, however, accepted by block-level and inline-block elements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgea2c54a" class="outline-4">
+<h4 id="orgea2c54a">Padding</h4>
+<div class="outline-text-4" id="text-orgea2c54a">
+<p>
+The <code>padding</code> property is very similar to the <code>margin</code> property;
+however, it falls inside of an element's border, should an element have
+a border. The <code>padding</code> property is used to provide spacing directly
+within an element. Here's the code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">padding</span>: 20px;
+}
+</pre>
+</div>
+
+<p>
+The <code>padding</code> property, unlike the <code>margin</code> property, works vertically
+on inline-level elements. This vertical <code>padding</code> may blend into the
+line above or below the given element, but it will be displayed.
+</p>
+
+
+<div class="NOTE">
+<p>
+Margin &amp; Padding on Inline-Level Elements
+</p>
+
+<p>
+Inline-level elements are affected a bit differently than block and
+inline-block elements when it comes to margins and padding. Margins only
+work horizontally &#x2014; <code>left</code> and <code>right</code> &#x2014; on inline-level elements.
+Padding works on all four sides of inline-level elements; however, the
+vertical <code>padding</code> &#x2014; the <code>top</code> and <code>bottom</code> &#x2014; may bleed into the lines
+above and below an element.
+</p>
+
+<p>
+Margins and padding work like normal for block and inline-block
+elements.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1cf60a" class="outline-4">
+<h4 id="orgd1cf60a">Margin &amp; Padding Declarations</h4>
+<div class="outline-text-4" id="text-orgd1cf60a">
+<p>
+In CSS, there is more than one way to declare values for certain
+properties. We can use longhand, listing multiple properties and values
+one after the other, in which each value has its own property. Or we can
+use shorthand, listing multiple values with one property. Not all
+properties have a shorthand alternative, so we must make sure we are
+using the correct property and value structure.
+</p>
+
+<p>
+The <code>margin</code> and <code>padding</code> properties come in both longhand and
+shorthand form. When using the shorthand <code>margin</code> property to set the
+same value for all four sides of an element, we specify one value:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">margin</span>: 20px;
+}
+</pre>
+</div>
+
+
+<p>
+To set one value for the <code>top</code> and <code>bottom</code> and another value for the
+<code>left</code> and <code>right</code> sides of an element, specify two values: <code>top</code> and
+<code>bottom</code> first, then <code>left</code> and <code>right</code>. Here we are placing margins of
+<code>10</code> pixels on the <code>top</code> and <code>bottom</code> of a <code>&lt;div&gt;</code> and margins of <code>20</code>
+pixels on the <code>left</code> and <code>right</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">margin</span>: 10px 20px;
+}
+</pre>
+</div>
+
+<p>
+To set unique values for all four sides of an element, specify those
+values in the order of <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>, moving
+clockwise. Here we are placing margins of <code>10</code> pixels on the <code>top</code> of a
+<code>&lt;div&gt;</code>, <code>20</code> pixels on the <code>right</code>, <code>0</code> pixels on the <code>bottom</code>, and
+<code>15</code> pixels on the <code>left</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">margin</span>: 10px 20px 0 15px;
+}
+</pre>
+</div>
+
+<p>
+Using the <code>margin</code> or <code>padding</code> property alone, with any number of
+values, is considered shorthand. With longhand, we can set the value for
+one side at a time using unique properties. Each property name (in this
+case margin or padding) is followed by a dash and the side of the box to
+which the value is to be applied: <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code>.
+For example, the <code>padding-left</code> property accepts only one value and will
+set the <code>left</code> padding for that element; the <code>margin-top</code> property
+accepts only one value and will set the <code>top</code> margin for that element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">margin-top</span>: 10px;
+  <span style="color: #F92672;">padding-left</span>: 6px;
+}
+</pre>
+</div>
+
+<p>
+When we wish to identify only one <code>margin</code> or <code>padding</code> value, it is
+best to use the longhand properties. Doing so keeps our code explicit
+and helps us to avoid any confusion down the road. For example, did we
+really want to set the <code>top</code>, <code>right</code>, and <code>left</code> sides of the element
+to have margins of <code>0</code> pixels, or did we really only want to set the
+<code>bottom</code> margin to <code>10</code> pixels? Using longhand properties and values
+here helps to make our intentions clear. When dealing with three or more
+values, though, shorthand is incredibly helpful.
+</p>
+
+
+<div class="NOTE">
+<p>
+Margin &amp; Padding Colors
+</p>
+
+<p>
+The <code>margin</code> and <code>padding</code> properties are completely transparent and do
+not accept any color values. Being transparent, though, they show the
+background colors of relative elements. For margins, we see the
+background color of the parent element, and for padding, we see the
+background color of the element the <code>padding</code> is applied to.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org55d048d" class="outline-3">
+<h3 id="org55d048d">Borders</h3>
+<div class="outline-text-3" id="text-org55d048d">
+<p>
+Borders fall between the padding and margin, providing an outline around
+an element. The <code>border</code> property requires three values: <code>width</code>,
+<code>style</code>, and <code>color</code>. Shorthand values for the border property are
+stated in that order&#x2014; <code>width</code>, <code>style</code>, <code>color</code>. In longhand, these
+three values can be broken up into the <code>border-width</code>, <code>border-style</code>,
+and <code>border-color</code> properties. These longhand properties are useful for
+changing, or overwriting, a single border value.
+</p>
+
+<p>
+The <code>width</code> and <code>color</code> of borders can be defined using common CSS units
+of length and color, as discussed in Lesson 3.
+</p>
+
+<p>
+Borders can have
+<a href="http://www.quackit.com/html/codes/html_borders.cfm">different
+appearances</a>. The most common style values are <code>solid</code>, <code>double</code>,
+<code>dashed</code>, <code>dotted</code>, and <code>none</code>, but there are several others to choose
+from.
+</p>
+
+<p>
+Here is the code for a <code>6</code>-pixel-wide, solid, gray border that wraps
+around all four sides of a <code>&lt;div&gt;</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border</span>: 6px solid <span style="color: #ffffff; background-color: #949599;">#949599</span>;
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org75d34a8" class="outline-4">
+<h4 id="org75d34a8">Borders Demo</h4>
+<div class="outline-text-4" id="text-org75d34a8">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-solid"</span>&gt;2px &lt;<span style="color: #A6E22E;">br</span>&gt; solid&lt;/<span style="color: #A6E22E;">code</span>&gt;
+&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-double"</span>&gt;6px &lt;<span style="color: #A6E22E;">br</span>&gt; double&lt;/<span style="color: #A6E22E;">code</span>&gt;
+&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-dashed"</span>&gt;8px &lt;<span style="color: #A6E22E;">br</span>&gt; dashed&lt;/<span style="color: #A6E22E;">code</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">code </span>{
+  <span style="color: #F92672;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+  <span style="color: #F92672;">font</span>: 14px/24px <span style="color: #E6DB74;">"Source Code Pro"</span>, Inconsolata, <span style="color: #E6DB74;">"Lucida Console"</span>, Terminal,
+        <span style="color: #E6DB74;">"Courier New"</span>, Courier;
+  <span style="color: #F92672;">display</span>: inline-block;
+  <span style="color: #F92672;">height</span>: 70px;
+  <span style="color: #F92672;">margin</span>: 0 14px;
+  <span style="color: #F92672;">padding-top</span>: 20px;
+  <span style="color: #F92672;">text-align</span>: center;
+  <span style="color: #F92672;">width</span>: 90px;
+}
+<span style="color: #A6E22E;">.border-solid </span>{
+  <span style="color: #F92672;">border</span>: 2px solid <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+}
+<span style="color: #A6E22E;">.border-double </span>{
+  <span style="color: #F92672;">border</span>: 6px double <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+}
+<span style="color: #A6E22E;">.border-dashed </span>{
+  <span style="color: #F92672;">border</span>: 8px dashed <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+}
+<span style="color: #A6E22E;">.border-dotted </span>{
+   <span style="color: #F92672;">border</span>: 4px dotted <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfc2b6bc" class="outline-4">
+<h4 id="orgfc2b6bc">Individual Border Sides</h4>
+<div class="outline-text-4" id="text-orgfc2b6bc">
+<p>
+As with the <code>margin</code> and <code>padding</code> properties, borders can be placed on
+one side of an element at a time if we'd like. Doing so requires new
+properties: <code>border-top</code>, <code>border-right</code>, <code>border-bottom</code>, and
+<code>border-left</code>. The values for these properties are the same as those of
+the <code>border</code> property alone: <code>width</code>, <code>style</code>, and <code>color</code>. If we want,
+we can make a border appear only on the bottom of an element:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border-bottom</span>: 6px solid <span style="color: #ffffff; background-color: #949599;">#949599</span>;
+}
+</pre>
+</div>
+
+
+<p>
+Additionally, styles for individual border sides may be controlled at an
+even finer level. For example, if we wish to change only the <code>width</code> of
+the bottom border we can use the following code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border-bottom-width</span>: 12px;
+}
+</pre>
+</div>
+
+
+<p>
+These highly specific longhand border properties include a series of
+hyphen-separated words starting with the border base, followed by the
+selected side&#x2014; <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code> &#x2014;and then <code>width</code>,
+<code>style</code>, or <code>color</code>, depending on the desired property.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c1f776" class="outline-4">
+<h4 id="org1c1f776">Border Radius</h4>
+<div class="outline-text-4" id="text-org1c1f776">
+<p>
+While we're looking at borders and their different properties, we need
+to examine the <code>border-radius</code> property, which enables us to round the
+corners of an element.
+</p>
+
+<p>
+The <code>border-radius</code> property accepts length units, including percentages
+and pixels, that identify the radius by which the corners of an element
+are to be rounded. A single value will round all four corners of an
+element equally; two values will round the <code>top-left=/=bottom-right</code> and
+<code>top-right=/=bottom-left</code> corners in that order; four values will round
+the <code>top-left</code>, <code>top-right</code>, <code>bottom-right</code>, and <code>bottom-left</code> corners
+in that order.
+</p>
+
+<p>
+When considering the order in which multiple values are applied to the
+<code>border-radius</code> property (as well as the <code>margin</code> and <code>padding</code>
+properties), remember that they move in a clockwise fashion starting at
+the top left of an element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border-radius</span>: 5px;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6b1aa02" class="outline-4">
+<h4 id="org6b1aa02">Border Radius Demo</h4>
+<div class="outline-text-4" id="text-org6b1aa02">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-rounded"</span>&gt;5px&lt;/<span style="color: #A6E22E;">code</span>&gt;
+
+&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-circle"</span>&gt;50%&lt;/<span style="color: #A6E22E;">code</span>&gt;
+
+&lt;<span style="color: #A6E22E;">code</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"border-football"</span>&gt;15px 75px&lt;/<span style="color: #A6E22E;">code</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">code </span>{
+  <span style="color: #F92672;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+  <span style="color: #F92672;">font</span>: 14px/24px <span style="color: #E6DB74;">"Source Code Pro"</span>, Inconsolata, <span style="color: #E6DB74;">"Lucida Console"</span>,
+        Terminal, <span style="color: #E6DB74;">"Courier New"</span>, Courier;
+  <span style="color: #F92672;">display</span>: inline-block;
+  <span style="color: #F92672;">height</span>: 90px;
+  <span style="color: #F92672;">line-height</span>: 90px;
+  <span style="color: #F92672;">margin</span>: 0 14px;
+  <span style="color: #F92672;">text-align</span>: center;
+  <span style="color: #F92672;">width</span>: 90px;
+}
+<span style="color: #A6E22E;">.border-rounded </span>{
+  <span style="color: #F92672;">border-radius</span>: 5px;
+}
+<span style="color: #A6E22E;">.border-circle </span>{
+  <span style="color: #F92672;">border-radius</span>: 50%;
+}
+<span style="color: #A6E22E;">.border-football </span>{
+  <span style="color: #F92672;">border-radius</span>: 15px 75px;
+}
+</pre>
+</div>
+
+<p>
+The <code>border-radius</code> property may also be broken out into longhand
+properties that allow us to change the radii of individual corners of an
+element. These longhand properties begin with <code>border</code>, continue with
+the corner's vertical location (<code>top</code> or <code>bottom</code>) and the corner's
+horizontal location (<code>left</code> or <code>right</code>), and then end with radius. For
+example, to change the top-right corner radius of a <code>&lt;div&gt;</code>, the
+<code>border-top-right-radius</code> property can be used.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">border-top-right-radius</span>: 5px;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org55f1dd5" class="outline-3">
+<h3 id="org55f1dd5">Box Sizing</h3>
+<div class="outline-text-3" id="text-org55f1dd5">
+<p>
+Until now the box model has been an additive design. If you set the
+<code>width</code> of an element to <code>400</code> pixels and then add <code>20</code> pixels of
+<code>padding</code> and a <code>border</code> of <code>10</code> pixels on every side, the actual full
+width of the element becomes <code>460</code> pixels. Remember, we need to add the
+<code>width</code>, <code>padding</code>, and <code>border</code> property values together to get the
+actual, full width of an element.
+</p>
+
+<p>
+The box model may, however, be changed to support different
+calculations. CSS3 introduced the <code>box-sizing</code> property, which allows us
+to change exactly how the box model works and how an element's size is
+calculated. The property accepts three primary values&#x2014; <code>content-box</code>,
+<code>padding-box</code>, and <code>border-box</code> &#x2014;each of which has a slightly different
+impact on how the box size is calculated.
+</p>
+</div>
+
+<div id="outline-container-orgc828f86" class="outline-4">
+<h4 id="orgc828f86">Content Box</h4>
+<div class="outline-text-4" id="text-orgc828f86">
+<p>
+The <code>content-box</code> value is the default value, leaving the box model as
+an additive design. If we don't use the <code>box-sizing</code> property, this will
+be the default value for all elements. The size of an element begins
+with the <code>width</code> and <code>height</code> properties, and then any <code>padding</code>,
+<code>border</code>, or <code>margin</code> property values are added on from there.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672; font-style: italic;">-webkit-box-sizing</span>: content-box;
+  <span style="color: #F92672; font-style: italic;">-moz-box-sizing</span>: content-box;
+  <span style="color: #F92672;">box-sizing</span>: content-box;
+}
+</pre>
+</div>
+
+
+<div class="NOTE">
+<p>
+Browser-Specific Properties &amp; Values
+</p>
+
+<p>
+What are all those hyphens and letters on the <code>box-sizing</code> property?
+</p>
+
+<p>
+As CSS3 was introduced, browsers gradually began to support different
+properties and values, including the <code>box-sizing</code> property, by way of
+vendor prefixes. As parts of the CSS3 specification are finalized and
+new browser versions are released, these vendor prefixes become less and
+less relevant. As time goes on, vendor prefixes are unlikely to be a
+problem; however, they still provide support for some of the older
+browsers that leveraged them. We may run across them from time to time,
+and we may even want to use them should we wish to support older
+browsers.
+</p>
+
+<p>
+Vendor prefixes may be seen on both properties and values, all depending
+on the CSS specification. Here they are shown on the <code>box-sizing</code>
+property. Browser vendors were free to chose when to use a prefix and
+when not to. Thus, some properties and values require vendor prefixes
+for certain browser vendors but not for others.
+</p>
+
+<p>
+Moving forward, when a property or value needs a vendor prefix, the
+prefix will only be used in the introduction of that property or value
+(in the interest of keeping our code digestible and concise). Do not
+forget to add the necessary vendor prefixes when you're actually writing
+the code.
+</p>
+
+<p>
+For reference, the most common vendor prefixes are outlined here:
+</p>
+<ul class="org-ul">
+<li>Mozilla Firefox: <code>-moz-</code></li>
+<li>Microsoft Internet Explorer: <code>-ms-</code></li>
+<li>Webkit (Google Chrome and Apple Safari): <code>-webkit-</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org51764f0" class="outline-4">
+<h4 id="org51764f0">Padding Box</h4>
+<div class="outline-text-4" id="text-org51764f0">
+<p>
+The <code>padding-box</code> value alters the box model by including any <code>padding</code>
+property values within the <code>width</code> and <code>height</code> of an element. When
+using the <code>padding-box</code> value, if an element has a <code>width</code> of <code>400</code>
+pixels and a <code>padding</code> of <code>20</code> pixels around every side, the actual
+width will remain <code>400</code> pixels. As any <code>padding</code> values increase, the
+content size within an element shrinks proportionately.
+</p>
+
+<p>
+If we add a <code>border</code> or <code>margin</code>, those values will be added to the
+<code>width</code> or <code>height</code> properties to calculate the full box size. For
+example, if we add a <code>border</code> of <code>10</code> pixels and a <code>padding</code> of <code>20</code>
+pixels around every side of the element with a <code>width</code> of <code>400</code> pixels,
+the actual full width will become <code>420</code> pixels.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">box-sizing</span>: padding-box;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org480c206" class="outline-4">
+<h4 id="org480c206">Border Box</h4>
+<div class="outline-text-4" id="text-org480c206">
+<p>
+Lastly, the <code>border-box</code> value alters the box model so that any <code>border</code>
+or <code>padding</code> property values are included within the <code>width</code> and
+<code>height</code> of an element. When using the <code>border-box</code> value, if an element
+has a <code>width</code> of <code>400</code> pixels, a <code>padding</code> of <code>20</code> pixels around every
+side, and a <code>border</code> of <code>10</code> pixels around every side, the actual width
+will remain <code>400</code> pixels.
+</p>
+
+<p>
+If we add a <code>margin</code>, those values will need to be added to calculate
+the full box size. No matter which <code>box-sizing</code> property value is used,
+any <code>margin</code> values will need to be added to calculate the full size of
+the element.
+</p>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">div </span>{
+  <span style="color: #F92672;">box-sizing</span>: border-box;
+}
+</pre>
+</div>
+
+
+<div id="orgdc648e6" class="figure">
+<p><img src="./img/box-sizing.png" alt="box-sizing.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Different box-sizing values allow the width of an element&#x2014;and its box&#x2014;to be calculated from different areas</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2665e2" class="outline-4">
+<h4 id="orga2665e2">Picking a Box Size</h4>
+<div class="outline-text-4" id="text-orga2665e2">
+<p>
+Generally speaking, the best <code>box-sizing</code> value to use is <code>border-box</code>.
+The <code>border-box</code> value makes our math much, much easier. If we want an
+element to be <code>400</code> pixels wide, it is, and it will remain <code>400</code> pixels
+wide no matter what padding or border values we add to it.
+</p>
+
+<p>
+Additionally, we can easily mix length values. Say we want our box to be
+<code>40%</code> wide. Adding a <code>padding</code> of <code>20</code> pixels and a <code>border</code> of <code>10</code>
+pixels around every side of an element isn't difficult, and we can still
+guarantee that the actual <code>width</code> of our box will remain <code>40%</code> despite
+using pixel values elsewhere.
+</p>
+
+<p>
+The only drawback to using the <code>box-sizing</code> property is that as part of
+the CSS3 specification, it isn't supported in every browser; it
+especially lacks support in older browsers. Fortunately this is becoming
+less and less relevant as new browsers are released. Chances are we're
+safe to use the <code>box-sizing</code> property, but should we notice any issues,
+it's worth looking into which browser those issues are occurring with.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7a9fe5c" class="outline-2">
+<h2 id="org7a9fe5c">Developer Tools</h2>
+<div class="outline-text-2" id="text-org7a9fe5c">
+<p>
+Most browsers have what are known as <i>Developer Tools</i>. These tools
+allow us to inspect an element on a page, see where that element lives
+within the HTML document, and see what CSS properties and values are
+being applied to it. Most of these tools also include a box model
+diagram to show the computed size of an element.
+</p>
+
+<p>
+To see the Developer Tools in Google Chrome, click "View" within the
+menu bar and navigate to "Developer" and then "Developer Tools." This
+loads a drawer at the bottom of the browser window that provides a
+handful of tools for inspecting our code.
+</p>
+
+<p>
+Clicking the magnifying glass at the bottom of this drawer enables us to
+hover over and then click on different elements on the page to review
+more information about them.
+</p>
+
+<p>
+After selecting an element, we'll see a handful of tabs on the
+right-hand side of the Elements panel within our Developer Tools.
+Selecting the "Computed" tab will show us a breakdown of the box model
+for our selected element.
+</p>
+
+<p>
+Play around with the Developer Tools, be it in Google Chrome, Mozilla
+Firefox, Apple Safari, or other browsers; there is much to learn from
+looking at our code. I generally leave the Developer Tools open at all
+times when writing HTML and CSS. And I frequently inspect the code of
+other websites to see how they are built, too.
+</p>
+
+
+<div class="figure">
+<p><img src="./img/developer-tools.png" alt="developer-tools.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>The Google Chrome Developer Tools, which help us to inspect the HTML and CSS on any page</p>
+</div>
+
+<p>
+The box model is one of the most confusing parts of learning how to
+write HTML and CSS. It is also one of the most powerful parts of HTML
+and CSS, and once we have it mastered, most everything else&#x2014;like
+positioning content&#x2014;will come to us fairly easily.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org834c3a5" class="outline-2">
+<h2 id="org834c3a5">In Practice</h2>
+<div class="outline-text-2" id="text-org834c3a5">
+<p>
+Let's jump back into our Styles Conference website to center it on the
+page and add some more content.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Let's start by adjusting our box size to use the <code>border-box</code> version
+of the box model, which will make sizing all of our elements much
+easier. Within our <code>main.css</code> file, just below our reset, let's add a
+comment to identify the code for what will become our grid and help
+determine the layout of our website. We're putting this below our
+reset so that it falls in the proper position within the cascade.
+</p>
+
+<p>
+From there, we can use the universal selector, <code>*</code>, along with
+universal pseudo-elements, <code>*:before</code> and <code>*:after</code>, to select every
+imaginable element and change the <code>box-sizing</code> to <code>border-box</code>.
+Remember, we're going to want to include the necessary vendor
+prefixes for the <code>box-sizing</code> property, as it is a relatively new
+property.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #75715E;">/*</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">Grid</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">*/</span>
+
+*,
+*:before,
+<span style="color: #A6E22E;">*:after </span>{
+  <span style="color: #F92672; font-style: italic;">-webkit-box-sizing</span>: border-box;
+  <span style="color: #F92672; font-style: italic;">-moz-box-sizing</span>: border-box;
+  <span style="color: #F92672;">box-sizing</span>: border-box;
+}
+</pre>
+</div></li>
+
+<li><p>
+Next we'll want to create a class that will serve as a container for
+our elements. We can use this container class on different elements
+to set a common <code>width</code>, center the elements on the page, and apply
+some common horizontal <code>padding</code>.
+</p>
+
+<p>
+Just below our universal selector rule set, let's create a selector
+with a class of <code>container</code>. Within this selector let's set our
+<code>width</code> to <code>960</code> pixels, our <code>left</code> and <code>right</code> padding to <code>30</code>
+pixels, our <code>top</code> and <code>bottom</code> margins to <code>0</code>, and our <code>left</code> and
+<code>right</code> margins to <code>auto</code>.
+</p>
+
+<p>
+Setting a <code>width</code> tells the browser definitively how wide any element
+with the class of <code>container</code> should be. Using a <code>left</code> and <code>right</code>
+margin of <code>auto</code> in conjunction with this <code>width</code> lets the browser
+automatically figure out equal <code>left</code> and <code>right</code> margins for the
+element, thus centering it on the page. Lastly, the <code>left</code> and
+<code>right</code> padding ensures that our content isn't sitting directly on
+the edge of the element and provides a little breathing room for the
+content.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">.container </span>{
+  <span style="color: #F92672;">margin</span>: 0 auto;
+  <span style="color: #F92672;">padding-left</span>: 30px;
+  <span style="color: #F92672;">padding-right</span>: 30px;
+  <span style="color: #F92672;">width</span>: 960px;
+}
+</pre>
+</div></li>
+
+<li><p>
+Now that we have a container class available to use, let's go ahead
+and apply the class of <code>container</code> throughout our HTML to the
+<code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements on each page, including the
+<code>index.html</code>, <code>speakers.html</code>, <code>schedule.html</code>, <code>venue.html</code>, and
+<code>register.html</code> files.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">header</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"container"</span>&gt;...&lt;/<span style="color: #A6E22E;">header</span>&gt;
+&lt;<span style="color: #A6E22E;">footer</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"container"</span>&gt;...&lt;/<span style="color: #A6E22E;">footer</span>&gt;
+</pre>
+</div></li>
+
+<li><p>
+While we're at it, let's go ahead and center the rest of the content
+on our pages. On the home page, our <code>index.html</code> file, let's add the
+class of <code>container</code> to each <code>&lt;section&gt;</code> element on the page, one for
+our hero section (the section that introduces our conference) and one
+for our teasers section.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">section</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"container"</span>&gt;...&lt;/<span style="color: #A6E22E;">section</span>&gt;
+</pre>
+</div>
+
+<p>
+Additionally, let's wrap all of the <code>&lt;h1&gt;</code> elements on each page with
+a <code>&lt;section&gt;</code> element with the class of <code>container</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">section</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"container"</span>&gt;
+  &lt;<span style="color: #A6E22E;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">...</span>&lt;/<span style="color: #A6E22E;">h1</span>&gt;
+&lt;/<span style="color: #A6E22E;">section</span>&gt;
+</pre>
+</div>
+
+<p>
+We'll come back and adjust these elements and classes later, but for
+now we're headed in the right direction.
+</p></li>
+
+<li><p>
+Now that all of our content is centered, let's create some vertical
+spacing between elements. For starters let's place a <code>22</code>-pixel
+<code>bottom</code> margin on a few of our heading and paragraph elements. We'll
+place and comment on these typography styles below our grid styles.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #75715E;">/*</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">Typography</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">*/</span>
+
+<span style="color: #A6E22E;">h1, h3, h4, h5, p </span>{
+  <span style="color: #F92672;">margin-bottom</span>: 22px;
+}
+</pre>
+</div>
+
+<p>
+We intentionally skipped <code>&lt;h2&gt;</code> and <code>&lt;h6&gt;</code> elements, as the design
+does not call for margins on <code>&lt;h2&gt;</code> elements and as we won't be using
+any <code>&lt;h6&gt;</code> elements at this time.
+</p></li>
+
+<li><p>
+Let's also try our hand at creating a border and some rounded
+corners. We'll start by placing a button within the top <code>&lt;section&gt;</code>
+element on our home page, just below the header.
+</p>
+
+<p>
+Previously we added an <code>&lt;a&gt;</code> element within this <code>&lt;section&gt;</code> element.
+Let's add the classes of <code>btn</code> and <code>btn-alt</code> to this anchor.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"btn btn-alt"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+
+<p>
+Now let's create some styles for those classes within our CSS. Below
+our typography rule set, let's create a new section of the CSS file
+for buttons.
+</p>
+
+<p>
+To begin let's add the <code>btn</code> class and apply some common styles that
+can be shared across all buttons. We'll want all of our buttons to
+have a <code>5</code>-pixel <code>border-radius</code>. They should be displayed as
+<code>inline-block</code> elements so we can add <code>padding</code> around all four sides
+without issue; we'll remove any <code>margin</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #75715E;">/*</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">Buttons</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">*/</span>
+
+<span style="color: #A6E22E;">.btn </span>{
+  <span style="color: #F92672;">border-radius</span>: 5px;
+  <span style="color: #F92672;">display</span>: inline-block;
+  <span style="color: #F92672;">margin</span>: 0;
+}
+</pre>
+</div>
+
+<p>
+We'll also want to include styles specific to this button, which
+we'll do by using the <code>btn-alt</code> class. Here we'll add a <code>1</code>-pixel,
+solid, gray <code>border</code> with <code>10</code> pixels of <code>padding</code> on the <code>top</code> and
+<code>bottom</code> of the button and <code>30</code> pixels of <code>padding</code> on the <code>left</code> and
+<code>right</code> of the button.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">.btn-alt </span>{
+  <span style="color: #F92672;">border</span>: 1px solid <span style="color: #000000; background-color: #dfe2e5;">#dfe2e5</span>;
+  <span style="color: #F92672;">padding</span>: 10px 30px;
+}
+</pre>
+</div>
+
+<p>
+Using both the <code>btn</code> and <code>btn-alt</code> classes on the same <code>&lt;a&gt;</code> element
+allows these styles to be layered on, rendering all of the styles on
+a single element.
+</p></li>
+
+<li><p>
+Because we're working on the home page, let's also add a bit of
+<code>padding</code> to the <code>&lt;section&gt;</code> element that contains our <code>&lt;a&gt;</code> element
+with the classes of <code>btn</code> and <code>btn-alt</code>. We'll do so by adding a
+class attribute value of <code>hero</code> to the <code>&lt;section&gt;</code> element, alongside
+the <code>container</code> class attribute value, as this will be the leading
+section of our website.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">section</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"hero container"</span>&gt;
+...
+&lt;/<span style="color: #A6E22E;">section</span>&gt;
+</pre>
+</div>
+
+<p>
+Next we'll want to create a new section within our CSS file for home
+page styles, and, once we're ready, we'll use the class of <code>hero</code> to
+apply <code>padding</code> around all four sides of the <code>&lt;section&gt;</code> element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #75715E;">/*</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">Home</span>
+<span style="color: #75715E;">========================================</span>
+<span style="color: #75715E;">*/</span>
+
+<span style="color: #A6E22E;">.hero </span>{
+  <span style="color: #F92672;">padding</span>: 22px 80px 66px 80px;
+}
+</pre>
+</div></li>
+</ol>
+
+
+<p>
+Our website is starting to come together, especially the home page.
+</p>
+
+
+
+<div class="figure">
+<p><img src="./img/practice-1.png" alt="practice-1.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Our Styles Conference home page, taking shape after a few updates</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c9e23e" class="outline-2">
+<h2 id="org4c9e23e">The Universal Selector</h2>
+<div class="outline-text-2" id="text-org4c9e23e">
+<p>
+In the first step of this exercise we were introduced to the
+<code>universal selector</code>. In CSS the asterisk, <code>*</code>, is the universal
+selector, which selects every element. Rather than listing every single
+element imaginable, we can use the asterisk as a catch-all to select all
+elements for us.
+</p>
+
+<p>
+The <code>:before</code> and <code>:after</code> pseudo-elements also mentioned in this step
+are elements that can be dynamically generated with CSS. We're not going
+to be using these elements within our project; however, when using the
+universal selector it's a good practice to also include these
+pseudo-elements in case they should ever appear.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge2d9104" class="outline-2">
+<h2 id="orge2d9104">Summary</h2>
+<div class="outline-text-2" id="text-orge2d9104">
+<p>
+Learning all the different parts of the box model is no small feat.
+These concepts, although briefly introduced, take quite a bit of time to
+fully master, and we're on the right path toward doing so.
+</p>
+
+<p>
+In brief, within this lesson we talked about the following:
+</p>
+
+<ul class="org-ul">
+<li>How different elements are displayed</li>
+<li>What the box model is and why it's important</li>
+<li>How to change the size, including the height and width, of elements</li>
+<li>How to add margin, padding, and borders to elements</li>
+<li>How to change the box sizing of elements and the effects this has on
+the box model</li>
+</ul>
+
+<p>
+Now that we have a better understanding of how elements are displayed
+and sized, it's time to move into positioning these elements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15a693e" class="outline-2">
+<h2 id="org15a693e">Resources &amp; Links</h2>
+<div class="outline-text-2" id="text-org15a693e">
+<ul class="org-ul">
+<li><a href="http://css-tricks.com/the-css-box-model/">The CSS Box Model</a>
+via CSS-Tricks</li>
+<li><a href="http://www.quackit.com/html/codes/html_borders.cfm">HTML Borders</a>
+via Quackit.com</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2019-04-04 Thu 12:49</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

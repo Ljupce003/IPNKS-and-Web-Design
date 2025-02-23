@@ -1,0 +1,177 @@
+body {
+    font-family: "MS Trebuchet", Verdana, Geneva, Arial,
+    Helvetica, sans-serif;
+    font-size: 11px;
+    background: url("img/fondo.gif");
+    padding: 0;
+    margin: 0;
+    line-height: 135%;
+    color: #424242;
+}
+
+#intro h1, #intro h2 {
+    text-indent: -9999px;
+}
+
+.page-wrapper {
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid #424242;
+    border-bottom: 0;
+    width: 740px;
+    height: 1980px;
+    background: url("img/abajo.gif") no-repeat;
+    background-position: bottom;
+}
+
+#intro h1 {
+    background: url("img/header1.gif") no-repeat;
+    width: 526px;
+    height: 91px;
+    overflow: hidden;
+}
+
+#intro h2 {
+    background: url("img/abajo.gif") no-repeat;
+    width: 740px;
+    height: 95px;
+}
+
+#summary {
+    color: white;
+    margin-top: -80px;
+    margin-left: 30px;
+}
+
+#summary a {
+    color: white;
+}
+
+#introduction {
+    float: right;
+    width: 66%;
+    margin-right: 0px;
+    margin-top: 50px;
+}
+
+#supporting {
+    float: right;
+    width: 66%;
+    margin-right: 0px;
+    margin-top: 50px;
+}
+
+.select {
+    background: url("img/qsp1.gif") no-repeat;
+    width: 153px;
+    height:50px;
+    color: white;
+    text-transform: lowercase;
+    padding-top: 10px;
+}
+
+#selection ul li {
+    list-style-image: url("img/flechita2.gif");
+}
+
+#selection a {
+    text-decoration-line: none;
+}
+
+.first-cat {
+    color: #af0000;
+    font-weight: bold;
+}
+
+.second-cat {
+    color: #5F5F5F;
+    font-weight: bold;
+}
+
+.title {
+    background: url("img/qsp1.gif") no-repeat;
+    width: 153px;
+    height:50px;
+    color: white;
+    text-transform: lowercase;
+    padding-top: 10px;
+}
+
+.skills {
+    background: url("img/qsp1.gif") no-repeat;
+    width: 153px;
+    height:50px;
+    color: white;
+    text-transform: lowercase;
+    padding-top: 10px;
+}
+
+.resources a, .ocupations a {
+    color: #af0000;
+    text-decoration-line: none;
+    font-weight: bold;
+}
+
+#ocupations ul li {
+    list-style-image: url("img/flechita2.gif");
+}
+
+.resources ul li {
+    list-style-image: url("img/flechita2.gif");
+}
+
+.sidebar {
+    background: url("img/linea.gif");
+    width: 178px;
+    height: 600px;
+    margin-left: 20px;
+    margin-top: 70px;
+}
+
+footer {
+    background: url("img/footer.gif");
+    width: 350px;
+    height: 40px;
+    margin-top: 70px;
+    margin-left: -200px;
+}
+
+footer a {
+    color: #af0000;
+    font-weight: bold;
+    text-decoration-line: none;
+    padding-left: 20px;
+}
+
+h3{
+    color: #af0000;
+    background-color: #fff;
+    margin-top: 30px;
+    margin-bottom: 0;
+    position: relative;
+    padding: 0 0 0 25px;
+    background-image: url("img/bullet.gif");
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+}
+
+#summary a:hover {
+    text-decoration-line: none;
+}
+
+#summary {
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    text-decoration-line: underline;
+}
+
+#selection a:hover {
+    text-decoration-line: underline;
+}
+
+footer a:hover {
+    text-decoration-line: underline;
+}
+

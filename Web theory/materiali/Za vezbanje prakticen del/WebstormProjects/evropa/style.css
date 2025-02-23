@@ -1,0 +1,97 @@
+body{
+	margin: auto;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+color: white;
+}
+h3, h1{
+	font-size: 0px;
+}
+.top h3 {
+	background: url("img/introdution.gif") no-repeat;
+	height: 15px;
+}
+.council h3{
+	background: url("img/european_council.gif") no-repeat;
+	height: 15px;
+
+}
+.participation h3{
+	background: url("img/commission.gif") no-repeat;
+	height: 15px;
+}
+.parliament h3{
+	background: url("img/parliament.gif") no-repeat;
+	height: 15px;
+}
+.official h3{
+	background: url("img/official.gif") no-repeat;
+	height: 18px;
+}
+.overviews h3{
+	background: url("img/overviews.gif") no-repeat;
+	height: 18px;
+}
+.top, .council, .participation, .parliament {
+	width: 414px;
+	background-color: #8c9d6a;
+	margin-left: 250px;
+}
+header{
+	background: url("img/logo.gif") no-repeat;
+	height: 38px;
+	width: 665px;
+	margin-bottom: 5px;
+}
+.summary{
+	background: url("img/eu_banner.png") no-repeat;
+	height: 160px;
+	margin-bottom: 5px;
+
+}
+.summary p:first-of-type{
+	background: url("img/eu_short_text.gif") no-repeat;
+	height: 160px;
+	margin-left:445px;
+	font-size: 0px;
+
+}
+.summary p:nth-of-type(2){
+	background-color: #8c9d6a;
+	width: 665px;
+	margin-top: 5px;
+}
+.top{
+	margin-top: 30px;
+}
+.official{
+	margin-top: -1248px;
+	width: 300px;
+
+}
+.official, .overviews{
+	background-color: #97a25e;
+	width: 250px;
+	margin-right: 30px;
+}
+ul li{
+	list-style: none;
+}
+.overviews{
+	margin-top: -12px;
+}
+.official a:hover{
+	color: #2b351c;
+}
+.overviews a:hover{
+	color: white;
+	border-bottom: none;
+}
+a{
+	text-decoration-line: none;
+	color: #4a5d2b;
+}
+.overviews a{
+	border-bottom: 1px dotted red;
+
+}

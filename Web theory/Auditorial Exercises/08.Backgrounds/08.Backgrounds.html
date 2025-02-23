@@ -1,0 +1,1657 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Setting Backgrounds &amp; Gradients</title>
+<!-- 2016-04-12 Tue 12:21 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Org-mode">
+<meta name="author" content="Ivan Kitanovski">
+<meta name="description" content="positioning content"
+>
+<meta name="keywords" content="html, html5, css, css3, selectors">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 16px;
+    margin-bottom: 95px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 16px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Setting Backgrounds &amp; Gradients</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Setting Backgrounds &amp; Gradients</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Backgrounds have a significant impact on the design of a website. They
+help create a site's look and feel, establish groupings, and assign
+priority, and they have a considerable influence on a website's
+usability.
+</p>
+
+<p>
+Within CSS, element backgrounds can be a solid color, an image, a
+gradient, or a combination of these. As we decide how to implement these
+backgrounds, we should keep in mind that every background contributes to
+the overall appearance of our website.
+</p>
+
+<p>
+In this lesson we're going to take a look at how to assign different
+types of backgrounds, including gradients, to elements; we'll also play
+around with a handful of CSS3 properties specific to backgrounds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Adding a Background Color</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The quickest way to add a background to an element is to add a
+single-color background using the <code>background</code> or <code>background-color</code>
+property. The <code>background</code> property accepts colors and images in
+shorthand form, while the <code>background-color</code> property is used strictly
+for setting solid background colors. Either property will work, and
+which one you decide to use depends on your preference as well as the
+case for which you're using it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+<span style="color: #DFAF8F;">background-color</span>: <span style="color: #000000; background-color: #b2b2b2;">#b2b2b2</span>;
+}
+</pre>
+</div>
+
+<p>
+When adding a background color, we have a few options for the values we
+can use. As with other color values, we can pick from keywords,
+hexadecimal codes, and RGB, RGBa, HSL, and HSLa values. Most commonly
+we'll see hexadecimal values; however, we may occasionally want to use
+RGBa or HSLa values for transparencies.
+</p>
+
+<div class="note">
+<p>
+Transparent Backgrounds
+</p>
+
+<p>
+When using an RGBa or HSLa value as a transparent background color, it's
+a good idea to provide a fallback color, too, because not all browsers
+recognize RGBa or HSLa values. And when a browser comes across a value
+it doesn't recognize, it will ignore it.
+</p>
+
+<p>
+Fortunately, there is an easy way to provide a fallback background. CSS
+cascades from the top of a file to the bottom of a file; thus, we can
+use two <code>background-color</code> properties within a single rule set. The
+first <code>background-color</code> property will use a "safe" background color,
+such as a hexadecimal value, and the second <code>background-color</code> property
+will use an RGBa or HSLa value. Here, if a browser understands the RGBa
+or HSLa value it will render it, and if it doesn't, it will fall back to
+the hexadecimal value above it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background-color</span>: <span style="color: #000000; background-color: #b2b2b2;">#b2b2b2</span>;
+  <span style="color: #DFAF8F;">background-color</span>: <span style="color: #ffffff; background-color: #000000;">rgba(0, 0, 0, .3)</span>;
+}
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Adding a Background Image</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Besides adding a background color to an element, we can also add a
+background image. Background images work similarly to background colors;
+however, they offer a few additional properties to finesse the images.
+As before, we can use the <code>background</code> property with a shorthand value,
+or we can use the <code>background-image</code> property outright. No matter which
+property we use, there must be an image source identified using a
+<code>url()</code> function.
+</p>
+
+<p>
+The <code>url()</code> function value will be the background image's path, and the
+familiar rules for creating hyperlink paths apply here. Keep an eye out
+for different directories, and be sure to show exactly where the image
+resides. The path will be placed inside parentheses and quoted.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background-image</span>: url(<span style="color: #CC9393;">"alert.png"</span>);
+}
+</pre>
+</div>
+
+<p>
+Adding a background image solely using a <code>url</code> value can provide
+undesirable results, as by default the background image will repeat
+horizontally and vertically from the top left of the given element to
+fill up the element's background. Thankfully we can use the
+<code>background-repeat</code> and <code>background-position</code> properties to control how
+or even whether the image repeats.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Background Repeat</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+By default, a background image will repeat indefinitely, both vertically
+and horizontally, unless otherwise specified. The <code>background-repeat</code>
+property may be used to change the direction in which a background image
+is repeated, if repeated at all.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background-image</span>: url(<span style="color: #CC9393;">"alert.png"</span>);
+  <span style="color: #DFAF8F;">background-repeat</span>: no-repeat;
+}
+</pre>
+</div>
+
+<p>
+The <code>background-repeat</code> property accepts four different values:
+<code>repeat</code>, <code>repeat-x</code>, <code>repeat-y</code>, and <code>no-repeat</code>. The repeat value is
+the default value and will repeat a background image both vertically and
+horizontally.
+</p>
+
+<p>
+The <code>repeat-x</code> value will repeat the background image horizontally,
+while the <code>repeat-y</code> value will repeat the background image vertically.
+Lastly, the <code>no-repeat</code> value will tell the browser to display the
+background image once&#x2014;that is, do not repeat it at all.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Background Position</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+By default, background images are positioned at the left top corner of
+an element. However, by using the <code>background-position</code> property, we can
+control exactly where the background image is placed relative to that
+corner.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background-image</span>: url(<span style="color: #CC9393;">"alert.png"</span>);
+  <span style="color: #DFAF8F;">background-position</span>: 20px 10px;
+  <span style="color: #DFAF8F;">background-repeat</span>: no-repeat;
+}
+</pre>
+</div>
+
+<p>
+The <code>background-position</code> property requires two values: a horizontal
+offset (the first value) and a vertical offset (the second value). If
+only one value is specified, that value is used for the horizontal
+offset and the vertical offset will default to <code>50%</code>.
+</p>
+
+<p>
+Because we're moving the background image from the left top corner of
+the element, length values specifically will be in relation to that
+corner.
+</p>
+
+<p>
+To set a <code>background-position</code> value, we can use the <code>top</code>, <code>right</code>,
+<code>bottom</code>, <code>left</code>, and <code>center</code> keywords, pixels, percentages, or any
+length measurement. Keywords and percentages work very similarly. The
+keyword value <code>left top</code> is identical to the percentage value <code>0 0</code>,
+which will keep an image positioned at the left top corner of the
+element. The keyword value <code>right bottom</code> is identical to the percentage
+value <code>100% 100%</code>, which will position an image in the right bottom
+corner of the element.
+</p>
+
+
+<figure id="Fig 8.01">
+<p><img src="./img/background-position.png" class="img-responsive" alt="background-position.png">
+</p>
+</figure>
+
+<p>
+Background images are positioned from the left top corner of an element
+</p>
+
+<p>
+Using pixels for a <code>background-position</code> value is also common, as pixels
+give us precise control over where our background will be positioned.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Shorthand Background Image Values</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+The <code>background-color</code>, <code>background-image</code>, <code>background-position</code>, and
+<code>background-repeat</code> properties may be rolled up into a shorthand value
+for the background property alone. The order of these properties as a
+shorthand <code>background</code> property value may vary, however it commonly
+falls as <code>background-color</code>, <code>background-image</code>, <code>background-position</code>,
+and then <code>background-repeat</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #b2b2b2;">#b2b2b2</span> url(<span style="color: #CC9393;">"alert.png"</span>) 20px 10px no-repeat;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Background Image Example</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+In the following example, we'll use the <code>background</code> property with a
+shorthand value that includes <code>background-color</code>, <code>background-image</code>,
+<code>background-position</code>, and <code>background-repeat</code> values.
+</p>
+
+<p>
+Please take note that there is both a relative value and an absolute
+value within the <code>background-position</code> value. The first value, <code>20</code>
+pixels, is the horizontal value, positioning the <code>background-image</code> <code>20</code>
+pixels from the left of the element. The second value, <code>50%</code>, is the
+vertical value, which vertically centers the <code>background-image</code>.
+</p>
+
+<p>
+A few other properties and values are also included within the
+<code>notice-success</code> class rule set to further style the alert message.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Background Image Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"notice-success"</span>&gt;
+  Woo hoo! Congratulations, you did it!
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.notice-success </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #67b11c;">#67b11c</span> url(<span style="color: #CC9393;">"../../img/tick_2.png"</span>) 20px 50% no-repeat;
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #67b11c;">#67b11c</span> url(<span style="color: #CC9393;">"../../img/tick_1.svg"</span>) 20px 50% no-repeat;
+  <span style="color: #DFAF8F;">border</span>: 2px solid <span style="color: #ffffff; background-color: #467813;">#467813</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">font-family</span>: <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+  <span style="color: #DFAF8F;">padding</span>: 15px 20px 15px 50px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-01/index.html"> </iframe>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">In Practice</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Returning to our Styles Conference website, let's add some background
+colors. While we do that, we'll change a few other styles to keep all of
+our styles working together and to keep all of our content legible.
+</p>
+
+<ol class="org-ol">
+<li>We'll begin by taking a big step and applying a blue background to
+the <code>&lt;body&gt;</code> element alongside the existing <code>color</code> and <code>font</code>
+properties. All of the styles for the <code>&lt;body&gt;</code> element rule set now
+include the following:
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">body </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #293f50;">#293f50</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #888;">#888</span>;
+  <span style="color: #DFAF8F;">font</span>: 300 16px/22px <span style="color: #CC9393;">"Lato"</span>, <span style="color: #CC9393;">"Open Sans"</span>, <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, s<span style="color: #DC8CC3; background-color: #3F3F3F;">ans-serif;</span>
+}
+</pre>
+</div>
+
+<p>
+We've placed a blue <code>background</code> on the <code>&lt;body&gt;</code> element purposely,
+as our website will have a few different rows of <code>background</code> colors,
+and the most frequent <code>background</code> color will be blue.
+</p>
+</li>
+
+<li>Now that every page on our Styles Conference website includes a blue
+<code>background</code>, let's clean up a few areas that will keep that blue
+background. Specifically, our <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements will
+remain blue, as will the hero section on the home page.
+
+<p>
+Within our <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements let's make all of our
+link colors start as white and then, when hovered over, turn the same
+green as our headings.
+</p>
+
+<p>
+We'll begin with our <code>&lt;header&gt;</code> element. In order to select all <code>&lt;a&gt;</code>
+elements within the <code>&lt;header&gt;</code> element, we'll add a class of
+<code>primary-header</code> to the <code>&lt;header&gt;</code> element (in addition to the
+existing <code>container</code> and <code>group</code> classes). Don't forget, we'll need
+to add this class to the <code>&lt;header&gt;</code> elements across all of our pages.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"primary-header container group"</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+</pre>
+</div>
+
+<p>
+With the <code>primary-header</code> class in place on the <code>&lt;header&gt;</code> element,
+and the existing <code>primary-footer</code> class in place on the <code>&lt;footer&gt;</code>
+element, we can add two new rule sets to the bottom of the links
+section within our <code>main.css</code> file.
+</p>
+
+<p>
+The first rule set will select all <code>&lt;a&gt;</code> elements within an element
+with the class attribute value of <code>primary-header</code> or
+<code>primary-footer</code> and set their <code>color</code> to white, as defined by comma
+separating two individual selectors that share the same property and
+value. The second rule set will select the same <code>&lt;a&gt;</code> elements as
+before but will change their <code>color</code> to green when a user hovers over
+them.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.primary-header a,</span>
+<span style="color: #93E0E3;">.primary-footer a </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+}
+.primary-header a:hover,
+<span style="color: #93E0E3;">.primary-footer a:hover </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #648880;">#648880</span>;
+}
+</pre>
+</div>
+</li>
+
+<li>While we're making some of our text white, let's make the text within
+the hero section of our home page white also, as it will remain on a
+blue <code>background</code>. We have the existing <code>hero</code> class rule set
+available to add styles to, so let's add our white text <code>color</code>
+there. In all, our <code>hero</code> class rule set should include the
+following:
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.hero </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">line-height</span>: 44px;
+  <span style="color: #DFAF8F;">padding</span>: 22px 80px 66px 80px;
+  <span style="color: #DFAF8F;">text-align</span>: center;
+}
+</pre>
+</div>
+</li>
+
+<li>Also within the hero section of our home page, let's clean up some of
+the button styles. We'll begin by adding some new properties to our
+<code>btn</code> class rule set, within the buttons section of our <code>main.css</code>
+file.
+
+<p>
+Specifically, let's set the button text <code>color</code> to white, make sure
+our <code>cursor</code> is always a <code>pointer</code>, increase the <code>font-weight</code>, add a
+small amount of <code>letter-spacing</code>, and change our <code>text-transform</code> to
+<code>uppercase</code>.
+</p>
+
+<p>
+In all, our new <code>btn</code> class rule set should look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.btn </span>{
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">cursor</span>: pointer;
+  <span style="color: #DFAF8F;">display</span>: inline-block;
+  <span style="color: #DFAF8F;">font-weight</span>: 400;
+  <span style="color: #DFAF8F;">letter-spacing</span>: .5px;
+  <span style="color: #DFAF8F;">margin</span>: 0;
+  <span style="color: #DFAF8F;">text-transform</span>: uppercase;
+}
+</pre>
+</div>
+
+<p>
+We'll also clean up some of the alternate button styles by way of the
+<code>btn-alt</code> class rule set. Specifically, let's make the buttons'
+borders white and add hover styles including a white <code>background</code> and
+blue text <code>color</code>.
+</p>
+
+<p>
+With all of the additions, our new <code>btn-alt</code> class rule set should
+look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.btn-alt </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">padding</span>: 10px 30px;
+}
+<span style="color: #93E0E3;">.btn-alt:hover </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #648880;">#648880</span>;
+}
+</pre>
+</div>
+</li>
+
+<li>Now that we have all of the areas with blue backgrounds cleaned up,
+let's add styles for the rows that have white backgrounds. Let's
+create a new section within our <code>main.css</code> file for rows, just below
+the clearfix section. Within this new rows section, let's create a
+new class selector named <code>row</code>.
+
+<p>
+Within our new <code>row</code> class rule set, let's add a white <code>background</code>,
+a minimum <code>width</code> of <code>960</code> pixels (to make sure our <code>row</code> elements
+are always larger than the <code>width</code> of our <code>container</code> or <code>grid</code>
+elements), and some vertical <code>padding</code>. Altogether our new row
+section within our <code>main.css</code> file should look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #5F7F5F;">/*</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #7F9F7F;">  Rows</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #5F7F5F;">*/</span>
+
+<span style="color: #93E0E3;">.row </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">min-width</span>: 960px;
+  <span style="color: #DFAF8F;">padding</span>: 66px 0 44px 0;
+}
+</pre>
+</div>
+</li>
+
+<li>With our <code>row</code> class styles in place, let's add a row with a white
+<code>background</code> to our home page. We'll do this on our teasers section.
+Currently this area has a <code>&lt;section&gt;</code> element with the class of grid
+wrapping three additional <code>&lt;section&gt;</code> elements with the classes of
+teaser and <code>col-1-3</code>.
+
+<p>
+To add a white <code>background</code> to this section, we're going to wrap all
+of these elements in an element with the class of <code>row</code>.
+</p>
+
+<p>
+Because we'll want the entire teasers section wrapped in a
+<code>&lt;section&gt;</code> element, we're going to add a new <code>&lt;section&gt;</code> element
+with the class of <code>row</code> that surrounds the existing <code>&lt;section&gt;</code>
+element with the class of <code>grid</code>.
+</p>
+
+<p>
+Having two <code>&lt;section&gt;</code> elements wrapping the exact same content
+diminishes semantic value. To correct this we'll change the second
+<code>&lt;section&gt;</code> element, the one with the class of <code>grid</code>, to a <code>&lt;div&gt;</code>
+element. After all, at this point this element is only adding styles,
+not semantic meaning, and is appropriate as a <code>&lt;div&gt;</code> element.
+</p>
+
+<p>
+The structure of our new teasers element should look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+
+    <span style="color: #5F7F5F;">&lt;!-- </span><span style="color: #7F9F7F;">Speakers </span><span style="color: #5F7F5F;">--&gt;</span>
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"teaser col-1-3"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">    Schedule</span>
+
+<span style="color: #7F9F7F;">    </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"teaser col-1-3"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">    Venue</span>
+
+<span style="color: #7F9F7F;">    </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"teaser col-1-3"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+</ol>
+
+<p>
+It is amazing how a few background colors can affect the design of a
+website. Our Styles Conference website is coming along quite nicely, and
+our home page is proof.
+</p>
+
+
+<figure id="Fig 8.02">
+<p><img src="./img/practice-1.png" class="img-responsive" alt="practice-1.png">
+</p>
+<figcaption><span class="figure-number">Figure 2:</span> Our Styles Conference website home page after adding some background colors</figcaption>
+</figure>
+
+<p>
+Our Styles Conference website home page after adding some background
+colors
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Designing Gradient Backgrounds</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Gradient backgrounds were introduced with CSS3, and designers and
+front-end developers everywhere rejoiced. Although gradient backgrounds
+do not work in legacy browsers, they are supported by all modern
+browsers.
+</p>
+
+<p>
+Within CSS, gradient backgrounds are treated as background images. We
+can create a gradient using the <code>background</code> or <code>background-image</code>
+properties, just like a regular background image. The property value for
+a gradient background varies depending on what type of gradient we'd
+like, linear or radial.
+</p>
+
+<div class="note">
+<p>
+Gradient Background Vendor Prefixes
+</p>
+
+<p>
+Previously, we discussed adding vendor prefixes to new CSS
+properties or values so that browsers can support recently developed CSS
+features. Gradient background values were one of the values that
+required the use of vendor prefixes. Fortunately, most browsers have
+since eliminated the need for a vendor prefix in order to render a
+gradient background; however, it is still worth outlining vendor
+prefixes to ensure the best support.
+</p>
+
+<p>
+At first, as we begin discussing linear gradient backgrounds, we'll
+include each of the different vendor prefixes. After that, in the
+interest of brevity, we'll omit the different prefixes as we continue to
+discuss gradient backgrounds, including radial gradient backgrounds.
+</p>
+
+</div>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Linear Gradient Background</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+For years designers and developers have been cutting up gradient image
+files, created using image-processing software, and using them as linear
+gradient backgrounds on elements. The process worked, but it took a
+while to implement and was very inflexible. Fortunately those days are
+gone, and <a href="http://dev.opera.com/articles/css3-linear-gradients/">linear
+gradient backgrounds</a> can now be specified within CSS. If a color needs
+changing, there is no need to reproduce and recut an image and upload it
+to the server. Now all we need to do is change a quick value within CSS.
+Beautiful.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: -webkit-linear-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">background</span>:    -moz-linear-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">background</span>:         linear-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Linear Gradient Background Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">height</span>: 120px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-02/index.html"> </iframe>
+
+<p>
+Linear gradients are identified by using the <code>linear-gradient()</code>
+function within the <code>background</code> or <code>background-image</code> property. The
+<code>linear-gradient()</code> function must include two color values, the first of
+which will be the beginning color value and the second of which will be
+the ending color value. The browser will then handle the transition
+between the two colors.
+</p>
+
+<p>
+Before any gradient backgrounds are identified, we'll also put in a
+default <code>background</code> property with a solid color. The solid color is to
+be used as a fallback should a browser not support gradient backgrounds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Changing the Direction of a Gradient Background</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+By default, linear gradient backgrounds move from the top to the bottom
+of an element, transitioning smoothly between the first color value and
+the second. This direction, however, may be changed with the use of
+keywords or a degree value stated before any color values.
+</p>
+
+<p>
+For example, should we want a gradient to move from the left of an
+element to the right, we can use the keyword value <code>to right</code> to
+identify the direction in which the linear gradient should progress.
+Keyword values may also be combined. If we want the gradient to move
+from the left top to the right bottom of an element, we can use the
+keyword value of <code>to right bottom</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right bottom, <span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Linear Gradient Background Direction Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right bottom, <span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">height</span>: 120px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-03/index.html"> </iframe>
+
+<p>
+When we use a diagonal gradient on an element that isn't exactly square,
+the background gradient will not proceed directly from one corner to the
+other. Instead, the gradient will identify the absolute center of the
+element, place anchors in the perpendicular corners from where it should
+progress, and then move to the general direction of the corner stated
+within the value. These corners the gradient moves towards are called
+"magic corners," as they are not absolute. Eric Meyer has done a
+wonderful job of outlining this syntax in his article
+“<a href="http://meyerweb.com/eric/thoughts/2012/04/26/lineargradient-keywords/">Linear
+Gradient Keywords</a>”.
+</p>
+
+<p>
+Besides keywords, degree values are also acceptable. If we want our
+gradient to move to the left top of an element, we can use the degree
+value of <code>315deg</code>, or if we want our gradient to move to the right
+bottom of an element, we can use the degree value of <code>135deg</code>. This same
+concept can be applied for any degree value, <code>0</code> through <code>360</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Radial Gradient Background</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+While the linear gradient is perfect for a gradient moving from one
+direction to another, often the need for a radial gradient arises.
+Radial background gradients work just like linear gradients and share
+many of the same values. For radial gradients, instead of using the
+<code>linear-gradient()</code> function within the <code>background</code> or
+<code>background-image</code> property, we'll use the <code>radial-gradient()</code> function.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: radial-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Radial Gradient Background Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: radial-gradient(<span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">height</span>: 120px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-04/index.html"> </iframe>
+
+<p>
+Radial gradients work from the inside to the outside of an element.
+Thus, the first color identified within the <code>radial-gradient()</code> function
+will sit in the absolute center of the element, and the second color
+will sit on the outside of an element. The browser will then create the
+transition between the two colors.
+</p>
+
+<p>
+One of the primary differences between radial gradients and linear
+gradients is that radial gradients can be quite complex, with values for
+location, size, radius, and so forth. We'll cover the basics, but please
+feel free to delve further into
+<a href="http://dev.opera.com/articles/css3-radial-gradients/">radial
+gradients</a>, as they provide much more power than is outlined here.
+</p>
+
+<div class="note">
+<p>
+CSS3 Gradient Background Generator
+</p>
+
+<p>
+Working with CSS3 gradients by hand can be quite difficult at times,
+especially if you are new to them. Fortunately, a few
+<a href="http://www.cssmatic.com/gradient-generator">CSS3 gradient generators</a>
+have popped up. Each generator works a little differently, and some
+provide more options than others. If you're interested, I recommend
+doing some research to find the right generator for your needs.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Gradient Color Stops</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+At a minimum, gradient backgrounds will transition from one color to
+another; however, we may add multiple colors to a gradient and have the
+browser transition between all of them. To do this we'll add color stops
+to the given gradient function, with commas separating each color stop
+from the next.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #648880;">#648880</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>, <span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Gradient Color Stops Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>, <span style="color: #ffffff; background-color: #648880;">#648880</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">height</span>: 120px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-05/index.html"> </iframe>
+
+
+<p>
+By default, the browser will position every color stop an equal distance
+from the next and will transition between them accordingly. If more
+control over how colors are positioned is desired, a location along the
+gradient may be identified for each color stop. The location should be
+declared as a length value and should fall after the color value.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #648880;">#648880</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>, <span style="color: #ffffff; background-color: #648880;">#648880</span> 85%, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+}
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #466368;">#466368</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(to right, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>, <span style="color: #ffffff; background-color: #648880;">#648880</span> 85%, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">height</span>: 120px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-06/index.html"> </iframe>
+
+<p>
+Unless specified otherwise, the first color stop will be positioned at
+<code>0%</code>, and the last color stop will be positioned at <code>100%</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1">Gradient Background Example</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+Using the same success alert message from before, we'll swap out the old
+background image for a linear gradient background image.
+</p>
+
+<p>
+For this we'll include two <code>background</code> properties. The first
+<code>background</code> property specifies a solid color hexadecimal value, which
+serves as a fallback should a browser not support linear gradient
+backgrounds. The second <code>background</code> property includes the
+<code>linear-gradient()</code> function, which identifies a green gradient
+background that transitions from the top of the element to the bottom of
+the element.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Gradient Background Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"notice-success"</span>&gt;
+  Woo hoo! Congratulations, you did it!
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.notice-success </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #67b11c;">#67b11c</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(<span style="color: #000000; background-color: #72c41f;">#72c41f</span>, <span style="color: #000000; background-color: #5c9e19;">#5c9e19</span>);
+  <span style="color: #DFAF8F;">border</span>: 2px solid <span style="color: #ffffff; background-color: #467813;">#467813</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">font-family</span>: <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+  <span style="color: #DFAF8F;">padding</span>: 15px 20px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-07/index.html"> </iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">In Practice</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+With gradient backgrounds now in the mix, let's create a new row for our
+Styles Conference website, this time using a gradient.
+</p>
+
+<ol class="org-ol">
+<li>We'll create a new row with a gradient background by using the class
+of <code>row-alt</code>. Because the new row will share the same <code>min-width</code>
+property and value as the <code>row</code> class selector, we'll combine these
+two selectors.
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.row,</span>
+<span style="color: #93E0E3;">.row-alt </span>{
+  <span style="color: #DFAF8F;">min-width</span>: 960px;
+}
+</pre>
+</div>
+
+<p>
+Next we'll want to create new rule sets to apply styles specifically
+to the <code>row-alt</code> class selector. These new styles will include a
+gradient background that starts with green and transitions to yellow,
+from left to right.
+</p>
+
+<p>
+Using the <code>linear-gradient()</code> function with the appropriate values
+and vendor prefixes, we'll add the gradient <code>background</code> to the
+<code>row-alt</code> class rule set. We'll also include a single <code>background</code>
+color before the gradient <code>background</code> as a fallback, just in case a
+browser doesn't support gradient backgrounds.
+</p>
+
+<p>
+Lastly, we'll also add in some vertical <code>padding</code>. Our updated row
+section now looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.row,</span>
+<span style="color: #93E0E3;">.row-alt</span>{
+  <span style="color: #DFAF8F;">min-width</span>: 960px;
+}
+<span style="color: #93E0E3;">.row </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">padding</span>: 66px 0 44px 0;
+}
+<span style="color: #93E0E3;">.row-alt </span>{
+   <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #cbe2c1;">#cbe2c1</span>;
+   <span style="color: #DFAF8F;">background</span>: -webkit-linear-gradient(to right, <span style="color: #000000; background-color: #a1d3b0;">#a1d3b0</span>, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>);
+   <span style="color: #DFAF8F;">background</span>: -moz-linear-gradient(to right, <span style="color: #000000; background-color: #a1d3b0;">#a1d3b0</span>, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>);
+   <span style="color: #DFAF8F;">background</span>: linear-gradient(to right, <span style="color: #000000; background-color: #a1d3b0;">#a1d3b0</span>, <span style="color: #000000; background-color: #f6f1d3;">#f6f1d3</span>);
+   <span style="color: #DFAF8F;">padding</span>: 44px 0 22px 0;
+ }
+</pre>
+</div>
+</li>
+
+<li>With our <code>row-alt</code> styles in place, let's put them to use on all of
+our interior pages. Currently, all of our interior pages have a
+<code>&lt;section&gt;</code> element with a class of <code>container</code>. Then, inside each
+<code>&lt;section&gt;</code> element is an <code>&lt;h1&gt;</code> element containing the heading of
+the page.
+
+<p>
+We're going to alter these <code>&lt;section&gt;</code> elements much like we did the
+teaser <code>&lt;section&gt;</code> element on our home page. We'll wrap each
+<code>&lt;section&gt;</code> element with a class of <code>container</code> in a <code>&lt;section&gt;</code>
+element with the class of <code>row-alt</code>. We'll then change each
+<code>&lt;section&gt;</code> element with a class of <code>container</code> to a <code>&lt;div&gt;</code> element
+for better semantic alignment.
+</p>
+
+<p>
+Each of our interior pages should now include the following:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row-alt"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"container"</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">...</span>&lt;/<span style="color: #93E0E3;">h1</span>&gt;
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Because we are updating our interior pages, let's make their
+introductions, or leads, a little more appealing. We'll begin by
+adding a paragraph introducing each page just below the <code>&lt;h1&gt;</code>
+element in each <code>&lt;section&gt;</code> element with a class of <code>row-alt</code>. Our
+<code>speakers.html</code> page, for example, may now include the following lead
+section:
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row-alt"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"container"</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Speakers</span>&lt;/<span style="color: #93E0E3;">h1</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">p</span>&gt;We&amp;#8217;re happy to welcome over twenty speakers to present on the indus<span style="color: #DC8CC3; background-color: #3F3F3F;">try&amp;#8217;s latest technologies. Prepare for an inspiration extravaganza.&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>In addition to inserting the paragraph, let's also change some of the
+styles within the lead section. To do this, we'll add a class of
+<code>lead</code> to the <code>&lt;div&gt;</code> element that already has a class of
+<code>container</code>; this can be found nested directly inside the <code>&lt;section&gt;</code>
+element with a class of <code>row-alt</code>. Our lead section for each interior
+page will now look like this:
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row-alt"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"lead container"</span>&gt;
+
+    ...
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Once the <code>lead</code> class is in place, we'll center all of the text
+within these <code>&lt;div&gt;</code> elements. We'll also increase the <code>font-size</code>
+and <code>line-height</code> of any paragraphs within these <code>&lt;div&gt;</code> elements.
+
+<p>
+We'll create a new section for leads within our <code>main.css</code> file, just
+below the typography section, and add the following styles:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #5F7F5F;">/*</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #7F9F7F;">  Leads</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #5F7F5F;">*/</span>
+
+<span style="color: #93E0E3;">.lead </span>{
+  <span style="color: #DFAF8F;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">.lead p </span>{
+  <span style="color: #DFAF8F;">font-size</span>: 21px;
+  <span style="color: #DFAF8F;">line-height</span>: 33px;
+}
+</pre>
+</div>
+</li>
+</ol>
+
+<p>
+The interior pages of our Styles Conference website have now received
+some long-overdue love in the form of gradient background rows and
+leads. Make sure to review the code for all of the interior pages to see
+their newly enhanced content, headings, and paragraphs.
+</p>
+
+
+<figure id="Fig 8.03">
+<p><img src="./img/practice-2.png" class="img-responsive" alt="practice-2.png">
+</p>
+</figure>
+
+<p>
+The Speakers page of our Styles Conference website, complete with a
+gradient background row
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Using Multiple Background Images</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+For the longest time, elements were allowed to have only one background
+image at a time, which created quite a few constraints when designing a
+page. Fortunately, with CSS3, we can now use more than one background
+image on an element by comma-separating multiple background values
+within a <code>background</code> or <code>background-image</code> property.
+</p>
+
+<p>
+The background image value that comes first will be the foremost
+background image, and the background image that's listed last will be
+the rearmost background image. Any value between the first and the last
+will reside within the middle ground accordingly. Here's an example of
+the CSS for a <code>&lt;div&gt;</code> element that uses three background images:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>:  url(<span style="color: #CC9393;">"foreground.png"</span>) 0 0 no-repeat, url(<span style="color: #CC9393;">"middle-ground.png"</span>) 0 0<span style="color: #DC8CC3; background-color: #3F3F3F;"> no-repeat, url(</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"background.png"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">) 0 0 no-repeat;</span>
+}
+</pre>
+</div>
+
+<p>
+The preceding code uses a shorthand value for the background property,
+chaining multiple background image values together. These shorthand
+values may also be broken up into comma-separated values across the
+<code>background-image</code>, <code>background-position</code>, and <code>background-repeat</code>
+properties.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Multiple Background Images Example</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Let's go back to the success alert message once more to combine both the
+tick background image and the linear gradient background image.
+</p>
+
+<p>
+In order to do so, we'll include two values within the second background
+property. The first value, the foremost image, will be the tick image.
+The second value, the rearmost image, will be the linear gradient. The
+two values are comma separated.                                                                                        |
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Multiple Background Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"notice-success"</span>&gt;
+  Woo hoo! Congratulations, you did it!
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">.notice-success </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #67b11c;">#67b11c</span>;
+  <span style="color: #DFAF8F;">background</span>: url(<span style="color: #CC9393;">"../../img/tick_2.png"</span>) 20px 50% no-repeat, linear-gradient(<span style="color: #000000; background-color: #72c41f;">#7</span><span style="color: #DC8CC3; background-color: #3F3F3F;">2c41f</span><span style="color: #DC8CC3; background-color: #3F3F3F;">, </span><span style="color: #DC8CC3; background-color: #3F3F3F;">#5c9e19</span><span style="color: #DC8CC3; background-color: #3F3F3F;">);</span>
+  <span style="color: #DFAF8F;">background</span>: url(<span style="color: #CC9393;">"../../img/tick_1.svg"</span>) 20px 50% no-repeat, linear-gradient(<span style="color: #000000; background-color: #72c41f;">#7</span><span style="color: #DC8CC3; background-color: #3F3F3F;">2c41f</span><span style="color: #DC8CC3; background-color: #3F3F3F;">, </span><span style="color: #DC8CC3; background-color: #3F3F3F;">#5c9e19</span><span style="color: #DC8CC3; background-color: #3F3F3F;">);</span>
+  <span style="color: #DFAF8F;">border</span>: 2px solid <span style="color: #ffffff; background-color: #467813;">#467813</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">font-family</span>: <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+  <span style="color: #DFAF8F;">padding</span>: 15px 20px 15px 50px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-08/index.html"> </iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Exploring New Background Properties</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Along with gradient backgrounds and multiple background images, CSS3
+also introduced three <a href="http://css3files.com/background/">new CSS
+properties</a>: <code>background-size</code>, <code>background-clip</code>, and
+<code>background-origin</code>.
+</p>
+
+<p>
+The <code>background-size</code> property allows us to change the size of a
+background image, while the <code>background-clip</code> and <code>background-origin</code>
+properties allow us to control where a background image is cropped and
+where a background image is contained within the element (inside the
+border or inside the padding, for example).
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">CSS3 Background Size</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+The <code>background-size</code> property allows us to specify a size for a
+background image. The property accepts a few different values, including
+length and keyword values.
+</p>
+
+<p>
+When using length values, we can specify a width and a height value by
+using two space-separated values. The first value will set the width of
+the background image, while the second value will set the height of the
+background image. It's important to note that percentage values are in
+relation to the element's size, not the background image's original
+size.
+</p>
+
+<p>
+Consequently, setting a <code>background-size</code> property with a <code>100%</code> width
+will make the background image occupy the full width of the element. If
+a second value isn't identified after the width, the height value will
+be automatically set to preserve the aspect ratio of the background
+image.
+</p>
+
+<p>
+The keyword value <code>auto</code> may be used as either the width or height value
+to preserve the aspect ratio of the background image. For example, if we
+want to set the height of the background image to be <code>75%</code> of the height
+of the element while maintaining the image's aspect ratio, we can use a
+<code>background-size</code> property value of auto <code>75%</code>.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">CSS3 Background Size Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: url(<span style="color: #CC9393;">"https://placeholdit.imgix.net/~text?txtsize=100&amp;bg=000099&amp;txt</span><span style="color: #DC8CC3; background-color: #3F3F3F;">clr=ffffff&amp;txt=Hello&amp;w=600&amp;h=600"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">) 0 0 no-repeat;</span>
+  <span style="color: #DFAF8F;">background-size</span>: auto 75%;
+  <span style="color: #DFAF8F;">border</span>: 2px dashed <span style="color: #000000; background-color: #9799a7;">#9799a7</span>;
+  <span style="color: #DFAF8F;">height</span>: 240px;
+  <span style="color: #DFAF8F;">width</span>: 200px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-09/index.html" style="height: 300px"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">Cover &amp; Contain Keyword Values</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+In addition to length <code>background-size</code> property values, there are also
+<code>cover</code> and <code>contain</code> keyword values available to the <code>background-size</code>
+property.
+</p>
+
+<p>
+The <code>cover</code> keyword value specifies that the background image will be
+resized to completely cover an element's width and height. The
+background image's original aspect ratio will be preserved, yet the
+image will stretch or shrink as necessary to cover the entire element.
+Often when using the <code>cover</code> keyword value, part of the background image
+is cut off in order for the image to occupy the full available space of
+the element.
+</p>
+
+<p>
+The <code>contain</code> keyword value, on the other hand, specifies that the
+background image will be resized to reside entirely contained within an
+element's width and height. In doing so the background image's original
+aspect ratio will be preserved, but the image will stretch or shrink as
+necessary to remain within the width and height of the element. In
+contrast with the <code>cover</code> keyword value, the <code>contain</code> keyword value
+will always show the full background image; however, oftentimes it will
+not occupy the full available space of the element.
+</p>
+
+<p>
+Both the <code>cover</code> and <code>contain</code> keyword values may result in slightly
+distorted background images, particularly when the images are stretched
+beyond their original dimensions. We'll want to keep an eye out for this
+when using these values, to make sure the resulting styles are
+satisfactory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3">CSS3 Background Clip &amp; Background Origin</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+The <code>background-clip</code> property specifies the surface area a background
+image will cover, and the <code>background-origin</code> property specifies where
+the <code>background-position</code> should originate. The introduction of these
+two new properties corresponds with the introduction of three new
+keyword values: <code>border-box</code>, <code>padding-box</code>, and <code>content-box</code>. Each of
+these three values may be used for the <code>background-clip</code> and
+<code>background-origin</code> properties.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #DFAF8F;">background</span>: url(<span style="color: #CC9393;">"shay.jpg"</span>) 0 0 no-repeat;
+  <span style="color: #DFAF8F;">background-clip</span>: padding-box;
+  <span style="color: #DFAF8F;">background-origin</span>: border-box;
+}
+</pre>
+</div>
+
+<p>
+The <code>background-clip</code> property value is set to <code>border-box</code> by default,
+allowing a background image to extend into the same area as any border.
+Meanwhile, the <code>background-origin</code> property value is set to
+<code>padding-box</code> by default, allowing the beginning of a background image
+to extend into the padding of an element.
+</p>
+
+
+<figure id="Fig 8.04">
+<p><img src="./img/border-box.png" class="img-responsive" alt="border-box.png" width="50%">
+</p>
+<figcaption><span class="figure-number">Figure 4:</span> The <code>border-box</code> value extends the background into the border of an element</figcaption>
+</figure>
+
+
+<figure id="Fig 8.05">
+<p><img src="./img/padding-box.png" class="img-responsive" alt="padding-box.png" width="50%">
+</p>
+<figcaption><span class="figure-number">Figure 5:</span> The <code>padding-box</code> value extends the background into the padding of a element, but the background is contained within any border</figcaption>
+</figure>
+
+
+<figure id="Fig 8.06">
+<p><img src="./img/content-box.png" class="img-responsive" alt="content-box.png" width="50%">
+</p>
+<figcaption><span class="figure-number">Figure 6:</span> The <code>content-box</code> value contains the background within the border and padding of an element</figcaption>
+</figure>
+
+<p>
+We first discussed these keyword values when we covered the <code>box-sizing</code>
+property. The values themselves haven't changed in meaning, but
+their functions do change with the use of the different background
+properties.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Summary</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Adding backgrounds and gradients to our pages allows us to bring color
+to the forefront of our designs. These features also help to define how
+content is grouped and to improve the layout of our pages as a whole.
+</p>
+
+<p>
+To review, this lesson covered the following:
+</p>
+
+<ul class="org-ul">
+<li>How to add background colors and images to elements
+</li>
+<li>CSS gradients, both linear and radial, and how to customize them
+</li>
+<li>How to apply multiple background images to a single element
+</li>
+<li>New CSS3 properties that allow us to change the size, surface area,
+and origin of background images
+</li>
+</ul>
+
+<p>
+Adding background colors, gradients, and images brings forth quite a few
+possibilities to enhance the overall design of our websites. Soon we'll
+discuss how to semantically add images (aside from background images)
+and other media to our pages. But before that, let's take a look at how
+to semantically create lists.
+</p>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">Setting Backgrounds &amp; Gradients</a></li>
+<li><a href="#sec-2">Adding a Background Color</a></li>
+<li><a href="#sec-3">Adding a Background Image</a>
+<ul class="nav">
+<li><a href="#sec-3-1">Background Repeat</a></li>
+<li><a href="#sec-3-2">Background Position</a></li>
+<li><a href="#sec-3-3">Shorthand Background Image Values</a></li>
+<li><a href="#sec-3-4">Background Image Example</a></li>
+<li><a href="#sec-3-5">In Practice</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Designing Gradient Backgrounds</a>
+<ul class="nav">
+<li><a href="#sec-4-1">Linear Gradient Background</a></li>
+<li><a href="#sec-4-2">Changing the Direction of a Gradient Background</a></li>
+<li><a href="#sec-4-3">Radial Gradient Background</a></li>
+<li><a href="#sec-4-4">Gradient Color Stops</a>
+<ul class="nav">
+<li><a href="#sec-4-4-1">Gradient Background Example</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">In Practice</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Using Multiple Background Images</a>
+<ul class="nav">
+<li><a href="#sec-5-1">Multiple Background Images Example</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Exploring New Background Properties</a>
+<ul class="nav">
+<li><a href="#sec-6-1">CSS3 Background Size</a></li>
+<li><a href="#sec-6-2">Cover &amp; Contain Keyword Values</a></li>
+<li><a href="#sec-6-3">CSS3 Background Clip &amp; Background Origin</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Summary</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Ivan Kitanovski</p>
+<p class="date">Created: 2016-04-12 Tue 12:21</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+</div>
+</footer>
+</body>
+</html>

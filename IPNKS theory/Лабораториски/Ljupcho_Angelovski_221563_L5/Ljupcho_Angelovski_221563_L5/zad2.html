@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let atempts=1;
+        let Corectnum=Math.random()*9000+1000;
+
+        function guess(){
+            console.log(parseInt(Corectnum));
+            let inputnum=document.getElementById("guess").value;
+            let correctnumb=0;
+            let correctpos=0;
+
+
+            const correctnums=parseInt(Corectnum).toString().split("");
+            const inputnums=inputnum.toString().split("");
+
+            if(inputnums.length!==4 && isNaN(inputnum)){document.getElementById("prikaz").innerHTML+="Vnesete cetiricifrenbr\n";return;}
+
+            for (let i = 0; i < 4; i++) {
+                if(correctnums.includes(inputnums[i]))correctnumb++;
+                if(correctnums[i]===inputnums[i])correctpos++;
+            }
+
+            let text=`Imate ${correctnumb} tocni broevi na ${correctpos} pozicii  - ${inputnum}`;
+            document.getElementById("obid").innerHTML=`Обиди ${atempts}`;
+            if(atempts===10){
+                document.getElementById("prikaz").innerHTML+=`Ne go pogodivte brojot ${parseInt(Corectnum)}`;
+                return;
+            }
+
+            if(correctpos===4){
+                //prikaz.innerHTML+=text;
+                document.getElementById("prikaz").innerHTML+="Go pogodivte brojot\n";
+            }
+            else {
+                document.getElementById("prikaz").innerHTML+=text+"\n";
+            }
+
+            document.getElementById("guess").value="";
+            atempts++;
+        }
+
+        function restartg(){
+            document.getElementById("obid").innerHTML=`Обиди 0`;
+            document.getElementById("prikaz").innerHTML="";
+            Corectnum=Math.random()*9000+1000;
+            atempts=1;
+            document.getElementById("guess").value="";
+        }
+
+
+    </script>
+</head>
+<body>
+<div>
+<div style="text-align:right; float:left">
+    <label id="obid">Обиди 0</label>
+    <p>Погодок: <input id="guess" style="width:150px"/></p>
+    <button onclick="guess()">Погоди</button>
+    <button onclick="restartg()">Од почеток</button>
+</div>
+</div>
+<br>
+<div id="prikaz" style="clear: both;width: 290px">
+
+</div>
+</body>
+</html>

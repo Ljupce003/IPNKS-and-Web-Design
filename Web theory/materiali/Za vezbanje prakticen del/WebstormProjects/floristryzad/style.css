@@ -1,0 +1,83 @@
+/* 213084, Marija Dimovska */
+body{
+    margin: auto;
+    max-width: 1000px;
+    font-family: Georgia, 'Times New Roman', Times,
+    serif;
+    font-size: 12px;
+color: #819d54;
+}
+header h1, .summary p, .header h3{
+    font-size: 0px;
+}
+header h1 {
+    background: url("img/header.jpg") no-repeat;
+    height: 245px;
+}
+h3{
+    font-size: 0px;
+}
+.introduction h3{
+    background: url("img/1.gif") no-repeat;
+    height: 18px;
+}
+.technology h3{
+    background: url("img/4.gif") no-repeat;
+    height: 18px;
+}
+.styles h3{
+    background: url("img/3.gif") no-repeat;
+    height: 18px;
+}
+.shops h3{
+    background: url("img/2.gif") no-repeat;
+    height: 18px;
+}
+.design-archives h3{
+    background: url("img/archives.gif") no-repeat;
+    height: 25px;
+}
+.design-resources h3{
+    background: url("img/resources.gif") no-repeat;
+    height: 12px;
+}
+a{
+    color: #819d54;
+    text-decoration: none;
+}
+.design-resources ul li{
+    list-style-image: url("img/blt_sm.gif");
+}
+.design-archives ul li{
+    list-style-image:url("img/blt_lrg.gif") ;
+}
+.introduction, .technology, .styles, .shops, .header{
+    width: 500px;
+    text-align: justify;
+}
+.design-archives, .design-resources{
+    width: 200px;
+}
+.design-archives{
+    padding-left: 550px;
+    margin-top: -930px;
+}
+.design-resources{
+    padding-left: 550px;
+
+}
+ul li a:hover{
+    color: #8dc72d;
+}
+footer a:hover{
+    border-top: 1px dotted #d9d952;
+    border-bottom: 1px dotted #d9d952;
+    width: 40px;
+}
+footer a{
+    font-weight: bold;
+    padding-right: 10px;
+}
+footer {
+    margin-left: 100px;
+}

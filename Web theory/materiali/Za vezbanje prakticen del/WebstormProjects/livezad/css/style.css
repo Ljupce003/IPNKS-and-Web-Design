@@ -1,0 +1,106 @@
+/* Index - FullName */
+/* 213084 - Marija Dimovska */
+
+
+/* Good luck */
+/* Со среќа */
+
+#container{
+    margin: auto;
+    background: url("../images/bg.jpg");
+    max-width: 100%;
+    color: white;}
+
+
+a{
+    color: white;
+}
+a:hover{
+    color: darkorange;
+}
+#menu ul li{
+    display: inline;
+    margin-left: 150px;
+
+}
+#menu{
+    background: url("../images/menu_bg.jpg");
+    height: 42px;
+    padding-left: 3px;
+}
+
+#banner{
+    background: url("../images/banner_bg.jpg") no-repeat;
+    height: 149px;
+    width: 960px;
+    margin: 0 auto;
+
+}
+#content_wrapper{
+    background: url("../images/container_bg.png") repeat-y;
+    margin-left: 260px;
+
+}
+
+
+#logo
+{
+    background: url("../images/logo.png") no-repeat;
+    height: 114px;
+}
+.header_01, .header_02{
+    color: orange;
+    font-size:15pt;
+    font-weight: bold;
+}
+.column_w210 ul li {
+
+    list-style-image: url("../images/list_icon.jpg") ;
+    height: 20px;
+}
+#footer ul li{
+    display: inline;
+}
+#footer{
+    background: url("../images/footer.jpg") no-repeat;
+    margin-left: 270px;
+
+}
+.rc_btn_01{
+    background: url("../images/button_01.jpg") no-repeat;
+    height: 30px;
+    margin-left: 20px;
+    padding-left: 21px;
+    padding-top: 3px;
+}
+.column_w210.fl {
+    width: 30%;
+    float: left;
+
+}
+.column_w430.fl.vl_divider{
+    width: 40%;
+    float: left;
+}
+.column_w210.fl.vl_divider{
+    width: 30%;
+    float: left;
+}
+
+#footer {
+    padding-left: 287px;
+    margin-top: -16px;
+
+}
+#footer img{
+    padding-left: 55px;
+}
+#search_section{
+    margin-left: 700px;
+
+}
+#menu a:hover{
+    background: url("../images/menu_hover_right.jpg");
+    width: 300px;
+    height: 42px;
+}

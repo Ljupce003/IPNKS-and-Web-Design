@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Lists</title>
+<!-- 2016-04-06 срд 10:43 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Ivan Kitanovski">
+<meta name="description" content="positioning content"
+>
+<meta name="keywords" content="html, html5, css, css3, selectors">
+
+<link  href="lib/bootstrap.min.css" rel="stylesheet">
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script><link rel="stylesheet" type="text/css" href="lib/io.css" />
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Lists</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Creating Lists</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Lists are a part of everyday life. To-do lists determine what to get
+done. Navigational routes provide turn-by-turn lists of directions.
+Recipes provide lists of ingredients and lists of instructions. With a
+list for nearly everything, it's easy to understand why they are also
+popular online.
+</p>
+
+<p>
+When we want to use a list on a website, HTML provides three different
+types to choose from: unordered, ordered, and description lists.
+Choosing which type of list to use&#x2014;or whether to use a list at
+all&#x2014;comes down to the content and the most semantically appropriate
+option for displaying that content.
+</p>
+
+<p>
+In addition to the three different types of lists available within HTML,
+there are multiple ways to style these lists with CSS. For example, we
+can choose what type of marker to use on a list. The marker could be
+square, round, numeric, alphabetical, or perhaps nonexistent. Also, we
+can decide if a list should be displayed vertically or horizontally. All
+of these choices play significant roles in the styling of our web pages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Unordered Lists</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+An unordered list is simply a list of related items whose order does not
+matter. Creating an unordered list in HTML is accomplished using the
+unordered list block-level element, <code>&lt;ul&gt;</code>. Each item within an
+unordered list is individually marked up using the list item element,
+<code>&lt;li&gt;</code>.
+</p>
+
+<p>
+By default, most browsers add a vertical <code>margin</code> and left <code>padding</code> to
+the <code>&lt;ul&gt;</code> element and precede each <code>&lt;li&gt;</code> element with a solid dot.
+This solid dot is called the list item marker, and it can be changed
+using CSS.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Unordered Lists Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ul {
+  list-style: disc;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-01/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Ordered Lists</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The ordered list element, <code>&lt;ol&gt;</code>, works very much like the unordered
+list element; individual list items are created in the same manner. The
+main difference between an ordered list and an unordered list is that
+with an ordered list, the order in which items are presented is
+important.
+</p>
+
+<p>
+Because the order matters, instead of using a dot as the default list
+item marker, an ordered list uses numbers.
+</p>
+
+<p>
+Ordered lists also have unique attributes available to them including
+<code>start</code> and <code>reversed</code>.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Ordered Lists Demo</label>
+<pre class="src src-html">&lt;ol&gt;
+  &lt;li&gt;Head north on N Halsted St&lt;/li&gt;
+  &lt;li&gt;Turn right on W Diversey Pkwy&lt;/li&gt;
+  &lt;li&gt;Turn left on N Orchard St&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-02/index.html"> </iframe>
+</div>
+
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Start Attribute</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The <code>start</code> attribute defines the number from which an ordered list
+should start. By default, ordered lists start at <code>1</code>. However, there may
+be cases where a list should start at <code>30</code> or another number. When we
+use the <code>start</code> attribute on the <code>&lt;ol&gt;</code> element, we can identify exactly
+which number an ordered list should begin counting from.
+</p>
+
+<p>
+The <code>start</code> attribute accepts only integer values, even though ordered
+lists may use different numbering systems, such as roman numerals.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Start Attribute Demo</label>
+<pre class="src src-html">&lt;ol start="30"&gt;
+  &lt;li&gt;Head north on N Halsted St&lt;/li&gt;
+  &lt;li&gt;Turn right on W Diversey Pkwy&lt;/li&gt;
+  &lt;li&gt;Turn left on N Orchard St&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-03/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Reversed Attribute</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The <code>reversed</code> attribute, when used on the <code>&lt;ol&gt;</code> element, allows a list
+to appear in reverse order. An ordered list of five items numbered <code>1</code>
+to <code>5</code> may be reversed and ordered from <code>5</code> to <code>1</code>.
+</p>
+
+<p>
+The <code>reversed</code> attribute is a Boolean attribute, and as such it doesn't
+accept any value. It is either true or false. False is the default
+value; the value becomes true when the attribute name <code>reversed</code> appears
+on the <code>&lt;ol&gt;</code> element.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Reversed Attribute Demo</label>
+<pre class="src src-html">&lt;ol reversed&gt;
+  &lt;li&gt;Head north on N Halsted St&lt;/li&gt;
+  &lt;li&gt;Turn right on W Diversey Pkwy&lt;/li&gt;
+  &lt;li&gt;Turn left on N Orchard St&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-04/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Value Attribute</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+The <code>value</code> attribute may be used on an individual <code>&lt;li&gt;</code> element within
+an ordered list to change its value within the list. The number of any
+list item appearing below a list item with a <code>value</code> attribute will be
+recalculated accordingly.
+</p>
+
+<p>
+As an example, if the second list item has a <code>value</code> attribute value of
+<code>9</code>, the number on that list item marker will appear as if it is the
+ninth item. All subsequent list items will be numbered upwards from <code>9</code>.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Value Attribute Demo</label>
+<pre class="src src-html">&lt;ol&gt;
+  &lt;li&gt;Head north on N Halsted St&lt;/li&gt;
+  &lt;li value="9"&gt;Turn right on W Diversey Pkwy&lt;/li&gt;
+  &lt;li&gt;Turn left on N Orchard St&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-05/index.html"> </iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Description Lists</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Another type of list seen online (but not as often as unordered or
+ordered lists) is the description list. Description lists are used to
+outline multiple terms and their descriptions, as in a glossary, for
+example.
+</p>
+
+<p>
+Creating a description list in HTML is accomplished using the
+description list block-level element, <code>&lt;dl&gt;</code>. Instead of using a <code>&lt;li&gt;</code>
+element to mark up list items, the description list requires two
+block-level elements: the description term element, <code>&lt;dt&gt;</code>, and the
+description element, <code>&lt;dd&gt;</code>.
+</p>
+
+<p>
+A description list may contain numerous terms and descriptions, one
+after the other. Additionally, a description list may have multiple
+terms per description, as well as multiple descriptions per term. A
+single term may have multiple meanings and warrant multiple
+descriptions. Conversely, a single description may be suitable for
+multiple terms.
+</p>
+
+<p>
+When adding a description list, the <code>&lt;dt&gt;</code> element must come before the
+<code>&lt;dd&gt;</code> element. The definition term and the description that directly
+follows it correspond to one another; thus, the order of these elements
+is important.
+</p>
+
+<p>
+By default, the <code>&lt;dl&gt;</code> element will include vertical margins, just like
+the <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> elements. Additionally, the <code>&lt;dd&gt;</code> element
+includes a left <code>margin</code> by default.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Description Lists Demo</label>
+<pre class="src src-html">&lt;dl&gt;
+  &lt;dt&gt;study&lt;/dt&gt;
+  &lt;dd&gt;The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of books&lt;/dd&gt;
+  &lt;dt&gt;design&lt;/dt&gt;
+  &lt;dd&gt;A plan or drawing produced to show the look and function or workings of a building, garment, or other object before it is built or made&lt;/dd&gt;
+  &lt;dd&gt;Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material object&lt;/dd&gt;
+  &lt;dt&gt;business&lt;/dt&gt;
+  &lt;dt&gt;work&lt;/dt&gt;
+  &lt;dd&gt;A person's regular occupation, profession, or trade&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">dd {
+  margin-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-06/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Nesting Lists</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+One feature that makes lists extremely powerful is their ability to be
+nested. Every list may be placed within another list; they can be nested
+continually. But the potential to nest lists indefinitely doesn't
+provide free rein to do so. Lists should still be reserved specifically
+for where they hold the most semantic value.
+</p>
+
+<p>
+One trick with nesting lists is to know where to begin and end each list
+and list item. Speaking specifically about unordered and ordered lists,
+as that is where most nesting will occur, the only element that may
+reside directly within the <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> elements is the <code>&lt;li&gt;</code>
+element. To repeat, the only element we can place as a direct child of
+the <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> elements is the <code>&lt;li&gt;</code> element.
+</p>
+
+<p>
+That said, once inside the <code>&lt;li&gt;</code> element, the standard set of elements
+may be added, including any <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> elements.
+</p>
+
+<p>
+To nest a list rather than closing a list item, begin a new list. Once
+the nested list is complete and closed, close the wrapping list item and
+continue on with the original list.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Nesting Lists Demo</label>
+<pre class="src src-html">&lt;ol&gt;
+  &lt;li&gt;Walk the dog&lt;/li&gt;
+  &lt;li&gt;Fold laundry&lt;/li&gt;
+  &lt;li&gt;
+    Go to the grocery and buy:
+    &lt;ul&gt;
+      &lt;li&gt;Milk&lt;/li&gt;
+      &lt;li&gt;Bread&lt;/li&gt;
+      &lt;li&gt;Cheese&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mow the lawn&lt;/li&gt;
+  &lt;li&gt;Make dinner&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ul {
+  list-style: disc;
+  padding-left: 40px;
+}
+ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-07/index.html"> </iframe>
+
+<p>
+Because nesting lists can be a little tricky&#x2014;and unwanted styles will
+appear if it's done incorrectly&#x2014;let's quickly review. The <code>&lt;ul&gt;</code> and
+<code>&lt;ol&gt;</code> elements may contain only <code>&lt;li&gt;</code> elements. The <code>&lt;li&gt;</code> element may
+contain any normal element as desired; however, the <code>&lt;li&gt;</code> element has
+to be a direct child of either a <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> element.
+</p>
+
+<p>
+It's also worth noting that as lists are nested inside of other lists,
+their list item markers will change according to how deeply the list is
+nested. In the previous example, the unordered list nested within the
+ordered list uses hollow circles instead of solid discs as the list item
+marker. This change happens because the unordered list is nested one
+level into the ordered list.
+</p>
+
+<p>
+Fortunately we have control over how these list item markers appear at
+any level, which we'll take a look at next.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">List Item Styling</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Unordered and ordered lists use list item markers by default. For
+unordered lists these are typically solid dots, while ordered lists
+typically use numbers.
+<a href="http://www.smashingmagazine.com/2009/12/11/styling-html-lists-with-css-techniques-and-resources/">With
+CSS</a> the style and position of these list item markers may be adjusted.
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">List Style Type Property</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+The <code>list-style-type</code> property is used to set the content of a list item
+marker. The
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">available
+values</a> range from squares and decimal numbers all the way to Armenian
+numbering, and the style may be placed on either the <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, or
+<code>&lt;li&gt;</code> elements within CSS.
+</p>
+
+<p>
+Any <code>list-style-type</code> property value can be added to either unordered or
+ordered lists. With this in mind, it is possible to use a numeric list
+item marker on an unordered list and a nonnumeric marker on an ordered
+list.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">List Style Type Property Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ul {
+  list-style-type: square;
+  margin-left: 40px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-08/index.html"> </iframe>
+</div>
+
+<div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1">List Style Type Values</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+As previously mentioned, the <code>list-style-type</code> property comes with a
+handful of different values. The following list outlines these values as
+well as their corresponding content.
+</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">List Style Type Value</th>
+<th scope="col" class="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><code>none</code>            No list item</td>
+</tr>
+
+<tr>
+<td class="left"><code>disc</code>            A filled circle</td>
+</tr>
+
+<tr>
+<td class="left"><code>circle</code>          A hollow circle</td>
+</tr>
+
+<tr>
+<td class="left"><code>square</code>          A filled square</td>
+</tr>
+
+<tr>
+<td class="left"><code>decimal</code>         Decimal numbers</td>
+</tr>
+
+<tr>
+<td class="left"><code>decimal-leading-zero</code></td>
+<td class="left">Decimal numbers padded by initial zeros</td>
+</tr>
+
+<tr>
+<td class="left"><code>lower-roman</code>     Lowercase roman numerals</td>
+</tr>
+
+<tr>
+<td class="left"><code>upper-roman</code>     Uppercase roman numerals</td>
+</tr>
+
+<tr>
+<td class="left"><code>lower-greek</code>     Lowercase classical Greek</td>
+</tr>
+
+<tr>
+<td class="left"><code>lower-alpha / lower-latin</code></td>
+<td class="left">Lowercase ASCII letters</td>
+</tr>
+
+<tr>
+<td class="left"><code>upper-alpha / upper-latin</code></td>
+<td class="left">Uppercase ASCII letters</td>
+</tr>
+
+<tr>
+<td class="left"><code>armenian</code>        Traditional Armenian numbering</td>
+</tr>
+
+<tr>
+<td class="left"><code>georgian</code>        Traditional Georgian numbering</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">Using an Image as a List Item Marker</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+There may come a time when the default <code>list-style-type</code> property values
+are not enough, and we want to customize our own list item marker. Doing
+so is most commonly accomplished by placing a background image on each
+<code>&lt;li&gt;</code> element within a list.
+</p>
+
+<p>
+The process includes removing any default <code>list-style-type</code> property
+value and adding a background image and padding to the <code>&lt;li&gt;</code> element.
+</p>
+
+<p>
+In detail, the <code>list-style-type</code> property value of <code>none</code> will remove
+existing list item markers. The <code>background</code> property will identify a
+background image, along with its position and repeat value, if
+necessary. And the <code>padding</code> property will provide space to the left of
+the text for the background image.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Image List Item Marker Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">li {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.png") 0 50% no-repeat;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.svg") 0 50% no-repeat;
+  list-style-type: none;
+  padding-left: 12px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-09/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3">List Style Position Property</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+By default the list item marker is to the left of the content within the
+<code>&lt;li&gt;</code> element. This list style positioning is described as <code>outside</code>,
+meaning all of the content will appear directly to the right, outside of
+the list item marker. Using the <code>list-style-position</code> property, we can
+change the default value of <code>outside</code> to <code>inside</code> or <code>inherit</code>.
+</p>
+
+<p>
+The outside property value places the list item marker to the left of
+the <code>&lt;li&gt;</code> element and doesn't allow any content to wrap below the list
+item marker. The inside property value (which is rarely seen or used)
+places the list item marker in line with the first line of the <code>&lt;li&gt;</code>
+element and allows other content to wrap below it as needed.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">List Style Position Property Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">li {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.png") 0 50% no-repeat;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.svg") 0 50% no-repeat;
+  list-style-type: none;
+  padding-left: 12px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-10/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4">Shorthand List Style Property</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+The list style properties discussed thus far, <code>list-style-type</code> and
+<code>list-style-position</code>, can be combined into one shorthand <code>list-style</code>
+property value. When using the <code>list-style</code> property, we can use one or
+all list style property values at a time. The order of these shorthand
+values should be <code>list-style-type</code> followed by <code>list-style-position</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css">ul {
+  list-style: circle inside; 
+}
+ol {
+  list-style: lower-roman;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Horizontally Displaying List</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Occasionally we may want to display lists horizontally rather than
+vertically. Perhaps we want to divide a list into multiple columns, to
+build a navigational list, or to put a few list items in a single row.
+Depending on the content and desired appearance, there are a few
+different ways to display lists as a single line, such as by making the
+<code>display</code> property value of <code>&lt;li&gt;</code> elements <code>inline</code> or <code>inline-block</code>
+or by floating them.
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">Displaying List</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+The quickest way to display a list on a single line is to give the
+<code>&lt;li&gt;</code> elements a <code>display</code> property value of <code>inline</code> or
+<code>inline-block</code>. Doing so places all the <code>&lt;li&gt;</code> elements within a single
+line, with a single space between each list item.
+</p>
+
+<p>
+If the spaces between each of the <code>&lt;li&gt;</code> elements are troublesome, they
+may be removed using the same techniques we discussed in our previous lessons.
+</p>
+
+<p>
+More often than not, we'll use the <code>inline-block</code> property value rather
+than the <code>inline</code> property value. The <code>inline-block</code> property value
+allows us to easily add vertical margins and other spacing to the <code>&lt;li&gt;</code>
+elements, whereas the <code>inline</code> property value does not.
+</p>
+
+<p>
+When changing the <code>display</code> property value to <code>inline</code> or
+<code>inline-block</code>, the list item marker, be it a bullet, number, or other
+style, is removed.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Inline-Block Displaying List Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">li {
+  display: inline-block;
+  margin: 0 10px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-11/index.html"> </iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2">Floating List</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Changing the <code>display</code> property value to <code>inline</code> or <code>inline-block</code> is
+quick; however, it removes the list item marker. If the list item marker
+is needed, floating each <code>&lt;li&gt;</code> element is a better option than changing
+the <code>display</code> property.
+</p>
+
+<p>
+Setting all <code>&lt;li&gt;</code> elements' <code>float</code> property to <code>left</code> will
+horizontally align all <code>&lt;li&gt;</code> elements directly next to each other
+without any space between them. When we float each <code>&lt;li&gt;</code> element, the
+list item marker is displayed by default and will actually sit on top of
+the <code>&lt;li&gt;</code> element next to it. To prevent the list item marker from
+being displayed on top of other <code>&lt;li&gt;</code> elements, a horizontal <code>margin</code>
+or <code>padding</code> should be added.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Floating List Demo</label>
+<pre class="src src-html">&lt;ul&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">ul {
+  list-style: disc;
+}
+li {
+  float: left;
+  margin: 0 20px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-12/index.html"> </iframe>
+
+<p>
+As when floating any element, this breaks the flow of the page. We must
+remember to clear our floats&#x2014;most commonly with the clearfix
+technique&#x2014;and return the page back to its normal flow.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3">Navigational List Example</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+We'll often develop, and find, navigation menus using unordered lists.
+These lists are commonly laid out as horizontal lists, using either of
+the two techniques previously mentioned. Here is an example of a
+horizontal navigation menu marked up using an unordered list with <code>&lt;li&gt;</code>
+elements displayed as <code>inline-block</code> elements.                                                     
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Navigational List Demo</label>
+<pre class="src src-html">&lt;nav class="navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="#"&gt;Notifications&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="#"&gt;Logout&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">body {
+  margin-top: 13px;
+}
+.navigation ul {
+  font: bold 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.navigation li {
+  display: inline-block;
+}
+.navigation a {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  border-right: 1px solid rgba(0, 0, 0, .3);
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+.navigation a:hover {
+  background: #314b60;
+  box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .3);
+}
+.navigation li:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+.navigation li:last-child a {
+  border-right: 0;
+  border-radius: 0 4px 4px 0;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-13/index.html"> </iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">In Practice</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Now that we know how to build lists within HTML and CSS, let's loop back
+to our Styles Conference website and see where we might be able to use
+lists.
+</p>
+
+<ol class="org-ol">
+<li>Currently the navigation menus within the <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code>
+elements on our pages consist of a handful of anchor elements. These
+anchor elements could be better organized in an unordered list.
+
+<p>
+Using an unordered list (via the <code>&lt;ul&gt;</code> element) and list items (via
+the <code>&lt;li&gt;</code> element) will give structure to our navigation menus.
+These new elements, however, will display our navigation menus
+vertically.
+</p>
+
+<p>
+We're going to want to change the <code>display</code> value of our <code>&lt;li&gt;</code>
+elements to inline-block to get all of them to align in a horizontal
+row. When we do that, though, we'll also need to account for the
+blank space left between each <code>&lt;li&gt;</code> element. We now know that opening an HTML comment at the end of a
+<code>&lt;li&gt;</code> element and closing an HTML comment at the beginning of a
+<code>&lt;li&gt;</code> element will remove this space.
+</p>
+
+<p>
+Keeping this in mind, the markup for the navigation menu within our
+<code>&lt;header&gt;</code> element will now look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;nav class="nav primary-nav"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="speakers.html"&gt;Speakers&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="schedule.html"&gt;Schedule&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="venue.html"&gt;Venue&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="register.html"&gt;Register&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;                                       
+&lt;/nav&gt;
+</pre>
+</div>
+
+<p>
+Along these same lines, the markup for the navigation menu within our
+<code>&lt;footer&gt;</code> element will now look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="speakers.html"&gt;Speakers&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="schedule.html"&gt;Schedule&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="venue.html"&gt;Venue&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href="register.html"&gt;Register&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+
+<p>
+Let's not forget to make these changes in all of our HTML files.
+</p>
+</li>
+
+<li>With the unordered list in place, let's make sure the list items
+align horizontally, and let's clean up their styles a bit. We'll use
+the existing <code>nav</code> class to help target our new styles.
+
+<p>
+We'll begin by setting all of the <code>&lt;li&gt;</code> elements within any element
+with the <code>class</code> attribute value of <code>nav</code> to be displayed
+<code>inline-block</code>, to include some horizontal margins, and to be
+vertically aligned to the <code>top</code> of the element.
+</p>
+
+<p>
+Additionally, we'll use the <code>:last-child</code> pseudo-class selector to
+identify the last <code>&lt;li&gt;</code> element and reset its right <code>margin</code> to <code>0</code>.
+Doing so ensures that any horizontal space between the <code>&lt;li&gt;</code> element
+and the edge of its parent element is removed.
+</p>
+
+<p>
+Within our <code>main.css</code> file, below our existing navigation styles,
+let's add the following CSS:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css">.nav li {
+   display: inline-block;
+   margin: 0 10px;
+   vertical-align: top;
+ }
+ .nav li:last-child {
+   margin-right: 0;
+ }
+</pre>
+</div>
+
+<p>
+You may be wondering why our unordered list didn't include any list
+item markers or default styles. These styles were removed by the
+reset at the top of our style sheet. If we look at the reset, we'll
+see our <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> elements all include a <code>margin</code>
+and <code>padding</code> of <code>0</code>, and our <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements have a
+<code>list-style</code> value of <code>none</code>.
+</p>
+</li>
+
+<li>Our navigation menus aren't the only places we'll be using lists.
+We'll also use them on some of our internal pages, including the
+Speakers page. Let's add some speakers to our conference.
+
+<p>
+Within our <code>speakers.html</code> file just below our lead section, let's
+create a new section where we'll present all of our speakers. Reusing
+some existing styles, we'll use a <code>&lt;section&gt;</code> element with a class
+attribute value of <code>row</code> to wrap all of our speakers and apply a
+white background and padding behind them. Inside the <code>&lt;section&gt;</code>
+element, we'll add a <code>&lt;div&gt;</code> element with a <code>class</code> attribute value
+of <code>grid</code> to center our speakers on the page and allow us to use
+multiple columns in doing so.
+</p>
+
+<p>
+So far our HTML below the lead section looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;section class="row"&gt;
+  &lt;div class="grid"&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+</pre>
+</div>
+</li>
+
+<li>Inside the grid every speaker will be marked up with his or her own
+<code>&lt;section&gt;</code> element, which will include two columns. The first column
+will span two-thirds of the <code>&lt;section&gt;</code> element and will be marked up
+using a <code>&lt;div&gt;</code> element. The second column will span the remaining
+one-third of the <code>&lt;section&gt;</code> element and will be marked up using an
+<code>&lt;aside&gt;</code> element, as its content is secondary to the speaker and his
+or her specific talk.
+
+<p>
+Using our existing <code>col-2-3</code> and <code>col-1-3</code> classes, the outline for a
+speaker section will look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;section id="shay-howe"&gt;
+
+    &lt;div class="col-2-3"&gt;
+      ...
+    &lt;/div&gt;&lt;!--
+
+    --&gt;&lt;aside class="col-1-3"&gt;
+     ...
+    &lt;/aside&gt;
+
+&lt;/section&gt;
+</pre>
+</div>
+
+<p>
+There are a few items to notice here. First, each <code>&lt;section&gt;</code> element
+for each speaker includes an ID attribute with the speaker's name as
+the attribute value. Later, when we create the schedule for our
+conference, these ID attributes will serve as anchors, allowing us to
+link from the schedule to a speaker's profile.
+</p>
+
+<p>
+Additionally, the closing tag of the <code>&lt;div&gt;</code> element is followed by
+the opening of an HTML comment, and the opening tag of the <code>&lt;aside&gt;</code>
+element is preceded by the closing of an HTML comment. Because the
+column-based classes will display these elements as <code>inline-block</code>
+elements, we are removing the blank space that will appear between
+them.
+</p>
+</li>
+
+<li>Inside the two-thirds column, marked up with the <code>&lt;div&gt;</code> element,
+we'll use a few headings and paragraphs to show the speaker's name,
+the title and abstract of the talk, and a short biography.
+
+<p>
+Including this content, a speaker section will look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;section id="shay-howe"&gt;
+
+  &lt;div class="col-2-3"&gt;
+
+    &lt;h2&gt;Shay Howe&lt;/h2&gt;=
+    &lt;h5&gt;Less Is More: How Constraints Cultivate Growth&lt;/h5&gt;
+
+    &lt;p&gt;By setting constraints, we force ourselves...&lt;/p&gt;
+
+     &lt;h5&gt;About Shay&lt;/h5&gt;=
+
+     &lt;p&gt;As a designer and front-end developer, Shay...&lt;/p&gt;
+
+   &lt;/div&gt;&lt;!--
+   --&gt;&lt;aside class="col-1-3"&gt;
+     ...  
+   &lt;/aside&gt;
+ &lt;/section&gt;
+</pre>
+</div>
+</li>
+
+<li>Within the one-third column, marked up with an <code>&lt;aside&gt;</code> element,
+we're going to add a <code>&lt;div&gt;</code> element with a class attribute value of
+<code>speaker-info</code>. We'll use a <code>&lt;div&gt;</code> element because we'll be adding
+styles to this element soon.
+
+<p>
+Before getting into any styles, though, let's add an unordered list
+within the <code>&lt;div&gt;</code> element that includes as list items some relevant
+links for the speaker.
+</p>
+
+<p>
+Now our HTML for a speaker will look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;section id="shay-howe"&gt;                                          
+
+  &lt;div class="col-2-3"&gt;                                           
+
+    &lt;h2&gt;Shay Howe&lt;/h2&gt;                                            
+    &lt;h5&gt;Less Is More: How Constraints Cultivate Growth&lt;/h5&gt;       
+
+    &lt;p&gt;By setting constraints, we force ourselves...&lt;/p&gt;          
+
+      &lt;h5&gt;About Shay&lt;/h5&gt;                                           
+
+      &lt;p&gt;As a designer and front-end developer, Shay...&lt;/p&gt;         
+
+    &lt;/div&gt;&lt;!--                                                      
+
+    --&gt;&lt;aside class="col-1-3"&gt;                                      
+      &lt;div class="speaker-info"&gt;                                    
+
+	&lt;ul&gt;                                                        
+	  &lt;li&gt;&lt;a href="https://twitter.com/shayhowe"&gt;@shayhowe&lt;/a&gt;&lt;/li&gt;        
+	  &lt;li&gt;&lt;a href="http://learn.shayhowe.com/"&gt;learn.shayhowe.com&lt;/a&gt;&lt;/li&gt; 
+	&lt;/ul&gt;                                                       
+      &lt;/div&gt;                                                        
+    &lt;/aside&gt;                                                        
+ &lt;/section&gt;
+</pre>
+</div>
+</li>
+
+<li>With the <code>&lt;div&gt;</code> element with a class attribute value of
+<code>speaker-info</code> ready, we can add some styles to it.
+
+<p>
+We'll begin by adding a new section within our <code>main.css</code> file for
+the Speaker page styles. From there, let's add a <code>1</code>-pixel solid gray
+<code>border</code> with a <code>5</code>-pixel radius around any element that includes the
+class attribute value of <code>speaker-info</code>.
+</p>
+
+<p>
+Next, let's add a top <code>margin</code> of <code>88</code> pixels to position the element
+on the same vertical line as the first paragraph of the talk
+description, and let's also add <code>22</code> pixels of vertical <code>padding</code>
+inside the element to provide room for the nested unordered list.
+</p>
+
+<p>
+Lastly, let's center all of the text within the element.
+</p>
+
+<p>
+In all, our CSS for the speaker-info class rule set looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css">/*                              
+  ======================================== 
+  Speakers                      
+  ======================================== 
+*/                              
+
+.speaker-info {                 
+  border: 1px solid #dfe2e5;    
+  border-radius: 5px;           
+  margin-top: 88px;             
+  padding: 22px 0;              
+  text-align: center;           
+}
+</pre>
+</div>
+
+<p>
+Let's take a minute to review why we're using a <code>&lt;div&gt;</code> element here
+and the corresponding styles.
+</p>
+
+<p>
+We're placing a <code>&lt;div&gt;</code> element inside the <code>&lt;aside&gt;</code> element with the
+class attribute value of <code>col-1-3</code> because we'll want the <code>padding</code>
+inherited from the <code>col-1-3</code> class to be outside of the <code>border</code> on
+the <code>&lt;div&gt;</code> element. Before long we'll be including an image within
+the <code>&lt;div&gt;</code> element, alongside the unordered list; therefore we
+created a <code>&lt;div&gt;</code> element as opposed to applying these styles
+directly to the <code>&lt;ul&gt;</code> element.
+</p>
+</li>
+
+<li>As we add more and more speakers to the page, we'll want to ensure
+that they remain an equal distance apart vertically. To do so, we'll
+create a <code>speaker</code> class rule set which includes a bottom <code>margin</code> of
+<code>44</code> pixels, like this:
+
+<div class="org-src-container">
+
+<pre class="src src-css">.speaker {  
+  margin-bottom: 44px;
+}
+</pre>
+</div>
+
+<p>
+We can then apply this class to the <code>&lt;section&gt;</code> element for each
+speaker, provided it isn't the last speaker. We'll omit this class on
+the last speaker, as we don't want to create any unnecessary margins
+before our <code>&lt;footer&gt;</code> element. With more than one speaker, our layout
+will look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;section class="row"&gt;               
+  &lt;div class="grid"&gt;                
+
+    &lt;section class="speaker" id="chris-mills"&gt;
+
+      &lt;div class="col-2-3"&gt;         
+	...                         
+      &lt;/div&gt;&lt;!--                    
+
+      --&gt;&lt;aside class="col-1-3"&gt;    
+	...                         
+      &lt;/aside&gt;                      
+
+    &lt;/section&gt;                      
+
+    &lt;section id="shay-howe"&gt;        
+
+      &lt;div class="col-2-3"&gt;         
+	...                         
+      &lt;/div&gt;&lt;!--                    
+
+      --&gt;&lt;aside class="col-1-3"&gt;    
+	...                         
+      &lt;/aside&gt;                      
+
+    &lt;/section&gt;                      
+
+  &lt;/div&gt;                            
+&lt;/section&gt;
+</pre>
+</div>
+
+<p>
+Notice how the first speaker <code>&lt;section&gt;</code> element, for Chris Mills,
+includes the <code>class</code> attribute value of <code>speaker</code>, which vertically
+separates it from the speaker <code>&lt;section&gt;</code> element for myself, Shay
+Howe. The last speaker <code>&lt;section&gt;</code> element, again for myself, doesn't
+include a <code>class</code> attribute value of <code>speaker</code> in order to keep it a
+proper distance from the <code>&lt;footer&gt;</code> element.
+</p>
+</li>
+</ol>
+
+<p>
+Our navigation menus are now complete, and the Speakers page is taking
+shape.
+</p>
+
+
+<figure id="Fig 9.01">
+<p><img src="./img/practice-1.png" class="img-responsive" alt="practice-1.png">
+</p>
+</figure>
+
+<p>
+Our Speakers page after updating our navigation menus and adding
+speakers
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Summary</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+<a href="http://alistapart.com/article/taminglists">Lists</a> are used quite
+commonly in HTML, often in places that might not be obvious or apparent.
+The key is to use them as semantically as possible and to leverage them
+where they best fit.
+</p>
+
+<p>
+Let's recap. Within this lesson we covered the following:
+</p>
+
+<ul class="org-ul">
+<li>How to create unordered, ordered, and description lists
+</li>
+<li>How to properly nest lists inside of other lists
+</li>
+<li>How to change the list item marker style and position
+</li>
+<li>How to use a background image instead of a list item marker
+</li>
+<li>How to horizontally display or float lists
+</li>
+</ul>
+
+<p>
+Now that we know how to add lists to our pages, let's add media to our
+pages, too. In the next chapter we'll dive into embeddable media such as
+images, audio, and video.
+</p>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">Creating Lists</a></li>
+<li><a href="#sec-2">Unordered Lists</a></li>
+<li><a href="#sec-3">Ordered Lists</a>
+<ul class="nav">
+<li><a href="#sec-3-1">Start Attribute</a></li>
+<li><a href="#sec-3-2">Reversed Attribute</a></li>
+<li><a href="#sec-3-3">Value Attribute</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Description Lists</a></li>
+<li><a href="#sec-5">Nesting Lists</a></li>
+<li><a href="#sec-6">List Item Styling</a>
+<ul class="nav">
+<li><a href="#sec-6-1">List Style Type Property</a>
+<ul class="nav">
+<li><a href="#sec-6-1-1">List Style Type Values</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-2">Using an Image as a List Item Marker</a></li>
+<li><a href="#sec-6-3">List Style Position Property</a></li>
+<li><a href="#sec-6-4">Shorthand List Style Property</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Horizontally Displaying List</a>
+<ul class="nav">
+<li><a href="#sec-7-1">Displaying List</a></li>
+<li><a href="#sec-7-2">Floating List</a></li>
+<li><a href="#sec-7-3">Navigational List Example</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">In Practice</a></li>
+<li><a href="#sec-9">Summary</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Ivan Kitanovski</p>
+<p class="date">Created: 2016-04-06 срд 10:43</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org-mode</a> 8.2.10)</p>
+</div>
+</footer>
+</body>
+</html>

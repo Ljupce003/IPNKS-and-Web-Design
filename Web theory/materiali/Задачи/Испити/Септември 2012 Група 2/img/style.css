@@ -1,0 +1,109 @@
+/* Indeks, Ime i Prezime */
+body {
+	background-color: rgb(140,44,44);
+}
+#container{
+	background-image: url('containe.jpg');
+	width: 770px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	font-size: 11px;
+	color: rgb(140,44,44);
+	margin-bottom: 10px;
+
+}
+#container:after{
+	content: " ";
+	clear: both;
+	display: block;
+}
+#pageHeader h1{
+background-image: url('raspi_blue_white.png');
+background-repeat: no-repeat;
+width:220px;
+height: 171px;
+float: left;
+text-indent: -9999px;
+margin-left: 90px;
+
+}
+#pageHeader h2{
+	background-image: url('Raspi_Colour_R.png');
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 182px;
+	float: right;
+	text-indent: -9999px;
+	margin-right: 120px;
+}
+#pageHeader:after { content: " ";
+ display: block; 
+ clear: both;
+ 
+  }
+ 
+#intro #quickSummary, #intro #preamble, #supportingText{
+	width: 50%;
+	float: right;
+	
+	margin-right: 30px;
+}
+#quickSummary h2{
+	background-image: url('header.png');
+	background-repeat: no-repeat;
+	width: 250px;
+	height: 30px;
+	text-indent: -9999px;
+}
+a{
+	color: rgb(140,44,44);
+}
+a:hover{
+	text-decoration: none;
+	font-weight: bold;
+	}
+#footer{
+	margin: 20px;
+}
+#linkList{
+	display: block;
+	width: 50%;
+	padding-left: 50px;
+}
+#lselect a {
+	background: #eac0c1;
+	width: 235px;
+	display: block;
+}
+
+#lselect a:after {
+	display: block;
+	width: 235px;
+	height: 15px;
+	background: url('li_bg_ta.jpg');
+	content: " ";
+}
+
+#lselect ul li:first-child a:before {
+	display: block;
+	width: 235px;
+	height: 8px;
+	background: url('li_bg_ta.jpg') 0px -8px;
+	content: " ";
+}
+
+#lselect ul li:last-child a:after {
+	display: block;
+	width: 235px;
+	height: 8px;
+	background: url('li_bg_ta.jpg') 0px 0px;
+	content: " ";
+}
+#larchives span{
+	background-image: url('aboutus.jpg');
+	background-repeat: no-repeat;
+	height: 35px;
+	text-indent: -9999px;
+	display: block;
+	}

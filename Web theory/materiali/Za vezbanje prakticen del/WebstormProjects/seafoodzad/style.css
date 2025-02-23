@@ -1,0 +1,124 @@
+/* Ime Prezime Indeks */
+
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #383333;
+}
+
+#container {
+    background: url("img/container_bg.gif");
+    margin: auto;
+    width: 760px;
+    height: 1100px;
+}
+
+#pageHeader h1, #preamble h3,
+#history h3, #health h3, #lselect h3,
+#lresources h3 {
+    text-indent: -9999px;
+}
+
+#pageHeader {
+    background: url("img/page_header_bg.jpg") no-repeat;
+    width: 760px;
+    height: 300px;
+}
+
+#preamble {
+    border: 2px solid #383333;
+    float: right;
+    width: 56%;
+    margin-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#preamble h3 {
+    background: url("img/h3_what_is_seafood.png") no-repeat;
+    width: 314px;
+    height: 32px;
+    border-bottom: 1px solid #383333;
+    padding-left: 120px;
+}
+
+#history {
+    margin-top: 20px;
+    float: right;
+    width: 62%;
+    margin-right: 40px;
+}
+
+#history h3 {
+    background: url("img/h3_history.png") no-repeat;
+    height: 32px;
+    border-bottom: 1px solid #383333;
+    width: 470px;
+}
+
+#health {
+    margin-top: 20px;
+    float: right;
+    width: 62%;
+    margin-right: 40px;
+}
+
+#health h3 {
+    background: url("img/h3_health_benefits.png") no-repeat;
+    height: 32px;
+    border-bottom: 1px solid #383333;
+    width: 470px;
+}
+
+#lselect h3 {
+    background: url("img/h3_our_restaurants.png") no-repeat;
+    width: 135px;
+    height: 24px;
+    margin-left: 60px;
+    border-bottom: 1px solid #383333;
+}
+
+#lselect ul li {
+    list-style-image: url("img/list_grass.gif");
+    margin-left: 40px;
+    border-bottom: 1px solid #383333;
+    width: 110px;
+    line-height: 15px;
+}
+
+a {
+    color: black;
+}
+
+.c {
+    text-decoration-line: none;
+    color: #383333;
+}
+
+#lselect a:first-of-type {
+    font-weight: bolder;
+    display: block;
+}
+
+#lresources ul li {
+    list-style: none;
+    color: #383333;
+    margin-left: 40px;
+    line-height: 13px;
+}
+
+#lresources h3 {
+    background: url("img/h3_resources.png") no-repeat;
+    width: 135px;
+    height: 24px;
+    margin-left: 60px;
+    border-bottom: 1px solid #383333;
+    margin-top: 50px;
+}
+
+a:hover {
+    text-decoration-line: none;
+}
+
+
+

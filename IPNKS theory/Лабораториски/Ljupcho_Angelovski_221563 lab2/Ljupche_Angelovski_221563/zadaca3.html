@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>About Me</title>
+</head>
+<body id="body">
+<h1>About Me</h1>
+<ul>
+    <li>Name: <span id="name"></span>
+    <li>Index: <span id="index"></span>
+    <li>Hometown: <span id="hometown"></span>
+</ul>
+</body>
+<script>
+    let b=document.getElementById("body")
+    b.style.fontFamily="Arial"
+    let name=document.getElementById("name");
+    let idx=document.getElementById("index");
+    let town=document.getElementById("hometown");
+    name.innerText="Ljupce";
+    idx.innerText="221563";
+    town.innerText="Kavadarci";
+    let list=document.getElementsByTagName("li");
+    for (let i = 0; i < list.length; i++) {
+        list.item(i).style.backgroundColor="red";
+    }
+</script>
+</html>

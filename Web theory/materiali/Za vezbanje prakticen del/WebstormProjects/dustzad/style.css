@@ -1,0 +1,103 @@
+body{
+    background: url("img/main_bg_.gif") ;
+}
+#pageHeader h1 span{
+    font-size: 0px;
+}
+#pageHeader h2 span{
+    font-size: 0px;
+}
+#pageHeader  {
+    background: url("img/intro_ti.jpg") no-repeat;
+    height: 110px;
+    margin-left: 60px;
+
+}
+#preamble h3 span{
+    font-size: 0px;
+}
+#explanation h3 span{
+    font-size: 0px;
+}
+#preamble h3 {
+    background: url("img/header.gif") no-repeat;
+    height: 30px;
+
+}
+#explanation h3{
+    background: url("img/header.gif") no-repeat;
+    height: 30px;
+}
+#lselect h3 span{
+    font-size: 0px;
+}
+#lselect {
+    background: url("img/select_n.gif") no-repeat;
+    width: 277px;
+    height: 30px;
+}
+#larchives h3 span{
+    font-size: 0px;
+}
+#larchives h3{
+    background: url("img/archive_.gif") no-repeat;
+    height: 35px;
+}
+#container{
+    background: url("img/containe.jpg") repeat-y;
+    width: 770px;
+    margin: auto;
+}
+#pageHeader h1{
+    background: url("img/intro_bg.jpg") no-repeat;
+    height: 110px;
+    margin-left: 280px;
+
+}
+#pageHeader h2 {
+    background: url("img/intro_bh.jpg") no-repeat;
+    height: 106px;
+    margin-left: 280px;
+    margin-top: -24px;
+}
+
+#preamble {
+    width: 394px;
+    margin-left:340px;
+}
+#explanation{
+    width: 394px;
+    margin-left:340px;
+}
+#quickSummary{
+    width:394px;
+    margin-left:340px;
+    margin-top: 140px;
+}
+
+#larchives ul li{
+    list-style: none;
+}
+a{
+    color: darkolivegreen;
+}
+#footer{
+    margin-left: 400px;
+    margin-bottom: -240px;
+}
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+#lselect li {
+    list-style-image: url("img/li_bg_ta.gif");
+    height: 15px;
+    margin-left: 150px;
+}
+#larchives{
+    margin-top: 100px;
+    margin-left: 60px;
+}
+#lselect{
+    margin-left: 60px;
+}

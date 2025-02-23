@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--<style>
+        #unuseditemst,#useditemst{
+            border-collapse: collapse;
+            border: solid 1px;
+        }
+        th{
+            font-weight: bold;
+            border: solid black;
+            padding: 10px;
+        }
+        td{
+            border: solid black;
+        }
+        label{
+            display: inline-block;
+            width: 400px;
+            margin-bottom:5px ;
+        }
+        input[type="text"],select{float: right}
+        select{width: 150px}
+        option{text-align: center}
+    </style>-->    <script>
+
+    /*
+        let countering=0;
+        let codes=new Array(50);
+        let c=0;
+        function Add(){
+            let name=document.getElementById("name").value;
+            let item=document.getElementById("item").value;
+            let itemcode=document.getElementById("itemcode").value;
+            let itemdescr=document.getElementById("itemdesc").value;
+            let price=document.getElementById("price").value;
+            if(parseInt(price)===0)return alert("Nevalidna cena");
+            let pr=parseFloat(price)*1.1;
+            pr=Math.round(pr);
+            let i=document.getElementById("usage").options.selectedIndex
+
+            let usedtable=document.getElementById("useditemst");
+            let unusedtable=document.getElementById("unuseditemst");
+            let catcode="";
+            for(let i=0;i<codes.length;i++){
+                if(codes[i]===itemcode) {c=1;return alert("Veke postoi predmet so toj kod");}
+            }
+
+            if(c!==1){
+                for(let i=0;i<codes.length;i++){
+                    if(codes[i]===undefined) {codes[i]=itemcode;break;}
+            }}
+            for(let i=0;i<itemcode.length;i++){
+                if(isNaN(itemcode.charAt(i)) && itemcode.charAt(i)!=="!")catcode+=itemcode.charAt(i);
+            }
+            if((name&&item&&itemcode&&itemdescr&&price)!==""){
+                if(i===0){usedtable.innerHTML+="<tr><td>"+name+"</td><td>"+item+"</td><td>"+pr+
+                    "</td><td>"+itemcode+"</td><td>"+catcode+"</td><td>" +
+                    "<input type='button' value='Sold' onclick='sell(this)'></td></tr>";
+                countering++;
+                document.getElementById("counter").innerHTML=countering;}
+                else{
+                    unusedtable.innerHTML+="<tr><td>"+name+"</td><td>"+item+"</td><td>"+pr+
+                        "</td><td>"+itemcode+"</td><td>"+catcode+"</td><td>" +
+                        "<input type='button' value='Sold' onclick='sell(this)'></td></tr>";
+                    countering++;
+                    document.getElementById("counter").innerHTML=countering;
+                }
+            }
+            else { return alert("Greska vnesovte")}
+            c=0;
+        }
+        function sell(button){
+
+            button.parentNode.parentElement.style.backgroundColor="yellow";
+            button.parentNode.removeChild(button);
+            countering--;
+            document.getElementById("counter").innerHTML=countering;
+        }
+        */
+    // function Person(iname,iage,igender){
+    //     this.name=iname;
+    //     this.age=iage;
+    //     this.gender=igender;
+    // }
+    // let person=new Person("Ljupce",18,0);
+    //
+    //
+    //
+    // console.log(person.name);
+    //
+    // let a={};
+    // a.name="peroCvrc";
+    // a.age=12;
+    // a.nick="Kursum";
+    // a.calculate=function(){return this.age*2}
+    // a.conc=concate;
+    // a.showw=show;
+    //
+    // function concate(){
+    //     return person.name+"  "+a.name;
+    //
+    // }
+    //
+    // let silly={abe:"qwerty",vozrast:29,iq:"GLUP",
+    // speak:function () {
+    //     return "ja su torko numera ededn"
+    // }}
+    // console.log(a.age);
+    // let b=a.calculate();
+    // console.log(b);
+    //
+    // console.log(a.conc());
+    //
+    // console.log(silly.abe);
+    // console.log(silly.iq);
+    //
+    //
+    // console.log(silly.speak())
+    //
+    // console.log(a.showw(a,person.name));
+    //
+    //
+    // function show(obj,name){
+    //     let res="";
+    //     for ( prop in obj) {
+    //         res+=name+" "+prop+"\n";
+    //     }
+    //     return res;
+    // }
+    //
+    // class Ljupce{
+    //
+    //     constructor(name) {
+    //         this.name=name;
+    //     }
+    //
+    //     Sayhi(){
+    //         return "Hi I am "+this.name;
+    //     }
+    // }
+    //
+    //
+    // let ljup=new Ljupce("pere");
+    // console.log(ljup.Sayhi());
+    //
+    //
+    // time=new Date(2023,11,21,20,3,50);
+    // console.log(time.toString().substring(0,25));
+    // console.log("time.getDate() "+time.getDate());
+    // console.log("time.getMonth() "+time.getMonth());
+    // console.log("time.getDay() " +time.getDay());
+    // console.log("time.getTime() "+time.getTime());
+    // console.log("time.getHours()"+time.getHours());
+    // console.log("time.getFullYear() "+time.getFullYear());
+    // console.log("time.getMinutes() "+time.getMinutes());
+    // localStorage.setItem("class_a",a.showw(a,a.name));
+    // localStorage.setItem("class_p",ljup.Sayhi())
+    //
+    // let test=""
+    //
+    // //test=prompt("vnsi za zacuvuvanje");
+    //
+    //
+    // localStorage.setItem("t",test)
+    //
+    // //alert(localStorage.getItem("class_a"));
+    // //alert(localStorage.getItem("class_p"));
+    //
+    // alert(localStorage.getItem("t"))
+    //
+    // localStorage.removeItem("class_a");
+    // //alert(localStorage.getItem("class_a")+"\n"+localStorage.getItem("class_p"));
+
+    function Clock(){
+        this.date=new Date();
+        this.hours=this.date.getHours();
+        this.minutes=this.date.getMinutes();
+        this.seconds=this.date.getSeconds();
+
+        this.updatetime=function (secs){
+            this.seconds+=secs;
+            if(this.seconds>=60){
+                this.minutes++;
+                this.seconds=0;
+            }
+            if(this.minutes>=60){
+                this.hours++;
+                this.minutes=0;
+            }
+            if(this.hours>=24){
+                this.hours=0;
+            }
+
+        }
+        this.update=function () {
+            this.updatetime(1);
+            console.log(this.hours+":"+this.minutes+":"+this.seconds)
+        }
+
+        this.run=function () {
+            setInterval(this.update.bind(this),1000)
+        }
+    }
+
+
+
+    let clock=new Clock();
+    clock.run();
+
+
+
+</script>
+
+</head>
+<body><!--
+<h1>Online shop</h1>
+<div style="width: 400px">
+<label>Name and Surname <input type="text" id="name"></label>
+<label>Item <input type="text" id="item"></label>
+<label>Item code <input type="text" id="itemcode"></label>
+<label>Item description <input type="text" id="itemdesc"></label>
+<label>Price <input type="text" id="price"></label>
+<label>Used
+<select id="usage">
+    <option>Used</option>
+    <option>Unused</option>
+</select>
+</label></div>
+<br>
+<input type="button" value="Add" onclick="Add()">
+<p>Active items: <span id="counter"></span></p>
+<div style="display: flex;justify-content: space-around">
+    <div>
+       <h2>Unused Items</h2>
+        <table id="unuseditemst">
+            <tr><th>Name</th><th>Item</th><th>Price</th><th>Code</th><th>Number</th><th>Actions</th></tr>
+
+        </table>
+    </div>
+    <div>
+        <h2>Used Items</h2>
+        <table id="useditemst">
+            <tr><th>Name</th><th>Item</th><th>Price</th><th>Code</th><th>Number</th><th>Actions</th></tr>
+
+        </table>
+    </div>
+</div>
+-->
+</body>
+</html>

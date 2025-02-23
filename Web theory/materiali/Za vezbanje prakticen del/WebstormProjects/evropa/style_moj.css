@@ -1,0 +1,151 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background: #e3dfdc;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    color: white;
+}
+
+.page-wrapper {
+    background: url("img/container.gif") repeat-y;
+    width: 715px;
+    margin: 0 auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: left;
+    height: 1520px;
+}
+
+header h1 {
+    text-indent: -9999px;
+    background: url("img/logo.gif") no-repeat;
+    width: 665px;
+    height: 38px;
+}
+
+.summary {
+    background: url("img/eu_banner.png") no-repeat;
+    width: 440px;
+    height: 160px;
+    float: left;
+    margin-top: -8px;
+}
+
+.summary p:first-of-type {
+    text-indent: -9999px;
+    background: url("img/eu_short_text.gif") no-repeat;
+    width: 220px;
+    height: 160px;
+    float: right;
+    margin-right: -225px;
+    margin-top: 0px;
+}
+
+.summary p:last-child {
+    height: 22px;
+    background-color: #97a25e;
+    color: white;
+    margin-top: 167px;
+    width: 655px;
+    padding-left: 10px;
+}
+
+.top {
+    float: right;
+    margin-top: 35px;
+    width: 58%;
+    margin-right: 50px;
+    background: #a5b77a;
+    padding-left: 15px;
+}
+
+.top h3 {
+    text-indent: -9999px;
+    background: url("img/introdution.gif") no-repeat;
+    width: 414px;
+    height: 15px;
+}
+
+.supporting {
+    float: right;
+    width: 58%;
+    margin-right: 50px;
+    background: #a5b77a;
+    padding-left: 15px;
+}
+
+.council h3 {
+    text-indent: -9999px;
+    background: url("img/european_council.gif") no-repeat;
+    width: 414px;
+    height: 15px;
+}
+
+.participation h3 {
+    text-indent: -9999px;
+    background: url("img/commission.gif") no-repeat;
+    width: 414px;
+    height: 15px;
+}
+
+.parliament h3 {
+    text-indent: -9999px;
+    background: url("img/parliament.gif") no-repeat;
+    width: 414px;
+    height: 15px;
+}
+
+.wrapper {
+    float: left;
+    width: 32.3%;
+    background: #c5d19b;
+    margin-top: -225px;
+}
+
+.official h3 {
+    text-indent: -9999px;
+    background: url("img/official.gif") no-repeat;
+    width: 124px;
+    height: 18px;
+}
+
+.overviews h3 {
+    text-indent: -9999px;
+    background: url("img/overviews.gif") no-repeat;
+    width: 124px;
+    height: 18px;
+}
+
+.official ul li, .overviews ul li {
+    list-style: none;
+}
+
+.official a, .overviews a {
+    color: #5a6635;
+    text-decoration-line: none;
+    line-height: 25px;
+}
+
+.overviews ul li {
+    border-bottom: 2px dotted #5a6635;
+}
+
+.official a:hover {
+    color: #2b351c;
+}
+
+.overviews a:hover {
+    color: white;
+    font-weight: bold;
+    border-bottom: none;
+}
+
+
+
+
+
+
+
+

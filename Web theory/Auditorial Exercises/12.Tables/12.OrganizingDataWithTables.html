@@ -1,0 +1,2134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Organizing Data with Tables</title>
+<!-- 2016-04-10 Sun 03:04 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Org-mode">
+<meta name="author" content="Boban Joksimoski">
+<meta name="description" content="Organizing Data with Tables on the web"
+>
+<meta name="keywords" content="html, html5, css, css3, form">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 16px;
+    margin-bottom: 95px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 16px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Organizing Data with Tables</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+HTML tables were created to provide a straightforward way to mark up
+structured tabular data and to display that data in a form that is easy
+for users to read and digest.
+</p>
+
+<p>
+When HTML was being developed, however, CSS was not widely supported in
+browsers, so tables were the primary means by which websites were built.
+They were used for positioning content as well as for building the
+overall layout of a page. This worked at the time, but it was not what
+table markup was intended for, and it led to many other associated
+problems.
+</p>
+
+<p>
+Fortunately, we have come a long way since then. Today tables are used
+specifically for organizing data (like they should be), and CSS is free
+to get on with the jobs of positioning and layout.
+</p>
+
+<p>
+Building data tables still has its challenges. How a table should be
+built in HTML depends largely on the data and how it is to be displayed.
+Then, once they're marked up in HTML, tables need to be styled with CSS
+to make the information more legible and understandable to users.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Creating a Table</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Tables are made up of data that is contained within columns and rows,
+and HTML supplies several different elements for defining and
+structuring these items. At a minimum a table must consist of <code>&lt;table&gt;</code>,
+<code>&lt;tr&gt;</code> (table row), and <code>&lt;td&gt;</code> (table data) elements. For greater
+structure and additional semantic value, tables may include the <code>&lt;th&gt;</code>
+(table header) ele- ment and a few other elements as well. When all of
+these elements are working together, they produce a solid table.
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Table</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+We use the <code>&lt;table&gt;</code> element to initialize a table on a page. Using the
+<code>&lt;table&gt;</code> element signifies that the information within this element
+will be tabular data displayed in the necessary columns and rows.
+</p>
+<pre class="example">
+&lt;table&gt;
+...
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Table Row</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Once a table has been defined in HTML, table rows may be added using the
+<code>&lt;tr&gt;</code> element. A table can have numerous table rows, or <code>&lt;tr&gt;</code>
+elements. Depending on the amount of information there is to display,
+the number of table rows may be substantial.
+</p>
+
+<pre class="example">
+&lt;table&gt;
+  &lt;tr&gt;
+    ...
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    ...
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Table Data</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Once a table is defined and rows within that table have been set up,
+data cells may be added to the table via the table data, or <code>&lt;td&gt;</code>,
+element. Listing multiple <code>&lt;td&gt;</code> elements one after the other will
+create columns within a table row.
+</p>
+<div class="org-src-container">
+<label class="org-src-name">Table Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">t</span><span style="color: #DC8CC3; background-color: #3F3F3F;">d</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+        &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-01/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Table Header</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+To designate a heading for a column or row of cells, the table header
+element, <code>&lt;th&gt;</code>, should be used. The <code>&lt;th&gt;</code> element works just like the
+<code>&lt;td&gt;</code> element in that it creates a cell for data. The value to using
+the <code>&lt;th&gt;</code> element over the <code>&lt;td&gt;</code> element is that the table header
+element provides semantic value by signifying that the data within the
+cell is a heading, while the <code>&lt;td&gt;</code> element only represents a generic
+piece of data.
+</p>
+
+<p>
+The difference between the two elements is similar to the difference
+between headings (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> elements) and paragraphs (<code>&lt;p&gt;</code>
+elements). While a heading's content could be placed within a paragraph,
+it doesn't make sense to do so. Specifically using a heading adds more
+semantic value to the content. The same is true for table headers.
+</p>
+
+<p>
+Table headers may be used within both columns and rows; the data within
+a table determines where the headers are appropriate. The <code>scope</code>
+attribute helps to identify exactly what content a table header relates
+to. The <code>scope</code> attribute indicates with the values <code>col</code>, <code>row</code>,
+<code>colgroup</code>, and <code>rowgroup</code> whether a table header applies to a row or
+column. The most commonly used values are <code>col</code> and <code>row</code>. The <code>col</code>
+value indicates that every cell within the column relates directly to
+that table header, and the <code>row</code> value indicates that every cell within
+the row relates directly to that table header.
+</p>
+
+<p>
+Using the <code>&lt;th&gt;</code> element, along with the <code>scope</code> attribute, tremendously
+helps screen readers and assistive technologies make sense of a table.
+Therefore, they are also beneficial to those browsing a web page using
+those technologies.
+</p>
+
+<p>
+Additionally, depending on the browser, table headers may receive some
+default styling, usually bold and centered.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Table Header Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Availability&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-02/index.html"></iframe>
+
+<p>
+Getting data into a table is only the beginning. While we've scratched
+the surface of how to semantically add data to a table, there is more we
+can do to define the structure of our tables.
+</p>
+
+<div class="note">
+<p>
+The Headers Attribute
+</p>
+
+<p>
+The headers attribute is very similar to the <code>scope</code> attribute. By
+default, the <code>scope</code> attribute may only be used on the <code>&lt;th&gt;</code> element.
+In the case that a cell, either a <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> element, needs to be
+associated with a different header, the <code>headers</code> attribute comes into
+play. The value of the <code>headers</code> attribute on a <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> element
+needs to match the <code>id</code> attribute value of the <code>&lt;th&gt;</code> element that cell
+pertains to.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Table Structure</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Knowing how to build a table and arrange data is extremely powerful;
+however, there are a few additional elements to help us
+<a href="http://www.456bereastreet.com/archive/200410/bring_on_the_tables/">organize the data</a> and structure of a table. These elements include <code>&lt;caption&gt;</code>,
+<code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Table Caption</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The <code>&lt;caption&gt;</code> element provides a caption or title for a table. A
+caption will help users identify what the table pertains to and what
+data they can expect to find within it. The <code>&lt;caption&gt;</code> element must
+come immediately after the opening <code>&lt;table&gt;</code> tag, and it is positioned
+at the top of a table by default.
+</p>
+<pre class="example">
+&lt;table&gt;
+  &lt;caption&gt;Design and Front-End Development Books&lt;/caption&gt;
+  ...
+&lt;/table&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Table Caption Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">caption</span>&gt;Design and Front-End Development Books&lt;/<span style="color: #93E0E3;">caption</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Availability&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-03/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Table Head, Body, &amp; Foot</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The content within tables can be broken up into multiple groups,
+including a head, a body, and a foot. The <code>&lt;thead&gt;</code> (table head),
+<code>&lt;tbody&gt;</code> (table body), and <code>&lt;tfoot&gt;</code> (table foot) elements help to
+structurally organize tables.
+</p>
+
+<p>
+The table head element, <code>&lt;thead&gt;</code>, wraps the heading row or rows of a
+table to denote the head. The table head should be placed at the top of
+a table, after any <code>&lt;caption&gt;</code> element and before any <code>&lt;tbody&gt;</code> element.
+</p>
+
+<p>
+After the table head may come either the <code>&lt;tbody&gt;</code> or <code>&lt;tfoot&gt;</code>
+elements. Originally the <code>&lt;tfoot&gt;</code> element had to come immediately after
+the <code>&lt;thead&gt;</code> element, but HTML5 has provided leeway here. These
+elements may now occur in any order so long as they are never parent
+elements of one another. The <code>&lt;tbody&gt;</code> element should contain the
+primary data within a table, while the <code>&lt;tfoot&gt;</code> element contains data
+that outlines the contents of a table.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">thead, tbody and tfoot Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">caption</span>&gt;Design and Front-End Development Books&lt;/<span style="color: #93E0E3;">caption</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Availability&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-04/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Combining Multiple Cells</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Often, two or more cells need to be combined into one without breaking
+the overall row and column layout. Perhaps two cells next to each other
+contain the same data, there's an empty cell, or the cells should be
+combined for styling purposes. In these cases we can use the <code>colspan</code>
+and <code>rowspan</code> attributes. These two attributes work on either the <code>&lt;td&gt;</code>
+or <code>&lt;th&gt;</code> elements.
+</p>
+
+<p>
+The <code>colspan</code> attribute is used to span a single cell across multiple
+columns within a table, while the <code>rowspan</code> attribute is used to span a
+single cell across multiple rows. Each attribute accepts an integer
+value that indicates the number of cells to span across, with <code>1</code> being
+the default value.
+</p>
+
+<p>
+Using the table of books from before, we can now remove the empty table
+cells within the table footer as well as clean up the table header.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Combining Multiple Cells Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">caption</span>&gt;Design and Front-End Development Books&lt;/<span style="color: #93E0E3;">caption</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-05/index.html"></iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Table Borders</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Effective use of borders can help make tables more comprehensible.
+Borders around a table or individual cells can make a large impact when
+a user is trying to interpret data and quickly scan for information.
+When styling table borders with CSS there are two properties that will
+quickly come in handy: <code>border-collapse</code> and <code>border-spacing</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Border Collapse Property</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Tables consist of a parent <code>&lt;table&gt;</code> element as well as nested <code>&lt;th&gt;</code> or
+<code>&lt;td&gt;</code> elements. When we apply borders around these elements those
+borders will begin to stack up, with the border of one element sitting
+next to that of another element. For example, if we put a <code>2</code>-pixel
+border around an entire table and then an additional <code>2</code>-pixel border
+around each table cell, there would be a <code>4</code>-pixel border around every
+cell in the table.
+</p>
+
+<p>
+The <code>border-collapse</code> property determines a table's border model. There
+are three values for the <code>border-collapse</code> property: <code>collapse</code>,
+<code>separate</code>, and <code>inherit</code>. By default, the <code>border-collapse</code> property
+value is <code>separate</code>, meaning that all of the different borders will
+stack up next to one another, as described above. The <code>collapse</code>
+property, on the other hand, condenses the borders into one, choosing
+the table cell as the primary border.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Border Collapse Property Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: collapse;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #c6c7cc;">#c6c7cc</span>;
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+}
+<span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-06/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Border Spacing Property</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+As the <code>border-collapse</code> property with the <code>separate</code> value allows
+borders to be stacked up against one another, the <code>border-spacing</code>
+property can determine how much space, if any, appears between the
+borders.
+</p>
+
+<p>
+For example, a table with a <code>1</code>-pixel border around the entire table and
+a <code>1</code>-pixel border around each cell will have a <code>2</code>-pixel border all
+around every cell because the borders stack up next to one another.
+Adding in a <code>border-spacing</code> value of <code>4</code> pixels separates the borders
+by <code>4</code> pixels.
+</p>
+<pre class="example">
+table {
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+table,
+th,
+td {
+  border: 1px solid #cecfd5;
+}
+th,
+td {
+  padding: 10px 15px;
+}
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Border Spacing Property Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: separate;
+  <span style="color: #DFAF8F;">border-spacing</span>: 4px;
+}
+<span style="color: #93E0E3;">table,</span>
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-07/index.html"></iframe>
+
+<p>
+The <code>border-spacing</code> property works only when the <code>border-collapse</code>
+property value is <code>separate</code>, its default value. If the
+<code>border-collapse</code> property hasn't been previously used, we can use the
+<code>border-spacing</code> property without worry.
+</p>
+
+<p>
+Additionally, the <code>border-spacing</code> property may accept two length
+values: the first value for horizontal spacing and the second value for
+vertical spacing. The declaration <code>border-spacing: 5px 10px;</code>, for
+example, will place <code>5</code> pixels of horizontal spacing between borders and
+<code>10</code> pixels of vertical spacing between borders.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Adding Borders to Rows</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Adding borders to a table can be tricky at times, particularly when
+putting borders between rows. Within a table, borders cannot be applied
+to <code>&lt;tr&gt;</code> elements or table structural elements, so when we want to put
+a border between rows some thought is required.
+</p>
+
+<p>
+We'll begin by making sure the table's <code>border-collapse</code> property value
+is set to <code>collapse</code>, and then we'll add a bottom <code>border</code> to each table
+cell, regardless of whether it's a <code>&lt;th&gt;</code> or <code>&lt;td&gt;</code> element. If we wish,
+we can remove the bottom <code>border</code> from the cells within the last row of
+the table by using the <code>:last-child</code> pseudo-class selector to select the
+last <code>&lt;tr&gt;</code> element within the table and target the <code>&lt;td&gt;</code> elements
+within that row. Additionally, if a table is using the structural
+elements, we'll want to make sure to prequalify the last row of the
+table as being within the <code>&lt;tfoot&gt;</code> element.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Adding Borders to Rows Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: collapse;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border-bottom</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+}
+<span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+tfoot tr:last-child td {
+  <span style="color: #DFAF8F;">border-bottom</span>: 0;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-08/index.html"></iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Table Striping</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+In the effort to make tables more legible, one common design practice is
+to "stripe" table rows with alternating background colors. This makes
+the rows clearer and provides a visual cue for scanning information. One
+way to do this is to place a class on every other <code>&lt;tr&gt;</code> element and set
+a background color to that class. Another, easier way is to use the
+<code>:nth-child</code> pseudo-class selector with an <code>even</code> or <code>odd</code> argument to
+select every other <code>&lt;tr&gt;</code> element.
+</p>
+
+<p>
+Here, our table of books uses the <code>:nth-child</code> pseudo-class selector
+with an <code>even</code> argument to select all even table rows within the table
+and apply a gray <code>background</code>. Consequently, every other row within the
+table body is gray.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Table Stripping Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Don&amp;#8217;t Make Me Think by Steve Krug&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;A Project Guide to UX Design by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Introducing HTML5 by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;Bulletproof Web Design by Dan Cederholm&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: separate;
+  <span style="color: #DFAF8F;">border-spacing</span>: 0;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+}
+<span style="color: #93E0E3;">thead </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+}
+<span style="color: #93E0E3;">th </span>{
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+tbody tr:nth-child(even) {
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+}
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border-bottom</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">border-right</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">td:first-child </span>{
+  <span style="color: #DFAF8F;">border-left</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-09/index.html"></iframe>
+
+<p>
+Within this code there are a few intricacies worth mentioning. To begin,
+the <code>&lt;table&gt;</code> element has an explicit <code>border-collapse</code> property set to
+separate and a <code>border-spacing</code> property set to <code>0</code>. The reason for this
+is that the <code>&lt;td&gt;</code> elements include borders, while the <code>&lt;th&gt;</code> elements
+do not. Without the <code>border-collapse</code> property set to <code>separate</code> the
+borders of the <code>&lt;td&gt;</code> elements would make the body and foot of the table
+wider than the head.
+</p>
+
+<p>
+Since the <code>border-collapse</code> property is set to <code>separate</code> we need to be
+careful as to how borders are applied to <code>&lt;td&gt;</code> elements. Here borders
+are set to the right and bottom of all <code>&lt;td&gt;</code> elements. Then, the very
+first <code>&lt;td&gt;</code> element within a <code>&lt;tr&gt;</code> element will receive a left
+<code>border</code>. As all of the <code>&lt;td&gt;</code> elements stack together so do their
+borders, providing the appearance of a solid border around each element.
+</p>
+
+<p>
+Lastly, all <code>&lt;th&gt;</code> elements receive a blue <code>background</code>, and every even
+<code>&lt;tr&gt;</code> element receives a gray <code>background</code> by way of the <code>:nth-child</code>
+pseudo-class selector.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Aligning Text</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+In addition to table borders and striping, the alignment of text within
+cells, both horizontal and vertical, plays an integral role in table
+formatting. Names, descriptions, and so forth are commonly flush left,
+while numbers and other figures are flush right. Other information,
+depending on its context, may be centered. We can move text horizontally
+using the <code>text-align</code> property in CSS, as we covered before.
+</p>
+
+<p>
+To align text vertically, however, the <code>vertical-align</code> property is
+used. The <code>vertical-align</code> property works only with inline and
+table-cell elements&#x2014;it won't work for block, inline-block, or any
+other element levels.
+</p>
+
+<p>
+The <code>vertical-align</code> property accepts a handful of different values; the
+most popular values are <code>top</code>, <code>middle</code>, and <code>bottom</code>. These values
+vertically position text in relation to the table cell, for table-cell
+elements, or to the closest parent element, for inline-level elements.
+</p>
+
+<p>
+By revising the HTML and CSS to include the <code>text-align</code> and
+<code>vertical-align</code> properties, we can clean up the layout of our table of
+books. Note that the data within the table becomes much clearer and more
+digestible.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Aligning Text Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Don&amp;#8217;t Make Me Think</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt; by Steve K<span style="color: #DC8CC3; background-color: #3F3F3F;">rug</span>
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">A Project Guide to UX Design</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt; by Russ<span style="color: #DC8CC3; background-color: #3F3F3F;"> Unger &amp;#38; Carolyn Chandler</span>
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$52.94 &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-multiple"</span>&gt;$26.47 &amp;#215; 2&lt;<span style="color: #DC8CC3; background-color: #3F3F3F;">/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">span</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">td</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Introducing HTML5</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt; by Bruce Lawson &amp;#<span style="color: #DC8CC3; background-color: #3F3F3F;">38; Remy Sharp</span>
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Bulletproof Web Design</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt; by Dan Cederh<span style="color: #DC8CC3; background-color: #3F3F3F;">olm</span>
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: separate;
+  <span style="color: #DFAF8F;">border-spacing</span>: 0;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #4a4a4d;">#4a4a4d</span>;
+  <span style="color: #DFAF8F;">font</span>: 14px/1.4 <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+  <span style="color: #DFAF8F;">vertical-align</span>: middle;
+}
+<span style="color: #93E0E3;">thead </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+}
+<span style="color: #93E0E3;">th:first-child </span>{
+  <span style="color: #DFAF8F;">text-align</span>: left;
+}
+tbody tr:nth-child(even) {
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+}
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border-bottom</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">border-right</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">td:first-child </span>{
+  <span style="color: #DFAF8F;">border-left</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">.book-title </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">display</span>: block;
+}
+<span style="color: #93E0E3;">.item-stock,</span>
+<span style="color: #93E0E3;">.item-qty </span>{
+  <span style="color: #DFAF8F;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">.item-price </span>{
+  <span style="color: #DFAF8F;">text-align</span>: right;
+}
+<span style="color: #93E0E3;">.item-multiple </span>{
+  <span style="color: #DFAF8F;">display</span>: block;
+}
+<span style="color: #93E0E3;">tfoot </span>{
+  <span style="color: #DFAF8F;">text-align</span>: right;
+}
+tfoot tr:last-child {
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-10/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Completely Styled Table</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+So far our table of books is looking pretty good. Let's take it one step
+further by rounding some corners and styling some of the text just a
+little more.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Completely Styled Table Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> /&gt;
+&lt;<span style="color: #93E0E3;">table</span>&gt;
+  &lt;<span style="color: #93E0E3;">thead</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"2"</span>&gt;Item&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Qty&lt;/<span style="color: #93E0E3;">th</span>&gt;
+      &lt;<span style="color: #93E0E3;">th</span> <span style="color: #DFAF8F;">scope</span>=<span style="color: #CC9393;">"col"</span>&gt;Price&lt;/<span style="color: #93E0E3;">th</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">thead</span>&gt;
+  &lt;<span style="color: #93E0E3;">tbody</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Don&amp;#8217;t Make Me Think</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt;
+        &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;by Steve Krug&lt;/<span style="color: #93E0E3;">span</span>&gt;
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$30.02&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">A Project Guide to UX Design</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt;
+        &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;by Russ Unger &amp;#38; Carolyn Chandler&lt;/<span style="color: #93E0E3;">span</span>&gt;
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;2&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$52.94 &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset item- multiple"</span>&gt;$26<span style="color: #DC8CC3; background-color: #3F3F3F;">.47 &amp;#215; 2&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">span</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">td</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Introducing HTML5</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt;
+        &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;by Bruce Lawson &amp;#38; Remy Sharp&lt;/<span style="color: #93E0E3;">span</span>&gt;
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;Out of Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$22.23&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;
+        &lt;<span style="color: #93E0E3;">strong</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"book-title"</span>&gt;<span style="font-weight: bold;">Bulletproof Web Design</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt;
+        &lt;<span style="color: #93E0E3;">span</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;by Dan Cederholm&lt;/<span style="color: #93E0E3;">span</span>&gt;
+      &lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-stock"</span>&gt;In Stock&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-qty"</span>&gt;1&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"item-price"</span>&gt;$30.17&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tbody</span>&gt;
+  &lt;<span style="color: #93E0E3;">tfoot</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Subtotal&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$135.36&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"text-offset"</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Tax&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$13.54&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+    &lt;<span style="color: #93E0E3;">tr</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span> <span style="color: #DFAF8F;">colspan</span>=<span style="color: #CC9393;">"3"</span>&gt;Total&lt;/<span style="color: #93E0E3;">td</span>&gt;
+      &lt;<span style="color: #93E0E3;">td</span>&gt;$148.90&lt;/<span style="color: #93E0E3;">td</span>&gt;
+    &lt;/<span style="color: #93E0E3;">tr</span>&gt;
+  &lt;/<span style="color: #93E0E3;">tfoot</span>&gt;
+&lt;/<span style="color: #93E0E3;">table</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">table </span>{
+  <span style="color: #DFAF8F;">border-collapse</span>: separate;
+  <span style="color: #DFAF8F;">border-spacing</span>: 0;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #4a4a4d;">#4a4a4d</span>;
+  <span style="color: #DFAF8F;">font</span>: 14px/1.4 <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+}
+<span style="color: #93E0E3;">th,</span>
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">padding</span>: 10px 15px;
+  <span style="color: #DFAF8F;">vertical-align</span>: middle;
+}
+<span style="color: #93E0E3;">thead </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(<span style="color: #ffffff; background-color: #49708f;">#49708f</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">font-size</span>: 11px;
+  <span style="color: #DFAF8F;">text-transform</span>: uppercase;
+}
+<span style="color: #93E0E3;">th:first-child </span>{
+  <span style="color: #DFAF8F;">border-top-left-radius</span>: 5px;
+  <span style="color: #DFAF8F;">text-align</span>: left;
+}
+<span style="color: #DFAF8F;">th</span>:last-child {
+  <span style="color: #DFAF8F;">border-top-right-radius</span>: 5px;
+}
+tbody tr:nth-child(even) {
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+}
+<span style="color: #93E0E3;">td </span>{
+  <span style="color: #DFAF8F;">border-bottom</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">border-right</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">td:first-child </span>{
+  <span style="color: #DFAF8F;">border-left</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #93E0E3;">.book-title </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">display</span>: block;
+}
+<span style="color: #93E0E3;">.text-offset </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #7c7c80;">#7c7c80</span>;
+  <span style="color: #DFAF8F;">font-size</span>: 12px;
+}
+<span style="color: #93E0E3;">.item-stock,</span>
+<span style="color: #93E0E3;">.item-qty </span>{
+  <span style="color: #DFAF8F;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">.item-price </span>{
+  <span style="color: #DFAF8F;">text-align</span>: right;
+}
+<span style="color: #93E0E3;">.item-multiple </span>{
+  <span style="color: #DFAF8F;">display</span>: block;
+}
+<span style="color: #93E0E3;">tfoot </span>{
+  <span style="color: #DFAF8F;">text-align</span>: right;
+}
+tfoot tr:last-child {
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+}
+tfoot tr:last-child td:first-child {
+  <span style="color: #DFAF8F;">border-bottom-left-radius</span>: 5px;
+}
+tfoot tr:last-child td:last-child {
+  <span style="color: #DFAF8F;">border-bottom-right-radius</span>: 5px;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-11/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">In Practice</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Now that we know how to create and style tables, let's wrap up the last
+remaining page of our Styles Conference website, the schedule.
+</p>
+
+<ol class="org-ol">
+<li>We'll begin our Schedule page by opening up the schedule.html file
+and adding a <code>&lt;section&gt;</code> element with a class attribute value of
+<code>row</code>, much like we've done with all of the other subpages. Within
+this new <code>&lt;section&gt;</code> element let's also add a <code>&lt;div&gt;</code> element with a
+class attribute value of <code>container</code>.
+<pre class="example">
+&lt;section class="row"&gt;
+  &lt;div class="container"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/section&gt;
+</pre>
+<p>
+With these elements and classes we've created a new section of the
+page with a white <code>background</code> and vertical <code>padding</code>, and we've
+centered our content on the page. What's different here from all of
+the other subpages is the <code>container</code> class attribute value in place
+of the <code>grid</code> class attribute value on the <code>&lt;div&gt;</code> element. Since
+we're not using any of the <code>col</code>-based classes we'll forgo the
+<code>grid</code> class attribute value in favor of the <code>container</code> class
+attribute value.
+</p>
+</li>
+
+<li>Within the new section we'll add three tables, one for each day of
+the conference. The tables will display the events of each day using
+three columns and multiple rows and will include a table head and
+table body.
+
+<p>
+To get started let's outline the structure of the first table,
+including the <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, and <code>&lt;tbody&gt;</code> elements.
+</p>
+<pre class="example">
+&lt;section class="row"&gt;
+  &lt;div class="container"&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        ...
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+</pre>
+</li>
+
+<li>Currently, even though our first table doesn't contain any data, it
+does have some styles applied to it. Specifically, the reset we
+added back in Lesson 1 to tone down all of the default browser
+styles has added the <code>border-collapse</code> property with a value of
+<code>collapse</code> and the <code>border-spacing</code> property with a value of <code>0</code> to
+the table. We want these styles, so we'll leave them alone; however,
+let's create a new section in our <code>main.css</code> file to add some
+additional styles.
+
+<p>
+In our new section of styles specifically for the Schedule page
+(which will appear just below the styles for the Speakers page),
+let's set our <code>&lt;table&gt;</code> elements to have a <code>width</code> of <code>100%</code> and a
+bottom <code>margin</code> of <code>44</code> pixels.
+</p>
+
+<p>
+Then, using the <code>:last-child</code> pseudo-class selector to identify the
+last <code>&lt;table&gt;</code> element within the section, let's set its bottom
+<code>margin</code> to <code>0</code> pixels. Doing so prevents this table from
+conflicting with the bottom <code>padding</code> belonging to the <code>&lt;section&gt;</code>
+element with a class attribute value of <code>row</code>.
+</p>
+
+<p>
+So far, the new section within our <code>main.css</code> file looks like this:
+</p>
+<pre class="example">
+/*
+  ========================================
+  Schedule
+  ========================================
+*/
+
+table {
+  margin-bottom: 44px;
+  width: 100%;
+}
+table:last-child {
+  margin-bottom: 0;
+}
+</pre>
+</li>
+
+<li>Now let's add some data to our table. We'll begin with the first day
+of our conference, the workshop day on August 24.
+
+<p>
+Within the <code>&lt;thead&gt;</code> element of the table let's add a <code>&lt;tr&gt;</code>
+element. The first cell within the row will be a <code>&lt;th&gt;</code> element
+noting the focus of the day: "Workshops" for this specific day.
+Since the <code>&lt;th&gt;</code> element is the heading for the row we'll also add
+the <code>scope</code> attribute with a value of <code>row</code> to it.
+</p>
+
+<p>
+After the <code>&lt;th&gt;</code> element comes a <code>&lt;td&gt;</code> element with the date,
+"August 24th" in this case. Now, more often than not we'll have
+three columns, the first being a table heading that identifies a
+time of day and the second two columns being regular table cells
+that identify speakers for that given time. Since this row doesn't
+feature two separate speakers we'll want to add the <code>colspan</code>
+attribute with a value of <code>2</code> to the <code>&lt;td&gt;</code> element, forcing it to
+span two columns.
+</p>
+
+<p>
+Our code for the table now looks like this:
+</p>
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        Workshops
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        August 24th
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    ...
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+
+<li>Inside the <code>&lt;tbody&gt;</code> element let's fill out the day's activities.
+We'll begin by adding a <code>&lt;tr&gt;</code> element with a <code>&lt;th&gt;</code> and a <code>&lt;td&gt;</code>
+element directly inside the row.
+
+<p>
+On the <code>&lt;th&gt;</code> element, and all subsequent <code>&lt;th&gt;</code> elements, we'll add
+the <code>scope</code> attribute with a value of <code>row</code> to semantically identify
+this element as the header for the row. Then within the <code>&lt;th&gt;</code>
+element let's add a <code>&lt;time&gt;</code> element that shows the time of the
+first activity of the day, "8:30 AM" in this case. We'll also
+include a <code>datetime</code> attribute on the <code>&lt;time&gt;</code> element with a value
+noting the time in hours, minutes, and seconds, <code>08:30:00</code>.
+</p>
+
+<p>
+In the <code>&lt;td&gt;</code> element that follows the <code>&lt;th&gt;</code> element we'll include
+the activity name (since there aren't any speakers at this time),
+which is "Registration" in this case. Since there is only one
+activity at this time we'll also include the <code>colspan</code> attribute
+with a value of 2 on the <code>&lt;td&gt;</code> element.
+</p>
+
+<p>
+In all, the code for our first table looks like this:
+</p>
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        Workshops
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        August 24th
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="08:30:00"&gt;8:30 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        Registration
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+
+<li>For the second row within the <code>&lt;tbody&gt;</code> element let's add a <code>&lt;tr&gt;</code>
+element just below our previous row. Then let's add a <code>&lt;th&gt;</code> element
+with the <code>scope</code> attribute with a value of <code>row</code>, and again add a
+<code>&lt;time&gt;</code> element with the appropriate time and <code>datetime</code> attribute
+value within that <code>&lt;th&gt;</code> element.
+
+<p>
+After the <code>&lt;th&gt;</code> element let's add two <code>&lt;td&gt;</code> elements for the two
+speakers presenting at that time. Directly inside each <code>&lt;td&gt;</code>
+element we'll add an <code>&lt;a&gt;</code> element, which will link back to where
+that speaker is positioned on the Speakers page. Remember, we added
+<code>id</code> attributes with each speaker's name to the parent elements for
+each speaker. Using that <code>id</code> attribute value preceded by the
+<code>speakers.html</code> filename and a pound/hash sign, <code>#</code>, we can link
+directly to that speaker's talk description and biography on the
+Speakers page.
+</p>
+
+<p>
+Within the <code>&lt;a&gt;</code> element we'll include an <code>&lt;h4&gt;</code> element with the
+speaker's name followed by the talk title.
+</p>
+
+<p>
+The code for the first two workshops looks like this:
+</p>
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        Workshops
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        August 24th
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="08:30:00"&gt;8:30 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        Registration
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="09:00:00"&gt;9:00 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#adam-connor"&gt;
+          &lt;h4&gt;Adam Connor&lt;/h4&gt;
+          Lights! Camera! Interaction! Design Inspiration from Filmmakers
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#jennifer-jones"&gt;
+          &lt;h4&gt;Jennifer Jones&lt;/h4&gt;
+          What Designers Can Learn from Parenting
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+
+<li>From here, we can repeat this pattern for each activity and speaker
+to finish our first table and then add the next two tables for the
+second two days of the conference.
+
+<p>
+While doing this, keep in mind that the table head will always
+include a table heading noting the events of the day and a table
+cell spanning two columns showing the date.
+</p>
+
+<p>
+Then, within the body of each table, every row will have a table
+heading that shows the time of day. After the table heading will be
+an activity, a speaker, or multiple speakers. Activities without
+speakers will reside within a single <code>&lt;td&gt;</code> element that spans two
+columns. If only one speaker is presenting at a certain time, that
+speaker will reside within a single <code>&lt;td&gt;</code> element that spans two
+columns as well, <code>&lt;a&gt;</code> and <code>&lt;h4&gt;</code> elements and all.
+</p>
+
+<p>
+If there are two speakers for a given time then each speaker will
+reside within his or her own <code>&lt;td&gt;</code> element, just as before.
+</p>
+
+<p>
+The full code for all three tables can be found at at the end of
+this exercise. For reference, the table for the first day, which
+includes lunch and two more speakers, looks like this:
+</p>
+
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        Workshops
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        August 24th
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="08:30:00"&gt;8:30 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        Registration
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="09:00:00"&gt;9:00 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#adam-connor"&gt;
+          &lt;h4&gt;Adam Connor&lt;/h4&gt;
+          Lights! Camera! Interaction! Design Inspiration from Filmmakers
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#jennifer-jones"&gt;
+          &lt;h4&gt;Jennifer Jones&lt;/h4&gt;
+          What Designers Can Learn from Parenting
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="12:30:00"&gt;12:30 PM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan="2"&gt;
+        Lunch
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="14:00"&gt;2:00 PM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#tessa-harmon"&gt;
+          &lt;h4&gt;Tessa Harmon&lt;/h4&gt;
+          Crafty Coding: Generating Knitting Patterns
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href="speakers.html#russ-unger"&gt;
+          &lt;h4&gt;Russ Unger&lt;/h4&gt;
+          From Muppets to Mastery: Core UX Principles from Mr. Jim Henson
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+
+<li>Now that our tables are taking shape, it's time to add a little
+style to them. Let's begin by adding some general styles to the
+<code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> elements. For both the <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> elements
+let's add a bottom <code>padding</code> of <code>22</code> pixels and a vertical alignment
+of <code>top</code>. For <code>&lt;th&gt;</code> elements specifically let's add a right
+<code>padding</code> of <code>45</code> pixels, a text alignment of <code>right</code>, and a <code>width</code>
+of <code>20%</code>. Then, for <code>&lt;td&gt;</code> elements let's add a <code>width</code> of <code>40%</code>.
+
+<p>
+Below our existing table and schedule styles, our code should look
+like this:
+</p>
+
+<pre class="example">
+th,
+td {
+  padding-bottom: 22px;
+  vertical-align: top;
+}
+th {
+  padding-right: 45px;
+  text-align: right;
+  width: 20%;
+}
+td {
+  width: 40%;
+}
+</pre>
+</li>
+
+<li>Next, let's style the table head and the elements within the table
+head. We'll set a <code>line-height</code> of <code>44</code> pixels on the <code>&lt;thead&gt;</code>
+element only, and a <code>color</code> of <code>#648880</code> and a <code>font-size</code> of <code>24</code>
+pixels on all <code>&lt;th&gt;</code> elements nested within a <code>&lt;thead&gt;</code> element. Our
+new styles include the following:
+
+<pre class="example">
+thead {
+  line-height: 44px;
+}
+thead th {
+  color: #648880;
+  font-size: 24px;
+}
+</pre>
+</li>
+
+<li>The table head is looking good, so let's also add some styles for
+the table body. We'll begin with <code>&lt;th&gt;</code> elements nested within the
+<code>&lt;tbody&gt;</code> element: changing their <code>color</code>, adding some <code>font</code> - and
+<code>text</code>-based styles, and adding some top <code>padding</code>.
+<pre class="example">
+tbody th {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 22px;
+  text-transform: uppercase;
+}
+</pre>
+</li>
+
+<li>We'll also add some styles to <code>&lt;td&gt;</code> elements nested within the
+<code>&lt;tbody&gt;</code> element, beginning with a top border and padding. We'll
+style the <code>&lt;td&gt;</code> elements that span only one column by adding 15
+pixels of right padding to those that form the left column and 15
+pixels of left padding to those that form the right column. Doing so
+puts a total of 30 pixels of padding between the two columns while
+keeping each cell the same size. We don't need to apply any left or
+right padding to the <code>&lt;td&gt;</code> elements that span two columns.
+
+<p>
+We'll add all of these horizontal paddings using the
+<code>:first-of-type</code>, <code>:last-of-type</code>, and <code>:only-of-type</code> pseudo-class
+selectors. These pseudo-class selectors work very similarly to the
+<code>:last-child</code> pseudo-class selector we've used before.
+</p>
+
+<p>
+The <code>:first-of-type</code> pseudo-class selector will select the first
+element of its type within a parent element. In our case, the
+<code>td:first-of-type</code> selector will select the first <code>&lt;td&gt;</code> element
+within a <code>&lt;tr&gt;</code> element. Then, the <code>:last-of-type</code> pseudo-class
+selector will select the last element of its type within a parent
+element.
+</p>
+
+<p>
+Again, in our case, the <code>td:last-of-type</code> selector will select the
+last <code>&lt;td&gt;</code> element within a <code>&lt;tr&gt;</code> element. Lastly, the
+<code>:only-of-type</code> pseudo-class selector will select an element if it's
+the only element of its type within a parent element. Here, the
+<code>td:only-of-type</code> selector will only select a <code>&lt;td&gt;</code> element if it's
+the only <code>&lt;td&gt;</code> element within a <code>&lt;tr&gt;</code> element, such as when a
+<code>&lt;td&gt;</code> element spans two columns.
+</p>
+
+<p>
+Our styles are a little complex, but they're flexible in addressing
+the needs of our table. These new styles include the following:
+</p>
+<pre class="example">
+tbody td {
+  border-top: 1px solid #dfe2e5;
+  padding-top: 21px;
+}
+tbody td:first-of-type {
+  padding-right: 15px;
+}
+tbody td:last-of-type {
+  padding-left: 15px;
+}
+tbody td:only-of-type {
+  padding-left: 0;
+  padding-right: 0;
+}
+</pre>
+</li>
+
+<li>Our schedule&#x2014;and the tables that display it&#x2014;is coming together.
+Let's adjust a few of the styles on existing elements to clean up
+the design. We'll start by making all of the links within the table
+a medium gray. If we target only the <code>&lt;a&gt;</code> elements within a table,
+our headings with the speaker's name within the links will remain
+green, while the talk titles will be gray, creating a nice contrast
+between the two.
+
+<p>
+While we're adjusting the styles of the entries for the talks, let's
+also remove the bottom <code>margin</code> on the <code>&lt;h4&gt;</code> elements within the
+table, allowing the speaker's name to sit closer to her or his
+title. We can implement these styles with the following code:
+</p>
+
+<pre class="example">
+table a {
+  color: #888;
+}
+table h4 {
+  margin-bottom: 0;
+}
+</pre>
+</li>
+
+<li>Lastly, let's create some visual contrast among the different types
+of activities hap- pening throughout the day. All of the talks look
+good with our latest changes. For all of the other activities, such
+as registration, lunch, and breaks (which are within the table body)
+as well as for the date (which is within the table header) let's use
+a subtle gray.
+
+<p>
+We'll do so by creating a new class, <code>schedule-offset</code>, and
+assigning a <code>color</code> of <code>#a9b2b9</code> to it.
+</p>
+<pre class="example">
+.schedule-offset {
+  color: #a9b2b9;
+}
+</pre>
+
+<p>
+Once the class is in place, let's add it to all of the <code>&lt;td&gt;</code>
+elements that span two columns and include either the day's date or
+a designated activity&#x2014;registration, lunch, or a break. Looking
+back to our table for the first day, the workshops day, the HTML
+will look like this:
+</p>
+
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        Workshops
+      &lt;/th&gt;
+      &lt;td class="schedule-offset" colspan="2"&gt;
+        August 24th
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="08:30:00"&gt;8:30 AM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td class="schedule-offset" colspan="2"&gt;
+        Registration
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;
+        &lt;time datetime="12:30:00"&gt;12:30 PM&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td class="schedule-offset" colspan="2"&gt;
+        Lunch
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+</ol>
+
+<p>
+Tables, which may appear simple on the surface, can be quite complex,
+and that is the case with our Styles Conference schedule. The good news
+is that our schedule is now complete, and it's looking great.
+</p>
+
+
+<figure>
+<p><img src="./img/practice-1.png" class="img-responsive" alt="practice-1.png">
+</p>
+<figcaption><span class="figure-number">Figure 1:</span> the schedule page, which includes multiple tables, for styles conference</figcaption>
+</figure>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Summary</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+All right, we now know how to semantically lay out tabular data within
+HTML while also making it intuitive with CSS. Discussing tables was our
+last major hurdle in learning HTML and CSS, and we have now officially
+finished our Styles Conference website.
+</p>
+
+<p>
+To review, within this lesson we covered the following:
+</p>
+
+<ul class="org-ul">
+<li>The best ways to semantically create tables
+</li>
+<li>How to make individual table cells span multiple columns or rows
+</li>
+<li>The structural elements that make up tables
+</li>
+<li>Different ways to style borders on a table, and how different border
+properties affect a table's appearance
+</li>
+<li>How to vertically align text within a table
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Resources &amp; Links</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><a href="http://www.456bereastreet.com/archive/200410/bring_on_the_tables/">Bring on the tables</a> via 456 Berra St.
+</li>
+</ul>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Creating a Table</a>
+<ul class="nav">
+<li><a href="#sec-2-1">Table</a></li>
+<li><a href="#sec-2-2">Table Row</a></li>
+<li><a href="#sec-2-3">Table Data</a></li>
+<li><a href="#sec-2-4">Table Header</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Table Structure</a>
+<ul class="nav">
+<li><a href="#sec-3-1">Table Caption</a></li>
+<li><a href="#sec-3-2">Table Head, Body, &amp; Foot</a></li>
+<li><a href="#sec-3-3">Combining Multiple Cells</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Table Borders</a>
+<ul class="nav">
+<li><a href="#sec-4-1">Border Collapse Property</a></li>
+<li><a href="#sec-4-2">Border Spacing Property</a></li>
+<li><a href="#sec-4-3">Adding Borders to Rows</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Table Striping</a></li>
+<li><a href="#sec-6">Aligning Text</a></li>
+<li><a href="#sec-7">Completely Styled Table</a></li>
+<li><a href="#sec-8">In Practice</a></li>
+<li><a href="#sec-9">Summary</a></li>
+<li><a href="#sec-10">Resources &amp; Links</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2016-04-10 Sun 03:04</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+</div>
+</footer>
+</body>
+</html>

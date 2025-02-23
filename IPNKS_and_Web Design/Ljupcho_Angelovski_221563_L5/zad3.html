@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let counts=[0,0,0,0,0,0,0,0];
+        let arr=new Array(16);
+        for (let i = 0; i < 16; i++) {
+            let r;
+            do {
+                r = Math.floor(Math.random() * 8);
+            } while (counts[r] >= 2);
+            arr[i]=r+1;
+            counts[r]++;
+        }
+
+
+        let open=0;
+        let opens=[0,0,0,0,0,0,0,0];
+        let before=null;
+        function swap(imag){
+            let pictures=["pics/p1.png","pics/p2.png","pics/p3.png","pics/p4.png","pics/p5.png","pics/p6.png","pics/p7.png","pics/p8.png"];
+            let pNum=parseInt(imag.parentNode.id)
+            let i=arr[pNum-1]
+            imag.src=pictures[i-1];
+            opens[i-1]++;
+            if(before!=null){
+                if(before.src===imag.src)before=null;
+                else {
+                    setTimeout(()=>{before.src="pics/pBEGIN.png";
+                        imag.src="pics/pBEGIN.png";
+                        before=null;},250)
+
+                    // before.src="pics/pBEGIN.png";
+                    // imag.src="pics/pBEGIN.png";
+                    // before=null;
+                }
+            }
+            else before=imag;
+
+
+        }
+
+        function resetg(){
+            open=0;
+            opens=[0,0,0,0,0,0,0,0];
+            before=null;
+            counts=[0,0,0,0,0,0,0,0];
+            for (let i = 0; i < 16; i++) {
+                let r;
+                do {
+                    r = Math.floor(Math.random() * 8);
+                } while (counts[r] >= 2);
+                arr[i]=r+1;
+                counts[r]++;
+            }
+            for (let i = 0; i < document.getElementsByTagName('img').length; i++) {
+                document.getElementsByTagName('img')[i].src="pics/pBEGIN.png";
+            }
+        }
+
+    </script>
+</head>
+<body>
+<h1>Меморија</h1>
+<div style="text-align: left;float: left">
+    <table border="1">
+        <tr>
+            <td id="1"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="2"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="3"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="4"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+        </tr>
+        <tr>
+            <td id="5"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="6"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="7"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="8"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+        </tr>
+        <tr>
+            <td id="9"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="10"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="11"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="12"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+        </tr>
+        <tr>
+            <td id="13"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="14"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="15"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+            <td id="16"><img src="pics/pBEGIN.png" width="128px" onclick="swap(this)"></td>
+        </tr>
+    </table>
+    <input type="submit" value="RESET" onclick="resetg()">
+</div>
+</body>
+</html>

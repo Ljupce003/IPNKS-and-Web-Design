@@ -1,0 +1,13 @@
+body{margin: 0 26%;}
+#main_dotted{border:3px dotted black;}
+#COde{color:red;}
+#list1{list-style-type: upper-roman}
+#l1{color: aqua}
+#l2{color: green}
+#l3{color: yellow}
+#l4{color: pink}
+#footer1{text-align:center}
+#tintColor{color: red}
+#highlighted_text{background-color: yellow}
+#thick{height: 2px;background-color: darkgray}
+#tags_text{line-height: 20%}

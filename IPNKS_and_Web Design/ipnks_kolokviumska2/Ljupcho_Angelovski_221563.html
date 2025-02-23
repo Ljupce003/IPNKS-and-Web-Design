@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+    table{border-collapse: collapse}
+    th{font-weight: bold;border: solid black;border-collapse: collapse;}
+    td{border: solid black;border-collapse: collapse;}
+
+    #bodyy{
+        width: 50%;
+    }
+    label{padding: 3px;width: 350px; display: inline-block;}
+    input[type="text"]{float: right}
+    </style>
+
+    <script>
+        let countering=0;
+        let array=new Array(50);
+        let c=0;
+
+
+        function Add(){
+
+            let name=document.getElementById("name").value;
+            let email=document.getElementById("email").value;
+            let age=document.getElementById("age").value;
+            let username=document.getElementById("username").value;
+
+
+            let password=document.getElementById("password").value;
+
+            let letter=0;
+            let cifra=0;
+            for (let i=0;i<password.length;i++){
+                if(isNaN(password.charAt(i)))letter++;
+                else if(!isNaN(parseInt(password.charAt(i))))cifra++;
+            }
+
+            if (password.length<10)return alert("Password nepravilen");
+            if(cifra===0 && letter===0)return alert("Password nepravilen");
+
+            for(let i=0;i<array.length;i++)if(array[i]===username)array[i]=undefined;
+
+            let i=document.getElementById("role").options.selectedIndex;
+            let role=document.getElementById("role").options[i].value;
+            if(parseInt(age)<18 && role==="teacher") return alert("Premal e za profesor");
+
+            if((name&&email&&age&&password&&username)==="") return alert("Vnesovte Greska");
+            else {
+                for (let j=0;j<50;j++){
+                    for (let i=0;i<50;i++){if (array[i]===username) return alert("Korisnicko ime e iskoristeno veke");}
+                    if(array[j]===undefined){array[j]=username;break;}
+                }
+                let tabla=document.getElementById("table");
+                if(role==="student")tabla.innerHTML+="<tr style='background: cornflowerblue'><td>"+name+"</td><td>"+username+"</td><td>"+email+"</td><td>"+age+"</td><td>"+role+"</td><td></td></tr>"
+                if(role==="teacher"){tabla.innerHTML+="<tr style='background: darkseagreen'><td>"+name+
+                    "</td><td>"+username+"</td><td>"+email +"</td><td>"+age+"</td><td>"+role+
+                    "</td><td><input type='button' value='Hire' onclick='Hire(this)'></td></tr>";counterr++;}
+
+            }
+            let cont=document.getElementById("counter");
+            cont.innerText=counterr;
+        }
+
+
+        function Hire(button){
+            button.parentNode.parentElement.style.backgroundColor="grey";
+            button.parentNode.removeChild(button);
+            counterr--;
+            let cont=document.getElementById("counter");
+            cont.innerText=counterr;
+        }
+
+
+    </script>
+</head>
+<body>
+
+<h1 style="font-size: 26px;font-weight: bold">Online Classes</h1>
+<div id="bodyy">
+<label>Name and surname
+    <input type="text" id="name">
+</label><br>
+<label>Email
+    <input type="text" id="email">
+</label><br>
+<label>Age
+    <input type="text" id="age">
+</label><br>
+<label>Username
+    <input type="text" id="username">
+</label><br>
+<label>Password
+    <input type="text" id="password">
+</label><br>
+<label>Role
+    <select id="role">
+        <option>teacher</option>
+        <option>student</option>
+    </select>
+</label><br>
+<input type="button" value="Add" onclick="Add()">
+</div>
+<p>Available teachers: <span id="counter"></span></p>
+
+<h2 style="font-weight: bold;font-size: 18px">Users</h2>
+
+<table id="table">
+    <tr><th>Name</th><th>Username</th><th>Email</th><th>Age</th><th>Role</th><th>Actions</th></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* Ime Prezime Indeks
+
+Grupa 1
+
+-------------------------------------------------- */
+body{
+    margin: auto;
+    max-width: 1000px;
+    background: url("img/page_back.gif") repeat-x;
+
+}
+.page-wrapper{
+    background: url("img/content_back.gif") repeat-x;
+    padding-top: 250px;
+}
+header{
+    background: url("img/fork.gif") no-repeat;
+    height: 264px;
+    margin-top: -250px;
+    margin-left: 800px;
+    font-size: 0px;
+}
+.main.level h3{
+    font-size: 0px;
+
+}
+.behaviour h3{
+    background: url("img/heading_1.gif") no-repeat;
+    height: 41px;
+}
+.manners h3{
+    background: url("img/heading_2.gif") no-repeat;
+    height: 28px;
+}
+.code h3{
+    background: url("img/heading_3.gif") no-repeat;
+    height: 24px;
+}
+.differences h3{
+    background: url("img/heading_4.gif") no-repeat;
+}
+.history h3{
+    font-size: 0px;
+    background: url("img/enlightment.gif") no-repeat;
+    height: 37px;
+
+}
+header h1{
+    background: url("img/body_back.gif") no-repeat;
+    height: 180px;
+margin-left:-1100px;
+}
+header h2{
+    background: url("img/green_top.gif") no-repeat;
+    height: 159px;
+    margin-left:-1100px;
+    margin-top: 20px;
+}
+.summary>p{
+    width: 290px;
+    color: white;
+    background: url("img/green_bottom.gif") no-repeat;
+    height: 59px;
+    margin-left: -300px;
+    margin-top: -20px;
+
+}
+.summary{
+    margin-top: -23px;
+}
+.history {
+    width: 290px;
+    margin-left: -300px;
+
+}
+.history p:last-of-type{
+    background: url("img/leftback.gif") no-repeat;
+    height: 183px;
+    margin-top: 30px;
+}
+.main.level{
+    margin-top: -800px;
+    text-align: justify;
+}
+.selection h3{
+    font-size: 0px;
+    background: url("img/pickup_top.gif") no-repeat;
+    height: 57px;
+
+}
+.selection ul li{
+    list-style-image: url("img/link_dot.gif");
+}
+.selection{
+    width: 150px;
+    margin-left: 1000px;
+    margin-top: -1350px;
+}
+.resources{
+    margin-left: 1000px;
+    width: 250px;
+}
+.resources ul li{
+    list-style-image: url("img/link_dot3.gif");
+}
+footer a {
+text-decoration: none;
+    color: green;
+}
+footer{
+    margin-left: 400px;
+}
+a{
+    color: green;
+}
+#resources h3 {
+    margin-left: 15px;
+
+}
+footer a:hover{
+    background: green;
+    color: white;
+}
+ul li a:hover{
+    background: green;
+    color: white;
+}
+.history a{
+    text-decoration: none;
+}
+.history a:hover{
+    text-decoration-line: underline;
+    color: #1c4f1c;
+}

@@ -1,0 +1,176 @@
+body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: url("images/bg-body.png");
+    margin: auto;
+    max-width: 1000px;
+    color: #484646;
+}
+
+#footer {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+#navigation a:hover {
+    background: url("images/bg-menu-selected.png") no-repeat center;
+    width: 6px;
+    height: 5px;
+    padding-bottom: 30px;
+}
+
+#footer a:hover {
+    color: darkred;
+}
+
+#featured a:hover {
+    opacity: .500;
+}
+
+#header {
+    background: url("images/bg-header.png") no-repeat;
+    width: 1062px;
+    height: 631px;
+}
+
+#navigation ul li {
+    display: inline-block;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+#navigation {
+    word-spacing: 80px;
+    padding-left: 40px;
+}
+
+#navigation a {
+    color: white;
+    text-decoration-line: none;
+}
+
+#header:first-child {
+    padding-top: 490px;
+    padding-left: 150px;
+}
+
+#welcome {
+    margin-top: -450px;
+}
+
+#welcome p:first-of-type {
+    float: left;
+    width: 35%;
+    margin-left: 80px;
+}
+
+#welcome p:nth-of-type(2){
+    float: right;
+    width: 35%;
+    margin-right: 20px;
+    text-align: right;
+}
+
+#featured ul li {
+    display: inline-block;
+    width: 20%;
+    margin-left: 38px;
+    margin-top: 10px;
+}
+
+#featured h4 {
+    color: darkred;
+    text-transform: uppercase;
+}
+
+#featured h5 {
+    text-transform: uppercase;
+}
+
+#featured h5 {
+    background: url("images/border.png") no-repeat;
+    height: 2px;
+    margin-left: 80px;
+    margin-top: 40px;
+}
+
+#articles h5 {
+    text-transform: uppercase;
+    margin-left: 80px;
+}
+
+#articles ul li {
+    float: left;
+    width: 45%;
+    margin-left: 50px;
+    list-style: none;
+}
+
+#articles a {
+    color: #484646;
+    text-decoration-line: none;
+}
+
+#articles span {
+    text-transform: uppercase;
+}
+
+#articles b {
+    color: darkred;
+}
+
+#footer {
+    background: url("images/border.png");
+    width: 900px;
+    height: 2px;
+    margin-left: 80px;
+    margin-top: 1050px; /* IZBRISHI KO KE GI SREDIS SLIKITE GORE */
+}
+
+#connect {
+    background: url("images/icons.png") no-repeat;  /*Rotate naprajv, greshno e*/
+
+    width: 140px;
+    height: 26px;
+    margin-left: 700px;
+}
+
+#footer a {
+    color: #484646;
+    text-transform: uppercase;
+}
+
+.navigation {
+    list-style: none;
+}
+
+#footer ul li {
+    display: inline-block;
+    padding-right: 15px;
+    margin-left: -10px;
+}
+
+.blogs p {
+    width: 70%;
+    float: right;
+    margin-right: 10px;
+}
+
+.blogs span {
+    display: block;
+}
+
+.blogs b {
+    display: block;
+}
+
+.illustrations li {
+    display: inline-block;
+}
+
+.illustrations  {
+    width: 50%;
+    float: right;
+}
+
+
+
+

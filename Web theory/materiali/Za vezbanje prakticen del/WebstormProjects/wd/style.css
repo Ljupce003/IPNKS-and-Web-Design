@@ -1,0 +1,108 @@
+﻿body{
+    margin: auto;
+    font-family: "MS Trebuchet", Verdana, Geneva, Arial,
+    Helvetica, sans-serif;
+    font-size: 11px;
+    background: url("img/fondo.gif");
+    max-width: 1000px;
+
+}
+header{
+font-size: 0px;
+}
+h1{
+    background: url("img/header1.gif") no-repeat;
+    height: 91px;
+}
+.summary{
+    background: url("img/abajo.gif") no-repeat;
+  height: 95px;
+    padding-top: 20px;
+    padding-left: 15px;
+    color: white;
+
+}
+.summary a{
+    color: white;
+}
+.page-wrapper{
+    width: 740px;
+}
+h3{
+
+    padding-left: 20px;
+
+}
+#introduction h3, #explanation h3, #evolution h3, #standards h3 , #tools h3{
+    background: url("img/bullet.gif") no-repeat;
+    color: #ab0c0c;
+}
+#introduction, #explanation, #evolution, #tools{
+    width:562px;
+    padding-left: 200px;
+}
+ul li{
+    list-style-image: url("img/flechita2.gif");
+}
+footer{
+    background: url("img/abajo.gif") ;
+    height: 40px;
+}
+.ocupations h3, .resources h3, .selection h3{
+    text-transform: lowercase;
+    color: white;
+    background-color: #ab0c0c;
+    width: 100px;
+}
+.ocupations, .resources, .selection{
+    background: url("img/linea.gif") no-repeat;
+    width: 178px;
+    line-height: 20px;
+
+}
+.selection{
+    margin-top: -1240px;
+}
+ .ocupations{
+     margin-top: -13px;
+     margin-bottom: -13px;
+ }
+footer a{
+    color: #ab0c0c;
+    font-weight: bold;
+    text-decoration: none;
+    background: url("img/footer.gif") ;
+    padding-top: 10px;
+    padding-right: 10px;
+
+}
+footer a:first-of-type{
+
+}
+footer a:hover{
+    text-decoration-line: underline;
+}
+.summary a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.summary a:hover{
+    text-decoration-line: underline;
+    color: white;
+    font-weight: bold;
+}
+footer{
+    padding-top: 30px;
+
+}
+.ocupations a, .resources a, .selection a{
+    font-weight: bold;
+    color: #ab0c0c;
+    text-decoration: none;
+}
+.ocupations a:hover, .resources a:hover, .selection a:hover{
+    text-decoration-line: underline;
+    font-weight: bold;
+    color: #ab0c0c;
+}

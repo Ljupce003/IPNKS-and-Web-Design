@@ -1,0 +1,2669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-22 Mon 15:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Positioning Content</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Boban Joksimoski" />
+<meta name="description" content="positioning content"
+ />
+<meta name="keywords" content="html, html5, css, css3, selectors" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="./lib/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="./lib/readtheorg.css"/>
+<script src="./lib/jquery.min.jsm"></script>
+<script src="./lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="./lib/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Positioning Content</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgded5456">Positioning Content</a></li>
+<li><a href="#orgc09e9ef">Positioning with Floats</a>
+<ul>
+<li><a href="#orgf92c181">Floats in Practice</a></li>
+<li><a href="#org8cb2d24">Clearing &amp; Containing Floats</a>
+<ul>
+<li><a href="#org319107f">Clearing Floats</a></li>
+<li><a href="#orgb889325">Containing Floats</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org668fed5">In Practice</a>
+<ul>
+<li><a href="#orgd456b1f">Positioning with Inline-Block</a></li>
+<li><a href="#org31e359e">Inline-Block in Practice</a></li>
+<li><a href="#org3866498">Removing Spaces Between Inline-Block Elements</a></li>
+</ul>
+</li>
+<li><a href="#orge1cc656">Creating Reusable Layouts</a></li>
+<li><a href="#org736e109">In Practice</a></li>
+<li><a href="#orgfe50afa">Uniquely Positioning Elements</a>
+<ul>
+<li><a href="#org71a23d1">Relative Positioning</a></li>
+<li><a href="#org23589dd">Absolute Positioning</a></li>
+</ul>
+</li>
+<li><a href="#orgc3500e4">Flexbox layout</a>
+<ul>
+<li><a href="#orgcc9ccfd">Basics &amp; Terminology</a></li>
+<li><a href="#org81e018d">Properties for the Parent (flex container)</a>
+<ul>
+<li><a href="#org695d867">display</a></li>
+<li><a href="#orgf8b8688">flex-direction</a></li>
+<li><a href="#orgb2da73e">flex-wrap</a></li>
+<li><a href="#org730735a">flex-flow (Applies to: parent flex container element)</a></li>
+<li><a href="#org2d94df3">justify-content</a></li>
+<li><a href="#org96bf048">align-items</a></li>
+<li><a href="#org749cd84">align-content</a></li>
+</ul>
+</li>
+<li><a href="#orgfae3b4c">Properties for the items (flex items)</a>
+<ul>
+<li><a href="#orgb116e87">order</a></li>
+<li><a href="#orgfbd14ca">flex-grow</a></li>
+<li><a href="#org1ce0d2c">flex-shrink</a></li>
+<li><a href="#org814db60">flex-basis</a></li>
+<li><a href="#org4fabd15">flex</a></li>
+<li><a href="#org2955822">align-self</a></li>
+</ul>
+</li>
+<li><a href="#org95ffcc5">Example</a></li>
+</ul>
+</li>
+<li><a href="#orgb3f3670">Summary</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgded5456" class="outline-2">
+<h2 id="orgded5456">Positioning Content</h2>
+<div class="outline-text-2" id="text-orgded5456">
+<p>
+One of the best things about CSS is that it gives us the ability to
+position content and elements on a page in nearly any imaginable way,
+bringing structure to our designs and helping make content more
+digestible.
+</p>
+
+<p>
+There are a few different types of positioning within CSS, and each has
+its own application. In this chapter we're going to take a look at a few
+different use cases&#x2014;creating reusable layouts and uniquely positioning
+one-off elements&#x2014;and describe a few ways to go about each.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc09e9ef" class="outline-2">
+<h2 id="orgc09e9ef">Positioning with Floats</h2>
+<div class="outline-text-2" id="text-orgc09e9ef">
+<p>
+One way to position elements on a page is with the <code>float</code> property. The
+<code>float</code> property is pretty versatile and can be used in a number of
+different ways.
+</p>
+
+<p>
+Essentially, the <code>float</code> property allows us to take an element, remove
+it from the normal flow of a page, and
+<a href="http://www.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/">position it</a> to the left or right of its parent element. All other elements on
+the page will then flow around the floated element. An <code>&lt;img&gt;</code> element
+floated to the side of a few paragraphs of text, for example, will allow
+the paragraphs to wrap around the image as necessary.
+</p>
+
+<p>
+When the <code>float</code> property is used on multiple elements at the same time,
+it provides the ability to create a layout by floating elements directly
+next to or opposite each other, as seen in multiple-column layouts.
+</p>
+
+<p>
+The <code>float</code> property accepts a few values; the two most popular values
+are <code>left</code> and <code>right</code>, which allow elements to be floated to the left
+or right of their parent element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf92c181" class="outline-3">
+<h3 id="orgf92c181">Floats in Practice</h3>
+<div class="outline-text-3" id="text-orgf92c181">
+<p>
+Let's create a common page layout with a header at the top, two columns
+in the center, and a footer at the bottom. Ideally this page would be
+marked up using the <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code>
+elements. Inside the <code>&lt;body&gt;</code> element, the HTML may look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;...&lt;/<span style="color: #93E0E3;">header</span>&gt;
+&lt;<span style="color: #93E0E3;">section</span>&gt;...&lt;/<span style="color: #93E0E3;">section</span>&gt;
+&lt;<span style="color: #93E0E3;">aside</span>&gt;...&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+&lt;<span style="color: #93E0E3;">footer</span>&gt;...&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Layout without Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">aside</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;aside&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-01/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+Here the <code>&lt;section&gt;</code> and <code>&lt;aside&gt;</code> elements, as block-level elements,
+will be stacked on top of one another by default. However, we want these
+elements to sit side by side. By floating the <code>&lt;section&gt;</code> to the <code>left</code>
+and the <code>&lt;aside&gt;</code> to the <code>right</code>, we can position them as two columns
+sitting opposite one another. Our CSS should look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+}
+</pre>
+</div>
+
+<p>
+For reference, when an element is floated, it will float all the way to
+the edge of its parent element. If there isn't a parent element, the
+floated element will then float all the way to the edge of the page.
+</p>
+
+<p>
+When we float an element, we take it out of the normal flow of the HTML
+document. This causes the width of that element to default to the width
+of the content within it. Sometimes, such as when we're creating columns
+for a reusable layout, this behavior is not desired. It can be corrected
+by adding a fixed <code>width</code> property value to each column. Additionally,
+to prevent floated elements from touching one another, causing the
+content of one to sit directly next to the content of the other, we can
+use the <code>margin</code> property to create space between elements.
+</p>
+
+<p>
+Here, we are extending the previous code block, adding a <code>margin</code> and
+<code>width</code> to each column to better shape our desired outcome.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5%;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 63%;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5%;<span style="color: #DFAF8F;">------</span>
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 2: </span>Layout with Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">aside</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;aside&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: right;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 63%;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-02/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<div class="NOTE">
+<p>
+Floats May Change an Element's Display Value
+</p>
+
+<p>
+When floating an element, it is also important to recognize that an
+element is removed from the normal flow of a page, and that may change
+an element's default <code>display</code> value. The <code>float</code> property relies on an
+element having a <code>display</code> value of <code>block</code>, and may alter an element's
+default <code>display</code> value if it is not already displayed as a block-level
+element.
+</p>
+
+<p>
+For example, an element with a <code>display</code> value of <code>inline</code>, such as the
+<code>&lt;span&gt;</code> inline-level element, ignores any <code>height</code> or <code>width</code> property
+values. However, should that inline-level element be floated, its
+<code>display</code> value will be changed to block, and it may then accept
+<code>height</code> or <code>width</code> property values.
+</p>
+
+<p>
+As we float elements we must keep an eye on how their <code>display</code> property
+values are affected.
+</p>
+
+<p>
+With two columns we can float one column to the left and another to the
+right, but with more columns we must change our approach. Say, for
+example, we'd like to have a row of three columns between our <code>&lt;header&gt;</code>
+and <code>&lt;footer&gt;</code> elements. If we drop our <code>&lt;aside&gt;</code> element and use three
+<code>&lt;section&gt;</code> elements, our HTML might look like this:
+</p>
+
+<p>
+#+BEGIN<sub>SRC</sub> html
+&lt;header&gt;&#x2026;&lt;/header&gt;
+</p>
+
+<p>
+When floating an element, it is also important to recognize that an
+element is removed from the normal flow of a page, and that may change
+an element's default <code>display</code> value. The <code>float</code> property relies on an
+element having a <code>display</code> value of <code>block</code>, and may alter an element's
+default <code>display</code> value if it is not already displayed as a block-level
+element.
+</p>
+
+<p>
+For example, an element with a <code>display</code> value of <code>inline</code>, such as the
+<code>&lt;span&gt;</code> inline-level element, ignores any <code>height</code> or <code>width</code> property
+values. However, should that inline-level element be floated, its
+<code>display</code> value will be changed to block, and it may then accept
+<code>height</code> or <code>width</code> property values.
+</p>
+
+<p>
+As we float elements we must keep an eye on how their <code>display</code> property
+values are affected.
+</p>
+
+</div>
+
+<p>
+With two columns we can float one column to the left and another to the
+right, but with more columns we must change our approach. Say, for
+example, we'd like to have a row of three columns between our <code>&lt;header&gt;</code>
+and <code>&lt;footer&gt;</code> elements. If we drop our <code>&lt;aside&gt;</code> element and use three
+<code>&lt;section&gt;</code> elements, our HTML might look like this:
+</p>
+
+<pre class="example">
+&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</pre>
+
+<p>
+To position these three <code>&lt;section&gt;</code> elements in a three-column row,
+instead of floating one column to the left and one column to the right,
+we'll float all three <code>&lt;section&gt;</code> elements to the left. We'll also need
+to adjust the width of the <code>&lt;section&gt;</code> elements to account for the
+additional columns and to get them to sit one next to the other.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5%;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+</pre>
+</div>
+
+
+<p>
+Here we have three columns, all with equal width and margin values and
+all floated to the <code>left</code>.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 3: </span>Three-column Layout with Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-03/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8cb2d24" class="outline-3">
+<h3 id="org8cb2d24">Clearing &amp; Containing Floats</h3>
+<div class="outline-text-3" id="text-org8cb2d24">
+<p>
+The <code>float</code> property was originally designed to allow content to wrap
+around images. An image could be floated, and all of the content
+surrounding that image could then naturally flow around it. Although
+this works great for images, the <code>float</code> property was never actually
+intended to be used for layout and positioning purposes, and thus it
+comes with a few pitfalls.
+</p>
+
+<p>
+One of those pitfalls is that occasionally the proper styles will not
+render on an element that it is sitting next to or is a parent element
+of a floated element. When an element is floated, it is taken out of the
+normal flow of the page, and, as a result, the styles of elements around
+that floated element can be negatively impacted.
+</p>
+
+<p>
+Often <code>margin</code> and <code>padding</code> property values aren't interpreted
+correctly, causing them to blend into the floated element; other
+properties can be affected, too.
+</p>
+
+<p>
+Another pitfall is that sometimes unwanted content begins to wrap around
+a floated element. Removing an element from the flow of the document
+allows all the elements around the floated element to wrap and consume
+any available space around the floated element, which is often
+undesired.
+</p>
+
+<p>
+With our previous two-column example, after we floated the <code>&lt;section&gt;</code>
+and <code>&lt;aside&gt;</code> elements, and before we set a width property value on
+either of them, the content within the <code>&lt;footer&gt;</code> element would have
+wrapped in between the two floated elements above it, filling in any
+available space. Consequently, the <code>&lt;footer&gt;</code> element would have sat in
+the gutter between the <code>&lt;section&gt;</code> and <code>&lt;aside&gt;</code> elements, consuming the
+available space.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 4: </span>Layout without Cleared or Contained Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">aside</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;aside&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: right;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+}
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-04/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+To prevent content from wrapping around floated elements, we need to
+clear, or contain, those floats and return the page to its normal flow.
+We'll proceed by looking at how to clear floats, and then we'll take a
+look at how to contain floats.
+</p>
+</div>
+
+<div id="outline-container-org319107f" class="outline-4">
+<h4 id="org319107f">Clearing Floats</h4>
+<div class="outline-text-4" id="text-org319107f">
+<p>
+Clearing floats is accomplished using the <code>clear</code> property, which
+accepts a few different values: the most commonly used values being
+<code>left</code>, <code>right</code>, and <code>both</code>.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: left;
+}
+</pre>
+</div>
+
+
+<p>
+The <code>left</code> value will clear left floats, while the <code>right</code> value will
+clear right floats. The <code>both</code> value, however, will clear both left and
+right floats and is often the most ideal value.
+</p>
+
+<p>
+Going back to our previous example, if we use the <code>clear</code> property with
+the value of <code>both</code> on the <code>&lt;footer&gt;</code> element, we are able to clear the
+floats. It is important that this clear be applied to an element
+appearing after the floated elements, not before, to return the page to
+its normal flow.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 5: </span>Layout with Cleared Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">aside</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;aside&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: right;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; clear: both;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 63%;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-05/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb889325" class="outline-4">
+<h4 id="orgb889325">Containing Floats</h4>
+<div class="outline-text-4" id="text-orgb889325">
+<p>
+Rather than clearing floats, another option is to contain the floats.
+The outcomes of containing floats versus those of clearing them are
+nearly the same; however, containing floats does help to ensure that all
+of our styles will be rendered properly.
+</p>
+
+<p>
+To contain floats, the floated elements must reside within a parent
+element. The parent element will act as a container, leaving the flow of
+the document completely normal outside of it. The CSS for that parent
+element, represented by the <code>group</code> class below, is shown here:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-css">.group:before,
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">content</span>: <span style="color: #CC9393;">""</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: table;
+}
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+}
+<span style="color: #93E0E3;">.group </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  *zoom: 1;
+}
+</pre>
+</div>
+
+
+<p>
+There's quite a bit going on here, but essentially what the CSS is doing
+is clearing any floated elements within the element with the class of
+<code>group</code> and returning the flow of the document back to normal.
+</p>
+
+<p>
+More specifically, the <code>:before</code> and <code>:after</code> pseudo-elements, as
+mentioned in the Lesson 4 exercise, are dynamically generated elements
+above and below the element with the class of <code>group</code>. Those elements do
+not include any content and are displayed as <code>table</code>-level elements,
+much like block-level elements. The dynamically generated element after
+the element with the class of <code>group</code> is clearing the floats within the
+element with the class of <code>group</code>, much like the <code>clear</code> from before.
+And lastly, the element with the class of <code>group</code> itself also clears any
+floats that may appear above it, in case a left or right float may
+exist. It also includes a little trickery to get older browsers to play
+nicely.
+</p>
+
+<p>
+It is more code than the <code>clear: both;</code> declaration alone, but it can
+prove to be quite useful.
+</p>
+
+<p>
+Looking at our two-column page layout from before, we could wrap the
+<code>&lt;section&gt;</code> and <code>&lt;aside&gt;</code> elements with a parent element. That parent
+element then needs to contain the floats within itself. The code would
+look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;...&lt;/<span style="color: #93E0E3;">header</span>&gt;
+&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"group"</span>&gt;
+  &lt;<span style="color: #93E0E3;">section</span>&gt;...&lt;/<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">aside</span>&gt;...&lt;/<span style="color: #93E0E3;">aside</span>&gt;
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;<span style="color: #93E0E3;">footer</span>&gt;...&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css">.group:before,
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">content</span>: <span style="color: #CC9393;">""</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: table;
+}
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+}
+<span style="color: #93E0E3;">.group </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  *zoom: 1;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5%;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 63%;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5%;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 6: </span>Layout with Contained Floats Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"group"</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">code</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"default"</span>&gt;&amp;#60;section="group"&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">section</span>&gt;
+    &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: left;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+  &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">aside</span>&gt;
+    &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;aside&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; float: right;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+  &lt;/<span style="color: #93E0E3;">aside</span>&gt;
+
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; clear: both;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">.default </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: none;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+}
+.group:before,
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">content</span>: <span style="color: #CC9393;">""</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: table;
+}
+<span style="color: #93E0E3;">.group:after </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+}
+<span style="color: #93E0E3;">.group </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">clear</span>: both;
+  *zoom: 1;
+}
+<span style="color: #93E0E3;">.group,</span>
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 63%;
+}
+<span style="color: #93E0E3;">aside </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: right;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-06/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+The technique shown here for containing elements is know as a "clearfix"
+and can often be found in other websites with the class name of
+<code>clearfix</code> or <code>cf</code>. We've chosen to use the class name of <code>group</code>,
+though, as it is representing a group of elements, and better expresses
+the content.
+</p>
+
+<p>
+As elements are floated, it is important to keep note of how they affect
+the flow of a page and to make sure the flow of a page is reset by
+either clearing or containing the floats as necessary. Failing to keep
+track of floats can cause quite a few headaches, especially as pages
+begin to have multiple rows of multiple columns.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org668fed5" class="outline-2">
+<h2 id="org668fed5">In Practice</h2>
+<div class="outline-text-2" id="text-org668fed5">
+<p>
+Let's return to the Styles Conference website to try floating some
+content.
+</p>
+
+<ol class="org-ol">
+<li><p>
+First things first, before we begin floating any elements, let's
+provide a way to contain those floats by adding the clearfix to our
+CSS. Within the <code>main.css</code> file, just below our grid styles, let's
+add the clearfix under the class name <code>group</code>, just like before.
+</p>
+
+<pre class="example">
+/*                                       
+  =======================================
+  Clearfix                               
+  =======================================
+*/                                       
+.group:before,                           
+.group:after {                           
+  content: "";                           
+  display: table;                        
+}                                        
+.group:after {                           
+  clear: both;                           
+}                                        
+.group {                                 
+  clear: both;                           
+  *zoom: 1;                              
+}                                        
+</pre></li>
+<li><p>
+Now that we can contain floats, let's float the primary <code>&lt;h1&gt;</code> within
+the <code>&lt;header&gt;</code> element to the left and allow all of the other content
+in the header to wrap to the right of it.
+</p>
+
+<p>
+To do this, let's add a class of <code>logo</code> to the <code>&lt;h1&gt;</code> element. Then
+within our CSS, let's add a new section of styles for the primary
+header. In this section we'll select the <code>&lt;h1&gt;</code> element with the
+<code>logo</code> class and then <code>float</code> it to the left.
+</p>
+
+<pre class="example">
+&lt;h1 class="logo"&gt;
+  &lt;a href="index.html"&gt;Styles Conference&lt;/a&gt;
+&lt;/h1&gt;
+</pre>
+
+<pre class="example">
+/*
+  ========================================
+  Primary header
+  ========================================
+*/
+
+.logo {
+  float: left;
+}
+</pre></li>
+
+<li><p>
+While we're at it, let's add a little more detail to our logo. We'll
+begin by placing a <code>&lt;br&gt;</code> element, or line break, between the word
+"Styles" and the word "Conference" to force the text of our logo to
+sit on two lines.
+</p>
+
+<p>
+Within the CSS, let's add a border to the top of our logo and some
+vertical <code>padding</code> to give the logo breathing room.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">h1</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"logo"</span>&gt;
+  &lt;<span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"index.html"</span>&gt;Styles &lt;<span style="color: #93E0E3;">br</span>&gt; Conference&lt;/<span style="color: #93E0E3;">a</span>&gt;
+&lt;/<span style="color: #93E0E3;">h1</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.logo </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">border-top</span>: 4px solid <span style="color: #ffffff; background-color: #648880;">#648880</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 40px 0 22px 0;
+  <span style="color: #F0DFAF; font-weight: bold;">float</span>: left;
+}
+</pre>
+</div></li>
+</ol>
+
+
+<ol class="org-ol">
+<li>Because we floated the <code>&lt;h1&gt;</code> element, we'll want to contain that
+<code>float</code>. The closest parent element of the <code>&lt;h1&gt;</code> element is the
+<code>&lt;header&gt;</code> element, so we'll want to add the class of <code>group</code> to the
+<code>&lt;header&gt;</code> element. Doing this applies the clearfix styles we set up
+earlier to the <code>&lt;header&gt;</code> element.</li>
+</ol>
+
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"container group"</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+</pre>
+</div>
+
+<ol class="org-ol">
+<li><p>
+The <code>&lt;header&gt;</code> element is taking shape, so let's take a look at the
+<code>&lt;footer&gt;</code> element. Much like we did with the <code>&lt;header&gt;</code> element,
+we'll float our copyright to the left within the <code>&lt;small&gt;</code> element
+and let all other elements wrap around it to the right.
+</p>
+
+<p>
+Unlike the <code>&lt;header&gt;</code> element, though, we're not going to use a class
+directly on the floated element. This time we're going to apply a
+class to the parent of the floated element and use a unique CSS
+selector to select the element and then float it.
+</p>
+
+<p>
+Let's start by adding the class of <code>primary-footer</code> to the <code>&lt;footer&gt;</code>
+element. Because we know we'll be floating an element within the
+<code>&lt;footer&gt;</code> element, we should also add the class of <code>group</code> while
+we're at it.                                         
+</p>
+
+<pre class="example">
+&lt;footer class="primary-footer container group"&gt;   
+  ...                                             
+&lt;/footer&gt;                                         
+</pre></li>
+
+<li><p>
+Now that the class of <code>primary-footer</code> is on the <code>&lt;footer&gt;</code> element,
+we can use that class to prequalify the <code>&lt;small&gt;</code> element with CSS.
+We'll want to select and <code>float</code> the <code>&lt;small&gt;</code> element to the <code>left</code>.
+Let's not forget to create a new section within our <code>main.css</code> file
+for these primary footer styles.
+</p>
+
+<pre class="example">
+/*                                           
+  ========================================   
+  Primary footer                             
+  ========================================   
+*/                                           
+
+.primary-footer small {                      
+  float: left;                               
+}                                            
+</pre>
+
+<p>
+To review, here we are selecting the <code>&lt;small&gt;</code> element, which must
+reside within an element with the class attribute value of
+<code>primary-footer</code>, such as our <code>&lt;footer&gt;</code> element, for example.
+</p></li>
+
+<li><p>
+Lastly, let's put some <code>padding</code> on the top and bottom of the
+<code>&lt;footer&gt;</code> element to help separate it a little more from the rest of
+the page. We can do this directly by using the <code>primary-footer</code> class
+with a class selector.
+</p>
+
+<pre class="example">
+.primary-footer {         
+  padding-bottom: 44px;   
+  padding-top: 44px;      
+}                         
+</pre></li>
+</ol>
+
+<p>
+With all of these changes to the <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements, we
+have to be sure to make them on every page, not just the <code>index.html</code>
+page.
+</p>
+
+
+<div id="org391a0de" class="figure">
+<p><img src="./img/practice-1.png" alt="practice-1.png" />
+</p>
+</div>
+
+<p>
+With a few floats, the <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements on our Styles
+Conference home page are coming together.
+</p>
+</div>
+
+<div id="outline-container-orgd456b1f" class="outline-3">
+<h3 id="orgd456b1f">Positioning with Inline-Block</h3>
+<div class="outline-text-3" id="text-orgd456b1f">
+<p>
+In addition to using floats, another way we can position content is by
+using the <code>display</code> property in conjunction with the <code>inline-block</code>
+value. The inline-block method, as we'll discuss, is primarily helpful
+for laying out pages or for placing elements next to one another within
+a line.
+</p>
+
+<p>
+Recall that the <code>inline-block</code> value for the <code>display</code> property will
+display elements within a line while allowing them to accept all box
+model properties, including <code>height</code>, <code>width</code>, <code>padding</code>, <code>border</code>, and
+<code>margin</code>. Using inline-block elements allows us to take full advantage
+of the box model without having to worry about clearing any floats.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org31e359e" class="outline-3">
+<h3 id="org31e359e">Inline-Block in Practice</h3>
+<div class="outline-text-3" id="text-org31e359e">
+<p>
+Let's take a look at our three-column example from before. We'll start
+by keeping our HTML just as it is:
+</p>
+
+<pre class="example">
+&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</pre>
+
+<p>
+Now instead of floating our three <code>&lt;section&gt;</code> elements, we'll change
+their <code>display</code> values to <code>inline-block</code>, leaving the <code>margin</code> and
+<code>width</code> properties from before alone. Our resulting CSS will look like
+this:
+</p>
+
+<pre class="example">
+section {
+  display: inline-block;
+  margin: 0 1.5%;
+  width: 30%;
+}
+</pre>
+
+<p>
+Unfortunately, this code alone doesn't quite do the trick, and the last
+<code>&lt;section&gt;</code> element is pushed to a new row. Remember, because
+inline-block elements are displayed on the same line as one another,
+they include a single space between them. When the size of each single
+space is added to the <code>width</code> and horizontal <code>margin</code> values of all the
+elements in the row, the total width becomes too great, pushing the last
+<code>&lt;section&gt;</code> element to a new row. In order to display all of the
+<code>&lt;section&gt;</code> elements on the same row, the white space between each
+<code>&lt;section&gt;</code> element must be removed.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 7: </span>Inline-Block Elements with White Space Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+ &lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: inline-block;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-07/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3866498" class="outline-3">
+<h3 id="org3866498">Removing Spaces Between Inline-Block Elements</h3>
+<div class="outline-text-3" id="text-org3866498">
+<p>
+There are a number of ways to remove the space between inline-block
+elements, and some are more complex than others. We are going to focus
+on two of the easiest ways, both of which happen inside HTML.
+</p>
+
+<p>
+The first solution is to put each new <code>&lt;section&gt;</code> element's opening tag
+on the same line as the previous <code>&lt;section&gt;</code> element's closing tag.
+Rather than using a new line for each element, we'll end and begin
+elements on the same line. Our HTML could look like this:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;...&lt;/<span style="color: #93E0E3;">header</span>&gt;
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+&lt;<span style="color: #93E0E3;">footer</span>&gt;...&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+
+
+<p>
+Writing inline-block elements this way ensures that the space between
+inline-block elements within HTML doesn't exist; consequently, the space
+will not appear when the page is rendered.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 8: </span>Inline-Block Elements without White Space Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;header&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">header</span>&gt;
+
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; display: &lt;<span style="color: #93E0E3;">br</span>&gt; inline-block;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+&lt;<span style="color: #93E0E3;">footer</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;footer&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+<span style="color: #93E0E3;">header,</span>
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">aside,</span>
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 1.5% 24px 1.5%;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: inline-block;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 30%;
+}
+<span style="color: #93E0E3;">footer </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin-bottom</span>: 0;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-08/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+Another way to remove the white space between inline-block elements is
+to open an HTML comment directly after an inline-block element's closing
+tag. Then, close the HTML com- ment immediately before the next
+inline-block element's opening tag. Doing this allows inline-block
+elements to begin and end on separate lines of HTML and "comments out"
+any potential spaces between the elements. The resulting code would look
+like this:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">header</span>&gt;...&lt;/<span style="color: #93E0E3;">header</span>&gt;
+&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+<span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+<span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">section</span>&gt;
+  ...
+ &lt;/<span style="color: #93E0E3;">section</span>&gt;
+ &lt;<span style="color: #93E0E3;">footer</span>&gt;...&lt;/<span style="color: #93E0E3;">footer</span>&gt;
+</pre>
+</div>
+
+
+<p>
+Neither of these options is perfect, but they are helpful. I tend to
+favor using comments for better organization, but which option you
+choose is entirely up to you.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge1cc656" class="outline-2">
+<h2 id="orge1cc656">Creating Reusable Layouts</h2>
+<div class="outline-text-2" id="text-orge1cc656">
+<p>
+When building a website, it is always best to write modular styles that
+may be reused elsewhere, and reusable layouts are high on the list of
+reusable code. Layouts can be created using either floats or
+inline-block elements, but which works best and why?
+</p>
+
+<p>
+Whether it's better to use floats or inline-block elements to lay out
+the structure of a page is open to debate. My approach is to use
+inline-block elements to create the grid&#x2014;or layout&#x2014;of a page and to
+then use floats when I want content to wrap around a given element (as
+floats were intended to do with images). Generally, I also find
+inline-block elements easier to work with.
+</p>
+
+<p>
+That said, use whatever works best for you. If you are comfortable with
+one approach over the other, then go for it.
+</p>
+
+<p>
+Currently there are new CSS specifications in the works&#x2014;specifically
+<code>flex-</code> and <code>grid-</code> based properties&#x2014;that will help address how to
+best lay out pages. Keep an eye out for these methods as they begin to
+surface.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org736e109" class="outline-2">
+<h2 id="org736e109">In Practice</h2>
+<div class="outline-text-2" id="text-org736e109">
+<p>
+With a solid understanding of reusable layouts, the time has come to
+implement one in our Styles Conference website.
+</p>
+
+<ol class="org-ol">
+<li><p>
+For the Styles Conference website, we'll create a three-column
+reusable layout using inline-block elements. We'll do so in a way
+that allows us to have three columns of equal width or two columns
+with the total width split between them, two-thirds in one and
+one-third in the other.
+</p>
+
+<p>
+To begin, we'll create classes that define the <code>width</code> of these
+columns. The two classes we'll create are <code>col-1-3</code>, for one-third,
+and <code>col-2-3</code>, for two-thirds. Within the grid section of our
+<code>main.css</code> file, let's go ahead and define these classes and their
+corresponding widths.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.col-1-3 </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 33.33%;
+}
+<span style="color: #93E0E3;">.col-2-3 </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 66.66%;
+}
+</pre>
+</div></li>
+
+<li><p>
+We'll want both of the columns to be displayed as inline-block
+elements. We'll need to make sure that their vertical alignment is
+set to the <code>top</code> of each column, too.
+</p>
+
+<p>
+Let's create two new selectors that will share the display and
+vertical-alignment property styles.
+</p>
+
+<pre class="example">
+.col-1-3,
+.col-2-3 {
+  display: inline-block;
+  vertical-align: top;
+}
+</pre>
+
+<p>
+Looking at the CSS again, we've created two class selectors,
+<code>col-1-3</code> and <code>col-2-3</code>, that are separated with a comma. The comma
+at the end of the first selector signifies that another selector is
+to follow. The second selector is followed by the opening curly
+bracket, <code>{</code>, which signifies that style declarations are to follow.
+By comma-separating the selectors, we can bind the same styles to
+multiple selectors at one time.
+</p></li>
+
+<li><p>
+We'll want to put some space in between each of the columns to help
+break up the content. We can accomplish this by putting horizontal
+<code>padding</code> on each of the columns.
+</p>
+
+<p>
+This works well; however, when two columns are sitting next to one
+another, the width of the space between them will be double that of
+the space from the outside columns to the edge of the row. To balance
+this we'll place all of our columns within a grid and add the same
+padding from our columns to that grid.
+</p>
+
+<p>
+Let's use a class name of <code>grid</code> to identify our grid, and then let's
+identify the same horizontal <code>padding</code> for our grid, <code>col-1-3</code>, and
+<code>col-2-3</code> classes. With commas separating our selectors again, our
+CSS looks like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.grid,</span>
+<span style="color: #93E0E3;">.col-1-3,</span>
+<span style="color: #93E0E3;">.col-2-3 </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">padding-left</span>: 15px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding-right</span>: 15px;
+}
+</pre>
+</div></li>
+
+<li><p>
+When we're setting up the horizontal <code>padding</code>, we'll need to be
+careful. Remember, in the last lesson we created a container element,
+known by the class of <code>container</code>, to center all of our content on a
+page within a <code>960</code>-pixel-wide element. Currently if we were to put
+an element with the class of <code>grid</code> inside an element with the class
+of <code>container</code>, their horizontal paddings would add to one another,
+and our columns would not appear proportionate to the width of the
+rest of the page.
+</p>
+
+<p>
+We don't want this to happen, so instead, we'll have to share some of
+the styles from the <code>container</code> rule set with the <code>grid</code> rule set.
+Specifically, we'll need to share the <code>width</code> property and values (to
+make sure our page stays fixed at <code>960</code> pixels wide) and the <code>margin</code>
+property and values (to center any element with the class of grid on
+the page).
+</p>
+
+<p>
+We'll accomplish this by breaking up the old <code>container</code> rule set
+into the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container,</span>
+<span style="color: #93E0E3;">.grid </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0 auto;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 960px;
+}
+<span style="color: #93E0E3;">.container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">padding-left</span>: 30px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding-right</span>: 30px;
+}
+</pre>
+</div>
+
+<p>
+Now any element with the class of <code>container</code> or grid will be <code>960</code>
+pixels wide and centered on the page. Additionally, we've preserved
+the existing horizontal padding for any element with the class of
+<code>container</code> by moving it into a new, separate rule set.
+</p></li>
+
+<li><p>
+All right&#x2014;all of the heavy lifting needed to get our reusable grid
+styles into place is finished. Now it's time to work in our HTML and
+to see how these classes perform.
+</p>
+
+<p>
+We'll begin with the teasers on the home page, within our
+<code>index.html</code> file, aligning them into three columns. Currently, the
+teasers are wrapped in a <code>&lt;section&gt;</code> element with the class of
+<code>container</code>. We'll want to change that class from <code>container</code> to
+<code>grid</code> so that we can begin placing columns within it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+  ...
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div></li>
+</ol>
+
+
+<ol class="org-ol">
+<li><p>
+Next, we'll want to add a class of <code>col-1-3</code> to each of the
+<code>&lt;section&gt;</code> elements within the <code>&lt;section&gt;</code> element with the class of
+<code>grid</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css">&lt;section class=<span style="color: #CC9393;">"grid"</span>&gt;
+
+  &lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;
+
+  &lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;
+
+  &lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;
+
+&lt;/section&gt;
+</pre>
+</div></li>
+</ol>
+
+
+<ol class="org-ol">
+<li><p>
+And lastly, because each of our columns is an inline-block element,
+we'll want to make sure we remove the empty white space between them.
+We'll use comments to do this, and we'll add a little bit of
+documentation noting each upcoming section while we're at it to
+better organize our code.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css">&lt;section class=<span style="color: #CC9393;">"grid"</span>&gt;
+
+  &lt;!-- Speakers --&gt;
+
+  &lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;&lt;!--
+
+  Schedule
+
+  --&gt;&lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;&lt;!--
+
+  Venue
+
+  --&gt;&lt;section class=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    ...
+  &lt;/section&gt;
+
+&lt;/section&gt;
+</pre>
+</div></li>
+</ol>
+
+
+<p>
+To review, on line 3 we leave a comment identifying the "Speakers"
+section to follow. At the end of line 7, we open a comment
+immediately after the closing <code>&lt;/section&gt;</code> tag. Within that comment,
+on line 9 we identify the "Schedule" section to come. We then close
+the comment at the beginning of line 11, just before the opening
+<code>&lt;section&gt;</code> tag. This same comment structure reappears on lines 13
+through 17 between the two <code>&lt;section&gt;</code> elements, right before the
+"Venue" section. In all, we've commented out any potential white
+space between the columns while also using those comments to identify
+our sections.
+</p>
+
+<p>
+We now have a reusable three-column grid that supports multiple
+arrangements, using both one-third- and two-thirds-width columns. Our
+home page now has three columns, breaking up all the different teasers.
+</p>
+
+
+<div id="org8ff5b3d" class="figure">
+<p><img src="./img/practice-2.png" alt="practice-2.png" />
+</p>
+</div>
+
+<p>
+Our Styles Conference home page now includes a three-column layout
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe50afa" class="outline-2">
+<h2 id="orgfe50afa">Uniquely Positioning Elements</h2>
+<div class="outline-text-2" id="text-orgfe50afa">
+<p>
+Every now and then we'll want to precisely position an element, but floats or
+inline-block elements won't do the trick. Floats, which remove an element
+from the flow of a page, often produce unwanted results as surrounding
+elements flow around the floated element. Inline-block elements, unless we're
+creating columns, can be fairly awkward to get into the proper position. For
+these situations we can use the <code>position</code> property in connection with box
+offset properties.
+</p>
+
+<p>
+The <code>position</code> property identifies <i>how</i> an element is positioned on a
+page and whether or not it will appear within the normal flow of a
+document. This is used in conjunction with the box offset
+properties---<code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>&#x2014;which identify
+exactly <i>where</i> an element will be positioned by moving elements in a
+number of different directions.
+</p>
+
+<p>
+By default every element has a <code>position</code> value of <code>static</code>, which means
+that it exists in the normal flow of a document and it doesn't accept
+any box offset properties. The <code>static</code> value is most commonly
+overwritten with a <code>relative</code> or <code>absolute</code> value, which we'll examine
+next.
+</p>
+</div>
+
+<div id="outline-container-org71a23d1" class="outline-3">
+<h3 id="org71a23d1">Relative Positioning</h3>
+<div class="outline-text-3" id="text-org71a23d1">
+<p>
+The <code>relative</code> value for the <code>position</code> property allows elements to
+appear within the normal flow a page, leaving space for an element as
+intended while not allowing other elements to flow around it; however,
+it also allows an element's display position to be modified with the box
+offset properties. For example, consider the following HTML and CSS:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;...&lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"offset"</span>&gt;...&lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;<span style="color: #93E0E3;">div</span>&gt;...&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">div </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 100px;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 100px;
+}
+<span style="color: #93E0E3;">.offset </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">left</span>: 20px;
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: relative;
+  <span style="color: #F0DFAF; font-weight: bold;">top</span>: 20px;
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 9: </span>Relative Positioning Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">div</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;div&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+
+&lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"offset"</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;div class= &lt;<span style="color: #93E0E3;">br</span>&gt; "offset"&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+
+&lt;<span style="color: #93E0E3;">div</span>&gt;
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;div&amp;#62;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+&lt;/<span style="color: #93E0E3;">div</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+}
+<span style="color: #93E0E3;">div,</span>
+<span style="color: #93E0E3;">.offset code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+}
+<span style="color: #93E0E3;">div </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 62px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding-top</span>: 38px;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 100px;
+}
+<span style="color: #93E0E3;">.offset </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: none;
+  <span style="color: #F0DFAF; font-weight: bold;">border</span>: 2px dashed <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 100px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 0;
+}
+<span style="color: #93E0E3;">.offset code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 74px;
+  <span style="color: #F0DFAF; font-weight: bold;">left</span>: 20px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding-top</span>: 26px;
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: relative;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+  <span style="color: #F0DFAF; font-weight: bold;">top</span>: 20px;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 100px;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-09/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+Here the second <code>&lt;div&gt;</code> element, the element with the class of <code>offset</code>,
+has a <code>position</code> value of <code>relative</code> and two box offset properties,
+<code>left</code> and <code>top</code>. This preserves the original position of the element,
+and other elements are not allowed to move into this space.
+Additionally, the box offset properties reposition the element, pushing
+it <code>20</code> pixels from the <code>left</code> and <code>20</code> pixels from the <code>top</code> of its
+original location.
+</p>
+
+<p>
+With relatively positioned elements, it's important to know that the box
+offset properties identify where an element will be moved from given its
+original position. Thus, the <code>left</code> property with a value of <code>20</code> pixels
+will actually push the element towards the right, from the left, <code>20</code>
+pixels. The <code>top</code> property with a value of <code>20</code> pixels, then, will push
+an element towards the bottom, from the top, <code>20</code> pixels.
+</p>
+
+<p>
+When we position the element using the box offset properties, the
+element overlaps the element below it rather than moving that element
+down as the <code>margin</code> or <code>padding</code> properties would.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org23589dd" class="outline-3">
+<h3 id="org23589dd">Absolute Positioning</h3>
+<div class="outline-text-3" id="text-org23589dd">
+<p>
+The <code>absolute</code> value for the <code>position</code> property is different from the
+<code>relative</code> value in that an element with a <code>position</code> value of
+<code>absolute</code> will not appear within the normal flow of a document, and the
+original space and position of the absolutely positioned element will
+not be preserved.
+</p>
+
+<p>
+Additionally, absolutely positioned elements are moved in relation to
+their closest relatively positioned parent element. Should a relatively
+positioned parent element not exist, the absolutely positioned element
+will be positioned in relation to the <code>&lt;body&gt;</code> element. That's quite a
+bit of information; let's take a look at how this works inside some
+code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"offset"</span>&gt;...&lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: relative;
+}
+<span style="color: #93E0E3;">div </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: absolute;
+  <span style="color: #F0DFAF; font-weight: bold;">right</span>: 20px;
+  <span style="color: #F0DFAF; font-weight: bold;">top</span>: 20px;
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 10: </span>Absolute Positioning Demo</label><pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;section&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; position: relative;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"offset"</span>&gt;
+    &lt;<span style="color: #93E0E3;">code</span>&gt;&amp;#60;div <span style="color: #DFAF8F;">class</span>="offset"&amp;#62; &lt;<span style="color: #93E0E3;">br</span>&gt; position: absolute;  &lt;<span style="color: #93E0E3;">br</span>&gt; right: 20px; &lt;<span style="color: #93E0E3;">br</span>&gt; top: 20px;&lt;/<span style="color: #93E0E3;">code</span>&gt;
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">font</span>: 14px/24px <span style="color: #CC9393;">"Source Code Pro"</span>, Inconsolata, <span style="color: #CC9393;">"Lucida Console"</span>, Terminal, <span style="color: #CC9393;">"Courier New"</span>, Courier;
+}
+<span style="color: #93E0E3;">section,</span>
+<span style="color: #93E0E3;">.offset,</span>
+<span style="color: #93E0E3;">.offset code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">border-radius</span>: 6px;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 24px 30px;
+}
+<span style="color: #93E0E3;">section </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 145px;
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: relative;
+}
+<span style="color: #93E0E3;">.offset,</span>
+<span style="color: #93E0E3;">.offset code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 96px;
+  <span style="color: #F0DFAF; font-weight: bold;">position</span>: absolute;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 160px;
+}
+<span style="color: #93E0E3;">.offset </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">border</span>: 2px dashed <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">right</span>: 0;
+  <span style="color: #F0DFAF; font-weight: bold;">top</span>: 0;
+
+}
+<span style="color: #93E0E3;">.offset code </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: block;
+  <span style="color: #F0DFAF; font-weight: bold;">right</span>: 20px;
+  <span style="color: #F0DFAF; font-weight: bold;">top</span>: 20px;
+}
+</pre>
+</div>
+
+<div id="bla" width="&quot;100%&quot;" class="HTML">
+<p>
+&lt;iframe src="./examples/demo-10/index.html"&gt; &lt;/iframe&gt;
+</p>
+
+</div>
+
+<p>
+In this example the <code>&lt;section&gt;</code> element is relatively positioned but
+doesn't include any box offset properties. Consequently its position
+doesn't change. The <code>&lt;div&gt;</code> element with a class of <code>offset</code> includes a
+<code>position</code> value of <code>absolute</code>. Because the <code>&lt;section&gt;</code> element is the
+closest relatively positioned parent element to the <code>&lt;div&gt;</code> element, the
+<code>&lt;div&gt;</code> element will be positioned in relation to the <code>&lt;section&gt;</code>
+element.
+</p>
+
+<p>
+With relatively positioned elements, the box offset properties identify
+in which direction an element would be moved in relation to itself. With
+absolutely positioned elements, the box offset properties identify in
+which direction an element will be moved in relation to its closest
+relatively positioned parent element.
+</p>
+
+<p>
+As a result of the <code>right</code> and <code>top</code> box offset properties, the <code>&lt;div&gt;</code>
+element will appear <code>20</code> pixels from the <code>right</code> and <code>20</code> pixels from
+the <code>top</code> of the <code>&lt;section&gt;</code>.
+</p>
+
+<p>
+Because the <code>&lt;div&gt;</code> element is absolutely positioned, it does not sit
+within the normal flow of the page and will overlap any surrounding
+elements. Additionally, the original position of the <code>&lt;div&gt;</code> is not
+preserved, and other elements are able to occupy that space.
+</p>
+
+<p>
+Typically, most positioning can be handled without the use of the
+<code>position</code> property and box offset properties, but in certain cases they
+can be extremely helpful.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgc3500e4" class="outline-2">
+<h2 id="orgc3500e4">Flexbox layout</h2>
+<div class="outline-text-2" id="text-orgc3500e4">
+<p>
+The Flexbox Layout (Flexible Box) module (a W3C Candidate Recommendation
+as of October 2017) aims at providing a more efficient way to lay out,
+align and distribute space among items in a container, even when their
+size is unknown and/or dynamic (thus the word "flex").
+</p>
+
+<p>
+The main idea behind the flex layout is to give the container the
+ability to alter its items' width/height (and order) to best fill the
+available space (mostly to accommodate to all kind of display devices
+and screen sizes). A flex container expands items to fill available free
+space, or shrinks them to prevent overflow.
+</p>
+
+<p>
+Most importantly, the flexbox layout is direction-agnostic as opposed to
+the regular layouts (block which is vertically-based and inline which is
+horizontally-based). While those work well for pages, they lack
+flexibility (no pun intended) to support large or complex applications
+(especially when it comes to orientation changing, resizing, stretching,
+shrinking, etc.).
+</p>
+</div>
+
+<div id="outline-container-orgcc9ccfd" class="outline-3">
+<h3 id="orgcc9ccfd">Basics &amp; Terminology</h3>
+<div class="outline-text-3" id="text-orgcc9ccfd">
+<p>
+Since flexbox is a whole module and not a single property, it involves a
+lot of things including its whole set of properties. Some of them are
+meant to be set on the container (parent element, known as "flex
+container") whereas the others are meant to be set on the children (said
+"flex items").
+</p>
+
+<p>
+If "regular" layout is based on both block and inline flow directions,
+the flex layout is based on "flex-flow directions". Please have a look
+at this figure from the specification, explaining the main idea behind
+the flex layout.
+</p>
+
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./img/00-basic-terminology.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Figure 3: </span>Flex size</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81e018d" class="outline-3">
+<h3 id="org81e018d">Properties for the Parent (flex container)</h3>
+<div class="outline-text-3" id="text-org81e018d">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./img/01-container.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Figure 4: </span>Properties for the Parent (flex container)</p>
+</div>
+</div>
+
+<div id="outline-container-org695d867" class="outline-4">
+<h4 id="org695d867">display</h4>
+<div class="outline-text-4" id="text-org695d867">
+<p>
+This defines a flex container; inline or block depending on the given
+value. It enables a flex context for all its direct children
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: flex; <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">or inline-flex </span><span style="color: #5F7F5F;">*/</span>
+}
+</pre>
+</div>
+
+<p>
+Note that CSS columns have no effect on a flex container.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf8b8688" class="outline-4">
+<h4 id="orgf8b8688">flex-direction</h4>
+<div class="outline-text-4" id="text-orgf8b8688">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./img/flex-direction.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+This establishes the main-axis, thus defining the direction flex items
+are placed in the flex container. Flexbox is (aside from optional
+wrapping) a single-direction layout concept. Think of flex items as
+primarily laying out either in horizontal rows or vertical columns.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex-direction</span>: row | row-reverse | column | column-reverse;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>row</code> (default): left to right in ltr; right to left in rtl</li>
+<li><code>row-reverse</code>: right to left in ltr; left to right in rtl</li>
+<li><code>column</code>: same as row but top to bottom</li>
+<li><code>column-reverse</code>: same as row-reverse but bottom to top-</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2da73e" class="outline-4">
+<h4 id="orgb2da73e">flex-wrap</h4>
+<div class="outline-text-4" id="text-orgb2da73e">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./img/flex-wrap.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> 
+</p>
+</div>
+
+<p>
+By default, flex items will all try to fit onto one line. You can change
+that and allow the items to wrap as needed with this property.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container</span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex-wrap</span>: nowrap | wrap | wrap-reverse;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>nowrap</code> (default): all flex items will be on one line</li>
+<li><code>wrap</code>: flex items will wrap onto multiple lines, from top to bottom.</li>
+<li><code>wrap-reverse</code>: flex items will wrap onto multiple lines from bottom to top.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org730735a" class="outline-4">
+<h4 id="org730735a">flex-flow (Applies to: parent flex container element)</h4>
+<div class="outline-text-4" id="text-org730735a">
+<p>
+This is a shorthand <code>flex-direction</code> and <code>flex-wrap</code> properties, which
+together define the flex container's main and cross axes. Default is
+<code>row nowrap</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #F0DFAF; font-weight: bold;">flex-flow</span>: &lt;&#8216;flex-direction&#8217;&gt; || &lt;&#8216;flex-wrap&#8217;&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d94df3" class="outline-4">
+<h4 id="org2d94df3">justify-content</h4>
+<div class="outline-text-4" id="text-org2d94df3">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./img/justify-content.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+This defines the alignment along the main axis. It helps distribute
+extra free space left over when either all the flex items on a line are
+inflexible, or are flexible but have reached their maximum size. It also
+exerts some control over the alignment of items when they overflow the
+line.
+</p>
+
+<ul class="org-ul">
+<li><code>flex-start</code> (default): items are packed toward the start line</li>
+<li><code>flex-end</code>: items are packed toward the end line</li>
+<li><code>center</code>: items are centered along the line</li>
+<li><code>space-between</code>: items are evenly distributed in the line; first item is on the start line, last item on the end line</li>
+<li><code>space-around</code>: items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.</li>
+<li><code>space-evenly</code>: items are distributed so that the spacing between any two items (and the space to the edges) is equal.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org96bf048" class="outline-4">
+<h4 id="org96bf048">align-items</h4>
+<div class="outline-text-4" id="text-org96bf048">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/align-items.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+This defines the default behavior for how flex items are laid out along
+the cross axis on the current line. Think of it as the <code>justify-content</code>
+version for the cross-axis (perpendicular to the main-axis).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">align-items</span>: stretch | flex-start | flex-end | center | baseline;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>stretch</code> (default): stretch to fill the container (still respect min-width/max-width)</li>
+<li><code>flex-start</code>: cross-start margin edge of the items is placed on the cross-start line</li>
+<li><code>flex-end</code>: cross-end margin edge of the items is placed on the cross-end line</li>
+<li><code>center</code>: items are centered in the cross-axis</li>
+<li><code>baseline</code>: items are aligned such as their baselines align</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org749cd84" class="outline-4">
+<h4 id="org749cd84">align-content</h4>
+<div class="outline-text-4" id="text-org749cd84">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/align-content.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+This aligns a flex container's lines within when there is extra space in
+the cross-axis, similar to how <code>justify-content</code> aligns individual items
+within the main-axis.
+</p>
+
+<p>
+<b>Note</b>: this property has no effect when there is only one line of flex
+items.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>flex-start</code>: lines packed to the start of the container</li>
+<li><code>flex-end</code>: lines packed to the end of the container</li>
+<li><code>center</code>: lines packed to the center of the container</li>
+<li><code>space-between</code>: lines evenly distributed; the first line is at the start of the container while the last one is at the end</li>
+<li><code>space-around</code>: lines evenly distributed with equal space around each line</li>
+<li><code>stretch</code> (default): lines stretch to take up the remaining space</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfae3b4c" class="outline-3">
+<h3 id="orgfae3b4c">Properties for the items (flex items)</h3>
+<div class="outline-text-3" id="text-orgfae3b4c">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/02-items.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Figure 10: </span>Properties for the children</p>
+</div>
+</div>
+
+<div id="outline-container-orgb116e87" class="outline-4">
+<h4 id="orgb116e87">order</h4>
+<div class="outline-text-4" id="text-orgb116e87">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/order.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+By default, flex items are laid out in the source order. However, the
+<code>order</code> property controls the order in which they appear in the flex
+container.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">order</span>: &lt;integer&gt;; <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">default is 0 </span><span style="color: #5F7F5F;">*/</span>
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfbd14ca" class="outline-4">
+<h4 id="orgfbd14ca">flex-grow</h4>
+<div class="outline-text-4" id="text-orgfbd14ca">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/flex-grow.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> 
+</p>
+</div>
+
+<p>
+This defines the ability for a flex item to grow if necessary. It accepts a
+unitless value that serves as a proportion. It dictates what amount of
+the available space inside the flex container the item should take up.
+</p>
+
+<p>
+If all items have <code>flex-grow</code> set to 1, the remaining space in the
+container will be distributed equally to all children. If one of the
+children has a value of 2, the remaining space would take up twice as
+much space as the others (or it will try to, at least).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex-grow</span>: &lt;number&gt;; <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">default 0 </span><span style="color: #5F7F5F;">*/</span>
+}
+</pre>
+</div>
+
+<p>
+Negative numbers are invalid.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ce0d2c" class="outline-4">
+<h4 id="org1ce0d2c">flex-shrink</h4>
+<div class="outline-text-4" id="text-org1ce0d2c">
+<p>
+This defines the ability for a flex item to shrink if necessary.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex-shrink</span>: &lt;number&gt;; <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">default 1 </span><span style="color: #5F7F5F;">*/</span>
+}
+</pre>
+</div>
+
+<p>
+Negative numbers are invalid.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org814db60" class="outline-4">
+<h4 id="org814db60">flex-basis</h4>
+<div class="outline-text-4" id="text-org814db60">
+<p>
+This defines the default size of an element before the remaining space
+is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword.
+The <code>auto</code> keyword means "look at my width or height property" (which
+was temporarily done by the <code>main-size</code> keyword until deprecated). The
+<code>content</code> keyword means "size it based on the item's content" - this
+keyword isn't well supported yet, so it's hard to test and harder to
+know what its brethren <code>max-content</code>, <code>min-content</code>, and <code>fit-content</code>
+do.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex-basis</span>: &lt;length&gt; | auto; <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">default auto </span><span style="color: #5F7F5F;">*/</span>
+}
+</pre>
+</div>
+
+<p>
+If set to <code>0</code>, the extra space around content isn't factored in. If set
+to <code>auto</code>, the extra space is distributed based on its <code>flex-grow</code>
+value.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4fabd15" class="outline-4">
+<h4 id="org4fabd15">flex</h4>
+<div class="outline-text-4" id="text-org4fabd15">
+<p>
+This is the shorthand for <code>flex-grow</code>, <code>flex-shrink</code> and <code>flex-basis</code>
+combined. The second and third parameters (<code>flex-shrink</code> and
+<code>flex-basis</code>) are optional. Default is <code>0 1 auto</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">flex</span>: none | [ &lt;<span style="color: #CC9393;">'flex-grow'</span>&gt; &lt;<span style="color: #CC9393;">'flex-shrink'</span>&gt;? || &lt;<span style="color: #CC9393;">'flex-basis'</span>&gt; ]
+}
+</pre>
+</div>
+
+<p>
+<b>It is recommended that you use this shorthand property rather than set
+the individual properties.</b> The short hand sets the other values
+intelligently.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2955822" class="outline-4">
+<h4 id="org2955822">align-self</h4>
+<div class="outline-text-4" id="text-org2955822">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://css-tricks.com/wp-content/uploads/2018/10/align-self.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+<p>
+This allows the default alignment (or the one specified by
+<code>align-items</code>) to be overridden for individual flex items.
+</p>
+
+<p>
+<b>Note</b>: <code>float</code>, <code>clear</code> and <code>vertical-align</code> have no effect on a <i>flex</i>
+item.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org95ffcc5" class="outline-3">
+<h3 id="org95ffcc5">Example</h3>
+<div class="outline-text-3" id="text-org95ffcc5">
+<p>
+Let's make a very very simple example, solving an almost daily problem:
+<i>perfect</i> <i>centering</i>. It couldn't be any simpler if you use flexbox.
+Consider a list of 6 items, all with a fixed dimensions in a matter of
+aesthetics but they could be auto-sized. We want them to be evenly and
+nicely distributed on the horizontal axis so that when we resize the
+browser, everything is fine.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93E0E3;">.flex-container </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 0;
+  <span style="color: #F0DFAF; font-weight: bold;">margin</span>: 0;
+  <span style="color: #F0DFAF; font-weight: bold;">list-style</span>: none;
+
+  <span style="color: #F0DFAF; font-weight: bold;">display</span>: flex;
+
+  <span style="color: #F0DFAF; font-weight: bold;">flex-flow</span>: row wrap;
+  <span style="color: #F0DFAF; font-weight: bold;">justify-content</span>: space-around;
+}
+
+<span style="color: #93E0E3;">.flex-item </span>{
+  <span style="color: #F0DFAF; font-weight: bold;">background</span>: <span style="color: #ffffff; background-color: #ff6347;">tomato</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">padding</span>: 5px;
+  <span style="color: #F0DFAF; font-weight: bold;">width</span>: 200px;
+  <span style="color: #F0DFAF; font-weight: bold;">height</span>: 150px;
+  <span style="color: #F0DFAF; font-weight: bold;">margin-top</span>: 10px;
+
+  <span style="color: #F0DFAF; font-weight: bold;">line-height</span>: 150px;
+  <span style="color: #F0DFAF; font-weight: bold;">color</span>: <span style="color: #000000; background-color: #ffffff;">white</span>;
+  <span style="color: #F0DFAF; font-weight: bold;">font-weight</span>: bold;
+  <span style="color: #F0DFAF; font-weight: bold;">font-size</span>: 3em;
+  <span style="color: #F0DFAF; font-weight: bold;">text-align</span>: center;
+}
+</pre>
+</div>
+
+<p>
+Add some HTML to have something to show.
+</p>
+
+<pre class="example">
+&lt;ul class="flex-container"&gt;
+  &lt;li class="flex-item"&gt;1&lt;/li&gt;
+  &lt;li class="flex-item"&gt;2&lt;/li&gt;
+  &lt;li class="flex-item"&gt;3&lt;/li&gt;
+  &lt;li class="flex-item"&gt;4&lt;/li&gt;
+  &lt;li class="flex-item"&gt;5&lt;/li&gt;
+  &lt;li class="flex-item"&gt;6&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Let's see how it looks. <img src="https://i.imgur.com/Ghyd3d7.png" alt="Ghyd3d7.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb3f3670" class="outline-2">
+<h2 id="orgb3f3670">Summary</h2>
+<div class="outline-text-2" id="text-orgb3f3670">
+<p>
+Learning how to position content within HTML and CSS is a huge step
+toward mastering the two languages. Add to this the box model, and we're
+well on our way to becoming front-end developers.
+</p>
+
+<p>
+To review, within this lesson we covered the following:
+</p>
+
+<ul class="org-ul">
+<li>What floats are and how to use them to position content</li>
+<li>How to clear and contain floated elements</li>
+<li>How to position content with inline-block elements</li>
+<li>How to remove the white space between inline-block elements</li>
+<li>How to uniquely position content with relatively and absolutely
+positioned elements</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2019-04-22 Mon 15:31</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

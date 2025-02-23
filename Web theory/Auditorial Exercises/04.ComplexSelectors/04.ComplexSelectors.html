@@ -1,0 +1,2607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-03-15 Fri 09:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Complex Selectors</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Boban Joksimoski" />
+<meta name="description" content="Complex Selectors"
+ />
+<meta name="keywords" content="html, html5, css, css3, selectors" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="./lib/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="./lib/readtheorg.css"/>
+<script src="./lib/jquery.min.jsm"></script>
+<script src="./lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="./lib/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Complex Selectors</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc6200b1">1. Complex Selectors</a></li>
+<li><a href="#orgb274d29">2. Common Selectors</a>
+<ul>
+<li><a href="#org56a762c">2.1. Common Selectors Overview</a></li>
+</ul>
+</li>
+<li><a href="#orgb0b0e48">3. Child Selectors</a>
+<ul>
+<li><a href="#org63df170">3.1. Descendant Selector</a></li>
+<li><a href="#orgaf810a7">3.2. Direct Child Selector</a>
+<ul>
+<li><a href="#orgdde0938">3.2.1. Child Selectors Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org13bbf4a">4. Sibling Selectors</a>
+<ul>
+<li><a href="#org0073637">4.1. General Sibling Selector</a></li>
+<li><a href="#org23a385a">4.2. Adjacent Sibling Selector</a></li>
+<li><a href="#orga9abad5">4.3. Sibling Selectors Example</a>
+<ul>
+<li><a href="#org70dfd2f">4.3.1. Sibling Selectors Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6847dbc">5. Attribute Selectors</a>
+<ul>
+<li><a href="#orgde4354c">5.1. Attribute Present Selector</a></li>
+<li><a href="#org1e3704c">5.2. Attribute Equals Selector</a></li>
+<li><a href="#org84946f2">5.3. Attribute Contains Selector</a></li>
+<li><a href="#orga0613ef">5.4. Attribute Begins With Selector</a></li>
+<li><a href="#org0aa42f7">5.5. Attribute Ends With Selector</a></li>
+<li><a href="#orgc5c4b67">5.6. Attribute Spaced Selector</a></li>
+<li><a href="#orgcd0e419">5.7. Attribute Hyphenated Selector</a></li>
+<li><a href="#org6eaa441">5.8. Attribute Selectors Example</a>
+<ul>
+<li><a href="#orgfc42672">5.8.1. Attribute Selectors Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1902433">6. Pseudo-classes</a>
+<ul>
+<li><a href="#org80a3e3b">6.1. Link Pseudo-classes</a></li>
+<li><a href="#orgbcbb78b">6.2. User Action Pseudo-classes</a></li>
+<li><a href="#org075adb2">6.3. User Interface State Pseudo-classes</a></li>
+<li><a href="#org49eb049">6.4. Structural &amp; Position Pseudo-classes</a>
+<ul>
+<li><a href="#org34138c3">6.4.1. :first-child, :last-child, &amp; :only-child</a></li>
+<li><a href="#orgceb12b7">6.4.2. :first-of-type, :last-of-type, &amp; :only-of-type</a></li>
+<li><a href="#org89929a2">6.4.3. Using Pseudo-class Numbers &amp; Expressions</a></li>
+<li><a href="#orgcc688ff">6.4.4. :nth-child(n) &amp; :nth-last-child(n)</a></li>
+<li><a href="#orgb839639">6.4.5. :nth-of-type(n) &amp; :nth-last-of-type(n)</a></li>
+</ul>
+</li>
+<li><a href="#orgfad35d3">6.5. Target Pseudo-class</a></li>
+<li><a href="#org2abaa41">6.6. Empty Pseudo-class</a></li>
+<li><a href="#org280f88a">6.7. Negation Pseudo-class</a></li>
+<li><a href="#orgd14fb8c">6.8. Pseudo-classes Example</a>
+<ul>
+<li><a href="#org8aecc40">6.8.1. Pseudo-classes Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgdb3d7e4">7. Pseudo-elements</a>
+<ul>
+<li><a href="#orga29b02a">7.1. Textual Pseudo-elements</a>
+<ul>
+<li><a href="#org66e961d">7.1.1. Textual Pseudo-elements Demo</a></li>
+</ul>
+</li>
+<li><a href="#org75be012">7.2. Generated Content Pseudo-elements</a>
+<ul>
+<li><a href="#org0f3901e">7.2.1. Generated Content Pseudo-elements Demo</a></li>
+</ul>
+</li>
+<li><a href="#org71ab6bf">7.3. Fragment Pseudo-element</a>
+<ul>
+<li><a href="#orgffab15a">7.3.1. Single Colon (:) versus Double Colons (::)</a></li>
+</ul>
+</li>
+<li><a href="#orgf0c24d5">7.4. Pseudo-elements Example</a>
+<ul>
+<li><a href="#orge317072">7.4.1. Pseudo-elements Overview</a></li>
+<li><a href="#org42bf462">7.4.2. Selector Browser Support</a></li>
+<li><a href="#orgb46422e">7.4.3. Selector Speed &amp; Performance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7cd020a">8. Introduction to the Cascade</a>
+<ul>
+<li><a href="#org24ba1ff">8.1. Multiple Sources</a></li>
+<li><a href="#orgb908c22">8.2. Multiple Methods</a></li>
+</ul>
+</li>
+<li><a href="#org491bc25">9. Inheritance</a>
+<ul>
+<li><a href="#orgb3cb4d9">9.1. The <code>!important</code> value</a></li>
+<li><a href="#orgd14e0e7">9.2. The <code>inherit</code> value</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc6200b1" class="outline-2">
+<h2 id="orgc6200b1"><span class="section-number-2">1</span> Complex Selectors</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Selectors are one of, if not, the most important parts of CSS. They
+shape the cascade and determine how styles are to be applied to elements
+on a page.
+</p>
+
+<p>
+Up until recently the focus of CSS never really touched on selectors.
+Occasionally there would be incremental updates within the selectors
+specification, but never any real ground breaking improvements.
+Fortunately, more attention has been given to selectors as of late,
+taking a look at how to select different types of elements and elements
+in different states of use.
+</p>
+
+<p>
+CSS3 brought new selectors, opening a whole new world of opportunities
+and improvements to existing practices. Here we'll discuss
+<a href="http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/">selectors</a>,
+old and new, and how to best put them to use.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb274d29" class="outline-2">
+<h2 id="orgb274d29"><span class="section-number-2">2</span> Common Selectors</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Before diving too deep into some of the more complex selectors, and
+those offered within CSS3, let's take a quick look at some of the more
+common selectors seen today. These selectors include the type, class,
+and ID selectors.
+</p>
+
+<p>
+The <b>type</b> selector identifies an element based on its type,
+specifically how that element is declared within HTML. The <b>class</b>
+selector identifies an element based on its class attribute value, which
+may be reused on multiple elements as necessary to help share popular
+styles. Lastly, the <b>ID</b> selector identifies an element based on its ID
+attribute value, which is unique and should only be used once per page.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">h1 </span>{...}
+<span style="color: #A6E22E;">.tagline </span>{...}
+<span style="color: #A6E22E;">#intro </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">section</span> <span style="color: #FD971F;">id</span>=<span style="color: #E6DB74;">"intro"</span>&gt;
+  &lt;<span style="color: #A6E22E;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">...</span>&lt;/<span style="color: #A6E22E;">h1</span>&gt;
+  &lt;<span style="color: #A6E22E;">h2</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"tagline"</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">...</span>&lt;/<span style="color: #A6E22E;">h2</span>&gt;
+&lt;/<span style="color: #A6E22E;">section</span>&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org56a762c" class="outline-3">
+<h3 id="org56a762c"><span class="section-number-3">2.1</span> Common Selectors Overview</h3>
+<div class="outline-text-3" id="text-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>h1</code></td>
+<td class="org-left">Type Selector</td>
+<td class="org-left">Selects an element by it's type</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>.tagline</code></td>
+<td class="org-left">Class Selector</td>
+<td class="org-left">Selects an element by the class attribute value, which may be reused multiple times per page</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>#intro</code></td>
+<td class="org-left">ID Selector</td>
+<td class="org-left">Selects an element by the ID attribute value, which is unique and to only be used once per page</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb0b0e48" class="outline-2">
+<h2 id="orgb0b0e48"><span class="section-number-2">3</span> Child Selectors</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Child selectors provide a way to select elements that fall within one
+another, thus making them children of their parent element. These
+selections can be made two different ways, using either descendant or
+direct child selectors.
+</p>
+</div>
+
+<div id="outline-container-org63df170" class="outline-3">
+<h3 id="org63df170"><span class="section-number-3">3.1</span> Descendant Selector</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The most common child selector is the descendant selector, which matches
+every element that follows an identified ancestor. The descendant
+element does not have to come directly after the ancestor element inside
+the document tree, such as a parent-child relationship, but may fall
+anywhere within the ancestor element. Descendant selectors are created
+by spacing apart elements within a selector, creating a new level of
+hierarchy for each element list.
+</p>
+
+<p>
+The <code>article h2</code> selector is a descendant selector, only selecting <code>h2</code>
+elements that fall inside of an <code>article</code> element. Notice, no matter
+where a <code>h2</code> element lives, so long as it is within the <code>article</code>
+element, it will always be selected. Additionally, any <code>h2</code> element
+outside of the <code>article</code> element is not selected.
+</p>
+
+<p>
+Below, the headings are lines 3 and 5 are selected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">article h2 </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">...</span>&lt;/<span style="color: #A6E22E;">h2</span>&gt;
+&lt;<span style="color: #A6E22E;">article</span>&gt;
+  &lt;<span style="color: #A6E22E;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This heading will be selected</span>&lt;/<span style="color: #A6E22E;">h2</span>&gt;
+  &lt;<span style="color: #A6E22E;">div</span>&gt;
+    &lt;<span style="color: #A6E22E;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This heading will be selected</span>&lt;/<span style="color: #A6E22E;">h2</span>&gt;
+  &lt;/<span style="color: #A6E22E;">div</span>&gt;
+&lt;/<span style="color: #A6E22E;">article</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaf810a7" class="outline-3">
+<h3 id="orgaf810a7"><span class="section-number-3">3.2</span> Direct Child Selector</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Sometimes descendant selectors go a bit overboard, selecting more than
+hoped. At times only the direct children of a parent element need to be
+selected, not every instance of the element nested deeply inside of an
+ancestor. In this event the direct child selector may be used by placing
+a greater than sign, <code>&gt;</code>, between the parent element and child element
+within the selector.
+</p>
+
+<p>
+For example, <code>article &gt; p</code> is a direct child selector only identifying
+<code>p</code> elements that fall directly within an <code>article</code> element. Any <code>p</code>
+element placed outside of an <code>article</code> element, or nested inside of
+another element other than the <code>article</code> element, will not be selected.
+</p>
+
+<p>
+Below, the paragraph on line 3 is the only direct child of it's parent
+article, thus selected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">article &gt; p </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+&lt;<span style="color: #A6E22E;">article</span>&gt;
+  &lt;<span style="color: #A6E22E;">p</span>&gt;This paragraph will be selected&lt;/<span style="color: #A6E22E;">p</span>&gt;
+  &lt;<span style="color: #A6E22E;">div</span>&gt;
+    &lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+  &lt;/<span style="color: #A6E22E;">div</span>&gt;
+&lt;/<span style="color: #A6E22E;">article</span>&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdde0938" class="outline-4">
+<h4 id="orgdde0938"><span class="section-number-4">3.2.1</span> Child Selectors Overview</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>article h2</code></td>
+<td class="org-left">Descendant Selector</td>
+<td class="org-left">Selects an element that resides anywhere within an identified ancestor element</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>article &gt; p</code></td>
+<td class="org-left">Direct Child Selector</td>
+<td class="org-left">Selects an element that resides immediately inside an identified parent element</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13bbf4a" class="outline-2">
+<h2 id="org13bbf4a"><span class="section-number-2">4</span> Sibling Selectors</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Knowing how to <a href="http://css-tricks.com/child-and-sibling-selectors/">select children</a>
+of an element is largely beneficial, and quite commonly seen. However
+sibling elements, those elements that share a common parent, may also
+need to be selected. These sibling selections can be made by way of the
+general sibling and adjacent sibling selectors.
+</p>
+</div>
+
+<div id="outline-container-org0073637" class="outline-3">
+<h3 id="org0073637"><span class="section-number-3">4.1</span> General Sibling Selector</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The general sibling selector allow elements to be selected based on
+their sibling elements, those which share the same common parent. They
+are created by using the tilde character, <code>~</code>, between two elements
+within a selector. The first element identifies what the second element
+shall be a sibling with, and both of which must share the same parent.
+</p>
+
+<p>
+The <code>h2 ~ p</code> selector is a general sibling selector that looks for <code>p</code>
+elements that follow, and share the same parent, of any <code>h2</code> elements.
+In order for a <code>p</code> element to be selected it must come after any <code>h2</code>
+element.
+</p>
+
+<p>
+The paragraphs on lines 5 and 9 are selected as they come after the
+heading within the document tree and share the same parent as their
+sibling heading.
+</p>
+
+<pre class="example">
+h2 ~ p {...}
+</pre>
+
+<pre class="example">
+&lt;p&gt;...&lt;/p&gt;
+&lt;section&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;h2&gt;...&lt;/h2&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+&lt;/section&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org23a385a" class="outline-3">
+<h3 id="org23a385a"><span class="section-number-3">4.2</span> Adjacent Sibling Selector</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Occasionally a little more control may be desired, including the ability
+to select a sibling element that directly follows after another sibling
+element, which is where the adjacent sibling element comes in. The
+adjacent sibling selector will only select sibling elements directly
+following after another sibling element. Instead of using the tilde
+character, as with general sibling selectors, the adjacent sibling
+selector uses a plus character, <code>+</code>, between the two elements within a
+selector. Again, the first element identifies what the second element
+shall directly follow after and be a sibling with, and both of which
+must share the same parent.
+</p>
+
+<p>
+Looking at the adjacent sibling selector <code>h2 + p</code> only <code>p</code> elements
+directly following after <code>h2</code> elements will be selected. Both of which
+must also share the same parent element.
+</p>
+
+<p>
+The paragraph on line 5 is selected as it directly follows after its
+sibling heading along with sharing the same parent element, thus
+selected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">h2 + p </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+&lt;<span style="color: #A6E22E;">section</span>&gt;
+  &lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+  &lt;<span style="color: #A6E22E;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">...</span>&lt;/<span style="color: #A6E22E;">h2</span>&gt;
+  &lt;<span style="color: #A6E22E;">p</span>&gt;This paragraph will be selected&lt;/<span style="color: #A6E22E;">p</span>&gt;
+  &lt;<span style="color: #A6E22E;">div</span>&gt;
+    &lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+  &lt;/<span style="color: #A6E22E;">div</span>&gt;
+  &lt;<span style="color: #A6E22E;">p</span>&gt;...&lt;/<span style="color: #A6E22E;">p</span>&gt;
+&lt;/<span style="color: #A6E22E;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga9abad5" class="outline-3">
+<h3 id="orga9abad5"><span class="section-number-3">4.3</span> Sibling Selectors Example</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">input</span> <span style="color: #FD971F;">type</span>=<span style="color: #E6DB74;">"checkbox"</span> <span style="color: #FD971F;">id</span>=<span style="color: #E6DB74;">"toggle"</span>&gt;
+&lt;<span style="color: #A6E22E;">label</span> <span style="color: #FD971F;">for</span>=<span style="color: #E6DB74;">"toggle"</span>&gt;&amp;#9776;&lt;/<span style="color: #A6E22E;">label</span>&gt;
+&lt;<span style="color: #A6E22E;">nav</span>&gt;
+  &lt;<span style="color: #A6E22E;">ul</span>&gt;
+    &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span>&gt;Home&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+    &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span>&gt;About&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+    &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span>&gt;Services&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+    &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span>&gt;Contact&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+  &lt;/<span style="color: #A6E22E;">ul</span>&gt;
+&lt;/<span style="color: #A6E22E;">nav</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">input </span>{
+  <span style="color: #F92672;">display</span>: none;
+}
+<span style="color: #A6E22E;">label,</span>
+<span style="color: #A6E22E;">ul </span>{
+  <span style="color: #F92672;">border</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #F92672;">border-radius</span>: 6px;
+}
+<span style="color: #A6E22E;">label </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #0087cc;">#0087cc</span>;
+  <span style="color: #F92672;">cursor</span>: pointer;
+  <span style="color: #F92672;">display</span>: inline-block;
+  <span style="color: #F92672;">font-size</span>: 18px;
+  <span style="color: #F92672;">padding</span>: 5px 9px;
+  <span style="color: #F92672;">transition</span>: all .15s ease;
+}
+<span style="color: #A6E22E;">label:hover </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+<span style="color: #A6E22E;">input:checked + label </span>{
+  <span style="color: #F92672;">box-shadow</span>: inset 0 1px 2px <span style="color: #ffffff; background-color: #000000;">rgba(0, 0, 0, 0.15)</span>;
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #9799a7;">#9799a7</span>;
+}
+<span style="color: #A6E22E;">nav </span>{
+  <span style="color: #F92672;">max-height</span>: 0;
+  <span style="color: #F92672;">overflow</span>: hidden;
+  <span style="color: #F92672;">transition</span>: all .15s ease;
+}
+<span style="color: #A6E22E;">input:checked ~ nav </span>{
+  <span style="color: #F92672;">max-height</span>: 500px;
+}
+<span style="color: #A6E22E;">ul </span>{
+  <span style="color: #F92672;">list-style</span>: none;
+  <span style="color: #F92672;">margin</span>: 8px 0 0 0;
+  <span style="color: #F92672;">padding</span>: 0;
+  <span style="color: #F92672;">width</span>: 100px;
+}
+<span style="color: #A6E22E;">li </span>{
+  <span style="color: #F92672;">border-bottom</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+}
+<span style="color: #A6E22E;">li:last-child </span>{
+  <span style="color: #F92672;">border-bottom</span>: 0;
+}
+<span style="color: #A6E22E;">a </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #0087cc;">#0087cc</span>;
+  <span style="color: #F92672;">display</span>: block;
+  <span style="color: #F92672;">padding</span>: 6px 12px;
+  <span style="color: #F92672;">text-decoration</span>: none;
+}
+<span style="color: #A6E22E;">a:hover </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org70dfd2f" class="outline-4">
+<h4 id="org70dfd2f"><span class="section-number-4">4.3.1</span> Sibling Selectors Overview</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>h2 ~ p</code></td>
+<td class="org-left">General Sibling Selector</td>
+<td class="org-left">Selects an element that follows anywhere after the prior element, in which both elements share the same parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>h2 + p</code></td>
+<td class="org-left">Adjacent Sibling Selector</td>
+<td class="org-left">Selects an element that follows directly after the prior element, in which both elements share the same parent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6847dbc" class="outline-2">
+<h2 id="org6847dbc"><span class="section-number-2">5</span> Attribute Selectors</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Some of the common selectors looked at early may also be defined as
+attribute selectors, in which an element is selected based up on its
+class or ID value. These class and ID attribute selectors are widely
+used and extremely powerful but only the beginning. Other
+<a href="http://www.css3.info/preview/attribute-selectors/">attribute
+selectors</a> have emerged over the years, specifically taking a large
+leap forward with CSS3. Now elements can be selected based on whether an
+attribute is present and what its value may contain.
+</p>
+</div>
+
+<div id="outline-container-orgde4354c" class="outline-3">
+<h3 id="orgde4354c"><span class="section-number-3">5.1</span> Attribute Present Selector</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+The first attribute selector identifies an element based on whether it
+includes an attribute or not, regardless of any actual value. To select
+an element based on if an attribute is present or not simply include the
+attribute name in square brackets, <code>[]</code>, within a selector. The square
+brackets may or may not follow any qualifier such as an element type or
+class, all depending on the level of specificity desired.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a[target] </span>{...}
+</pre>
+</div>
+
+<pre class="example">
+&lt;a href="#" target="_blank"&gt;...&lt;/a&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1e3704c" class="outline-3">
+<h3 id="org1e3704c"><span class="section-number-3">5.2</span> Attribute Equals Selector</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+To identify an element with a specific, and exact matching, attribute
+value the same selector from before may be used, however this time
+inside of the square brackets following the attribute name, include the
+desired matching value. Inside the square brackets should be the
+attribute name followed by an equals sign, <code>=</code>, quotations, <code>""</code>, and
+inside of the quotations should be the desired matching attribute value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css">a[href=<span style="color: #E6DB74;">"http://google.com/"</span>] {...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"http://google.com/"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org84946f2" class="outline-3">
+<h3 id="org84946f2"><span class="section-number-3">5.3</span> Attribute Contains Selector</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+When looking to find an element based on part of an attribute value, but
+not an exact match, the asterisk character, <code>*</code>, may be used within the
+square brackets of a selector. The asterisk should fall just after the
+attribute name, directly before the equals sign. Doing so denotes that
+the value to follow only needs to appear, or be contained, within the
+attribute value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a[href*=</span><span style="color: #E6DB74;">"login"</span><span style="color: #A6E22E;">] </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"/login.php"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0613ef" class="outline-3">
+<h3 id="orga0613ef"><span class="section-number-3">5.4</span> Attribute Begins With Selector</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+In addition to selecting an element based on if an attribute value
+contains a stated value, it is also possible to select an element based
+on what an attribute value begins with. Using a circumflex accent, <code>^</code>,
+within the square brackets of a selector between the attribute name and
+equals sign denotes that the attribute value should begin with the
+stated value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css">a[href^=<span style="color: #E6DB74;">"https://"</span>] {...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"https://chase.com/"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0aa42f7" class="outline-3">
+<h3 id="org0aa42f7"><span class="section-number-3">5.5</span> Attribute Ends With Selector</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Opposite of the begins with selector, there is also an ends with
+attribute selector. Instead of using the circumflex accent, the ends
+with attribute selector uses the dollar sign, <code>$</code>, within the square
+brackets of a selector between the attribute name and equals sign. Using
+the dollar sign denotes that the attribute value needs to end with the
+stated value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".pdf"</span><span style="color: #A6E22E;">] </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"/docs/menu.pdf"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc5c4b67" class="outline-3">
+<h3 id="orgc5c4b67"><span class="section-number-3">5.6</span> Attribute Spaced Selector</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+At times attribute values may be spaced apart, in which only one of the
+words needs to be matched in order to make a selection. In this event
+using the tilde character, <code>~</code>, within the square brackets of a selector
+between the attribute name and equals sign denotes an attribute value
+that should be whitespace-separated, with one word matching the exact
+stated value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a[rel~=</span><span style="color: #E6DB74;">"tag"</span><span style="color: #A6E22E;">] </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span> <span style="color: #FD971F;">rel</span>=<span style="color: #E6DB74;">"tag nofollow"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd0e419" class="outline-3">
+<h3 id="orgcd0e419"><span class="section-number-3">5.7</span> Attribute Hyphenated Selector</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+When an attribute value is hyphen-separated, rather than
+whitespace-separated, the vertical line character, <code>|</code>, may be used
+within the square brackets of a selector between the attribute name and
+equals sign. The vertical line denotes that the attribute value may be
+hyphen-separated however the hyphen-separated words must begin with the
+stated value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a[lang|=</span><span style="color: #E6DB74;">"en"</span><span style="color: #A6E22E;">] </span>{...}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#"</span> <span style="color: #FD971F;">lang</span>=<span style="color: #E6DB74;">"en-US"</span>&gt;...&lt;/<span style="color: #A6E22E;">a</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6eaa441" class="outline-3">
+<h3 id="org6eaa441"><span class="section-number-3">5.8</span> Attribute Selectors Example</h3>
+<div class="outline-text-3" id="text-5-8">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">ul</span>&gt;
+  &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#.pdf"</span>&gt;PDF Document&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+  &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#.doc"</span>&gt;Word Document&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+  &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#.jpg"</span>&gt;Image File&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+  &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#.mp3"</span>&gt;Audio File&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+  &lt;<span style="color: #A6E22E;">li</span>&gt;&lt;<span style="color: #A6E22E;">a</span> <span style="color: #FD971F;">href</span>=<span style="color: #E6DB74;">"#.mp4"</span>&gt;Video File&lt;/<span style="color: #A6E22E;">a</span>&gt;&lt;/<span style="color: #A6E22E;">li</span>&gt;
+&lt;/<span style="color: #A6E22E;">ul</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">ul </span>{
+  <span style="color: #F92672;">list-style</span>: none;
+  <span style="color: #F92672;">margin</span>: 0;
+  <span style="color: #F92672;">padding</span>: 0;
+}
+<span style="color: #A6E22E;">a </span>{
+  <span style="color: #F92672;">background-position</span>: 0 50%;
+  <span style="color: #F92672;">background-repeat</span>: no-repeat;
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #0087cc;">#0087cc</span>;
+  <span style="color: #F92672;">padding-left</span>: 22px;
+  <span style="color: #F92672;">text-decoration</span>: none;
+}
+<span style="color: #A6E22E;">a:hover </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+<span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".pdf"</span><span style="color: #A6E22E;">] </span>{
+  <span style="color: #F92672;">background-image</span>: url(<span style="color: #E6DB74;">"images/pdf.png"</span>);
+}
+<span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".doc"</span><span style="color: #A6E22E;">] </span>{
+  <span style="color: #F92672;">background-image</span>: url(<span style="color: #E6DB74;">"images/doc.png"</span>);
+}
+<span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".jpg"</span><span style="color: #A6E22E;">] </span>{
+  <span style="color: #F92672;">background-image</span>: url(<span style="color: #E6DB74;">"images/image.png"</span>);
+}
+<span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".mp3"</span><span style="color: #A6E22E;">] </span>{
+  <span style="color: #F92672;">background-image</span>: url(<span style="color: #E6DB74;">"images/audio.png"</span>);
+}
+<span style="color: #A6E22E;">a[href$=</span><span style="color: #E6DB74;">".mp4"</span><span style="color: #A6E22E;">] </span>{
+  <span style="color: #F92672;">background-image</span>: url(<span style="color: #E6DB74;">"images/video.png"</span>);
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfc42672" class="outline-4">
+<h4 id="orgfc42672"><span class="section-number-4">5.8.1</span> Attribute Selectors Overview</h4>
+<div class="outline-text-4" id="text-5-8-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>a[target]</code></td>
+<td class="org-left">Attribute Present Selector</td>
+<td class="org-left">Selects an element if the given attribute is present</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[href="http://google.com/"]</code></td>
+<td class="org-left">Attribute Equals Selector</td>
+<td class="org-left">Selects an element if the given attribute value exactly matches the value stated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[href*="login"]</code></td>
+<td class="org-left">Attribute Contains Selector</td>
+<td class="org-left">Selects an element if the given attribute value contains at least once instance of the value stated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[href^="https://"]</code></td>
+<td class="org-left">Attribute Begins With Selector</td>
+<td class="org-left">Selects an element if the given attribute value begins with the value stated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[href$=".pdf"]</code></td>
+<td class="org-left">Attribute Ends With Selector</td>
+<td class="org-left">Selects an element if the given attribute value ends with the value stated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[rel~="tag"]</code></td>
+<td class="org-left">Attribute Spaced Selector</td>
+<td class="org-left">Selects an element if the given attribute value is whitespace-separated with one word being exactly as stated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a[lang</code>&vert; <code>="en"]</code></td>
+<td class="org-left">Attribute Hyphenated Selector</td>
+<td class="org-left">Selects an element if the given attribute value is hyphen-separated and begins with the word stated</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1902433" class="outline-2">
+<h2 id="org1902433"><span class="section-number-2">6</span> Pseudo-classes</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Pseudo-classes are similar to regular classes in HTML however they are not directly
+stated within the markup, instead they are a dynamically populated as a
+result of users actions or the document structure. The most common
+pseudo-class, and one you've likely seen before, is <code>:hover</code>. Notice how
+this pseudo-class begins with the colon character, <code>:</code>, as will all
+other pseudo-classes.
+</p>
+</div>
+
+<div id="outline-container-org80a3e3b" class="outline-3">
+<h3 id="org80a3e3b"><span class="section-number-3">6.1</span> Link Pseudo-classes</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Some of the more basic pseudo-classes include two revolving around links
+specifically. The <code>:link</code> and <code>:visited</code> pseudo-classes define if a link
+has or hasn't been visited. To style an anchor which has not been
+visited the <code>:link</code> pseudo-class comes into play, where the <code>:visited</code>
+pseudo-class styles links that a user has already visited based on their
+browsing history.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a:link </span>{...}
+<span style="color: #A6E22E;">a:visited </span>{...}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbcbb78b" class="outline-3">
+<h3 id="orgbcbb78b"><span class="section-number-3">6.2</span> User Action Pseudo-classes</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Based on a users actions different pseudo-classes may be dynamically
+applied to an element, of which include the <code>:hover</code>, <code>:active</code>, and
+<code>:focus</code> pseudo-classes. The <code>:hover</code> pseudo-class is applied to an
+element when a user moves their cursor over the element, most commonly
+used with anchor elements. The <code>:active</code> pseudo-class is applied to an
+element when a user engages an element, such as clicking on an element.
+Lastly, the <code>:focus</code> pseudo-class is applied to an element when a user
+has made an element the focus point of the page, often by using the
+keyboard to tab from one element to another.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">a:hover </span>{...}
+<span style="color: #A6E22E;">a:active </span>{...}
+<span style="color: #A6E22E;">a:focus </span>{...}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org075adb2" class="outline-3">
+<h3 id="org075adb2"><span class="section-number-3">6.3</span> User Interface State Pseudo-classes</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+As with the link pseudo-classes there are also some pseudo-classes
+generated around the user interface state of elements, particularly
+within form elements. These user interface element state pseudo-classes
+include <code>:enabled</code>, <code>:disabled</code>, <code>:checked</code>, and <code>:indeterminate</code>.
+</p>
+
+<p>
+The <code>:enabled</code> pseudo-class selects an input that is in the default
+state of enabled and available for use, where the <code>:disabled</code>
+pseudo-class selects an input that has the <code>disabled</code> attribute tied to
+it. Many browsers by default will fade out disabled inputs to inform
+users that the input is not available for interaction, however those
+styles may be adjusted as wished with the <code>:disabled</code> pseudo-class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">input:enabled </span>{...}
+<span style="color: #A6E22E;">input:disabled </span>{...}
+</pre>
+</div>
+
+<p>
+The last two user interface element state pseudo-classes of <code>:checked</code>
+and <code>:indeterminate</code> revolve around checkbox and radio button input
+elements. The <code>:checked</code> pseudo-class selects checkboxes or radio
+buttons that are, as you may expect, checked. When a checkbox or radio
+button has neither been selected or unselected it lives in an
+indeterminate state, from which the <code>:indeterminate</code> pseudo-class can be
+used to target these elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">input:checked </span>{...}
+<span style="color: #A6E22E;">input:indeterminate </span>{...}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49eb049" class="outline-3">
+<h3 id="org49eb049"><span class="section-number-3">6.4</span> Structural &amp; Position Pseudo-classes</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+A handful of pseudo-classes are structural and position based, in which
+they are determined based off where elements reside in the document
+tree. These structural and position based pseudo-classes come in a few
+different shapes and sizes, each of which provides their own unique
+function. Some pseudo-classes have been around longer than others,
+however CSS3 brought way of an entire new set of pseudo-classes to
+supplement the existing ones.
+</p>
+</div>
+
+
+<div id="outline-container-org34138c3" class="outline-4">
+<h4 id="org34138c3"><span class="section-number-4">6.4.1</span> :first-child, :last-child, &amp; :only-child</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<p>
+The first structural and position based pseudo-classes one is likely to
+come across are the <code>:first-child</code>, <code>:last-child</code>, and <code>:only-child</code>
+pseudo-classes. The <code>:first-child</code> pseudo-class will select an element
+if it's the first child within its parent, while the <code>:last-child</code>
+pseudo-class will select an element if it's the last element within its
+parent. These pseudo-classes are prefect for selecting the first or last
+items in a list and so forth. Additionally, the <code>:only-child</code> will
+select an element if it is the only element within a parent.
+Alternately, the <code>:only-child</code> pseudo-class could be written as
+<code>:first-child:last-child</code>, however <code>:only-child</code> holds a lower
+specificity.
+</p>
+
+<p>
+Here the selector <code>li:first-child</code> identifies the first list item within
+a list, while the selector <code>li:last-child</code> identifies the last list item
+within a list, thus lines 2 and 10 are selected. The selector
+<code>div:only-child</code> is looking for a division which is the single child of
+a parent element, without any other other siblings. In this case line 4
+is selected as it is the only division within the specific list item.
+</p>
+
+<pre class="example">
+li:first-child {...}
+li:last-child {...}
+div:only-child {...}
+</pre>
+
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;
+    &lt;div&gt;This div will be selected&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div&gt;...&lt;/div&gt;
+    &lt;div&gt;...&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgceb12b7" class="outline-4">
+<h4 id="orgceb12b7"><span class="section-number-4">6.4.2</span> :first-of-type, :last-of-type, &amp; :only-of-type</h4>
+<div class="outline-text-4" id="text-6-4-2">
+<p>
+Finding the first, last, and only children of a parent is pretty
+helpful, and often all that is needed. However sometimes you only want
+to select the first, last, or only child of a specific type of element.
+For example, should you only want to select the first or last paragraph
+within an article, or perhaps the only image within an article.
+Fortunately this is where the <code>:first-of-type</code>, <code>:last-of-type</code>, and
+<code>:only-of-type</code> pseudo-selectors come into place.
+</p>
+
+<p>
+The <code>:first-of-type</code> pseudo-class will select the first element of its
+type within a parent, while the <code>:last-of-type</code> pseudo-class will select
+the last element of its type within a parent. The <code>:only-of-type</code>
+pseudo-class will select an element if it is the only of its type within
+a parent.
+</p>
+
+<p>
+In the example below the <code>p:first-of-type</code> and <code>p:last-of-type</code>
+pseudo-classes select the first and last paragraphs within the article
+respectively, regardless if they are actually the first or last children
+within the article. Lines 3 and 6 are selected reflex these selectors.
+The <code>img:only-of-type</code> selector identifies the image on line 5 as it is
+the only image to appear within the article, thus also selected.
+</p>
+
+<pre class="example">
+p:first-of-type {...}
+p:last-of-type {...}
+img:only-of-type {...}
+</pre>
+
+<pre class="example">
+&lt;article&gt;
+  &lt;h1&gt;...&lt;/h1&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;img src="#"&gt;&lt;!-- This image will be selected --&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;h6&gt;...&lt;/h6&gt;
+&lt;/article&gt;
+</pre>
+
+
+<p>
+Lastly there are a few structural and position based pseudo-classes that
+select elements based on a number or an algebraic expression. These
+pseudo-classes include <code>:nth-child(n)</code>, <code>:nth-last-child(n)</code>,
+<code>:nth-of-type(n)</code>, and <code>:nth-last-of-type(n)</code>. All of these unique
+pseudo-classes are prefixed with <code>nth</code> and accept a number or expression
+inside of the parenthesis, indicated by the character <code>n</code> argument.
+</p>
+
+<p>
+The number or expression that falls within the parenthesis determines
+exactly what element, or elements, are to be selected. Using a number
+outright will count individual elements from the beginning or end of the
+document tree and then select one element, while using an expression
+will count numerous elements from the beginning or end of the document
+tree and select them in groups or multiples.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org89929a2" class="outline-4">
+<h4 id="org89929a2"><span class="section-number-4">6.4.3</span> Using Pseudo-class Numbers &amp; Expressions</h4>
+<div class="outline-text-4" id="text-6-4-3">
+<p>
+As mentioned, using numbers outright within a pseudo-class will count
+from the beginning, or end, of the document tree and select one element
+accordingly. For example, the <code>li:nth-child(4)</code> selector will select the
+fourth list item within a list. Counting begins with the first list item
+and increases by one for each list item, until finally locating and
+selecting the forth item. When using a number outright it must be a
+positive number.
+</p>
+
+<p>
+<a href="http://reference.sitepoint.com/css/understandingnthchildexpressions">Expressions
+for pseudo-classes</a> fall in the format of <code>an</code>, <code>an+b</code>, <code>an-b</code>, <code>n+b</code>,
+<code>-n+b</code>, and <code>-an+b</code>. The same expression may be translated and read as
+<code>(a×n)±b</code>. The <code>a</code> variable stands for the multiplier in which elements
+will be counted in while the <code>b</code> variable stands for where the counting
+will begin or take place.
+</p>
+
+<p>
+For example, the <code>li:nth-child(3n)</code> selector will identify every third
+list item within a list. Using the expression this equates to <code>3×0</code>,
+<code>3×1</code>, <code>3×2</code>, and so forth. As you can see the results of this
+expression lead to the third, sixth, and every element a multiple of
+three being selected.
+</p>
+
+<p>
+Additionally, the <code>odd</code> and <code>even</code> keyword values may be used. As
+expected, these will select odd or even elements respectively. Should
+keyword values not be appealing the expression of <code>2n+1</code> would select
+all odd elements while the expression of <code>2n</code> would select all even
+elements.
+</p>
+
+<p>
+Using the <code>li:nth-child(4n+7)</code> selector will identify every forth list
+item starting with the seventh list item. Again, using the expression
+this equates to <code>(4×0)+7</code>, <code>(4×1)+7</code>, <code>(4×2)+7</code>, and so forth. The
+results of this expression leading to the seventh, eleventh, fifteenth,
+and every element a multiple of four here on out being selected.
+</p>
+
+<p>
+Using the <code>n</code> argument without being prefixed by a number results in the
+<code>a</code> variable being interpreted as <code>1</code>. With the <code>li:nth-child(n+5)</code>
+selector every list item will be selected starting with the fifth list
+item, leaving the first four list items unselected. Within the
+expression this breaks down as <code>(1×0)+5</code>, <code>(1×1)+5</code>, <code>(1×2)+5</code>, and so
+forth.
+</p>
+
+<p>
+To make things a bit more complicated negative numbers may also be used.
+For example, the <code>li:nth-child(6n-4)</code> selector will start counting every
+sixth list item starting at negative four, selecting the second, eighth,
+and fourteenth list items and so forth. The same selector,
+<code>li:nth-child(6n-4)</code>, could also be written as <code>li:nth-child(6n+2)</code>,
+without the use of a negative <code>b</code> variable.
+</p>
+
+<p>
+A negative <code>a</code> variable, or a negative <code>n</code> argument, must be followed by
+a positive <code>b</code> variable. When preceded by a negative <code>a</code> variable or
+negative <code>n</code> argument the <code>b</code> variable identifies how high the counting
+will reach. For example, the <code>li:nth-child(-3n+12)</code> selector will select
+every third list item within the first twelve list items. The selector
+<code>li:nth-child(-n+9)</code> will select the first nine list items within a list
+as the <code>n</code> argument, without any stated <code>a</code> variable, is defaulted to
+<code>-1</code>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcc688ff" class="outline-4">
+<h4 id="orgcc688ff"><span class="section-number-4">6.4.4</span> :nth-child(n) &amp; :nth-last-child(n)</h4>
+<div class="outline-text-4" id="text-6-4-4">
+<p>
+With a general understanding of how the pseudo-class numbers and
+expressions work let's take a look at the actual pseudo-classes in which
+these numbers and expressions may be used, the first of which being the
+<code>:nth-child(n)</code> and <code>:nth-last-child(n)</code> pseudo-classes. These
+pseudo-classes work a bit like the <code>:first-child</code> and <code>:last-child</code>
+pseudo-classes in that they look, and count, all of the elements within
+a parent and only select the element specifically identified. The
+<code>:nth-child(n)</code> works from the beginning of the document tree while the
+<code>:nth-last-child(n)</code> works from the end of the document tree.
+</p>
+
+<p>
+Using the <code>:nth-child(n)</code> pseudo-class, let's look at the
+<code>li:nth-child(3n)</code> selector. The selector here will identify every third
+list item, thus lines 4 and 7 are selected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">li:nth-child(3n) </span>{...}
+</pre>
+</div>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Using a different expression within the <code>:nth-child(n)</code> pseudo-class
+will yield a different selection. The <code>li:nth-child(2n+3)</code> selector, for
+example, will identify every second list item starting with the third
+and then onward. As a result, the list items lines 4 and 6 are selected.
+</p>
+
+<pre class="example">
+li:nth-child(2n+3) {...}
+</pre>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Changing the expression again, this time with a negative value, yields
+new selection. Here the <code>li:nth-child(-n+4)</code> selector is identifying the
+top four list items, leaving the rest of the list items unselected, thus
+lines 2 through 5 are selected.
+</p>
+
+<pre class="example">
+li:nth-child(-n+4) {...}
+</pre>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Adding an negative integer before the <code>n</code> argument changes the selection
+again. Here the <code>li:nth-child(-2n+5)</code> selector identifies every second
+list item within the first five list items, thus the list items on lines
+2, 4, and 6 are selected.
+</p>
+
+<pre class="example">
+li:nth-child(-2n+5) {...}
+</pre>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Changing from the <code>:nth-child(n)</code> pseudo-class to the
+<code>:nth-last-child(n)</code> pseudo-class switches the direction of counting,
+with counting starting from the end of the document tree using the
+<code>:nth-last-child(n)</code> pseudo-class. The <code>li:nth-last-child(3n+2)</code>
+selector, for example, will identify every third list item starting from
+the second to last item in a list, moving towards the beginning of the
+list. Here the list items on lines 3 and 6 are selected.
+</p>
+
+<pre class="example">
+li:nth-last-child(3n+2) {...}
+</pre>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+  &lt;li&gt;This list item will be selected&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgb839639" class="outline-4">
+<h4 id="orgb839639"><span class="section-number-4">6.4.5</span> :nth-of-type(n) &amp; :nth-last-of-type(n)</h4>
+<div class="outline-text-4" id="text-6-4-5">
+<p>
+The <code>:nth-of-type(n)</code> and <code>:nth-last-of-type(n)</code> pseudo-classes are very
+similar to that of the <code>:nth-child(n)</code> and <code>:nth-last-child(n)</code>
+pseudo-classes, however instead of counting every element within a
+parent the <code>:nth-of-type(n)</code> and <code>:nth-last-of-type(n)</code> pseudo-classes
+only count elements of their own type. For example, when counting
+paragraphs within an article, the <code>:nth-of-type(n)</code> and
+<code>:nth-last-of-type(n)</code> pseudo-classes will skip any headings, divisions,
+or miscellaneous elements that are not paragraphs, while the
+<code>:nth-child(n)</code> and <code>:nth-last-child(n)</code> would count every element, no
+matter it's type, only selecting the ones that match the element within
+the stated selector. Additionally, all of the same expression
+possibilities used within the <code>:nth-child(n)</code> and <code>:nth-last-child(n)</code>
+pseudo-classes are also available within the <code>:nth-of-type(n)</code> and
+<code>:nth-last-of-type(n)</code> pseudo-classes.
+</p>
+
+<p>
+Using the <code>:nth-of-type(n)</code> pseudo-class within the <code>p:nth-of-type(3n)</code>
+selector we are able to identify every third paragraph within a parent,
+regardless of other sibling elements within the parent. Here the
+paragraphs on lines 5 and 9 are selected.
+</p>
+
+<pre class="example">
+p:nth-of-type(3n) {...}
+</pre>
+
+<pre class="example">
+&lt;article&gt;
+  &lt;h1&gt;...&lt;/h1&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;h2&gt;...&lt;/h2&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+&lt;/article&gt;
+</pre>
+
+<p>
+As with the <code>:nth-child(n)</code> and <code>:nth-last-child(n)</code> pseudo-classes, the
+primary difference between the <code>:nth-of-type(n)</code> and
+<code>:nth-last-of-type(n)</code> pseudo-classes is that the <code>:nth-of-type(n)</code>
+pseudo-class counts elements from the beginning of the document tree and
+the <code>:nth-last-of-type(n)</code> pseudo-class counts elements from the end of
+the document tree.
+</p>
+
+<p>
+Using the <code>:nth-last-of-type(n)</code> pseudo-class we can write the
+<code>p:nth-last-of-type(2n+1)</code> selector which identifies every second
+paragraph from the end of a parent element starting with the last
+paragraph. Here the paragraphs on lines 4, 7, and 9 are selected.
+</p>
+
+<pre class="example">
+p:nth-last-of-type(2n+1) {...}
+</pre>
+
+<pre class="example">
+&lt;article&gt;
+  &lt;h1&gt;...&lt;/h1&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;h2&gt;...&lt;/h2&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;This paragraph will be selected&lt;/p&gt;
+&lt;/article&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfad35d3" class="outline-3">
+<h3 id="orgfad35d3"><span class="section-number-3">6.5</span> Target Pseudo-class</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+The <code>:target</code> pseudo-class is used to style elements when an element's
+ID attribute value matches that of the URI fragment identifier. The
+fragment identifier within a URI can be recognized by the hash
+character, <code>#</code>, and what directly follows it. The URL
+<code>http://example.com/index.html#hello</code> includes the fragment identifier
+of <code>hello</code>. When this identifier matches the ID attribute value of an
+element on the page, <code>&lt;section id</code>"hello"&gt;= for example, that element
+may be identified and stylized using the <code>:target</code> pseudo-class.
+Fragment identifiers are most commonly seen when using
+<a href="http://learn.shayhowe.com/html-css/getting-to-know-html/#hyperlinks">on
+page links</a>, or linking to another part of the same page.
+</p>
+
+<p>
+Looking at the code below, if a user would visit a page with the URI
+fragment identifier of <code>#hello</code> the section with that same ID attribute
+value would be stylized accordingly using the <code>:target</code> pseudo-class. If
+the URI fragment identifier changes, and matches the ID attribute value
+of another section, that new section may be stylized using the same
+selector and pseudo-class from before.
+</p>
+
+<pre class="example">
+section:target {...}
+</pre>
+
+<pre class="example">
+&lt;section id="hello"&gt;...&lt;/section&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2abaa41" class="outline-3">
+<h3 id="org2abaa41"><span class="section-number-3">6.6</span> Empty Pseudo-class</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+The <code>:empty</code> pseudo-class allows elements that do not contain children
+or text nodes to be selected. Comments, processing instructions, and
+empty text nodes are not considered children and are not treated as
+such.
+</p>
+
+<p>
+Using the <code>div:empty</code> pseudo-class will identify divisions without any
+children or text nodes. Below the divisions on lines 2 and 3 are
+selected as they are completely empty. Even though the second division
+contains a comment it is not considered to be a child, thus leaving the
+division empty. The first division contains text, the third division
+contains one blank text space, and the last division contains a <code>strong</code>
+child element, thus they are all ruled out and are not selected.
+</p>
+
+<pre class="example">
+div:empty {...}
+</pre>
+
+<pre class="example">
+&lt;div&gt;Hello&lt;/div&gt;
+&lt;div&gt;&lt;!-- Coming soon --&gt;&lt;/div&gt;&lt;!-- This div will be selected --&gt;
+&lt;div&gt;&lt;/div&gt;&lt;!-- This div will be selected --&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/div&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org280f88a" class="outline-3">
+<h3 id="org280f88a"><span class="section-number-3">6.7</span> Negation Pseudo-class</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+The negation pseudo-class, <code>:not(x)</code>, is a pseudo-class that takes an
+argument which is filtered out from the selection to be made. The
+<code>p:not(.intro)</code> selector uses the negation pseudo-class to identify
+every paragraph element without the class of <code>intro</code>. The paragraph
+element is identified at the beginning of the selector followed by the
+<code>:not(x)</code> pseudo-class. Inside of the parentheses falls the negation
+selector, the class of <code>.intro</code> in this case.
+</p>
+
+<p>
+Below both the <code>div:not(.awesome)</code> and <code>:not(div)</code> selectors use the
+<code>:not(x)</code> pseudo-class. The <code>div:not(.awesome)</code> selector identifies any
+division without the class of <code>awesome</code>, while the <code>:not(div)</code> selector
+identifies any element that isn't a division. As a result the division
+on line 1 is selected as well as the two sections on lines 3 and 4, thus
+they are marked bold. The only element not selected is the division with
+the class of <code>awesome</code>, as it falls outside of the two negation
+pseudo-classes.
+</p>
+
+<pre class="example">
+div:not(.awesome) {...}
+:not(div) {...}
+</pre>
+
+<pre class="example">
+&lt;div&gt;This div will be selected&lt;/div&gt;
+&lt;div class="awesome"&gt;...&lt;/div&gt;
+&lt;section&gt;This section will be selected&lt;/section&gt;
+&lt;section class="awesome"&gt;This section will be selected&lt;/section&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd14fb8c" class="outline-3">
+<h3 id="orgd14fb8c"><span class="section-number-3">6.8</span> Pseudo-classes Example</h3>
+<div class="outline-text-3" id="text-6-8">
+<pre class="example">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Number&lt;/th&gt;
+      &lt;th&gt;Player&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Height&lt;/th&gt;
+      &lt;th&gt;Weight&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Marco Belinelli&lt;/td&gt;
+      &lt;td&gt;G&lt;/td&gt;
+      &lt;td&gt;6-5&lt;/td&gt;
+      &lt;td&gt;195&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Carlos Boozer&lt;/td&gt;
+      &lt;td&gt;F&lt;/td&gt;
+      &lt;td&gt;6-9&lt;/td&gt;
+      &lt;td&gt;266&lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+
+
+<pre class="example">
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+th,
+td {
+  padding: 6px 15px;
+}
+th {
+  background: #42444e;
+  color: #fff;
+  text-align: left;
+}
+tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+td {
+  border-right: 1px solid #c6c9cc;
+  border-bottom: 1px solid #c6c9cc;
+}
+td:first-child {
+  border-left: 1px solid #c6c9cc;
+}
+tr:nth-child(even) td {
+  background: #eaeaed;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
+</pre>
+</div>
+
+<div id="outline-container-org8aecc40" class="outline-4">
+<h4 id="org8aecc40"><span class="section-number-4">6.8.1</span> Pseudo-classes Overview</h4>
+<div class="outline-text-4" id="text-6-8-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>a:link</code></td>
+<td class="org-left">Link Pseudo-class</td>
+<td class="org-left">Selects a link that has not been visited by a user</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a:visited</code></td>
+<td class="org-left">Link Pseudo-class</td>
+<td class="org-left">Selects a link that has been visited by a user</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a:hover</code></td>
+<td class="org-left">Action Pseudo-class</td>
+<td class="org-left">Selects an element when a user has hovered their cursor over it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a:active</code></td>
+<td class="org-left">Action Pseudo-class</td>
+<td class="org-left">Selects an element when a user has engaged it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a:focus</code></td>
+<td class="org-left">Action Pseudo-class</td>
+<td class="org-left">Selects an element when a user has made it their focus point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>input:enabled</code></td>
+<td class="org-left">State Pseudo-class</td>
+<td class="org-left">Selects an element in the default enabled state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>input:disabled</code></td>
+<td class="org-left">State Pseudo-class</td>
+<td class="org-left">Selects an element in the disabled state, by way of the disabled attribute</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>input:checked</code></td>
+<td class="org-left">State Pseudo-class</td>
+<td class="org-left">Selects a checkbox or radio button that has been checked</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>input:indeterminate</code></td>
+<td class="org-left">State Pseudo-class</td>
+<td class="org-left">Selects a checkbox or radio button that neither been checked or unchecked, leaving it in an indeterminate state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>li:first-child</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the first within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>li:last-child</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the last within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>div:only-child</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the only element within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p:first-of-type</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the first of it's type within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p:last-of-type</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the last of it's type within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>img:only-of-type</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that is the only of it's type within a parent</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>li:nth-child(2n+3)</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that matches the given number or expression, counting all elements from the beginning of the document tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>li:nth-last-child(3n+2)</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that matches the given number or expression, counting all elements from the end of the document tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p:nth-of-type(3n)</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that matches the given number or expression, counting only elements of it's type from the beginning of the document tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p:nth-last-of-type(2n+1)</code></td>
+<td class="org-left">Structural Pseudo-class</td>
+<td class="org-left">Selects an element that matches the given number or expression, counting only elements of it's type from the end of the document tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>section:target</code></td>
+<td class="org-left">Target Pseudo-class</td>
+<td class="org-left">Selects an element whose ID attribute value matches that of the URI fragment identifier</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>div:empty</code></td>
+<td class="org-left">Empty Pseudo-class</td>
+<td class="org-left">Selects an element that does not contain any children or text nodes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>div:not(.awesome)</code></td>
+<td class="org-left">Negation Pseudo-class</td>
+<td class="org-left">Selects an element not represented by the stated argument</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb3d7e4" class="outline-2">
+<h2 id="orgdb3d7e4"><span class="section-number-2">7</span> Pseudo-elements</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Pseudo-elements are dynamic elements that don't exist in the document
+tree, and when used within selectors these
+<a href="http://coding.smashingmagazine.com/2009/08/17/taming-advanced-css-selectors/">pseudo-elements</a>
+allow unique parts of the page to be stylized. One important point to
+note, only one pseudo-element may be used within a selector at a given
+time.
+</p>
+</div>
+
+<div id="outline-container-orga29b02a" class="outline-3">
+<h3 id="orga29b02a"><span class="section-number-3">7.1</span> Textual Pseudo-elements</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+The first pseudo-elements ever released were the <code>:first-letter</code> and
+<code>:first-line</code> textual pseudo-elements. The <code>:first-letter</code>
+pseudo-element will identify the first letter of text within an element,
+while the <code>:first-line</code> pseudo-element will identify the first line of
+text within an element.
+</p>
+
+<p>
+In the demonstration below the first letter of the paragraph with the
+class of <code>alpha</code> is set in a larger font size and colored orange, as is
+the first line of the paragraph with the class of <code>bravo</code>. These
+selections are made by use of the <code>:first-letter</code> and <code>:first-line</code>
+textual pseudo-elements respectively.
+</p>
+
+<pre class="example">
+.alpha:first-letter,
+.bravo:first-line {
+  color: #ff7b29;
+  font-size: 18px;
+}
+</pre>
+
+<pre class="example">
+&lt;p class="alpha"&gt;Lorem ipsum dolor...&lt;/p&gt;
+&lt;p class="bravo"&gt;Integer eget enim...&lt;/p&gt;
+</pre>
+</div>
+
+
+<div id="outline-container-org66e961d" class="outline-4">
+<h4 id="org66e961d"><span class="section-number-4">7.1.1</span> Textual Pseudo-elements Demo</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">body </span>{
+ <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #666;">#666</span>;
+ <span style="color: #F92672;">font</span>: 14px/24px <span style="color: #E6DB74;">"Open Sans"</span>, <span style="color: #E6DB74;">"HelveticaNeue-Light"</span>, <span style="color: #E6DB74;">"Helvetica Neue Light"</span>, <span style="color: #E6DB74;">"Helvetica Neue"</span>, Helvetica, Arial, <span style="color: #E6DB74;">"Lucida Grande"</span>, Sans-Serif;
+}
+.alpha:first-letter,
+<span style="color: #A6E22E;">.bravo:first-line </span>{
+ <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+ <span style="color: #F92672;">font-size</span>: 18px;
+}
+<span style="color: #A6E22E;">p </span>{
+ <span style="color: #F92672;">margin-bottom</span>: 24px;
+}
+<span style="color: #A6E22E;">p:last-of-type </span>{
+ <span style="color: #F92672;">margin-bottom</span>: 0;
+}
+.alpha:first-letter,
+<span style="color: #A6E22E;">.bravo:first-line </span>{
+  <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+  <span style="color: #F92672;">font-size</span>: 18px;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">p</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"alpha"</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum dignissim leo a interdum. Duis eu orci velit.&lt;/<span style="color: #A6E22E;">p</span>&gt;
+&lt;<span style="color: #A6E22E;">p</span> <span style="color: #FD971F;">class</span>=<span style="color: #E6DB74;">"bravo"</span>&gt;Integer eget enim pulvinar leo consectetur tincidunt ut sed erat. Etiam elit velit, molestie eu rutrum vel, vehicula feugiat augue. Vestibulum elementum dictum turpis ac blandit.&lt;/<span style="color: #A6E22E;">p</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org75be012" class="outline-3">
+<h3 id="org75be012"><span class="section-number-3">7.2</span> Generated Content Pseudo-elements</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+The <code>:before</code> and <code>:after</code> generated content pseudo-elements create new
+inline level pseudo-elements just inside the selected element. Most
+commonly these pseudo-elements are used in conjunction with the
+<code>content</code> property to add insignificant information to a page, however
+that is not always the case. Additional uses of these psuedo-elements
+may be to add user interface components to the page without having to
+clutter the document with unsemantic elements.
+</p>
+
+<p>
+The <code>:before</code> pseudo-element creates an pseudo-element before, or in
+front of, the selected element, while the <code>:after</code> pseudo-element
+creates an pseudo-element after, or behind, the selected element. These
+pseudo-elements appear nested within the selected element, not outside
+of it. Below the <code>:after</code> pseudo-element is used to display the <code>href</code>
+attribute value of anchor links within parentheses after the actual
+links. The information here is helpful, but not ultimately necessary
+should a browser not support these pseudo-elements.
+</p>
+
+<pre class="example">
+a:after {
+  color: #9799a7;
+  content: " (" attr(href) ")";
+  font-size: 11px;
+}
+</pre>
+
+<pre class="example">
+&lt;a href="http://google.com/"&gt;Search the Web&lt;/a&gt;
+&lt;a href="http://learn.shayhowe.com/"&gt;Learn How to Build Websites&lt;/a&gt;
+</pre>
+</div>
+
+<div id="outline-container-org0f3901e" class="outline-4">
+<h4 id="org0f3901e"><span class="section-number-4">7.2.1</span> Generated Content Pseudo-elements Demo</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<pre class="example">
+body {
+  font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+}
+a {
+  color: #0087cc;
+  text-decoration: none;
+}
+a:hover {
+color: #ff7b29;
+}
+a:after {
+  color: #9799a7;
+  content: " (" attr(href) ")";
+  font-size: 11px;
+}
+</pre>
+
+<pre class="example">
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://google.com/"&gt;Search the Web&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://learn.shayhowe.com/"&gt;Learn How to Build Websites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org71ab6bf" class="outline-3">
+<h3 id="org71ab6bf"><span class="section-number-3">7.3</span> Fragment Pseudo-element</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+The <code>::selection</code> fragment pseudo-element identifies part of the
+document that has been selected, or highlighted, by a user's actions.
+The selection may then be stylized, however only using the <code>color</code>,
+<code>background</code>, <code>background-color</code>, and <code>text-shadow</code> properties. It is
+worth noting, the <code>background-image</code> property is ignore. While the
+shorthand <code>background</code> property may be used to add a color, any images
+will be ignored.
+</p>
+</div>
+
+
+<div id="outline-container-orgffab15a" class="outline-4">
+<h4 id="orgffab15a"><span class="section-number-4">7.3.1</span> Single Colon (:) versus Double Colons (::)</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<p>
+The fragment pseudo-element was added with CSS3 and in attempt to
+differentiate pseudo-classes from pseudo-elements the double colons were
+added to pseudo-elements. Fortunately most browsers will support both
+values, single or double colons, for pseudo-elements however the
+<code>::selection</code> pseudo-element must always start with double colons.
+</p>
+
+<p>
+When selecting any of the text within the demonstration below the
+background will appear orange and any text shadows will be removed
+thanks to the <code>::selection</code> fragment pseudo-element. Also note, the
+<code>::-moz-selection</code> Mozilla prefixed fragment pseudo-element has been
+added to ensure the best support for all browsers.
+</p>
+
+<pre class="example">
+::-moz-selection {
+    background: #ff7b29;
+}
+::selection {
+  background: #ff7b29;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf0c24d5" class="outline-3">
+<h3 id="orgf0c24d5"><span class="section-number-3">7.4</span> Pseudo-elements Example</h3>
+<div class="outline-text-3" id="text-7-4">
+<pre class="example">
+&lt;a class="arrow" href="#"&gt;Continue Reading&lt;/a&gt;
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">.arrow </span>{
+  <span style="color: #F92672;">background</span>: <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F92672;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #F92672;">display</span>: inline-block;
+  <span style="color: #F92672;">height</span>: 30px;
+  <span style="color: #F92672;">line-height</span>: 30px;
+  <span style="color: #F92672;">padding</span>: 0 12px;
+  <span style="color: #F92672;">position</span>: relative;
+  <span style="color: #F92672;">text-decoration</span>: none;
+}
+.arrow:before,
+<span style="color: #A6E22E;">.arrow:after </span>{
+  <span style="color: #F92672;">content</span>: <span style="color: #E6DB74;">""</span>;
+  <span style="color: #F92672;">height</span>: 0;
+  <span style="color: #F92672;">position</span>: absolute;
+  <span style="color: #F92672;">width</span>: 0;
+}
+<span style="color: #A6E22E;">.arrow:before </span>{
+  <span style="color: #F92672;">border-bottom</span>: 15px solid <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F92672;">border-left</span>: 15px solid transparent;
+  <span style="color: #F92672;">border-top</span>: 15px solid <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F92672;">left</span>: -15px;
+}
+<span style="color: #A6E22E;">.arrow:after </span>{
+  <span style="color: #F92672;">border-bottom</span>: 15px solid transparent;
+  <span style="color: #F92672;">border-left</span>: 15px solid <span style="color: #ffffff; background-color: #2db34a;">#2db34a</span>;
+  <span style="color: #F92672;">border-top</span>: 15px solid transparent;
+  <span style="color: #F92672;">right</span>: -15px;
+}
+<span style="color: #A6E22E;">.arrow:hover </span>{
+  <span style="color: #F92672;">background</span>: <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+<span style="color: #A6E22E;">.arrow:hover:before </span>{
+  <span style="color: #F92672;">border-bottom</span>: 15px solid <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+  <span style="color: #F92672;">border-top</span>: 15px solid <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+<span style="color: #A6E22E;">.arrow:hover:after </span>{
+  <span style="color: #F92672;">border-left</span>: 15px solid <span style="color: #ffffff; background-color: #ff7b29;">#ff7b29</span>;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge317072" class="outline-4">
+<h4 id="orge317072"><span class="section-number-4">7.4.1</span> Pseudo-elements Overview</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Classification</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>.alpha:first-letter</code></td>
+<td class="org-left">Textual Pseudo-elements</td>
+<td class="org-left">Selects the first letter of text within an element</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>.bravo:first-line</code></td>
+<td class="org-left">Textual Pseudo-elements</td>
+<td class="org-left">Selects the first line of text within an element</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>div:before</code></td>
+<td class="org-left">Generated Content</td>
+<td class="org-left">Creates a pseudo-element inside the selected element at the beginning</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a:after</code></td>
+<td class="org-left">Generated Content</td>
+<td class="org-left">Creates a pseudo-element inside the selected element at the end</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>::selection</code></td>
+<td class="org-left">Fragment Pseudo-element</td>
+<td class="org-left">Selects the part of a document which has been selected, or highlighted, by a users actions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org42bf462" class="outline-4">
+<h4 id="org42bf462"><span class="section-number-4">7.4.2</span> Selector Browser Support</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+While these selectors provide a variety of opportunity and the ability
+to do some truly amazing things with CSS, they are at times plagued by
+poor browser support. Before doing anything too critical check the
+selectors you are wishing to use across your visitors most common
+browsers, and then make the judgment call as to whether they are
+appropriate or not.
+</p>
+
+<p>
+CSS3.info provides a
+<a href="http://tools.css3.info/selectors-test/test.html">CSS3 Selectors Test</a>
+tool which will inform you as to which selectors are supported by the
+browser in use. It's also never a bad idea to check browser support
+directly from the vendor.
+</p>
+
+<p>
+Additionally, <a href="http://selectivizr.com/">Selectivizr</a>, a JavaScript
+utility, provides great support for these selectors in Internet Explorer
+6-8. More support, should it be necessary, can also be provided by
+<a href="http://api.jquery.com/category/selectors/">jQuery selectors</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb46422e" class="outline-4">
+<h4 id="orgb46422e"><span class="section-number-4">7.4.3</span> Selector Speed &amp; Performance</h4>
+<div class="outline-text-4" id="text-7-4-3">
+<p>
+It is important to pay attention the speed and performance of selectors,
+as using too many intricate selectors can slow down the rendering of a
+page. Be attentive and when a selector begins to look a bit foreign
+think about revisiting it, and seeing if a better solution can be found.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7cd020a" class="outline-2">
+<h2 id="org7cd020a"><span class="section-number-2">8</span> Introduction to the Cascade</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org24ba1ff" class="outline-3">
+<h3 id="org24ba1ff"><span class="section-number-3">8.1</span> Multiple Sources</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+The most common scenario authors will be concerned with are the style rules
+which are declared by the author, but a style sheet may originate from
+several different sources:
+</p>
+<ul class="org-ul">
+<li>The Author may specify style rules for a document</li>
+<li>The User may also specify style behaviors for viewing one or more documents -
+possibly through a special user interface or through a special external
+stylesheet.</li>
+<li>The browser will also have its own set of default rendering behaviors which,
+whether specified using an ACTUAL style sheet or by some other means
+accomplishes the same goal - behaving as if the browser has its own
+"default style sheet." This default style sheet is the base set of
+rendering rules - applied whether the user and author specify their own
+style sheet rules or not.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb908c22" class="outline-3">
+<h3 id="orgb908c22"><span class="section-number-3">8.2</span> Multiple Methods</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+In addition, style sheet rules may be specified using several different methods, any of which are legal:
+</p>
+
+<ul class="org-ul">
+<li><p>
+External Style Sheets (using the HTML LINK element)
+</p>
+<pre class="example">
+&lt;link rel="stylesheet" type="text/css" href="Path To stylesheet.css" /&gt;
+</pre></li>
+
+<li><p>
+Embedded Style Sheets (using the HTML STYLE element)
+</p>
+<pre class="example">
+&lt;style type="text/css"&gt;
+body {
+  font-size: 14px;
+}
+&lt;/style&gt;
+</pre></li>
+
+<li><p>
+Imported Style Sheets (@import)
+</p>
+<pre class="example">
+&lt;style type="text/css"&gt;
+  @import url(Path To stylesheet.css)
+&lt;/style&gt;
+</pre></li>
+
+<li><p>
+Inline Style Rules (using the HTML STYLE attribute])
+</p>
+<pre class="example">
+&lt;p style="font-size:14px;color:red;"&gt;Some text here...&lt;/p&gt;
+</pre></li>
+
+<li><p>
+Non-CSS rendering rules (eg: the HTML FONT element, that is deprecated in HTML5)
+</p>
+<pre class="example">
+&lt;font size="3" color="red"&gt;This is some text!&lt;/font&gt;
+&lt;!-- Not Supported in HTML5. --&gt;
+</pre></li>
+</ul>
+
+<p>
+When more than one style rule is specified for a single CSS selector or element,
+using any of these sources or methods, and they are in direct conflict with one
+another, what should happen? When all is said and done, CSS generates a single,
+cohesive "virtual" style sheet using all the style rules (explicitly stated or
+not) from all of these disparate sources; CSS "cascades" (combines) all of them
+together. When conflicts arise between style rules, resolution is determined
+using a weighted scale. Each style rule will carry a specific weight on this
+scale; when two or more rules are in conflict, the rule with the highest weight
+will "win" and be rendered.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Lowest Importance</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Highest Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Ownership</td>
+<td class="org-left">Browser Defaults</td>
+<td class="org-left">Reader's Style Sheet</td>
+<td class="org-left">Author's Style Sheet</td>
+</tr>
+
+<tr>
+<td class="org-left">Specification Method</td>
+<td class="org-left">Linked Style Sheet</td>
+<td class="org-left">Embedded Style Sheet</td>
+<td class="org-left">Inline Styles</td>
+</tr>
+
+<tr>
+<td class="org-left">Element Selector Specificity</td>
+<td class="org-left">Contextual Selector Depth</td>
+<td class="org-left">Class</td>
+<td class="org-left">ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org491bc25" class="outline-2">
+<h2 id="org491bc25"><span class="section-number-2">9</span> Inheritance</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Some values are inherited by the children of an element in the document tree,
+as described above. Each property defines whether it is inherited or not.
+</p>
+
+<p>
+Suppose there is an H1 element with an emphasizing element (EM) inside:
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">h1</span>&gt;The headline &lt;<span style="color: #A6E22E;">em</span>&gt;<span style="color: #222222; font-style: italic;">is</span>&lt;/<span style="color: #A6E22E;">em</span>&gt; important!&lt;/<span style="color: #A6E22E;">h1</span>&gt;
+</pre>
+</div>
+
+<p>
+If no color has been assigned to the EM element, the emphasized "is" will
+inherit the color of the parent element, so if H1 has the color blue, the EM
+element will likewise be in blue.
+</p>
+
+<p>
+When inheritance occurs, elements inherit computed values. The computed value
+from the parent element becomes both the specified value and the computed
+value on the child.
+</p>
+
+<p>
+For example, given the following style sheet:
+</p>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">body </span>{ <span style="color: #F92672;">font-size</span>: 10pt }
+<span style="color: #A6E22E;">h1 </span>{ <span style="color: #F92672;">font-size</span>: 130% }
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #A6E22E;">body</span>&gt;
+  &lt;<span style="color: #A6E22E;">h1</span>&gt;A &lt;<span style="color: #A6E22E;">em</span>&gt;<span style="color: #222222; font-style: italic;">large</span>&lt;/<span style="color: #A6E22E;">em</span>&gt; heading&lt;/<span style="color: #A6E22E;">h1</span>&gt;
+&lt;/<span style="color: #A6E22E;">body</span>&gt;
+</pre>
+</div>
+
+<p>
+the 'font-size' property for the H1 element will have the computed value
+'13pt' (130% times 10pt, the parent's value). Since the computed value of
+'font-size' is inherited, the EM element will have the computed value '13pt'
+as well. If the user agent does not have the 13pt font available, the actual
+value.
+</p>
+</div>
+
+<div id="outline-container-orgb3cb4d9" class="outline-3">
+<h3 id="orgb3cb4d9"><span class="section-number-3">9.1</span> The <code>!important</code> value</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+The important keyword makes a declaration take precedence over normal
+declarations—those that are not tagged with the important keyword.
+So <code>p { color: red ! important }</code> takes precedence over <code>p { color: green }</code>.
+</p>
+
+<p>
+The syntax for an important declaration is
+<code>property: value ! important</code>
+</p>
+
+<p>
+The relative importance of a rule also depends on its the source:
+whether it comes from a style sheet specified by the document author, the user or the user agent (default stylesheet).
+</p>
+
+<p>
+The order of declarations from least important to most important:
+</p>
+
+<ol class="org-ol">
+<li>user agent declarations</li>
+<li>user normal declarations</li>
+<li>author normal declarations</li>
+<li>author important declarations</li>
+<li>user important declarations</li>
+</ol>
+
+<p>
+User important declarations take precedence over everything else. This allows
+users to override the page designer's presentation to meet their needs.
+For example a user could override the text colours to be yellow on black in a
+large font to make the text easier to read.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd14e0e7" class="outline-3">
+<h3 id="orgd14e0e7"><span class="section-number-3">9.2</span> The <code>inherit</code> value</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Each property may also have a cascaded value of 'inherit', which means that,
+for a given element, the property takes the same specified value as the
+property for the element's parent. The 'inherit' value can be used to enforce
+inheritance of values, and it can also be used on properties that are not
+normally inherited.
+</p>
+
+<p>
+If the 'inherit' value is set on the root element, the property is assigned
+its initial value.
+</p>
+
+<p>
+In the example below, the 'color' and 'background' properties are set on the
+body element. On all other elements, the 'color' value will be inherited and
+the background will be transparent. If these rules are part of the user's
+style sheet, black text on a white background will be enforced throughout the
+document.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #A6E22E;">body </span>{
+ <span style="color: #F92672;">color</span>: <span style="color: #ffffff; background-color: #000000;">black</span> <span style="color: #F92672;">!important</span>;
+ <span style="color: #F92672;">background</span>: <span style="color: #000000; background-color: #ffffff;">white</span> <span style="color: #F92672;">!important</span>;
+}
+
+<span style="color: #A6E22E;">* </span>{
+ <span style="color: #F92672;">color</span>: inherit <span style="color: #F92672;">!important</span>;
+ <span style="color: #F92672;">background</span>: transparent <span style="color: #F92672;">!important</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2019-03-15 Fri 09:33</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	width: 100%;
+	background-color: #014d5d;
+}
+#navigacija {
+	width: 40%;
+	margin-top: 15px;
+	margin-left: 27%;
+	margin-right: 30%;
+	margin-bottom: 15px;
+}
+.topNaviagationLink {
+	display: inline;
+	
+}
+.topNaviagationLink a {
+	font: bold 12px Tahoma;
+	text-decoration: none;
+	color: white;
+	padding: 20px;
+}
+#mainPicture {
+	width: 50%;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+.picture {
+	width: 600px;
+	height: 300px;
+	background-image: url('slika.jpg');
+	border: 8px solid white;
+}
+.contentBox {
+	overflow: hidden;
+	width: 616px;
+	margin-top: 20px;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-bottom: 15px;
+	background-color: white;
+}
+.contentTitle {
+	color: blue;
+	font: bold 18px Tahoma;
+	text-align: center;
+	padding: 15px;
+}
+.contentText {
+	color: #061c37;
+	font-size: 15px;
+	font-family: 'Segoe UI Light';
+    font-weight: bold;
+	text-align: left;
+	padding-left: 10px;
+	margin: 12px;
+}
+.contentText span {
+	letter-spacing: 6px;
+}
+.contentText p:first-line {
+	background-color: #00ffff;
+	text-decoration: underline;
+}
+#forma {
+	text-align: center;
+	float: right;
+    width: 180px;
+	height: 100%;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px dashed blue;
+}
+#footer {
+	color: white;
+	font: bold 12px Tahoma;
+	text-align: center;
+	margin: 15px;
+}

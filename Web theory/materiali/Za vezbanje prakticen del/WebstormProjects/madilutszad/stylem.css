@@ -1,0 +1,131 @@
+body{
+   font-family:  Georgia, "Times New Roman", Times,
+    serif;
+    margin: auto;
+    max-width: 1000px;
+    background: url("images/bg-body.png");
+    color: #484646;
+}
+footer{
+    font-family:  Tahoma, Geneva, sans-serif;
+}
+#header{
+    background: url("images/bg-header.png") no-repeat;
+    height: 631px;
+
+}
+#navigation ul li{
+    display: inline-block;
+    padding-left: 115px;
+
+}
+#navigation a{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+#header img{
+    padding-top: 490px;
+    padding-left: 135px;
+}
+#navigation a:hover{
+    background: url("images/bg-menu-selected.png") no-repeat bottom center;
+    margin-top: 30px;
+
+}
+#welcome p:first-of-type{
+    width: 400px;
+    float: left;
+    padding-left: 40px;
+}
+
+#welcome p:last-of-type{
+    width: 400px;
+    text-align: right;
+    padding-left: 600px;
+    margin-top: -200px;
+}
+#welcome{
+    margin-top: 40px;
+}
+#featured ul li{
+    list-style: none;
+}
+h5{
+    background: url("images/border.png") no-repeat bottom;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+#featured{
+    padding-top: 70px;
+}
+h4{
+    color: darkred;
+    text-transform: uppercase;
+}
+
+#featured ul li{
+    float: left;
+    width: 200px;
+    padding-right: 27px;
+}
+#articles{
+    margin-top: 420px;
+}
+b{
+    color: darkred;
+}
+#articles ul li{
+    list-style: none;
+}
+.illustrations ul li{
+    list-style: none;
+}
+#articles{
+    width: 470px;
+}
+
+.illustrations img{
+    width: 100px;
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 30px;
+}
+.illustrations{
+    width: 470px;
+    padding-left: 500px;
+    margin-top: -390px;
+
+}
+#footer ul li {
+    display: inline;
+    list-style: none;
+    width: 1000px;
+}
+#footer{
+    margin-top: 460px;
+    background: url("images/border.png") no-repeat;
+
+
+}
+#footer a{
+    text-transform: uppercase;
+    color: #484646;
+}
+#footer a:hover{
+    color: darkred;
+}
+#connect {
+    background: url("images/icons.png") no-repeat;
+    height: 26px;
+    border-radius: 15px;
+    margin-left: 800px;
+
+}
+#articles a{
+    color: #484646;
+}
+img:hover{
+    opacity: .500;
+}

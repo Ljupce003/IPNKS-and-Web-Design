@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let str1=prompt("vnesi string 1");
+  let str2=prompt("vnesi string 2");
+  let str3=prompt("vnesi string 3");
+
+  let string=str1+" "+str2+" "+str3;
+  let max_lenght=string.split(" ")[0].length;
+  let max_i=0;
+  for(let i=0; i<string.split(" ").length; i++){
+    if(string.split(" ")[i].length>max_lenght){
+      max_lenght=string.split(" ")[i].length;
+      max_i=i;
+    }
+  }
+  alert(string.split(" ")[max_i]);
+</script>
+</body>
+</html>

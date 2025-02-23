@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+<style>
+  #body{
+
+    width: 400px;
+
+  }
+</style>
+
+  <script>
+
+
+    function promeni(){
+      let bodi=document.getElementById("body");
+      
+      let inputs=document.getElementsByTagName("input")
+      if(inputs[0].checked){
+        bodi.style.backgroundColor=inputs[2].value;
+      }
+      if(inputs[1].checked){
+        bodi.style.background="url("+inputs[2].value+")"
+      }
+    }
+
+  </script>
+
+</head>
+<body id="body">
+
+
+<label>
+  <input type="radio" name="buton" id="collorbuton" checked="checked">Color
+  <input type="radio" name="buton" id="imgbuton">Image
+</label>
+<br>
+<label>Value:
+  <input type="text">
+</label>
+<br>
+<input type="button" value="Promeni" onclick="promeni()">
+</body>
+</html>

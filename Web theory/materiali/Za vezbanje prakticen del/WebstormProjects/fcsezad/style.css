@@ -1,0 +1,61 @@
+/* Indeks, Ime i Prezime */
+body{
+    margin: auto;
+    max-width: 1000px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DADADA;
+}
+a{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+}
+
+
+header{
+    font-size: 0px;
+    background: url("img/bg_intro.jpg") no-repeat;
+    height: 193px;
+
+}
+.summary p{
+    font-size: 0px;
+    background: url("img/bg_banner_bot_part.jpg") no-repeat;
+    height: 97px;
+    margin-left: 252px;
+}
+h3{
+    font-size: 0px;
+}
+.hosting h3{
+    background: url("img/hl_web_hosting.gif") no-repeat;
+    height: 37px;
+}
+.scope h3{
+    background: url("img/hl_scope.gif") no-repeat;
+    height: 37px;
+}
+.single h3{
+    background: url("img/hl_single.gif") no-repeat;
+    height: 37px;
+}
+.uptime h3{
+    background: url("img/hl_uptime.gif") no-repeat;
+    height: 37px;
+}
+.fcse-cls-domains {
+    background: url("img/bg_left_menu.gif") no-repeat;
+    height: 39px;
+    margin-top: -690px;
+}
+.wrapper ul li{
+    background: url("img/bg_linkList.gif") repeat-y;
+    list-style: none;
+    margin-left: -40px;
+
+}
+.wrapper {
+    margin-top: -80px;
+}

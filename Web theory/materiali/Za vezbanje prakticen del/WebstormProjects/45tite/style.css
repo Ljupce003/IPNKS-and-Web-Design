@@ -1,0 +1,99 @@
+body{
+	width:770px ;
+	height: 1750px;
+	font-size: 12px;
+	color: #82976d;
+	font-family: "Times New Roman",sans-serif;
+	background: #dfe7b5 url("img/sidegraphic.gif") repeat-y;
+padding-left: 100px;
+	text-align: justify;
+}
+#finki-intro,#finki-supporting{
+	width: 400px;
+}
+#finki-summary p{color: transparent;margin-left: 40px;height: 0}
+#finki-summary{
+	background: url("img/bar.gif") no-repeat;
+	height: 35px;
+	width: 400px;
+text-align: right;
+
+}
+#banner h1{
+	background-image: url("img/top.gif");
+	color: transparent;
+	height: 455px;
+	width: 552px;
+}
+
+#finki-description h3,#finki-more h3,#finki-history70 h3,#finki-history80 h3,#finki-decline h3{
+	width: 400px;
+	height: 60px;
+}
+#finki-description h3{
+	background-image: url("img/01.gif");
+	color: transparent;
+
+}
+#finki-more h3{
+	background-image: url("img/02.gif");
+	color: transparent;
+
+}
+#finki-history70 h3{
+	background-image: url("img/03.gif");
+	color: transparent;
+
+}
+#finki-history80 h3{
+	background-image: url("img/04.gif");
+	color: transparent;
+
+}
+#finki-decline h3{
+	background-image: url("img/05.gif");
+	color: transparent;
+
+}
+footer{
+	background-image: url("img/footer.gif");
+	height: 100px;
+	width: 400px;
+	margin-left: 40px;
+}
+.sidebar{
+	float: right;
+position: relative;
+	top:-1285px;
+	left: -135px;
+}
+
+
+#current-hits h3{
+	background-image: url("img/playlist.gif");
+	height: 30px;
+	width: 190px;
+	color: transparent;
+
+}
+.golden{
+	background-image: url("img/goldenoldies.gif");
+	height: 30px;
+	width: 195px;
+	color: transparent;
+
+}
+#golden-oldies ul,#current-hits{width: 195px;
+line-height: 20px;
+}
+#golden-oldies ul,#current-hits ul{
+	list-style: none;
+}
+.artist-name{color: indianred;
+}
+a{
+	text-decoration: none;
+	color: #82976d;
+}
+#current-hits nav{margin-left: -44px}
+#golden-oldies nav{margin-left: -44px}

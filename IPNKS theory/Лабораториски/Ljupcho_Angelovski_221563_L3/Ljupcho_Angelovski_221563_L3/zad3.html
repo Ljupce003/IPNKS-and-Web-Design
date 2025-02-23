@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script>
+
+        class Cilindar{
+
+            constructor(radius,visina) {
+                this.radius=radius;
+                this.visina=visina;
+            }
+
+            area(){
+                return Math.PI*this.visina*this.radius*this.radius;
+            }
+        }
+
+
+
+        let cilindar=new Cilindar(1,10)
+        let area=parseFloat(cilindar.area());
+        console.log(area.toFixed(4));
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

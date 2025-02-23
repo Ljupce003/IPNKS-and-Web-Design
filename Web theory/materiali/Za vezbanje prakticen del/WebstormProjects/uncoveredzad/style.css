@@ -1,0 +1,191 @@
+body {
+    font-family: 'Abel', sans-serif;
+    margin: auto;
+    max-width: 1000px;
+}
+
+#header {
+    font-family: 'Satisfy', cursive;
+}
+
+#navigation a {
+    font-family: 'Oswald', sans-serif;
+}
+
+#header h1 {
+    text-transform: lowercase;
+}
+
+#header a {
+    text-decoration-line: none;
+}
+
+#header {
+    background: url("images/img05.png");
+    height: 157px;
+}
+
+#navigation a:hover {
+    color: #70703f;
+}
+
+#navigation a {
+    text-decoration-line: none;
+    text-transform: uppercase;
+}
+
+#navigation ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding-right: 30px;
+    float: right;
+    margin-right: 20px;
+}
+
+#logo h1 {
+    padding-left: 70px;
+    padding-top: 40px;
+}
+
+.style2 {
+    list-style: none;
+}
+
+#fbox1 {
+    float: left;
+    width: 33%;
+    margin-left: 10px;
+}
+
+#fbox3 {
+    float: right;
+    width: 33%;
+    margin-right: 10px;
+    margin-top: -170px;
+}
+
+#fbox2 p:first-of-type {
+    background: url("images/img05.jpg") no-repeat;
+    width: 300px;
+    height: 150px;
+    margin-left: 340px;
+}
+
+#fbox2 h2 {
+    padding-top: 20px;
+}
+
+#fbox2 p {
+    width: 300px;
+    margin-left: 330px;
+}
+
+#fbox3 h1 {
+    text-indent: -9999px;
+}
+
+.style1 {
+    list-style: none;
+}
+
+#fbox3 a {
+    text-decoration-line: none;
+}
+
+#fbox3 {
+    margin-top: -482px;
+    width: 33%;
+    text-align: left;
+}
+
+#sidebar {
+    float: left;
+    width: 33%;
+    margin-left: 0px;
+}
+
+#content {
+    float: right;
+    width: 66%;
+    margin-right: 0px;
+}
+
+#content div:first-of-type {
+    display: none;
+}
+
+.style3 {
+    list-style: none;
+}
+
+.style3 p {
+    float: right;
+    width: 66%;
+}
+
+.posted {
+    font-size: 11px;
+    margin-top: 0px;
+}
+
+#footer p:first-of-type {
+    display: none;
+}
+
+#footer {
+    background: url("images/img01.png");
+    height: 100px;
+    margin-top: 400px;
+}
+
+#footer p {
+    text-align: center;
+    padding-top: 40px;
+    text-transform: uppercase;
+}
+
+#content {
+    background: #e8e2e2;
+}
+
+#page-wrapper div {
+    background: #e8e2e2;
+}
+
+#page-wrapper h2, #footer-wrapper h2 {
+    font-family: 'Satisfy', cursive;
+    font-weight: lighter;
+}
+
+#page {
+    background: #e8e2e2;
+}
+
+
+.button-style a {
+    color: #424201;
+    text-decoration-line: none;
+    text-transform: uppercase;
+}
+
+a {
+    color: #424201;
+}
+
+.style2 a:hover {
+    text-decoration-line: none;
+}
+
+.button-style {
+    background: url("images/img01.png");
+    width: 200px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+

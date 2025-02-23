@@ -1,0 +1,143 @@
+body{
+    font-family: 'Abel', sans-serif;
+    max-width: 1000px;
+    margin: auto;
+}
+h1, h2{
+    font-family: 'Satisfy', cursive;
+}
+#navigation a{
+    font-family: 'Oswald', sans-serif;
+}
+#header{
+    background: url("images/img05.png") repeat-x;
+}
+#navigation ul li{
+    display: inline-block;
+    padding-left: 70px;
+}
+#navigation a{
+    color: #a86f07;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+#navigation{
+    padding-left: 230px;
+    padding-bottom: 10px;
+}
+#logo a{
+    margin-left: 30px;
+    padding-bottom: 10px;
+    color: #704d07;
+}
+ul li{
+    list-style: none;
+}
+#fbox1 ul li{
+    border-bottom: 1px dotted #704d07;
+    width: 240px;
+
+}
+#fbox1 a{
+    color: #704d07;
+
+}
+.button-style{
+    background: url("images/img01.png") no-repeat;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+.button-style a{
+    text-transform: uppercase;
+    padding-left: 7px;
+    margin-top: 17px;
+    color: #704d07;
+}
+#fbox2 p:first-of-type{
+    background: url("images/img05.jpg") no-repeat;
+    height: 150px;
+
+}
+#fbox1{
+    padding-left: 20px;
+}
+#fbox1, #fbox2{
+    width: 310px;
+
+}
+#fbox2{
+    padding-left: 330px;
+    margin-top: -420px;
+}
+#fbox3{
+    width: 320px;
+    padding-left: 660px;
+    margin-top: -370px;
+
+}
+#fbox3 ul li:nth-of-type(2), #fbox3 ul li:nth-of-type(3){
+    border-bottom: 1px dashed #704d07;
+    width: 300px;
+}
+
+#fbox3 a{
+    color: #704d07;
+    text-decoration: none;
+}
+#content div:first-of-type{
+    font-size: 0px;
+}
+#content{
+    width: 650px;
+    padding-left: 360px;
+    background-color: #e8e2e2;
+    padding-bottom: 5px;
+}
+#sidebar{
+    width: 300px;
+    margin-top: -370px;
+    background-color: #e8e2e2;
+}
+#footer p:first-of-type, #fbox3 h1{
+    font-size: 0px;
+}
+.style3 li:first-of-type{
+    background: url("images/img02.jpg") no-repeat;
+    height: 78px;
+}
+.style3 li:nth-of-type(2){
+    background: url("images/img03.jpg") no-repeat;
+    height: 78px;
+}
+.style3 li:last-of-type{
+    background: url("images/img04.jpg") no-repeat;
+    height: 78px;
+}
+.style3 p{
+    margin-left: 90px;
+    width: 200px;
+}
+#footer {
+    background: url("images/img01.png");
+    height: 80px;
+    margin-top: 33px;
+    width: 1010px;
+}
+a{
+    color: #704d07;
+}
+#navigation a:hover{
+    color: #704d07;
+}
+ul li a:hover{
+    text-decoration: none;
+}
+.style3 li:hover{
+    border: 1px dashed orange;
+}
+#fbox1 h2, #fbox3 h2, #fbox2 h2{
+    color: #704d07;
+}

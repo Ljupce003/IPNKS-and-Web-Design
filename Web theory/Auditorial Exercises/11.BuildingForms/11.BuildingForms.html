@@ -1,0 +1,1655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Building Forms</title>
+<!-- 2016-04-10 Sun 01:44 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Org-mode">
+<meta name="author" content="Boban Joksimoski">
+<meta name="description" content="Building forms in html"
+>
+<meta name="keywords" content="html, html5, css, css3, form">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 16px;
+    margin-bottom: 95px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 16px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Building Forms</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Forms are an essential part of the Internet, as they provide a way for
+websites to capture information from users and to process requests, and
+they offer controls for nearly every imaginable use of an application.
+Through controls or fields, forms can request a small amount of
+information&#x2014;often a search query or a username and password&#x2014;or a
+large amount of information&#x2014;perhaps shipping and billing information
+or an entire job application.
+</p>
+
+<p>
+We need to know how to build forms in order to acquire user input. In
+this lesson we'll discuss how to use HTML to mark up a form, which
+elements to use to capture different types of data, and how to style
+forms with CSS. We won't get too deep into how information from a form
+is processed and handled on the back end of a website. Form processing
+is a deeper topic, outside the realm of this book; for now we'll stick
+to the creation and styling of forms.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Initializing a Form</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To add a <a href="http://htmldog.com/guides/html/beginner/forms/">form</a> to a
+page, we'll use the <code>&lt;form&gt;</code> element. The <code>&lt;form&gt;</code>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">element</a>
+identifies where on the page control elements will appear. Additionally,
+the <code>&lt;form&gt;</code> element will wrap all of the elements included within the
+form, much like a <code>&lt;div&gt;</code> element.
+</p>
+
+<pre class="example">
+&lt;form action="/login" method="post"&gt;
+  ...
+&lt;/form&gt;
+</pre>
+
+<p>
+A handful of different attributes can be applied to the <code>&lt;form&gt;</code>
+element, the most common of which are <code>action</code> and <code>method</code>. The
+<code>action</code> attribute contains the URL to which information included within
+the form will be sent for processing by the server. The <code>method</code>
+attribute is the HTTP method browsers should use to submit the form
+data. Both of these <code>&lt;form&gt;</code> attributes pertain to submitting and
+processing data.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Text Fields &amp; Textareas</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+When it comes to gathering text input from users, there are a few
+different elements available for obtaining data within forms.
+Specifically, text fields and textareas are used for collecting text- or
+string-based data. This data may include passages of text content,
+passwords, telephone numbers, and other information.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Text Fields</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+One of the primary elements used to obtain text from users is the
+<code>&lt;input&gt;</code> element. The <code>&lt;input&gt;</code>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">element</a>
+uses the <code>type</code> attribute to define what type of information is to be
+captured within the control. The most popular <code>type</code> attribute value is
+<code>text</code>, which denotes a single line of text input.
+</p>
+
+<p>
+Along with setting a <code>type</code> attribute, it is best practice to give an
+<code>&lt;input&gt;</code> element a <code>name</code> attribute as well. The <code>name</code> attribute value
+is used as the name of the control and is submitted along with the input
+data to the server.
+</p>
+
+<p>
+#+BEGIN<sub>EXAMPLE</sub>
+&lt;input type="text" name="username"&gt;
+</p>
+<p>
+#+END<sub>SRC</sub>
+</p>
+
+
+<div class="org-src-container">
+<label class="org-src-name">Text Fields Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-01/index.html"></iframe>
+
+<p>
+The <code>&lt;input&gt;</code> element is self-contained, meaning it uses only one tag
+and it does not wrap any other content. The value of the element is
+provided by its attributes and their corresponding values.
+</p>
+
+<p>
+Originally, the only two text-based <code>type</code> attribute values were <code>text</code>
+and <code>password</code> (for password inputs); however, HTML5 brought along a
+handful of <a href="http://diveinto.html5doctor.com/forms.html">new</a> <code>type</code>
+attribute values.
+</p>
+
+<p>
+These values were added to provide clearer semantic meaning for inputs
+as well as to provide better controls for users. Should a browser not
+understand one of these HTML5 <code>type</code> attribute values, it will
+automatically fall back to the <code>text</code> attribute value. Below is a list
+of the new HTML5 input types.
+</p>
+
+<ul class="org-ul">
+<li><code>color</code>
+</li>
+<li><code>date</code>
+</li>
+<li><code>datetime</code>
+</li>
+<li><code>email</code>
+</li>
+<li><code>month</code>
+</li>
+<li><code>number</code>
+</li>
+<li><code>range</code>
+</li>
+<li><code>search</code>
+</li>
+<li><code>tel</code>
+</li>
+<li><code>time</code>
+</li>
+<li><code>url</code>
+</li>
+<li><code>week</code>
+</li>
+</ul>
+
+<p>
+The following <code>&lt;input&gt;</code> elements show a few of these HTML5 <code>type</code>
+attribute values in use; the following figures show how these unique
+values may look within iOS. Notice how the different values provide
+different controls, all of which make gathering input from users easier.
+</p>
+
+<pre class="example">
+&lt;input type="date" name="birthday"&gt;
+&lt;input type="time" name="game-time"&gt;
+&lt;input type="email" name="email-address"&gt;
+&lt;input type="url" name="website"&gt;
+&lt;input type="number" name="cost"&gt;
+&lt;input type="tel" name="phone-number"&gt;
+</pre>
+
+
+<figure>
+<p><img src="./img/ios-date.png" class="img-responsive" alt="ios-date.png">
+</p>
+<figcaption><span class="figure-number">Figure 1:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>date</code></figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/ios-time.png" class="img-responsive" alt="ios-time.png">
+</p>
+<figcaption><span class="figure-number">Figure 2:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>time</code></figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/ios-email.png" class="img-responsive" alt="ios-email.png">
+</p>
+<figcaption><span class="figure-number">Figure 3:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>email</code></figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/ios-url.png" class="img-responsive" alt="ios-url.png">
+</p>
+<figcaption><span class="figure-number">Figure 4:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>url</code></figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/ios-number.png" class="img-responsive" alt="ios-number.png">
+</p>
+<figcaption><span class="figure-number">Figure 5:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>number</code></figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/ios-tel.png" class="img-responsive" alt="ios-tel.png">
+</p>
+<figcaption><span class="figure-number">Figure 6:</span> iOS7 controls for an <code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>tel</code></figcaption>
+</figure>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Textarea</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Another element that's used to capture text-based data is the
+<code>&lt;textarea&gt;</code> element. The <code>&lt;textarea&gt;</code> element differs from the
+<code>&lt;input&gt;</code> element in that it can accept larger passages of text spanning
+multiple lines. The <code>&lt;textarea&gt;</code> element also has start and end tags
+that can wrap plain text. Because the <code>&lt;textarea&gt;</code> element only accepts
+one type of value, the <code>type</code> attribute doesn't apply here, but the
+<code>name</code> attribute is still used.
+</p>
+
+<pre class="example">
+&lt;textarea name="comment"&gt;Add your comment here&lt;/textarea&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Textarea Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">textarea</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"comment"</span>&gt;Add your comment here&lt;/<span style="color: #93E0E3;">textarea</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-02/index.html"></iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Multiple Choice Inputs &amp; Menus</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Apart from text-based input controls, HTML also allows users to select
+data using multiple choice and drop-down lists. There are a few
+different options and elements for these form controls, each of which
+has distinctive benefits.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Radio Buttons</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Radio buttons are an easy way to allow users to make a quick choice from
+a small list of options. Radio buttons permit users to select one option
+only, as opposed to multiple options.
+</p>
+
+<p>
+To create a radio button, the <code>&lt;input&gt;</code> element is used with a <code>type</code>
+attribute value of radio. Each radio button element should have the same
+<code>name</code> attribute value so that all of the buttons within a group
+correspond to one another.
+</p>
+
+<p>
+With text-based inputs, the value of an input is determined by what a
+user types in; with radio buttons a user is making a multiple choice
+selection. Thus, we have to define the input value. Using the <code>value</code>
+attribute, we can set a specific value for each <code>&lt;input&gt;</code> element.
+</p>
+
+<p>
+Additionally, to preselect a radio button for users we can use the
+Boolean attribute checked.
+</p>
+<pre class="example">
+&lt;input type="radio" name="day" value="Friday" checked&gt; Friday
+&lt;input type="radio" name="day" value="Saturday"&gt; Saturday
+&lt;input type="radio" name="day" value="Sunday"&gt; Sunday
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Radio Buttons Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Friday"</span> checked&gt; Friday
+&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Saturday"</span>&gt; Saturday
+&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Sunday"</span>&gt; Sunday
+</pre>
+</div>
+
+<iframe src="./examples/demo-03/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Check Boxes</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Check boxes are very similar to radio buttons. They use the same
+attributes and patterns, with the exception of checkbox as their <code>type</code>
+attribute value. The difference between the two is that check boxes
+allow users to select multiple values and tie them all to one control
+name, while radio buttons limit users to one value.
+</p>
+
+
+<pre class="example">
+&lt;input type="checkbox" name="day" value="Friday" checked&gt; Friday
+&lt;input type="checkbox" name="day" value="Saturday"&gt; Saturday
+&lt;input type="checkbox" name="day" value="Sunday"&gt; Sunday
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Check Boxes Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"checkbox"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Friday"</span> checked&gt; Friday
+&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"checkbox"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Saturday"</span>&gt; Saturday
+&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"checkbox"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Sunday"</span>&gt; Sunday
+</pre>
+</div>
+
+<iframe src="./examples/demo-04/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Drop-Down Lists</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Drop-down lists are a perfect way to provide users with a long list of
+options in a practi- cal manner. A long column of radio buttons next to
+a list of different options is not only visually unappealing, it's
+daunting and difficult for users to comprehend, especially those on a
+mobile device. Drop-down lists, on the other hand, provide the perfect
+format for a long list of choices.
+</p>
+
+<p>
+To create a drop-down list we'll use the <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code>
+elements. The <code>&lt;select&gt;</code> element wraps all of the menu options, and each
+menu option is marked up using the <code>&lt;option&gt;</code> element.
+</p>
+
+<p>
+The <code>name</code> attribute resides on the <code>&lt;select&gt;</code> element, and the <code>value</code>
+attribute resides on the <code>&lt;option&gt;</code> elements that are nested within the
+<code>&lt;select&gt;</code> element. The <code>value</code> attribute on each <code>&lt;option&gt;</code> element
+then corresponds to the <code>name</code> attribute on the <code>&lt;select&gt;</code> element.
+</p>
+
+<p>
+Each <code>&lt;option&gt;</code> element wraps the text (which is visible to users) of an
+individual option within the list.
+</p>
+
+<p>
+Much like the <code>checked</code> Boolean attribute for radio buttons and check
+boxes, drop-down menus can use the <code>selected</code> Boolean attribute to
+preselect an option for users.
+</p>
+
+<pre class="example">
+&lt;select name="day"&gt;
+  &lt;option value="Friday" selected&gt;Friday&lt;/option&gt;
+  &lt;option value="Saturday"&gt;Saturday&lt;/option&gt;
+  &lt;option value="Sunday"&gt;Sunday&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Drop Down Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">select</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span>&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Friday"</span> selected&gt;Friday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Saturday"</span>&gt;Saturday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Sunday"</span>&gt;Sunday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+&lt;/<span style="color: #93E0E3;">select</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-05/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Multiple Selections</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+The Boolean attribute <code>multiple</code>, when added to the <code>&lt;select&gt;</code> element
+for a standard drop-down list, allows a user to choose more than one
+option from the list at a time. Additionally, using the <code>selected</code>
+Boolean attribute on more than one <code>&lt;option&gt;</code> element within the menu
+will preselect multiple options.
+</p>
+
+<p>
+The size of the <code>&lt;select&gt;</code> element can be controlled using CSS and
+should be adjusted appropriately to allow for multiple selections. It
+may be worthwhile to inform users that to choose multiple options they
+will need to hold down the Shift key while clicking to make their
+selections.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Multiple Selections Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">select</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> multiple&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Friday"</span> selected&gt;Friday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Saturday"</span>&gt;Saturday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+  &lt;<span style="color: #93E0E3;">option</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Sunday"</span>&gt;Sunday&lt;/<span style="color: #93E0E3;">option</span>&gt;
+&lt;/<span style="color: #93E0E3;">select</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-06/index.html"></iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Form Buttons</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+After a user inputs the requested information, buttons allow the user to
+put that information into action. Most commonly, a submit input or
+submit button is used to process the data.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Submit Input</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Users click the submit button to process data after filling out a form.
+The submit button is created using the <code>&lt;input&gt;</code> element with a <code>type</code>
+attribute value of <code>submit</code>. The <code>value</code> attribute is used to specify
+the text that appears within the button.
+</p>
+<div class="org-src-container">
+<label class="org-src-name">Multiple Selections Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"submit"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"submit"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Send"</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-07/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">Submit Button</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+As an <code>&lt;input&gt;</code> element, the submit button is self-contained and cannot
+wrap any other content. If more control over the structure and design of
+the input is desired&#x2014;along with the ability to wrap other
+elements&#x2014;the <code>&lt;button&gt;</code> element may be used.
+</p>
+
+<p>
+The <code>&lt;button&gt;</code> element performs the same way as the <code>&lt;input&gt;</code> element
+with the <code>type</code> attribute value of <code>submit</code>; however, it includes
+opening and closing tags, which may wrap other elements. By default, the
+<code>&lt;button&gt;</code> element acts as if it has a <code>type</code> attribute value of
+<code>submit</code>, so the <code>type</code> attribute and value may be omitted from the
+<code>&lt;button&gt;</code> element if you wish.
+</p>
+
+<p>
+Rather than using the <code>value</code> attribute to control the text within the
+submit button, the text that appears between the opening and closing
+tags of the <code>&lt;button&gt;</code> element will appear.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Submit Button Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">button</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"submit"</span>&gt;
+  &lt;<span style="color: #93E0E3;">strong</span>&gt;<span style="font-weight: bold;">Send Us</span>&lt;/<span style="color: #93E0E3;">strong</span>&gt; a Message
+&lt;/<span style="color: #93E0E3;">button</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-08/index.html"></iframe>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Other Inputs</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Besides the applications we've just discussed, the <code>&lt;input&gt;</code> element has
+a few other use cases. These include passing hidden data and attaching
+files during form processing.
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Hidden Input</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Hidden inputs provide a way to pass data to the server without
+displaying it to users. Hidden inputs are typically used for tracking
+codes, keys, or other information that is not pertinent to the user but
+is helpful when processing the form. This information is not displayed
+on the page; however, it can be found by viewing the source code of a
+page. It should therefore not be used for sensitive or secure
+information.
+</p>
+
+<p>
+To create a hidden input, you use the <code>hidden</code> value for the <code>type</code>
+attribute. Additionally, include the appropriate <code>name</code> and <code>value</code>
+attribute values.
+</p>
+<pre class="example">
+&lt;input type="hidden" name="tracking-code" value="abc-123"&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">File Input</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+To allow users to add a file to a form, much like attaching a file to an
+email, use the <code>file</code> value for the <code>type</code> attribute.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">File Input Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"file"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"file"</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-09/index.html"></iframe>
+
+<p>
+Unfortunately, styling an <code>&lt;input&gt;</code> element that has a <code>type</code> attribute
+value of <code>file</code> is a tough task with CSS. Each browser has its own
+default input style, and none provide much control to override the
+default styling. JavaScript and other solutions can be employed to allow
+for file input, but they are slightly more difficult to construct.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Organizing Form Elements</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Knowing how to capture data with inputs is half the battle. Organizing
+form elements and controls in a usable manner is the other half. When
+interacting with forms, users need to understand what is being asked of
+them and how to provide the requested information.
+</p>
+
+<p>
+By using labels, fieldsets, and legends, we can better organize forms
+and guide users to properly complete them.
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">Label</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Labels provide captions or headings for form controls, unambiguously
+tying them together and creating an accessible form for all users and
+assistive technologies. Created using the <code>&lt;label&gt;</code> element, labels
+should include text that describes the inputs or controls they pertain
+to.
+</p>
+
+<p>
+Labels may include a <code>for</code> attribute. The value of the <code>for</code> attribute
+should be the same as the value of the <code>id</code> attribute on the form
+control the label corresponds to. Matching up the <code>for</code> and <code>id</code>
+attribute values ties the two elements together, allowing users to click
+on the <code>&lt;label&gt;</code> element to bring focus to the proper form control.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Label Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">label</span> <span style="color: #DFAF8F;">for</span>=<span style="color: #CC9393;">"username"</span>&gt;Username&lt;/<span style="color: #93E0E3;">label</span>&gt;
+&lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span> <span style="color: #DFAF8F;">id</span>=<span style="color: #CC9393;">"username"</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-10/index.html"></iframe>
+
+<p>
+If desired, the &lt;label&gt; element may wrap form controls, such as radio buttons or
+check boxes. Doing so allows omission of the for and id attributes.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Label with nested demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">label</span>&gt;
+  &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Friday"</span> checked&gt; Friday
+&lt;/<span style="color: #93E0E3;">label</span>&gt;
+&lt;<span style="color: #93E0E3;">label</span>&gt;
+  &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Saturday"</span>&gt; Saturday
+&lt;/<span style="color: #93E0E3;">label</span>&gt;
+&lt;<span style="color: #93E0E3;">label</span>&gt;
+  &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"radio"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"day"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Sunday"</span>&gt; Sunday
+&lt;/<span style="color: #93E0E3;">label</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-11/index.html"></iframe>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2">Fieldset</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Fieldsets group form controls and labels into organized sections. Much
+like a <code>&lt;section&gt;</code> or other structural element, the <code>&lt;fieldset&gt;</code> is a
+block-level element that wraps related elements, specifically within a
+<code>&lt;form&gt;</code> element, for better organization. Fieldsets, by default, also
+include a border outline, which can be modified using CSS.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Fieldset demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text/css"</span>&gt;
+&lt;<span style="color: #93E0E3;">fieldset</span>&gt;
+  &lt;<span style="color: #93E0E3;">label</span>&gt;
+    Username
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span>&gt;
+  &lt;/<span style="color: #93E0E3;">label</span>&gt;
+  &lt;<span style="color: #93E0E3;">label</span>&gt;
+    Password
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"password"</span>&gt;
+  &lt;/<span style="color: #93E0E3;">label</span>&gt;
+&lt;/<span style="color: #93E0E3;">fieldset</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">fieldset </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">padding</span>: 24px 30px;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-12/index.html"></iframe>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3">Legend</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+A legend provides a caption, or heading, for the <code>&lt;fieldset&gt;</code> element.
+The <code>&lt;legend&gt;</code> element wraps text describing the form controls that fall
+within the fieldset. The markup should include the <code>&lt;legend&gt;</code> element
+directly after the opening <code>&lt;fieldset&gt;</code> tag. On the page, the legend
+will appear within the top left part of the fieldset border.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Legend demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text/css"</span>&gt;
+&lt;<span style="color: #93E0E3;">fieldset</span>&gt;
+  &lt;<span style="color: #93E0E3;">legend</span>&gt;Login&lt;/<span style="color: #93E0E3;">legend</span>&gt;
+  &lt;<span style="color: #93E0E3;">label</span>&gt;
+    Username
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span>&gt;
+  &lt;/<span style="color: #93E0E3;">label</span>&gt;
+  &lt;<span style="color: #93E0E3;">label</span>&gt;
+    Password
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"password"</span>&gt;
+  &lt;/<span style="color: #93E0E3;">label</span>&gt;
+&lt;/<span style="color: #93E0E3;">fieldset</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">fieldset </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #cecfd5;">#cecfd5</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 6px;
+  <span style="color: #DFAF8F;">padding</span>: 24px 30px;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-13/index.html"></iframe>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Form &amp; Input Attributes</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+To accommodate all of the different form, input, and control elements,
+there are a number of attributes and corresponding values. These
+attributes and values serve a handful of different functions, such as
+disabling controls and adding form validation. Described next are some
+of the more frequently used and helpful attributes.
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">Disabled</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+The <code>disabled</code> Boolean attribute turns off an element or control so that
+it is not available for interaction or input. Elements that are disabled
+will not send any value to the server for form processing.
+</p>
+
+<p>
+￼Applying the <code>disabled</code> Boolean attribute to a <code>&lt;fieldset&gt;</code> element
+will disable all of the form controls within the fieldset. If the <code>type</code>
+attribute has a <code>hidden</code> value, the <code>hidden</code> Boolean attribute is
+ignored.
+</p>
+<pre class="example">
+&lt;label&gt;
+  Username
+  &lt;input type="text" name="username" disabled&gt;
+&lt;/label&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Disabed demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">label</span>&gt;
+  Username
+  &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span> disabled&gt;
+&lt;/<span style="color: #93E0E3;">label</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-14/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">Placeholder</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+The <code>placeholder</code> HTML5 attribute provides a hint or tip within the form
+control of an <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element that disappears once the
+control is clicked in or gains focus. This is used to give users further
+information on how the form input should be filled in, for example, the
+email address format to use.
+</p>
+<div class="org-src-container">
+<label class="org-src-name">Caption demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">label</span>&gt;
+  Email Address
+  &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"email"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"email-address"</span> <span style="color: #DFAF8F;">placeholder</span>=<span style="color: #CC9393;">"name@domain.com"</span>&gt;
+&lt;/<span style="color: #93E0E3;">label</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-15/index.html"></iframe>
+
+<p>
+The main difference between the <code>placeholder</code> and <code>value</code> attributes is
+that the <code>value</code> attribute value text stays in place when a control has
+focus unless a user manually deletes it. This is great for
+pre-populating data, such as personal information, for a user but not
+for providing suggestions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3">Required</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+The <code>required</code> HTML5 Boolean attribute enforces that an element or form
+control must contain a value upon being submitted to the server. Should
+an element or form control not have a value, an error message will be
+displayed requesting that the user complete the required field.
+Currently, error message styles are controlled by the browser and cannot
+be styled with CSS. Invalid elements and form controls, on the other
+hand, can be styled using the <code>:optional</code> and <code>:required</code> CSS
+pseudo-classes.
+</p>
+
+<p>
+Validation also occurs specific to a control's type. For example, an
+<code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>email</code> will require
+not only that a value exist within the control, but also that it is a
+valid email address.
+</p>
+<div class="org-src-container">
+<label class="org-src-name">Required demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">form</span>&gt;
+  &lt;<span style="color: #93E0E3;">label</span>&gt;
+    Email Address
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"email"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"email-address"</span> required&gt;
+  &lt;/<span style="color: #93E0E3;">label</span>&gt;
+
+   &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"submit"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"submit"</span>&gt;
+
+&lt;/<span style="color: #93E0E3;">form</span>&gt;
+</pre>
+</div>
+<iframe src="./examples/demo-16/index.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4">Additional Attributes</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+Other form and form control attributes include, but are not limited to,
+the following. Please feel free to research these attributes as
+necessary.
+</p>
+
+<ul class="org-ul">
+<li><code>accept</code>
+</li>
+<li><code>autocomplete</code>
+</li>
+<li><code>autofocus</code>
+</li>
+<li><code>formaction</code>
+</li>
+<li><code>formenctype</code>
+</li>
+<li><code>formmethod</code>
+</li>
+<li><code>formnovalidate</code>
+</li>
+<li><code>formtarget</code>
+</li>
+<li><code>max</code>
+</li>
+<li><code>maxlength</code>
+</li>
+<li><code>min</code>
+</li>
+<li><code>pattern</code>
+</li>
+<li><code>readonly</code>
+</li>
+<li><code>selectionDirection</code>
+</li>
+<li><code>step</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Login Form Example</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+The following is an example of a complete login form that includes
+several different elements and attributes to illustrate what we've
+covered so far. These elements are then styled using CSS.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">Login Form Example and demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text/css"</span>&gt;
+&lt;<span style="color: #93E0E3;">form</span>&gt;
+  &lt;<span style="color: #93E0E3;">fieldset</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"account-info"</span>&gt;
+    &lt;<span style="color: #93E0E3;">label</span>&gt;
+      Username
+      &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"username"</span>&gt;
+    &lt;/<span style="color: #93E0E3;">label</span>&gt;
+    &lt;<span style="color: #93E0E3;">label</span>&gt;
+      Password
+      &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"password"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"password"</span>&gt;
+    &lt;/<span style="color: #93E0E3;">label</span>&gt;
+  &lt;/<span style="color: #93E0E3;">fieldset</span>&gt;
+  &lt;<span style="color: #93E0E3;">fieldset</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"account-action"</span>&gt;
+    &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"btn"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"submit"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"submit"</span> <span style="color: #DFAF8F;">value</span>=<span style="color: #CC9393;">"Login"</span>&gt;
+    &lt;<span style="color: #93E0E3;">label</span>&gt;
+      &lt;<span style="color: #93E0E3;">input</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"checkbox"</span> <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"remember"</span>&gt; Stay signed in
+    &lt;/<span style="color: #93E0E3;">label</span>&gt;
+  &lt;/<span style="color: #93E0E3;">fieldset</span>&gt;
+&lt;/<span style="color: #93E0E3;">form</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css">*,
+*:before,
+*:after {
+   <span style="color: #DFAF8F;">box-sizing</span>: border-box;
+}
+<span style="color: #93E0E3;">form </span>{
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #c6c7cc;">#c6c7cc</span>;
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">font</span>: 14px/1.4 <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+  <span style="color: #DFAF8F;">overflow</span>: hidden;
+  <span style="color: #DFAF8F;">width</span>: 240px;
+}
+<span style="color: #93E0E3;">fieldset </span>{
+  <span style="color: #DFAF8F;">border</span>: 0;
+  <span style="color: #DFAF8F;">margin</span>: 0;
+  <span style="color: #DFAF8F;">padding</span>: 0;
+}
+<span style="color: #93E0E3;">input </span>{
+  <span style="color: #DFAF8F;">border-radius</span>: 5px;
+  <span style="color: #DFAF8F;">font</span>: 14px/1.4 <span style="color: #CC9393;">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+  <span style="color: #DFAF8F;">margin</span>: 0;
+}
+<span style="color: #93E0E3;">.account-info </span>{
+  <span style="color: #DFAF8F;">padding</span>: 20px 20px 0 20px;
+}
+<span style="color: #93E0E3;">.account-info label </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #395870;">#395870</span>;
+  <span style="color: #DFAF8F;">display</span>: block;
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+  <span style="color: #DFAF8F;">margin-bottom</span>: 20px;
+}
+<span style="color: #93E0E3;">.account-info input </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #c6c7cc;">#c6c7cc</span>;
+   <span style="color: #DFAF8F;">box-shadow</span>: inset 0 1px 1px <span style="color: #ffffff; background-color: #000000;">rgba(0, 0, 0, .1)</span>;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #636466;">#636466</span>;
+  <span style="color: #DFAF8F;">padding</span>: 6px;
+  <span style="color: #DFAF8F;">margin-top</span>: 6px;
+  <span style="color: #DFAF8F;">width</span>: 100%;
+}
+<span style="color: #93E0E3;">.account-action </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #f0f0f2;">#f0f0f2</span>;
+  <span style="color: #DFAF8F;">border-top</span>: 1px solid <span style="color: #000000; background-color: #c6c7cc;">#c6c7cc</span>;
+  <span style="color: #DFAF8F;">padding</span>: 20px;
+}
+<span style="color: #93E0E3;">.account-action .btn </span>{
+  <span style="color: #DFAF8F;">background</span>: linear-gradient(<span style="color: #ffffff; background-color: #49708f;">#49708f</span>, <span style="color: #ffffff; background-color: #293f50;">#293f50</span>);
+  <span style="color: #DFAF8F;">border</span>: 0;
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #DFAF8F;">cursor</span>: pointer;
+  <span style="color: #DFAF8F;">font-weight</span>: bold;
+  <span style="color: #DFAF8F;">float</span>: left;
+  <span style="color: #DFAF8F;">padding</span>: 8px 16px;
+}
+<span style="color: #93E0E3;">.account-action label </span>{
+  <span style="color: #DFAF8F;">color</span>: <span style="color: #ffffff; background-color: #7c7c80;">#7c7c80</span>;
+  <span style="color: #DFAF8F;">font-size</span>: 12px;
+  <span style="color: #DFAF8F;">float</span>: left;
+  <span style="color: #DFAF8F;">margin</span>: 10px 0 0 20px;
+}
+</pre>
+</div>
+<iframe src="./examples/demo-17/index.html" style="height: 350px;"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">In Practice</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+With an understanding of how to build forms in place, let's create a
+registration page for our Styles Conference website so that we can begin
+to gather interest and sell tickets for the event.
+</p>
+
+<ol class="org-ol">
+<li>Jumping into our <code>register.html</code> file, we'll begin by following the
+same layout pattern we used on our Speakers and Venue pages. This
+includes adding a <code>&lt;section&gt;</code> element with a class attribute value of
+<code>row</code> just below the registration lead-in section and nesting a
+<code>&lt;div&gt;</code> element with a class attribute value of <code>grid</code> directly
+inside the <code>&lt;section&gt;</code> element.
+
+<p>
+Our code just below the lead-in section for the Register page should
+look like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+    ...
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+<p>
+As a refresher, the class attribute value of <code>row</code> adds a white
+<code>background</code> and provides some vertical <code>padding</code>, while the class
+attribute value of <code>grid</code> centers our content in the middle of the
+page and provides some horizontal <code>padding</code>.
+</p>
+</li>
+
+<li>Inside the <code>&lt;div&gt;</code> element with a class attribute value of <code>grid</code>
+we're going to create two columns, one covering two-thirds of the
+page width and one covering one-third of the page width. The
+two-thirds column will be a <code>&lt;section&gt;</code> element on the left- hand
+side that tells users why they should register for our conference.
+The one-third column, then, will be a <code>&lt;form&gt;</code> element on the
+right-hand side providing a way for users to register for our
+conference.
+
+<p>
+We'll add these two elements, and their corresponding <code>col-2-3</code> and
+<code>col-1-3</code> classes, directly inside the <code>&lt;div&gt;</code> element with a class
+attribute value of <code>grid</code>. Since both of these elements will be
+inline-block elements, we need to open a comment directly after the
+two-thirds column closing tag and then close that comment directly
+before the one-third column opening tag.
+</p>
+
+<p>
+In all, our code should look like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-2-3"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">    </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">form</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">form</span>&gt;
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Now, inside our two-thirds column let's add some details about our
+event and why it's a good idea for aspiring designers and front-end
+developers to attend. We'll do so using a handful of different
+heading levels (along with their pre-established styles), a
+paragraph, and an unordered list.
+
+<p>
+In our <code>&lt;section&gt;</code> element with a class attribute value of <code>col-2-3</code>,
+the code should look like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-2-3"</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">Purchase a Conference Pass</span>&lt;/<span style="color: #93E0E3;">h2</span>&gt;
+  &lt;<span style="color: #93E0E3;">h5</span>&gt;<span style="text-decoration: underline;">$99 per Pass</span>&lt;/<span style="color: #93E0E3;">h5</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">p</span>&gt;Purchase your Styles Conference pass using the form to the right. Multiple <span style="color: #DC8CC3; background-color: #3F3F3F;">passes may be purchased within the same order, so feel free to bring a friend or two along. Once your order is finished we&amp;#8217;ll follow up and provide a receipt for your purchase. See you soon!&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+
+  &lt;<span style="color: #93E0E3;">h4</span>&gt;<span style="text-decoration: underline;">Why Attend?</span>&lt;/<span style="color: #93E0E3;">h4</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">ul</span>&gt;
+  &lt;<span style="color: #93E0E3;">li</span>&gt;Over twenty world-class speakers&lt;/<span style="color: #93E0E3;">li</span>&gt;
+    &lt;<span style="color: #93E0E3;">li</span>&gt;One full day of workshops and two full days of presentations&lt;/<span style="color: #93E0E3;">li</span>&gt;
+    &lt;<span style="color: #93E0E3;">li</span>&gt;Hosted at The Chicago Theatre, a historical landmark&lt;/<span style="color: #93E0E3;">li</span>&gt;
+    &lt;<span style="color: #93E0E3;">li</span>&gt;August in Chicago is simply amazing&lt;/<span style="color: #93E0E3;">li</span>&gt;
+  &lt;/<span style="color: #93E0E3;">ul</span>&gt;
+
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Currently our unordered list doesn't have any list item markers. All
+of the browser default styles have been turned off by the CSS reset
+we added all the way back in Lesson 1. Let's create some custom
+styles specifically for this unordered list.
+
+<p>
+To do so, let's add a <code>class</code> attribute value of <code>why-attend</code> to the
+unordered list.
+</p>
+<pre class="example">
+&lt;ul class="why-attend"&gt;
+    ...
+&lt;/ul&gt;
+</pre>
+
+<p>
+With a class available to add styles to, let's create a new section
+for Register page styles at the bottom of our <code>main.css</code> file. Within
+this section let's use the class to select the unordered list and add
+a <code>list-style</code> of <code>square</code> and some bottom and left margins.
+</p>
+
+<p>
+The new section at the bottom of our <code>main.css</code> file should look like
+this:
+</p>
+<pre class="example">
+/*
+  ========================================
+  Register
+  ========================================
+*/
+
+.why-attend {
+  list-style: square;
+  margin: 0 0 22px 30px;
+}
+</pre>
+</li>
+
+<li>The details section of our registration page is complete, so now it's
+time to address our registration form. We'll start by adding the
+<code>action</code> and <code>method</code> attributes to the <code>&lt;form&gt;</code> element. Since we
+haven't set up our form processing, these attributes will simply
+serve as placeholders and will need to be revisited.
+
+<p>
+The code for our <code>&lt;form&gt;</code> element should look like this:
+</p>
+<pre class="example">
+&lt;form class="col-1-3" action="#" method="post"&gt;
+    ...
+&lt;/form&gt;
+</pre>
+</li>
+
+<li>Next, inside the <code>&lt;form&gt;</code> element we'll add a <code>&lt;fieldset&gt;</code> element.
+Inside the <code>&lt;fieldset&gt;</code> element we'll add a series of <code>&lt;label&gt;</code>
+elements that wrap a given form control.
+
+<p>
+We want to collect a user's name, email address, number of desired
+conference passes, and any potential comments. The name, email
+address, and number of conference passes are required fields, and
+we'll want to make sure we use the appropriate elements and
+attributes for each form control.
+</p>
+
+<p>
+With a mix of different input types, select menus, textareas, and
+attributes, the code for our form should look like the following:
+</p>
+
+<pre class="example">
+&lt;form class="col-1-3" action="#" method="post"&gt;
+
+  &lt;fieldset&gt;
+
+    &lt;label&gt;
+      Name
+      &lt;input type="text" name="name" placeholder="Full name" required&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Email
+      &lt;input type="email" name="email" placeholder="Email address" required&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Number of Passes
+      &lt;select name="quantity" required&gt;
+        &lt;option value="1" selected&gt;1&lt;/option&gt;
+        &lt;option value="2"&gt;2&lt;/option&gt;
+        &lt;option value="3"&gt;3&lt;/option&gt;
+        &lt;option value="4"&gt;4&lt;/option&gt;
+        &lt;option value="5"&gt;5&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Comments
+      &lt;textarea name="comments"&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+
+  &lt;/fieldset&gt;
+
+  &lt;input type="submit" name="submit" value="Purchase"&gt;
+
+&lt;/form&gt;
+</pre>
+
+<p>
+Here we can see each form control nested within a <code>&lt;label&gt;</code> element.
+The Name form control uses an <code>&lt;input&gt;</code> element with a <code>type</code>
+attribute value of <code>text</code>, while the Email form control uses an
+<code>&lt;input&gt;</code> element with a <code>type</code> attribute value of <code>email</code>.
+</p>
+
+<p>
+Both the Name and Email form controls include the <code>required</code> Boolean
+attribute and a <code>placeholder</code> attribute.
+</p>
+
+<p>
+The Number of Passes form control uses the <code>&lt;select&gt;</code> element and
+nested <code>&lt;option&gt;</code> elements. The <code>&lt;select&gt;</code> element itself includes
+the <code>required</code> Boolean attribute, and the first <code>&lt;option&gt;</code> element
+includes the <code>selected</code> Boolean attribute.
+</p>
+
+<p>
+The Comments form control uses the <code>&lt;textarea&gt;</code> element without any
+special modifications. And lastly, outside of the <code>&lt;fieldset&gt;</code>
+element is the submit form control, which is formed by an <code>&lt;input&gt;</code>
+element with a <code>type</code> attribute value of <code>submit</code>.
+</p>
+</li>
+
+<li>With the form in place, it's time to add styles to it. We'll begin
+with a few default styles on the <code>&lt;form&gt;</code> element itself and on the
+<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code> elements.
+
+<p>
+Within the register section of our <code>main.css</code> file we'll want to add
+the following styles:
+</p>
+<pre class="example">
+form {
+  margin-bottom: 22px;
+}
+input,
+select,
+textarea {
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+</pre>
+
+<p>
+We'll start by placing a <code>22</code>-pixel <code>margin</code> on the bottom of our
+form to help vertically space it apart from other elements. Then
+we'll add some standard <code>font</code>-based styles&#x2014;including <code>weight</code>,
+<code>size</code>, <code>line-height</code>, and <code>family</code>&#x2014;for all of the <code>&lt;input&gt;</code>,
+<code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code> elements.
+</p>
+
+<p>
+By default, every browser has its own interpretation of how the
+styles for form controls should appear. With this in mind, we have
+repeated the <code>font</code>-based styles from our <code>&lt;body&gt;</code> element to ensure
+that our styles remain consistent.
+</p>
+</li>
+
+<li>Let's add some styles to the elements within the <code>&lt;fieldset&gt;</code>
+element. Since we may add additional <code>&lt;fieldset&gt;</code> elements later on,
+let's add a class attribute value of <code>register-group</code> to our existing
+<code>&lt;fieldset&gt;</code> element, and from there we can apply unique styles to
+the elements nested within it.
+
+<pre class="example">
+&lt;fieldset class="register-group"&gt;
+  ...
+&lt;/fieldset&gt;
+</pre>
+
+<p>
+Once the <code>register-group</code> class attribute value is in place, we'll
+add a few styles to the elements nested within the <code>&lt;fieldset&gt;</code>
+element. These styles will appear in our <code>main.css</code> file, below the
+existing form styles.
+</p>
+
+<pre class="example">
+.register-group label {
+  color: #648880;
+  cursor: pointer;
+  font-weight: 400;
+}
+.register-group input,
+.register-group select,
+.register-group textarea {
+  border: 1px solid #c6c9cc;
+  border-radius: 5px;
+  color: #888;
+  display: block;
+  margin: 5px 0 27px 0;
+  padding: 5px 8px;
+}
+.register-group input,
+.register-group textarea {
+  width: 100%;
+}
+.register-group select {
+  height: 34px;
+  width: 60px;
+}
+.register-group textarea {
+  height: 78px;
+}
+</pre>
+
+<p>
+You'll notice that most of these properties and values revolve around
+the box model, which we covered in Lesson 4. We're primarily setting
+up the size of different form controls, ensuring that they are laid
+out appropriately. Aside from adding some box model styles, we're
+adjusting the <code>color</code> and <code>font-weight</code> of a few elements.
+</p>
+</li>
+
+<li>So far, so good: our form is coming together quite nicely. The only
+remaining element yet to be styled is the submit button. As it's a
+button, we actually have some existing styles we can apply here. If
+we think back to our home page, our hero section contained a button
+that received some styles by way of the <code>btn</code> class attribute value.
+
+<p>
+Let's add this <code>class</code> attribute value, <code>btn</code>, along with a new
+<code>class</code> attribute value of <code>btn-default</code> to our submit button.
+Specifically we'll use the class name of <code>btn-default</code> since this
+button is appearing on a white <code>background</code> and will be the default
+style for buttons moving forward.
+</p>
+
+<pre class="example">
+&lt;input class="btn btn-default" type="submit" name="submit" value="Purchase"&gt;
+</pre>
+
+<p>
+Now our submit button has some shared styles with the button on the
+home page. We'll use the <code>btn-default</code> class attribute value to then
+apply some new styles to our submit button specifically.
+</p>
+
+<p>
+Going back to the buttons section of our <code>main.css</code> file, let's add
+the following:
+</p>
+<pre class="example">
+.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+</pre>
+
+<p>
+These new styles, which define the size and <code>background</code> of our
+submit button, are then combined with the existing <code>btn</code> class styles
+to create the final presentation of our submit button.
+</p>
+</li>
+</ol>
+
+<p>
+Our Register page is finished, and attendees can now begin to reserve
+their tickets.
+</p>
+
+
+<figure>
+<p><img src="./img/practice-1.png" class="img-responsive" alt="practice-1.png">
+</p>
+<figcaption><span class="figure-number">Figure 7:</span> The registration page, which includes a form</figcaption>
+</figure>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Summary</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Forms play a large role in how users interact with, provide information
+to, and take action on websites. We've taken all the right steps to
+learn not only how to mark up forms but also how to style them.
+</p>
+
+<p>
+To quickly recap, within this lesson we discussed the following:
+</p>
+<ul class="org-ul">
+<li>How to initialize a form
+</li>
+<li>Ways to obtain text-based information from users
+</li>
+<li>Different elements and methods for creating multiple choice options
+and menus
+</li>
+<li>Which elements and attributes are best used to submit a form's data
+for processing
+</li>
+<li>How best to organize forms and give form controls structure and
+meaning
+</li>
+<li>A handful of attributes that help collect more qualified data
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Resources &amp; Links</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><a href="http://htmldog.com/guides/html/beginner/forms/">Forms</a> via HTML Dog
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">Form Element</a> via Mozilla Developer Network
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Input Element</a> via Mozilla Developer Network
+</li>
+<li><a href="http://diveinto.html5doctor.com/forms.html">A Form of Madness</a> via Dive Into HTML5
+</li>
+</ul>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Initializing a Form</a></li>
+<li><a href="#sec-3">Text Fields &amp; Textareas</a>
+<ul class="nav">
+<li><a href="#sec-3-1">Text Fields</a></li>
+<li><a href="#sec-3-2">Textarea</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Multiple Choice Inputs &amp; Menus</a>
+<ul class="nav">
+<li><a href="#sec-4-1">Radio Buttons</a></li>
+<li><a href="#sec-4-2">Check Boxes</a></li>
+<li><a href="#sec-4-3">Drop-Down Lists</a></li>
+<li><a href="#sec-4-4">Multiple Selections</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Form Buttons</a>
+<ul class="nav">
+<li><a href="#sec-5-1">Submit Input</a></li>
+<li><a href="#sec-5-2">Submit Button</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Other Inputs</a>
+<ul class="nav">
+<li><a href="#sec-6-1">Hidden Input</a></li>
+<li><a href="#sec-6-2">File Input</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Organizing Form Elements</a>
+<ul class="nav">
+<li><a href="#sec-7-1">Label</a></li>
+<li><a href="#sec-7-2">Fieldset</a></li>
+<li><a href="#sec-7-3">Legend</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">Form &amp; Input Attributes</a>
+<ul class="nav">
+<li><a href="#sec-8-1">Disabled</a></li>
+<li><a href="#sec-8-2">Placeholder</a></li>
+<li><a href="#sec-8-3">Required</a></li>
+<li><a href="#sec-8-4">Additional Attributes</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">Login Form Example</a></li>
+<li><a href="#sec-10">In Practice</a></li>
+<li><a href="#sec-11">Summary</a></li>
+<li><a href="#sec-12">Resources &amp; Links</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2016-04-10 Sun 01:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+</div>
+</footer>
+</body>
+</html>

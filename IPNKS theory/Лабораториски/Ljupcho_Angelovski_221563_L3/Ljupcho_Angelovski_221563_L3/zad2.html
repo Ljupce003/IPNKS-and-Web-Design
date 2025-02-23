@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <script>
+
+    function removeelement(element,list){
+
+  let lista=[];
+  lista=list.filter(e=>e!==element)
+
+  return lista;
+    }
+    let list=[1,2,3,4,5,6,7,8,9,10];
+    list=removeelement(8,list);
+    console.log(list.toString());
+    //1,2,3,4,5,6,7,9,10
+
+    //uste edno brisenje primer
+    list=removeelement(4,list)
+    console.log(list.toString());
+    //1,2,3,5,6,7,9,10
+  </script>
+</head>
+<body>
+
+</body>
+</html>

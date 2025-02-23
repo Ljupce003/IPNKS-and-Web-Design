@@ -1,0 +1,105 @@
+iframe {
+  width: 100%;
+  border-color: black;
+  border-style: double;
+  border-width: 4px;
+  padding: 5px;
+}
+
+label.org-src-name {
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+
+}
+
+label.org-src-name:before {
+  margin-left: 20px;
+  content: "Example: ";
+}
+
+figure {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+figure img {
+  margin: auto;
+  text-align: center;
+}
+
+.figure-number {
+  margin: 0px 0px 0px -30px;
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+figcaption {
+  padding: 0px 10px 0px 60px;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+.outline-2 {
+  background-color: #fafafa;
+  padding: 0px 5px;
+}
+.outline-3 {
+  background-color: #f0f0f0;
+  padding: 0px 5px;
+  margin-right: -5px;
+  margin-left: 10px;
+}
+
+.outline-1 {
+  background-color: #fcfcfc;
+  padding: 0px 5px;
+}
+
+.note {
+  width: 90%;
+  margin-left: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #2C3079;
+  border-radius: 5px;
+  background-color: #ffb3b3;
+  text-align: justify;
+}
+
+
+
+.note p:first-child{
+  background-color: #ff9999;
+  text-align: right;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  padding: 5px 20px 5px;
+  text-transform: uppercase;
+
+  margin-left: 0px;
+  margin-right: 0px;
+  color: #333;
+}
+
+.note p:first-child:before {
+  float: left;
+  margin-left: -40px;
+  margin-top: 50px;
+  transform: rotate(-90deg);
+  content: "NOTE";
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 2.5rem;
+  color:#ffe6e6;
+}
+
+.note p {
+
+  margin-left: 60px;
+  margin-right: 15px;
+}

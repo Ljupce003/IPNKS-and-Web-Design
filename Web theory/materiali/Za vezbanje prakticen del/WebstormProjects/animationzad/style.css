@@ -1,0 +1,128 @@
+* {
+    font-family: "Helvetica", sans-serif;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    background-image: url("containerbackground.gif");
+}
+
+.intro {
+    margin-left: 7%;
+}
+
+.pageHeader {
+    background-image: url("top.gif");
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 300px;
+    margin-left: -17px;
+    color: transparent;
+}
+
+.quickSummary {
+    background-image: url("summary.gif");
+    width: 400px;
+    height: 200px;
+    background-repeat: no-repeat;
+    float: right;
+    margin-right: -172px;
+    margin-top: 12px;
+}
+
+.quickSummary span {
+    width: 45%;
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: 1%;
+}
+
+.preamble {
+    width: 60%;
+}
+
+.preamble h3 {
+    background-image: url("title1.gif");
+    height: 50px;
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 600px;
+    margin-left: -9px;
+}
+
+.explanation {
+    width: 55%;
+    margin-left: 7%;
+    display: inline-block;
+}
+
+.explanation h3 {
+    background-image: url("title2.gif");
+    height: 50px;
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 600px;
+    margin-left: -9px;
+}
+
+.participation {
+    width: 55%;
+    margin-left: 7%;
+    display: inline-block;
+}
+
+.participation h3 {
+    background-image: url("title3.gif");
+    height: 50px;
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 600px;
+    margin-left: -9px;
+}
+
+.participation a {
+    color: red;
+    text-decoration: none;
+}
+
+.linkList {
+    float: right;
+    display: inline-block;
+    margin-top: -660px;
+    margin-right: 14px;
+}
+
+.select {
+    background-image: url("resources.gif");
+    color: transparent;
+    height: 50px;
+    background-repeat: no-repeat;
+}
+
+.lselect ul {
+    margin-right: 20px;
+    list-style-image: url("paperfolded.gif");
+    line-height: 180%;
+}
+
+.resources {
+    background-image: url("designs.gif");
+    color: transparent;
+    height: 50px;
+    background-repeat: no-repeat;
+}
+
+.lresources ul {
+    margin-right: 20px;
+    list-style-image: url("paper.gif");
+    line-height: 180%;
+}
+
+.lresources a {
+    color: red;
+    text-decoration: none;
+}

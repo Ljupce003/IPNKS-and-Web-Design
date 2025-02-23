@@ -1,0 +1,80 @@
+body{
+    margin:auto;
+    max-width: 1000px;
+    font-size: 11px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    background-color: beige;
+
+}
+h1, h3{
+    font-size: 0px;
+}
+h1{
+    background: url("img/page_header_bg.jpg") no-repeat;
+    height: 300px;
+}
+#container {
+    background: url("img/container_bg.gif") repeat-y;
+
+}
+
+#footer{
+background: url("img/footer_bg.jpg") no-repeat;
+    height: 150px;
+}
+#preamble h3{
+    background: url("/img/h3_what_is_seafood.png") no-repeat;
+    height: 32px;
+}
+#history h3{
+    background: url("img/h3_history.png") no-repeat;
+    height: 32px;
+}
+#health h3{
+    background: url("img/h3_health_benefits.png") no-repeat;
+    height: 32px;
+}
+#lresources h3{
+    background: url("img/h3_resources.png") no-repeat;
+    height: 24px;
+}
+#lselect h3{
+    background: url("img/h3_our_restaurants.png") no-repeat;
+    height: 24px;
+}
+p{
+    width: 500px;
+}
+#preamble, #history, #health{
+    padding-left: 237px;
+
+}
+
+ul li{
+    list-style-image: url("img/list_grass.gif");
+}
+#lselect, #lresources{
+    margin-left:45px ;
+}
+a:hover{
+    text-decoration: none;
+}
+#lselect a{
+    font-weight: bold;
+    color: #1c4f1c;
+}
+#lresources a{
+    color: #7fc57f;
+}
+#preamble h3, #history h3, #health h3{
+    border-bottom: 1px solid black;
+    width: 500px;
+}
+#lresources h3, #lselect h3{
+    border-bottom: 1px solid black;
+    width: 150px;
+}
+#lresources{
+    margin-top: -970px;
+    margin-left:57px;
+}

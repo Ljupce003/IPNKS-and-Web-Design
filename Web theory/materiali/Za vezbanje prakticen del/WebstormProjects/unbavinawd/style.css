@@ -1,0 +1,68 @@
+body{
+    font-family: "palatino linotype",palatino,Serif;
+    font-size: 14px;
+    margin: auto;
+    background: url("img/bkgr1.jpg");
+}
+header, .summary p:first-of-type{
+    font-size: 0px;
+}
+header{
+    background: url("img/header.jpg") no-repeat;
+    height: 292px;
+}
+.summary{
+    background: url("img/boy.jpg") no-repeat;
+    height: 240px;
+    width: 296px;
+    margin-left: 480px;
+    margin-top: -240px;
+    padding-top: 194px;
+    padding-left: 15px;
+
+}
+.intro,#supporting{
+    width:474px ;
+    background-color: white;
+}
+#supporting{
+    margin-top: -17px;
+}
+ .intro h3{
+    margin-top: -150px;
+}
+ .sidebar{
+     width: 296px;
+     padding-left:500px;
+     margin-top: -2050px;
+ }
+.sidebar ul li{
+    list-style: url("img/bull.gif");
+}
+.sidebar a:hover{
+    color: navy;
+}
+.summary a:hover{
+    color: navy;
+}
+footer {
+    width: 800px;
+    background: url("img/bkgr1.jpg");
+    height: 50px;
+    border-top: 2px solid #3da4e1;
+    border-image-repeat: repeat;
+    margin-top: 20px;
+    text-align: right;
+}
+footer a {
+    background: #3da4e1;
+    color: white;
+    text-decoration-line: none;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+footer a:hover {
+    background: darkblue;
+}

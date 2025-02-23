@@ -1,0 +1,100 @@
+/* Indeks, Ime i Prezime */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    margin: auto;
+    max-width: 1000px;
+    background: url("img/back.gif");
+}
+.page-wrapper{
+    color: #595858;
+}
+header {
+    font-size: 0px;
+    background: url("img/header.png") no-repeat;
+    height: 277px;
+
+
+}
+.summary p:first-of-type{
+    font-size: 0px;
+}
+h3{
+    color: #c01fb9;
+}
+p{
+    width: 480px;
+    text-align: justify;
+}
+ul li{
+    width: 440px;
+    text-align: justify;
+}
+.preamble, .participation, .benefits, .explanation{
+    background: url("img/t1.gif") no-repeat;
+
+}
+.preamble h3, .participation h3, .benefits h3, .explanation h3 {
+    padding-top: 22px;
+    padding-left: 24px;
+}
+.wrapper ul li, .sidebar2 ul li{
+    list-style-image: url("img/picto.gif");
+width: 130px;
+}
+.page-wrapper{
+    background-color: white;
+    width: 690px;
+}
+.summary{
+    background: url("img/down1.gif") no-repeat;
+    height: 117px;
+    margin-left: 500px;
+
+}
+.summary p:last-of-type{
+    color: #c01fb9;
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+
+}
+.preamble{
+    margin-top:-120px;
+}
+.page-wrapper a{
+    color: #74529A;
+    text-decoration: none;
+}
+.page-wrapper a:hover{
+    text-decoration-line: underline;
+}
+.page-wrapper a:visited{
+    color: #993399;
+}
+.wrapper ul li a:hover{
+    border-bottom: 1px dotted purple;
+
+}
+.wrapper, .sidebar2 {
+    padding-left: 500px;
+   margin-top: -670px;
+
+}
+.extra1{
+    background: url("img/mfoot.gif") no-repeat;
+    height: 364px;
+    margin-left: 500px;
+}
+footer{
+    background: url("img/footer1.gif") no-repeat;
+    height: 83px;
+    padding-top: 40px;
+}
+footer a{
+
+ padding-left: 60px;
+
+}

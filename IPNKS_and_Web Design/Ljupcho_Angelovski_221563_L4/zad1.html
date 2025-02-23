@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        #M{
+            display: inline-block;
+            width: 350px;
+            clear: right;
+        }
+
+        label{
+            margin-bottom: 5px;
+            text-align: end;
+            display: inline-block;
+            width: 350px;
+
+        }
+        input{
+            float: right;
+            width: 150px;
+        }
+
+        td{
+            border: black solid 1px;
+        }
+        .headerr{font-weight: bold}
+        table{border: black solid 1px; margin-top: 10px}
+
+    </style>
+    <script>
+
+
+        function vnesi(){
+            let niza=[]
+            let table =document.getElementById("table");
+            niza[0] =document.getElementById("name").value;
+            niza[1] =document.getElementById("surname").value;
+            niza[2] =document.getElementById("indeks").value;
+            niza[3] =document.getElementById("predmet").value;
+            let i =document.getElementById("ocena").options.selectedIndex;
+            niza[4]=document.getElementById("ocena").options[i].value;
+
+            document.getElementById("name").value="";
+            document.getElementById("surname").value="";
+            document.getElementById("indeks").value="";
+            document.getElementById("predmet").value="";
+            document.getElementById("ocena").options.selectedIndex=0;
+
+            if(niza[0]!=="" || niza[1]!==""  || niza[2]!==""  || niza[3]!==""){
+                table.innerHTML+="<tr><td>"+niza[0]+"</td>"+"<td>"+niza[1]+"</td>"+"<td>"+niza[2]+"</td>"+"<td>"+niza[3]+"</td>"+"<td>"+niza[4]+"</td></tr>"
+
+            }
+            else alert("Greska vneseno")
+
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+<div id="M">
+<label>Име: <input type="text" id="name"></label>
+<label>Презиме: <input type="text" id="surname"></label><br>
+<label>Индекс: <input type="text" id="indeks"></label><br>
+<label>Предмет: <input type="text" id="predmet"></label><br>
+<label>Оцена:
+<select id="ocena">
+    <option>5(пет)</option>
+    <option>6(шест)</option>
+    <option>7(седум)</option>
+    <option>8(осум)</option>
+    <option>9(девет)</option>
+    <option>10(десет)</option>
+</select>
+</label><br>
+
+<input type="button" value="Vnesi" onclick="vnesi()">
+</div>
+
+
+<table id="table" >
+    <tr><td class="headerr">Име</td><td class="headerr">Презиме</td><td class="headerr">Индекс</td><td class="headerr">Предмет</td><td class="headerr">Оцена</td></tr>
+</table>
+
+</body>
+</html>

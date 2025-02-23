@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        let count=0;
+        function addLetalo(){
+            let ime=document.getElementById("ime").value;
+
+            document.getElementById("ime").value="";
+            let oznaka=document.getElementById("oznaka").value;
+            let part=oznaka.split('-');
+            let test=part[0]+part[1];
+            let test1="Z3UNR";
+            let b=1;
+            if(test===test1)b=0
+            let br=parseInt(part[2]);
+            document.getElementById("oznaka").value=""
+            let kordinati=document.getElementById("kordinati").value;
+            document.getElementById("kordinati").value=""
+            let radius=document.getElementById("radius").value;
+            document.getElementById("radius").value=""
+            let visina=document.getElementById("visina").value;
+            document.getElementById("visina").value="";
+            let i=document.getElementById("tip").options.selectedIndex;
+            document.getElementById("tip").options.selectedIndex=0;
+            let tip=document.getElementById("tip").options[i].value;
+            if(br%1111!==0){
+                if(parseInt(radius)>500 && parseInt(visina)>150) return alert("greska vnesovte")
+            }
+            if(((ime&&oznaka&&kordinati&&radius&&visina)==="") && b!==0)alert("greska vesivte");
+            else {
+                let list=document.getElementById("tabela")
+                list.innerHTML+="<ul style='border: solid black 1px;background: green;padding: 20px'><li>IME: "+ime+"</li>"+"<li>OZNAKA:"+oznaka+"</li>"+
+                    "<li>RADIUS: "+radius+"</li>"+"<li>VISINA: "+visina+"</li>"+"<li>TIP: "+tip+"</li>" +
+                    "<input type='button' value='Sell' onclick='sell(this)'>"+"<input type='button' value='Remove' onclick='Remove(this)'>"+"</ul>"
+                count++;
+            }
+            document.getElementById("counter").innerText=count;
+
+        }function sell(button){
+            button.parentNode.style.backgroundColor="red";
+            button.parentNode.removeChild(button);
+        }function Remove(buton){
+            count--
+            document.getElementById("counter").innerText=count;
+            buton.parentNode.parentNode.removeChild(buton.parentNode);
+
+        }
+    </script>
+
+
+    <style>
+        #bodii{width: 450px}
+        label{
+            width: 400px;
+            display: inline-block;
+            clear: right;
+            margin: 5px;
+        }
+
+        input[type="text"]{float: right}
+    </style>
+</head>
+<body>
+<h1 style="font-weight: bold;font-size: 20px">Регистрирај Лет</h1>
+<div id="bodii">
+<label >Име и Презиме
+    <input type="text" id="ime"><br>
+</label>
+<label>Ознака на летало
+    <input type="text" id="oznaka"><br>
+</label>
+<label>Кординати на лет
+    <input type="text" id="kordinati"><br>
+</label>
+<label>Радиус на лет
+    <input type="text" id="radius"><br>
+</label>
+<label>Висина на лет
+    <input type="text" id="visina"><br>
+</label>
+</div>
+<label>Тип на летало
+    <select id="tip">
+        <option>Едрилица</option>
+        <option>Дрон</option>
+    </select>
+</label><br>
+<label>
+    <input type="button"  onclick="addLetalo()" value="Најави">
+</label>
+
+<h2>Регирстрирани Летови</h2>
+<p>Вкупно најавени летови:<span id="counter"></span></p>
+<table id="tabela" >
+
+</table>
+
+</body>
+</html>

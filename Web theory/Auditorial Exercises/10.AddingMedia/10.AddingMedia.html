@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Adding Media</title>
+<!-- 2016-04-09 Sat 22:59 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Org-mode">
+<meta name="author" content="Boban Joksimoski">
+<meta name="description" content="adding media"
+>
+<meta name="keywords" content="html, html5, css, css3, media">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/io.css" />
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 16px;
+    margin-bottom: 95px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 16px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Adding Media</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+We browse the Internet in search of interesting and informative content,
+which we usually find in the form of plain text. To accompany this plain text,
+HTML provides ways to embed rich media in the form of images, audio tracks, and
+videos, as well as to embed content from another web page in the form of an
+inline frame.
+</p>
+
+<p>
+The ability to include images, audio tracks, videos, and inline frames
+within websites has been around for some time. Browser support for images and
+inline frames has generally been pretty good. And while the ability to add audio
+tracks and videos to a website has been around for years, the process has been
+fairly cumbersome. Fortunately, this process has improved and is much easier
+with support directly from HTML.
+</p>
+
+<p>
+Today, we can freely use images, audio, video, and inline frames knowing that
+content is supported across all major browsers.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Adding Images</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To add images to a page, we use the <code>&lt;img&gt;</code> inline element. The <code>&lt;img&gt;</code>
+element is a self-containing, or empty, element, which means that it
+doesn't wrap any other content and it exists as a single tag. For the
+<code>&lt;img&gt;</code> element to work, a src attribute and value must be included to
+specify the source of the image. The <code>src</code> attribute value is a URL,
+typically relative to the server where a website is hosted.
+</p>
+
+<p>
+In conjunction with the <code>src</code> attribute, the <code>alt</code> (alternative text)
+attribute, which describes the contents of an image, should be applied.
+The <code>alt</code> attribute value is picked up by search engines and assistive
+technologies to help convey the purpose of an image. The <code>alt</code> text will
+be displayed in place of the image if for some reason the image is not
+available.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"dog.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerchief"</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Adding Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../img/dog.jpg"</span>
+     <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerchief"</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">display</span>: block;
+  <span style="color: #DFAF8F;">max-width</span>: 100%;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-01/index.html" style="width: 500px; height: 420px"> </iframe>
+
+
+<figure>
+<p><img src="./img/alternate-text.png" class="img-responsive" alt="alternate-text.png">
+</p>
+<figcaption><span class="figure-number">Figure 1:</span> The alternate text, "A black, brown, and white dog wearing a kerchief," shown in place of a missing image</figcaption>
+</figure>
+
+<div class="note">
+<p>
+Supported Image Formats
+</p>
+
+<p>
+Images come in a variety of different file formats, and each browser may
+support (or not support) different formats. By and large, the most
+commonly supported formats online are <code>gif</code>, <code>jpg</code>, and <code>png</code> images. Of
+these, the most widely used formats today are <code>jpg</code> and <code>png</code>. The <code>jpg</code>
+format provides quality images with high color counts while maintaining
+a decent file size, ideal for faster load times. The <code>png</code> format is
+great for images with transparencies or low color counts. We most
+commonly see <code>jpg</code> images used for photographs and <code>png</code> images used for
+icons or background patterns.
+</p>
+
+</div>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Sizing Images</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+It is important to identify the size of an image in order to tell the
+browser how large the image should be before the page even loads; thus
+the browser can reserve space for the image and render the page faster.
+There are a few different ways to size images so that they work well on
+a page. One option is to use the <code>width</code> and <code>height</code> attributes
+directly within the <code>&lt;img&gt;</code> tag in HTML.
+</p>
+
+<p>
+Additionally, images may be sized using the <code>width</code> and <code>height</code>
+properties in CSS. When both the HTML attributes and CSS properties are
+used, the CSS attributes will take precedence over the HTML attributes.
+</p>
+
+<p>
+Specifying either a width or height will cause the other dimension to
+adjust automatically to maintain the aspect ratio of the image. As an
+example, if we want an image to be <code>200</code> pixels tall but are less
+specifically concerned about how wide it is, we can set the <code>height</code> to
+<code>200</code> pixels, and the width of the image will adjust accordingly.
+Setting both a <code>width</code> and <code>height</code> will work also; however, doing so
+may break the aspect ratio of an image, causing it to appear distorted.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">img {
+  height: 200px;
+  width: 200px;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Sizing Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../img/dog.jpg"</span>
+     <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerchief"</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">display</span>: block;
+  <span style="color: #DFAF8F;">height</span>: 200px;
+  <span style="color: #DFAF8F;">width</span>: 200px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-02/index.html" style="width: 100%; height: 250px"> </iframe>
+
+<p>
+While using the <code>width</code> and <code>height</code> attributes directly in HTML
+provides some semantic value by noting an image's original size, it can
+be difficult to manage numerous images that all need to be the same
+size. In this event, it's common practice to use CSS to resize the
+images.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Positioning Images</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+We can use a number of different approaches to position images on a web
+page. By default images are positioned as inline-level elements;
+however, their positions may be changed using CSS, specifically the
+<code>float</code>, <code>display</code>, and box model properties, including <code>padding</code>,
+<code>border</code>, and <code>margin</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1">Inline Positioning Images</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+The <code>&lt;img&gt;</code> element is by default an inline-level element. Adding an
+image without any styles to a page will position that image within the
+same line as the content that surrounds it. Additionally, the height of
+the line in which an image appears will be changed to match the height
+of the image, which can create large vertical gaps within that line.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">p</span>&gt;Gatsby is a black, brown, and white hound mix puppy who loves howling at
+fire trucks and collecting belly rubs.
+&lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"dog.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerchief"</span>&gt;
+Although he spends most of his time sleeping he is also quick to chase any
+birds who enter his vision.&lt;/<span style="color: #93E0E3;">p</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Inline Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">p</span>&gt;Gatsby is a black, brown, and white hound mix puppy who loves howling at fire<span style="color: #DC8CC3; background-color: #3F3F3F;"> trucks and collecting belly rubs. &lt;</span><span style="color: #DC8CC3; background-color: #3F3F3F;">img</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">src</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"../../img/dog.jpg"</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">alt</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"A black, brown, and white dog wearing a kerchief"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt; Although he spends most of his time sleeping he is also quick to chase any birds who enter his vision.&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">width</span>: 200px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-03/index.html" style="width: 100%; height: 350px"></iframe>
+
+<p>
+Leaving images untouched in their default positioning isn't too common.
+More often than not, images are displayed as block-level elements or are
+floated flush to one side.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2">Block Positioning Images</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Adding the <code>display</code> property to an image and setting its value to
+<code>block</code> forces the image to be a block-level element. This makes the
+image appear on its own line, allowing the surrounding content to be
+positioned above and below the image.
+</p>
+
+<pre class="example">
+img {
+  display: block;
+}
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Block Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">p</span>&gt;Gatsby is a black, brown, and white hound mix puppy who loves howling at fire<span style="color: #DC8CC3; background-color: #3F3F3F;"> trucks and collecting belly rubs. &lt;</span><span style="color: #DC8CC3; background-color: #3F3F3F;">img</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">src</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"../../img/dog.jpg"</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">alt</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"A black, brown, and white dog wearing a kerchief"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt; Although he spends most of his time sleeping he is also quick to chase any birds who enter his vision.&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">display</span>: block;
+  <span style="color: #DFAF8F;">width</span>: 200px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-04/index.html" style="width: 100%; height: 350px"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3">Positioning Images Flush Left or Right</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Sometimes displaying an image as <code>inline</code> or <code>block</code>, or perhaps even
+<code>inline-block</code>, isn't ideal. We may want the image to appear on the left
+or right side of its containing element, while all of the other content
+wraps around the image as necessary. To do this, we use the <code>float</code>
+property with a value of either <code>left</code> or <code>right</code>.
+</p>
+
+<p>
+We recall that the <code>float</code> property was originally intended
+to position images to the left or right of a containing element. Now
+we'll use it for that original purpose.
+</p>
+
+<p>
+Floating an image is a start; however, all other content will align
+directly against it. To provide spacing around an image, we'll use the
+<code>margin</code> property. Additionally, we can use the <code>padding</code>, <code>border</code>, and
+<code>background</code> properties to build a frame for the image, if desired.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #9799a7;">#9799a7</span>;
+  <span style="color: #DFAF8F;">float</span>: right;
+  <span style="color: #DFAF8F;">margin</span>: 8px 0 0 20px;
+  <span style="color: #DFAF8F;">padding</span>: 4px;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Floating Images Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">p</span>&gt;Gatsby is a black, brown, and white hound mix puppy who loves howling at fire<span style="color: #DC8CC3; background-color: #3F3F3F;"> trucks and collecting belly rubs. &lt;</span><span style="color: #DC8CC3; background-color: #3F3F3F;">img</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">src</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"../../img/dog.jpg"</span><span style="color: #DC8CC3; background-color: #3F3F3F;"> </span><span style="color: #DC8CC3; background-color: #3F3F3F;">alt</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=</span><span style="color: #DC8CC3; background-color: #3F3F3F;">"A black, brown, and white dog wearing a kerchief"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt; Although he spends most of his time sleeping he is also quick to chase any birds who enter his vision.&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #93E0E3;">img </span>{
+  <span style="color: #DFAF8F;">background</span>: <span style="color: #000000; background-color: #eaeaed;">#eaeaed</span>;
+  <span style="color: #DFAF8F;">border</span>: 1px solid <span style="color: #000000; background-color: #9799a7;">#9799a7</span>;
+  <span style="color: #DFAF8F;">float</span>: right;
+  <span style="color: #DFAF8F;">margin</span>: 8px 0 0 20px;
+  <span style="color: #DFAF8F;">padding</span>: 4px;
+  <span style="color: #DFAF8F;">width</span>: 200px;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-05/index.html" style="width: 100%; height: 250px"></iframe>
+
+<div class="note">
+<p>
+When to Use an Image Element vs. a Background Image
+</p>
+
+<p>
+There are two primary ways to add images to a web page. One way, as
+covered here, is to use the <code>&lt;img&gt;</code> element within HTML. Another way is
+to use the <code>background</code> or <code>background-image</code> property within CSS to
+assign a background image to an element. Either option will do the job;
+however, they each have specific use cases.
+</p>
+
+<p>
+The <code>&lt;img&gt;</code> element within HTML is the preferred option when the image
+being used holds semantic value and its content is relevant to the
+content of the page.
+</p>
+
+<p>
+The <code>background</code> or <code>background-image</code> property within CSS is the
+preferred option when the image being used is part of the design or user
+interface of the page. As such, it's not directly relevant to the
+content of the page.
+</p>
+
+<p>
+The <code>&lt;img&gt;</code> element is quite popular, and when it was originally added
+to the HTML specification it forever changed the way websites were
+built.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">In Practice</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Now that we know how to add and position images on a page, let's take a
+look at our Styles Conference website and see where we can add a few
+images.
+</p>
+
+<ol class="org-ol">
+<li>Let's begin by adding some images to our home page. Specifically,
+we'll add an image within each of the teaser sections promoting a few
+of our pages.
+
+<p>
+Before we jump into the code, though, let's create a new folder named
+"images" within our "assets" folder. Then, within the "images"
+folder, let's create another folder named "home" specifically for our
+home page images. Within the "home" folder we'll add three images:
+<code>speakers.jpg</code>, <code>schedule.jpg</code>, and <code>venue.jpg</code>. (For reference,
+these images may be
+<a href="./src/images.zip">downloaded</a> within
+a zip file.)
+Then, inside our <code>index.html</code> file, each teaser section has an <code>&lt;a&gt;</code>
+element wrapping both an <code>&lt;h3&gt;</code> and an <code>&lt;h5&gt;</code> element. Let's move the
+<code>&lt;h5&gt;</code> element above the <code>&lt;a&gt;</code> element and replace it with an <code>&lt;img&gt;</code>
+element. The <code>src</code> attribute value for each <code>&lt;img&gt;</code> element will
+correspond to the folder structure and filename we set up, and the
+<code>alt</code> attribute value will describe the contents of each image.
+</p>
+
+<p>
+The HTML for our first teaser, for the Speakers page, will look like
+this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"teaser col-1-3"</span>&gt;
+  &lt;<span style="color: #93E0E3;">h5</span>&gt;<span style="text-decoration: underline;">Speakers</span>&lt;/<span style="color: #93E0E3;">h5</span>&gt;
+  &lt;<span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"speakers.html"</span>&gt;
+    &lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"assets/images/home/speakers.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"Professional Speaker"</span>&gt;
+    &lt;<span style="color: #93E0E3;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">World-Class Speakers</span>&lt;/<span style="color: #93E0E3;">h3</span>&gt;
+  &lt;/<span style="color: #93E0E3;">a</span>&gt;
+  &lt;<span style="color: #93E0E3;">p</span>&gt;Joining us from all around the world are over twenty fantastic speakers, he<span style="color: #DC8CC3; background-color: #3F3F3F;">re to share their stories.&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+
+<p>
+Let's continue this pattern for both the Schedule and Venue page
+teasers, too.
+</p>
+</li>
+
+<li>Now that we've added a few images to our home page, we'll need to
+clean up their styles a bit and make sure they properly fit into the
+layout of our page.
+
+<p>
+Since images are inline-level elements by default, let's change our
+images within the teaser sections to block-level elements. Let's also
+set their maximum <code>width</code> to <code>100%</code> to ensure they don't exceed the
+width of their respective columns. Changing this <code>width</code> value is
+important as it allows our images to adjust with the width of the
+columns as necessary.
+</p>
+
+<p>
+Lastly, let's round the corners of the images slightly and apply <code>22</code>
+pixels of bottom <code>margin</code> to the images, providing a little breathing
+room.
+</p>
+
+<p>
+Once we add these new styles to our existing home page styles (using
+the teaser class as a qualifying selector for the <code>&lt;img&gt;</code> elements),
+our CSS will look like this:
+</p>
+<pre class="example">
+.teaser img {
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 22px;
+  max-width: 100%
+}
+</pre>
+</li>
+
+<li>Next up, let's add images of all of the speakers to the Speakers
+page. We'll begin by creating a "speakers" folder within our "images"
+folder and placing images of all of the speakers there.
+
+<p>
+Within the <code>speakers.html</code> file, let's add an <code>&lt;img&gt;</code> element within
+each of the speaker information <code>&lt;aside&gt;</code> elements. Let's place each
+<code>&lt;img&gt;</code> element inside the <code>&lt;div&gt;</code> element with the class attribute
+value of <code>speaker-info</code>, just above the <code>&lt;ul&gt;</code> element.
+</p>
+
+<p>
+The <code>src</code> attribute value of each image will correspond to the
+"speakers" folder we set up and the speaker's name; the <code>alt</code>
+attribute value will be the speaker's name.
+</p>
+
+<p>
+The <code>&lt;aside&gt;</code> element for the speaker Shay Howe will look like this:
+</p>
+<pre class="example">
+&lt;aside class="col-1-3"&gt;
+  &lt;div class="speaker-info"&gt;
+
+    &lt;img src="assets/images/speakers/shay-howe.jpg" alt="Shay Howe"&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="https://twitter.com/shayhowe"&gt;@shayhowe&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="http://learn.shayhowe.com/"&gt;learn.shayhowe.com&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/aside&gt;
+</pre>
+
+<p>
+This same pattern for adding an image should then be applied to all
+other speakers.
+</p>
+</li>
+
+<li>As we did with the images on our home page, we'll want to apply some
+styles to the images on the Speakers page.
+
+<p>
+Let's begin by applying the <code>border-radius</code> property with a value of
+<code>50%</code>, turning our images into circles. From there, let's set a fixed
+<code>height</code> of <code>130</code> pixels to each image and set them to be vertically
+aligned to the <code>top</code> of the line they reside within.
+</p>
+
+<p>
+With the <code>height</code> and vertical alignment in place, let's apply
+vertical margins to the images. Using a negative <code>66</code>-pixel <code>margin</code>
+on the top of the images, we'll pull them slightly out of the
+<code>&lt;aside&gt;</code> element and make them vertically centered with the top
+<code>border</code> of the <code>&lt;div&gt;</code> element with a <code>class</code> attribute value of
+<code>speaker-info</code>. Then, applying a <code>22</code>-pixel <code>margin</code> on the bottom of
+the image provides space between the image and the <code>&lt;ul&gt;</code> element
+below it.
+</p>
+
+<p>
+When we add these new styles to our existing Speakers page styles
+(using the <code>speaker-info</code> class as a qualifying selector for the
+<code>&lt;img&gt;</code> elements), our CSS will look like this:
+</p>
+<pre class="example">
+.speaker-info img {
+  border-radius: 50%;
+  height: 130px;
+  margin: -66px 0 22px 0;
+  vertical-align: top;
+}
+</pre>
+</li>
+
+<li>Since we are using an aggressive negative <code>margin</code> on the <code>&lt;img&gt;</code>
+element within the <code>&lt;div&gt;</code> element with a class attribute value of
+<code>speaker-info</code>, we need to remove the <code>padding</code> on the top of that
+<code>&lt;div&gt;</code> element.
+
+<p>
+Previously we were using the <code>padding</code> property with a value of
+<code>22px 0</code>, thus placing <code>22</code> pixels of <code>padding</code> on the top and bottom
+and <code>0</code> pixels of <code>padding</code> on the left and right of the <code>&lt;div&gt;</code>
+element. Let's swap this property and value out for the
+<code>padding-bottom</code> property, as that's the only <code>padding</code> we need to
+identify, and use a value of <code>22</code> pixels.
+</p>
+
+<p>
+The new <code>speaker-info</code> class rule set looks like this:
+</p>
+
+<pre class="example">
+.speaker-info {
+  border: 1px solid #dfe2e5;
+  border-radius: 5px;
+  margin-top: 88px;
+  padding-bottom: 22px;
+  text-align: center;
+}
+</pre>
+</li>
+</ol>
+
+<p>
+Now both our home and Speaker pages are looking pretty sharp.
+</p>
+
+<figure>
+<p><img src="./img/practice-1a.png" class="img-responsive" alt="practice-1a.png">
+</p>
+<figcaption><span class="figure-number">Figure 2:</span> Our Styles Conference home page after adding images to each section that teases another page</figcaption>
+</figure>
+
+
+<figure>
+<p><img src="./img/practice-1b.png" class="img-responsive" alt="practice-1b.png">
+</p>
+<figcaption><span class="figure-number">Figure 3:</span> Our Styles Conference Speakers page after adding images for each of the speakers</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Adding Audio</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+HTML5 provides a quick and easy way to add <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video">audio files</a>
+to a website by way of the <code>&lt;audio&gt;</code> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">element</a>.
+As with the <code>&lt;img&gt;</code> element, the <code>&lt;audio&gt;</code> element accepts a source URL
+specified by the <code>src</code> attribute. Unlike the <code>&lt;img&gt;</code> element, though,
+the <code>&lt;audio&gt;</code> element requires both opening and closing tags, which
+we'll discuss soon.
+</p>
+<pre class="example">
+&lt;audio src="jazz.ogg"&gt;&lt;/audio&gt;
+</pre>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Audio Attributes</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Several other attributes may accompany the src attribute on the
+<code>&lt;audio&gt;</code> element; the most popular include <code>autoplay</code>, <code>controls</code>,
+<code>loop</code>, and <code>preload</code>.
+</p>
+
+<p>
+The <code>autoplay</code>, <code>controls</code>, and <code>loop</code> attributes are all Boolean
+attributes. As Boolean attributes, they don't require a stated value.
+Instead, when each is present on the <code>&lt;audio&gt;</code> element its value will be
+set to true, and the <code>&lt;audio&gt;</code> element will behave accordingly.
+</p>
+
+<p>
+By default, the <code>&lt;audio&gt;</code> element isn't displayed on a page. If the
+<code>autoplay</code> Boolean attribute is present on the <code>&lt;audio&gt;</code> element,
+nothing will appear on the page, but the audio file will automatically
+play upon loading.
+</p>
+
+<pre class="example">
+&lt;audio src="media/jazz.ogg" autoplay&gt;&lt;/audio&gt;
+</pre>
+
+<p>
+To display the <code>&lt;audio&gt;</code> element on a page, the <code>controls</code> Boolean
+attribute is necessary. When it's applied to the <code>&lt;audio&gt;</code> element, the
+<code>controls</code> Boolean attribute will display a browser's default audio
+controls, including play and pause, seek, and volume controls.
+</p>
+
+<pre class="example">
+&lt;audio src="media/jazz.ogg" controls&gt;&lt;/audio&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Adding Audio Demo</label>
+<pre class="src src-html"></pre>
+</div>
+
+
+<iframe src="./examples/demo-06/index.html" style="width: 100%"></iframe>
+</div>
+
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Audio Fallbacks &amp; Multiple Sources</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+At the moment, different browsers support different audio file formats,
+the three most popular of which are <code>ogg</code>, <code>mp3</code>, and <code>wav</code>. For the
+best browser support we'll need to use a handful of audio fallbacks,
+which will be included inside an <code>&lt;audio&gt;</code> element's opening and closing
+tags.
+</p>
+
+<p>
+To begin, we'll remove the <code>src</code> attribute from the <code>&lt;audio&gt;</code> element.
+Instead, we'll use the <code>&lt;source&gt;</code> element, with a <code>src</code> attribute,
+nested inside the <code>&lt;audio&gt;</code> element to define a new source.
+</p>
+
+<p>
+Using a <code>&lt;source&gt;</code> element and <code>src</code> attribute for each file format, we
+can list one audio file format after the other. We'll use the <code>type</code>
+attribute to quickly help the browser identify which audio types are
+available. When a browser recognizes an audio file format it will load
+that file and ignore all the others.
+</p>
+
+<p>
+Because it was introduced in HTML5, some browsers may not support the
+<code>&lt;audio&gt;</code> element. In this case, we can provide a link to download the
+audio file after any <code>&lt;source&gt;</code> elements within the <code>&lt;audio&gt;</code> element.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">audio</span> controls&gt;
+  &lt;<span style="color: #93E0E3;">source</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"jazz.ogg"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"audio/ogg"</span>&gt;
+  &lt;<span style="color: #93E0E3;">source</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"jazz.mp3"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"audio/mpeg"</span>&gt;
+  &lt;<span style="color: #93E0E3;">source</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"jazz.wav"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"audio/wav"</span>&gt;
+  Please &lt;<span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"jazz.mp3"</span> download&gt;download&lt;/<span style="color: #93E0E3;">a</span>&gt; the audio file.
+&lt;/<span style="color: #93E0E3;">audio</span>&gt;
+</pre>
+</div>
+
+<p>
+To review the previous code, the <code>&lt;audio&gt;</code> element includes the
+<code>controls</code> Boolean attribute to ensure the audio player is displayed
+within browsers that support the element. The <code>&lt;audio&gt;</code> element does not
+include a <code>src</code> attribute and instead wraps three different <code>&lt;source&gt;</code>
+elements. Each <code>&lt;source&gt;</code> element includes a <code>src</code> attribute that
+references a different audio file format and a <code>type</code> attribute to
+identify the format of the audio file. As a last fallback, if a browser
+doesn't recognize any of the audio file formats, the anchor link to
+download the element will be displayed.
+</p>
+
+<p>
+In addition to the <code>&lt;audio&gt;</code> element, HTML5 also introduced the
+<code>&lt;video&gt;</code> element, which shares quite a few similarities with the
+<code>&lt;audio&gt;</code> element.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Adding Video</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Adding <a href="http://dev.opera.com/articles/introduction-html5-video/">video in HTML5</a>
+is very similar to adding audio. We use the <code>&lt;video&gt;</code> element
+in place of the <code>&lt;audio&gt;</code> element. All of the same attributes (<code>src</code>,
+<code>autoplay</code>, <code>controls</code>, <code>loop</code>, and <code>preload</code>) and fallbacks apply here,
+too.
+</p>
+
+<p>
+With the <code>&lt;audio&gt;</code> element, if the <code>controls</code> Boolean attribute isn't
+specified the audio clip isn't displayed. With videos, if the <code>controls</code>
+Boolean attribute is not specified the video will display. However, it
+is fairly difficult to view unless the <code>autoplay</code> Boolean attribute is
+also applied. In general, the best practice here is to include the
+<code>controls</code> Boolean attribute unless there is a good reason not to allow
+users to start, stop, or replay the video.
+</p>
+
+<p>
+Since videos take up space on the page, it doesn't hurt to specify their
+dimensions, which is most commonly done with <code>width</code> and <code>height</code>
+properties in CSS. This helps ensure that the video isn't too large and
+stays within the implied layout of a page. Additionally, specifying a
+size, as with images, helps the browser render videos faster and allows
+it to allocate the proper space needed for the video to be displayed.
+</p>
+
+<pre class="example">
+&lt;video src="media/earth.ogv" controls&gt;&lt;/audio&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Adding Video Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">video</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../media/earth.ogv"</span> controls <span style="color: #DFAF8F;">width</span>=<span style="color: #CC9393;">"600px"</span>&gt;&lt;/<span style="color: #93E0E3;">video</span>&gt;
+</pre>
+</div>
+
+
+<iframe src="./examples/demo-07/index.html" style="height: 450px" ></iframe>
+
+<div class="note">
+<p>
+Customizing Audio &amp; Video Controls
+</p>
+
+<p>
+By default, the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> element controls are determined
+by each browser independently. Depending on the design of a website,
+more authority over the look and feel of the media player may be needed.
+If this is the case, a customized player can be built, but it will
+require a little JavaScript to work.
+</p>
+
+<p>
+Additionally, if a customized player uses the <code>&lt;img&gt;</code> element as a
+control the value of the <code>alt</code> attribute should explictly state that the
+image is a control and requires the proper interaction to work.
+</p>
+
+</div>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Poster Attribute</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+One additional attribute available for the <code>&lt;video&gt;</code> element is the
+<code>poster</code> attribute. The <code>poster</code> attribute allows us to specify an
+image, in the form of a URL, to be shown before a video is played. The
+example below uses a screen capture from the video as the poster for the
+Earth video.
+</p>
+
+<pre class="example">
+&lt;video src="earth.ogv" controls poster="earth-video-screenshot.jpg"&gt;&lt;/video&gt;
+</pre>
+
+<div class="org-src-container">
+<label class="org-src-name">Poster Attribute Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">video</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../media/earth.ogv"</span> controls
+       <span style="color: #DFAF8F;">poster</span>=<span style="color: #CC9393;">"../../media/earth-video-screenshot.jpg"</span>
+       <span style="color: #DFAF8F;">width</span>=<span style="color: #CC9393;">"600px"</span>
+&lt;/<span style="color: #93E0E3;">video</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-08/index.html" style="height: 450px"></iframe>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Video Fallbacks</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+As with the <code>&lt;audio&gt;</code> element, video fallbacks are also necessary. The
+same markup format, with multiple <code>&lt;source&gt;</code> elements for each file type
+and a plain text fallback, also applies within the <code>&lt;video&gt;</code> element.
+</p>
+
+<pre class="example">
+&lt;video controls&gt;
+  &lt;source src="earth.ogv" type="video/ogg"&gt;
+  &lt;source src="earth.mp4" type="video/mp4"&gt;
+  Please &lt;a href="earth.mp4" download&gt;download&lt;/a&gt; the video.
+&lt;/video&gt;
+</pre>
+
+<p>
+One additional fallback option that could be used in place of a plain
+text fallback is to use a <a href="https://www.youtube.com/">YouTube</a> or
+<a href="https://vimeo.com/">Vimeo</a> embedded video. These video hosting
+websites allow us to upload our videos, provide a standard video player,
+and enable us to embed our videos onto a page using an inline frame.
+</p>
+
+<div class="note">
+<p>
+HTML5 Audio &amp; Video File Formats
+</p>
+
+<p>
+Browser support for the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements varies, as do
+the file formats required with these elements. Each browser has its own
+<a href="https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats">preferred</a>
+audio and video file formats.
+</p>
+
+<p>
+There are a few tools that help to convert an
+<a href="http://media.io/">audio</a> or
+<a href="http://www.mirovideoconverter.com/">video</a> file into different
+formats, and a quick search will provide an abundance of options.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Adding Inline Frames</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Another way to add content to a page is to embed another HTML page within the
+current page. This is done using an inline frame, or &lt;iframe&gt; element.
+The <code>&lt;iframe&gt;</code> element accepts the URL of another HTML page within the src
+attribute value; this causes the content from the embedded HTML page to be
+displayed on the current page. The value of the src attribute may be a URL
+relative to the page the <code>&lt;iframe&gt;</code> element appears on or an absolute URL for an
+entirely external page.
+</p>
+
+<p>
+Many pages use the <code>&lt;iframe&gt;</code> element to embed media onto a page from an
+external website such as Google Maps, YouTube, and others.
+</p>
+
+
+<div class="org-src-container">
+<label class="org-src-name">Adding Inline Frames Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"https://www.google.com/maps/embed"</span> <span style="color: #DFAF8F;">width</span>=<span style="color: #CC9393;">"600"</span> <span style="color: #DFAF8F;">height</span>=<span style="color: #CC9393;">"450"</span>&gt;&lt;/<span style="color: #93E0E3;">ifram</span><span style="color: #DC8CC3; background-color: #3F3F3F;">e</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+</pre>
+</div>
+
+<iframe src="./examples/demo-09/index.html" style="height: 500px" ></iframe>
+
+<p>
+The <code>&lt;iframe&gt;</code> element has a few default styles, including an inset
+<code>border</code> and a <code>width</code> and <code>height</code>. These styles can be adjusted using
+the <code>frameborder</code>, <code>width</code>, and <code>height</code> HTML attributes or by using the
+<code>border</code>, <code>width</code>, and <code>height</code> CSS properties.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Seamless Inline Frames</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Pages referenced within the <code>src</code> attribute of an <code>&lt;iframe&gt;</code> element
+play by their own rules, as they do not inherit any styles or behaviors
+from the page they are referenced on. Any styles applied to a page that
+includes an <code>&lt;iframe&gt;</code> element will not be inherited by the page
+referenced within the <code>&lt;iframe&gt;</code> element. Additionally, links within the
+page referenced within the <code>&lt;iframe&gt;</code> element will open inside that
+frame, leaving the page that contains the <code>&lt;iframe&gt;</code> element unchanged.
+</p>
+
+<p>
+There will be times when we'll want to change these behaviors, and the
+<code>seamless</code> Boolean attribute will allow us to do just that. When present
+on the <code>&lt;iframe&gt;</code> element, the <code>seamless</code> Boolean attribute allows
+styles from the page that includes an <code>&lt;iframe&gt;</code> element to be inherited
+by the page referenced within the <code>&lt;iframe&gt;</code> element. Additionally, the
+<code>seamless</code> Boolean attribute allows links clicked on a page referenced
+within an <code>&lt;iframe&gt;</code> element to be opened within the same window as the
+original page that includes the <code>&lt;iframe&gt;</code> element.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"contact.html"</span> seamless&gt;&lt;/<span style="color: #93E0E3;">iframe</span>&gt;
+</pre>
+</div>
+
+<p>
+The <code>seamless</code> Boolean attribute is a new attribute introduced in HTML5.
+Although the browser support for this attribute is growing, it will not
+work within older browsers. It's advisable to test the <code>seamless</code>
+Boolean attribute before using it.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">In Practice</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Inline frames provide a great way to add dynamic content to a page.
+Let's give this a shot by updating our Venue page with some maps.
+</p>
+
+<ol class="org-ol">
+<li>Before adding any maps or inline frames, let's first prepare our
+Venue page for a two-column grid. Below the leading section of the
+page we'll add a <code>&lt;section&gt;</code> element with the <code>class</code> attribute value
+of <code>row</code> to identify a new section of the page, and we'll include
+some general styles, such as a white <code>background</code> and some vertical
+<code>padding</code>.
+
+<p>
+Directly inside this <code>&lt;section&gt;</code> element let's add a <code>&lt;div&gt;</code> element
+with the <code>class</code> attribute value of <code>grid</code>. The class of <code>grid</code>
+centers our content on the page and prepares for the one-third and
+two-thirds columns to follow.
+</p>
+
+<p>
+So far the main section of our <code>venue.html</code> file looks like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+    ...
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Within the <code>&lt;div&gt;</code> element with the class attribute value of <code>grid</code>
+we'll have two new sections, one for the conference venue and one for
+the conference hotel. Let's add two new <code>&lt;section&gt;</code> elements and give
+each of these <code>&lt;section&gt;</code> elements a unique class that corresponds to
+its content. We'll use these classes to add margins to the bottom of
+each section.
+
+<p>
+Our HTML should now look like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-theatre"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-hotel"</span>&gt;
+      ...
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Now that we have a few classes to work with, let's create a new
+section within our <code>main.css</code> file for Venue page styles. We'll add a
+<code>66</code>-pixel <code>margin</code> to the bottom of the <code>&lt;section&gt;</code> element with the
+class attribute value of <code>venue-theatre</code> to insert some space between
+it and the <code>&lt;section&gt;</code> element below it.
+
+<p>
+Then, we'll add a <code>22</code>-pixel <code>margin</code> to the bottom of the
+<code>&lt;section&gt;</code> element with the class attribute value of <code>venue-hotel</code>
+to provide some space between it and the <code>&lt;footer&gt;</code> element below it.
+</p>
+
+<p>
+The new venue section within the <code>main.css</code> file looks like the
+following:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #5F7F5F;">/*</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #7F9F7F;">  Venue</span>
+<span style="color: #7F9F7F;">  ========================================</span>
+<span style="color: #5F7F5F;">*/</span>
+
+<span style="color: #93E0E3;">.venue-theatre </span>{
+  <span style="color: #DFAF8F;">margin-bottom</span>: 66px;
+}
+<span style="color: #93E0E3;">.venue-hotel </span>{
+  <span style="color: #DFAF8F;">margin-bottom</span>: 22px;
+}
+</pre>
+</div>
+</li>
+
+<li>The <code>&lt;section&gt;</code> element with the class attribute value of
+<code>venue-hotel</code> has a smaller bottom <code>margin</code> than the <code>&lt;section&gt;</code>
+element with the class attribute value of <code>venue-theatre</code> because it
+sits next to the <code>padding</code> from the bottom of the <code>&lt;section&gt;</code> element
+with the class attribute of <code>row</code>. Adding that <code>margin</code> and <code>padding</code>
+together gives us the same value as the bottom <code>margin</code> on the
+<code>&lt;section&gt;</code> element with the class attribute value of
+<code>venue-theatre</code>.
+
+<p>
+Now it's time to create the two columns within each of the new
+<code>&lt;section&gt;</code> elements. We'll start by adding a <code>&lt;div&gt;</code> element with a
+<code>class</code> attribute value of <code>col-1-3</code> to establish a one-third column.
+After it we'll add an <code>&lt;iframe&gt;</code> element with a <code>class</code> attribute
+value of <code>col-2-3</code> to establish a two-thirds column.
+</p>
+
+<p>
+Keeping in mind that the column classes make both the <code>&lt;div&gt;</code> and
+<code>&lt;iframe&gt;</code> elements inline-block elements, we need to remove the
+empty space that will appear between them. To do so we'll open an
+HTML comment directly after the closing <code>&lt;div&gt;</code> tag, and we'll close
+the HTML comment immediately before the opening <code>&lt;iframe&gt;</code> tag.
+</p>
+
+<p>
+In all, our HTML for the columns looks like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"row"</span>&gt;
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"grid"</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-theatre"</span>&gt;
+
+      &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-1-3"</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">      </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-2-3"</span>&gt;&lt;/<span style="color: #93E0E3;">iframe</span>&gt;
+
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+    &lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-hotel"</span>&gt;
+
+      &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-1-3"</span>&gt;&lt;/<span style="color: #93E0E3;">div</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+<span style="color: #7F9F7F;">      </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-2-3"</span>&gt;&lt;/<span style="color: #93E0E3;">iframe</span>&gt;
+
+    &lt;/<span style="color: #93E0E3;">section</span>&gt;
+
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Within each of the <code>&lt;div&gt;</code> elements with a <code>class</code> attribute value of
+<code>col-1-3</code> let's add the venue's name within an <code>&lt;h2&gt;</code> element,
+followed by two <code>&lt;p&gt;</code> elements. In the first <code>&lt;p&gt;</code> element let's
+include the venue's address, and in the second <code>&lt;p&gt;</code> element let's
+include the venue's website (within an anchor link) and phone number.
+
+<p>
+Within each of the paragraphs, let's use the line-break element,
+<code>&lt;br&gt;</code>, to place breaks within the address and in between the website
+and phone number.
+</p>
+
+<p>
+For the <code>&lt;section&gt;</code> element with the <code>class</code> attribute value of
+<code>venue-theatre</code>, the HTML looks like this:
+</p>
+
+<pre class="example">
+&lt;section class="venue-theatre"&gt;
+
+&lt;div class="col-1-3"&gt;
+  &lt;h2&gt;Chicago Theatre&lt;/h2&gt;
+  &lt;p&gt;175 N State St &lt;br&gt; Chicago, IL 60601&lt;/p&gt;
+  &lt;p&gt;&lt;a href="http://www.thechicagotheatre.com/"&gt;thechicagotheatre.com&lt;/a&gt; &lt;br&gt;
+     (312) 462-6300&lt;/p&gt;
+&lt;/div&gt;&lt;!--
+
+--&gt;&lt;iframe class="col-2-3"&gt;&lt;/iframe&gt;
+
+&lt;/section&gt;
+</pre>
+</li>
+
+<li>The same pattern shown here for the theatre should also be applied to
+the hotel (using, of course, the proper address, website, and phone
+number).
+
+<p>
+We can search for these addresses in
+<i>Google Maps</i>. Once we locate an
+address and create a customized map, we have the ability to embed
+that map into our page. Following the instructions on Google Maps for
+how to share and embed a map will provide us with the HTML for an
+<code>&lt;iframe&gt;</code> element.
+</p>
+
+<p>
+Let's copy the HTML&#x2014; <code>&lt;iframe&gt;</code> element, <code>src</code> attribute, and
+all&#x2014;onto our page where our existing <code>&lt;iframe&gt;</code> element resides.
+We'll do this for each location, using two different <code>&lt;iframe&gt;</code>
+elements.
+</p>
+
+<p>
+In copying over the <code>&lt;iframe&gt;</code> element from Google Maps we need to
+make sure we preserve the <code>class</code> attribute and value, <code>col-2-3</code>,
+from our existing <code>&lt;iframe&gt;</code> element. We also need to be careful not
+to harm the HTML comment that closes directly before our opening
+<code>&lt;iframe&gt;</code> tag.
+</p>
+
+<p>
+Looking directly at the <code>&lt;section&gt;</code> element with the <code>class</code>
+attribute value of <code>venue-theatre</code> again, the HTML looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-theatre"</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    &lt;<span style="color: #93E0E3;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">Chicago Theatre</span>&lt;/<span style="color: #93E0E3;">h2</span>&gt;
+    &lt;<span style="color: #93E0E3;">p</span>&gt;175 N State St &lt;<span style="color: #93E0E3;">br</span>&gt; Chicago, IL 60601&lt;/<span style="color: #93E0E3;">p</span>&gt;
+    &lt;<span style="color: #93E0E3;">p</span>&gt;&lt;<span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"http://www.thechicagotheatre.com/"</span>&gt;thechicagotheatre.com&lt;/<span style="color: #93E0E3;">a</span>&gt; &lt;<span style="color: #93E0E3;">br</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt; (312) 462-6300&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">  </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-2-3"</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"https://www.google.com/maps/embed?pb=!1m5!3m3!</span><span style="color: #DC8CC3; background-color: #3F3F3F;">1m2!1s0x880e2ca55810a493%3A0x4700ddf60fcbfad6!2schicago+theatre!5e0!3m2!1sen!2sus!4v1388701393606"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">iframe</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+
+<p>
+Lastly, we'll want to make sure that both <code>&lt;iframe&gt;</code> elements that
+reference Google Maps share the same height. To do this, we'll create
+a new class, <code>venue-map</code>, and apply it to each of the <code>&lt;iframe&gt;</code>
+elements alongside the existing <code>col-2-3</code> <code>class</code> attribute value.
+</p>
+
+<p>
+The HTML for the <code>&lt;section&gt;</code> element with the <code>class</code> attribute value
+of <code>venue-theatre</code> now looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">section</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-theatre"</span>&gt;
+
+  &lt;<span style="color: #93E0E3;">div</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"col-1-3"</span>&gt;
+    &lt;<span style="color: #93E0E3;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">Chicago Theatre</span>&lt;/<span style="color: #93E0E3;">h2</span>&gt;
+    &lt;<span style="color: #93E0E3;">p</span>&gt;175 N State St &lt;<span style="color: #93E0E3;">br</span>&gt; Chicago, IL 60601&lt;/<span style="color: #93E0E3;">p</span>&gt;
+    &lt;<span style="color: #93E0E3;">p</span>&gt;&lt;<span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"http://www.thechicagotheatre.com/"</span>&gt;thechicagotheatre.com&lt;/<span style="color: #93E0E3;">a</span>&gt; &lt;<span style="color: #93E0E3;">br</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt; (312) 462-6300&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">p</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+  &lt;/<span style="color: #93E0E3;">div</span>&gt;<span style="color: #5F7F5F;">&lt;!--</span>
+
+<span style="color: #7F9F7F;">  </span><span style="color: #5F7F5F;">--&gt;</span>&lt;<span style="color: #93E0E3;">iframe</span> <span style="color: #DFAF8F;">class</span>=<span style="color: #CC9393;">"venue-map col-2-3"</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"https://www.google.com/maps/embed?pb</span><span style="color: #DC8CC3; background-color: #3F3F3F;">=!1m5!3m3!1m2!1s0x880e2ca55810a493%3A0x4700ddf60fcbfad6!2schicago+theatre!5e0!3m2!1sen!2sus!4v1388701393606"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;&lt;/</span><span style="color: #DC8CC3; background-color: #3F3F3F;">iframe</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+
+&lt;/<span style="color: #93E0E3;">section</span>&gt;
+</pre>
+</div>
+</li>
+
+<li>Once the <code>venue-map</code> class is applied to each <code>&lt;iframe&gt;</code> element,
+let's create the <code>venue-map</code> class rule set within our <code>main.css</code>
+file. It includes the <code>height</code> property with a value of <code>264</code> pixels.
+
+<p>
+The <code>venue-map</code> class rule set looks like this:
+</p>
+<pre class="example">
+.venue-map {
+  height: 264px;
+}
+</pre>
+<p>
+now have a Venue page, complete with maps for the different locations
+our conference.
+</p>
+
+<figure>
+<p><img src="./img/practice-2.png" class="img-responsive" alt="practice-2.png">
+</p>
+<figcaption><span class="figure-number">Figure 4:</span> Styles Conference Venue page, which now includes inline frames</figcaption>
+</figure>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Semantically Identifying Figures &amp; Captions</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+With HTML5 also came the introduction of the <code>&lt;figure&gt;</code> and
+<code>&lt;figcaption&gt;</code> elements. These
+<a href="http://html5doctor.com/the-figure-figcaption-elements/">elements</a>
+were created to semantically mark up self-contained content or media,
+commonly with a caption. Before HTML5 this was frequently done using an
+ordered list. While an ordered list worked, the markup was not
+semantically correct.
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Figure</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+The <code>&lt;figure&gt;</code> block-level element is used to identify and wrap
+self-contained content, often in the form of media. It may surround
+images, audio clips, videos, blocks of code, diagrams, illustrations, or
+other self-contained media. More than one item of self-contained
+content, such as multiple images or videos, may be contained within the
+<code>&lt;figure&gt;</code> element at a time. If the <code>&lt;figure&gt;</code> element is moved from
+the main portion of a page to another location (for example, the bottom
+of the page), it should not disrupt the content or legibility of the
+page.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">figure</span>&gt;
+  &lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"dog.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerchief"</span>&gt;
+&lt;/<span style="color: #93E0E3;">figure</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Figure Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text/css"</span>&gt;
+&lt;<span style="color: #93E0E3;">figure</span>&gt;
+  &lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../img/dog.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerc</span><span style="color: #DC8CC3; background-color: #3F3F3F;">hief"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+&lt;/<span style="color: #93E0E3;">figure</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-html">img {
+  display: block;
+  max-width: 100%;
+}
+</pre>
+</div>
+
+<iframe src="./examples/demo-10/index.html" style="height: 500px" ></iframe>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">Figure Caption</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+To add a caption or legend to the <code>&lt;figure&gt;</code> element, the <code>&lt;figcaption&gt;</code>
+element is used. The <code>&lt;figcaption&gt;</code> may appear at the top of, bottom of,
+or anywhere within the <code>&lt;figure&gt;</code> element; however, it may only appear
+once. When it's used, the <code>&lt;figcaption&gt;</code> element will serve as the
+caption for all content within the <code>&lt;figure&gt;</code> element.
+</p>
+
+<p>
+Additionally, the <code>&lt;figcaption&gt;</code> element may replace an <code>&lt;img&gt;</code>
+element's <code>alt</code> attribute if the content of the <code>&lt;figcaption&gt;</code> element
+provides a useful description of the visual content of the image.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">figure</span>&gt;
+  &lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"dog.jpg"</span>&gt;
+  &lt;<span style="color: #93E0E3;">figcaption</span>&gt;A beautiful black, brown, and white hound dog wearing kerchief.&lt;/<span style="color: #93E0E3;">f</span><span style="color: #DC8CC3; background-color: #3F3F3F;">igcaption</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+&lt;/<span style="color: #93E0E3;">figure</span>&gt;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name">Figure Caption Demo</label>
+<pre class="src src-html">&lt;<span style="color: #93E0E3;">link</span> <span style="color: #DFAF8F;">href</span>=<span style="color: #CC9393;">"style.css"</span> <span style="color: #DFAF8F;">rel</span>=<span style="color: #CC9393;">"stylesheet"</span> <span style="color: #DFAF8F;">type</span>=<span style="color: #CC9393;">"text/css"</span>&gt;
+&lt;<span style="color: #93E0E3;">figure</span>&gt;
+  &lt;<span style="color: #93E0E3;">img</span> <span style="color: #DFAF8F;">src</span>=<span style="color: #CC9393;">"../../img/dog.jpg"</span> <span style="color: #DFAF8F;">alt</span>=<span style="color: #CC9393;">"A black, brown, and white dog wearing a kerc</span><span style="color: #DC8CC3; background-color: #3F3F3F;">hief"</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+  &lt;<span style="color: #93E0E3;">figcaption</span>&gt;A beautiful black, brown, and white hound dog wearing kerchief.&lt;/<span style="color: #93E0E3;">f</span><span style="color: #DC8CC3; background-color: #3F3F3F;">igcaption</span><span style="color: #DC8CC3; background-color: #3F3F3F;">&gt;</span>
+&lt;/<span style="color: #93E0E3;">figure</span>&gt;
+</pre>
+</div>
+
+<iframe src="./examples/demo-11/index.html" style="height: 500px" ></iframe>
+
+<p>
+Not all forms of media need to be included within a <code>&lt;figure&gt;</code> element
+or include a <code>&lt;figcaption&gt;</code> element; only those that are self-contained
+and belong together as a group.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Summary</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Alongside text, media is one of the largest parts of the web. Use of
+images, audio, and video has only grown over recent years, and it isn't
+likely to slow down. Now we know how to incorporate these forms of media
+into our designs and how we can use them to enrich the content on our
+websites.
+</p>
+
+<p>
+Within this lesson we covered the following:
+</p>
+<ul class="org-ul">
+<li>The best ways to add images, audio clips, videos, and inline frames to a page
+</li>
+<li>Different ways to position images in different situations
+</li>
+<li>How to provide audio and video fallbacks for older browsers
+</li>
+<li>Common attributes available to audio clips and videos
+</li>
+<li>The seamless attribute, which allows us to make inline frames behave
+as if they are part of the page they are referenced from
+</li>
+<li>The semantic way to mark up self-contained content, including media
+</li>
+</ul>
+
+<p>
+We're coming into the homestretch of learning HTML and CSS, with only a
+few more components left to introduce. Next on the list are forms.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Resources &amp; Links</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video">Using HTML5 audio and video</a> via Mozilla Developer Network
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">Audio HTML5 Element</a> via Mozilla Developer Network
+</li>
+<li><a href="http://dev.opera.com/articles/introduction-html5-video/">Introduction to HTML5 Video</a> via Dev.Opera
+</li>
+<li><a href="http://html5doctor.com/the-figure-figcaption-elements/">The figure &amp; figcaption elements</a> via HTML5 Doctor
+</li>
+</ul>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Adding Images</a>
+<ul class="nav">
+<li><a href="#sec-2-1">Sizing Images</a></li>
+<li><a href="#sec-2-2">Positioning Images</a>
+<ul class="nav">
+<li><a href="#sec-2-2-1">Inline Positioning Images</a></li>
+<li><a href="#sec-2-2-2">Block Positioning Images</a></li>
+<li><a href="#sec-2-2-3">Positioning Images Flush Left or Right</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">In Practice</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Adding Audio</a>
+<ul class="nav">
+<li><a href="#sec-3-1">Audio Attributes</a>
+<ul class="nav">
+<li><a href="#sec-3-1-1">Audio Fallbacks &amp; Multiple Sources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">Adding Video</a>
+<ul class="nav">
+<li><a href="#sec-4-1">Poster Attribute</a></li>
+<li><a href="#sec-4-2">Video Fallbacks</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Adding Inline Frames</a>
+<ul class="nav">
+<li><a href="#sec-5-1">Seamless Inline Frames</a></li>
+<li><a href="#sec-5-2">In Practice</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Semantically Identifying Figures &amp; Captions</a>
+<ul class="nav">
+<li><a href="#sec-6-1">Figure</a></li>
+<li><a href="#sec-6-2">Figure Caption</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Summary</a></li>
+<li><a href="#sec-8">Resources &amp; Links</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Boban Joksimoski</p>
+<p class="date">Created: 2016-04-09 Sat 22:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+</div>
+</footer>
+</body>
+</html>

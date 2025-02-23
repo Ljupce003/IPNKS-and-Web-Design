@@ -1,0 +1,109 @@
+#container{
+    background: url("img/containe.jpg");
+    margin: auto;
+    height: 1400px;
+    width: 770px;
+    padding-left: 30px;
+}
+body {
+    font-size: 11px;
+    font-family: Verdana;
+    color: darkred;
+    background: url("img/main_bg_.gif");
+}
+#quickSummary h2 {
+    font-size: 0px;
+    padding-bottom: 20px;
+}
+#quickSummary {
+    background: url("img/header.png") no-repeat;
+    height: 30px;
+    width: 50%;
+    float: right;
+    margin-left: 190px;
+    margin-right: 40px;
+}
+#preamble h3 {
+    font-size: 0px;
+    padding-bottom: 20px;
+}
+#preamble {
+    background: url("img/header2.png") no-repeat;
+    height: 30px;
+    width: 50%;
+    float: right;
+    margin-left: 190px;
+    margin-right: 40px;
+    margin-top: 300px;
+}
+#explanation h3 {
+    font-size: 0px;
+    padding-bottom: 20px;
+}
+#explanation {
+    background: url("img/header3.png") no-repeat;
+    height: 30px;
+    width: 50%;
+    float: right;
+    margin-left: 190px;
+    margin-right: 40px;
+    margin-top: 400px;
+}
+#pageHeader h1 {
+    background: url("img/raspi_blue_white.png") no-repeat;
+    width: 220px;
+    height: 171px;
+    margin-left: 100px;
+    font-size: 0px;
+
+}
+
+#pageHeader h2 {
+    background: url("img/Raspi_Colour_R.png") no-repeat;
+    width: 150px;
+    height: 182px;
+    float: right;
+    margin-right: 130px;
+    margin-top: -160px;
+    font-size: 0px;
+}
+a{
+    color: darkred;
+}
+a:hover{
+    font-weight: bold;
+}
+#lselect ul li{
+    list-style: none;
+    background: url("img/li_bg_ta.jpg") no-repeat;
+    height: 15px;
+    width: 235px;
+}
+#larchives ul li{
+    list-style: none;
+
+}
+#lselect h3 span{
+    font-size: 0px;
+
+}
+#lselect h3{
+    background: url("img/links.jpg") no-repeat;
+    height: 35px;
+    width: 50%;
+    margin-left: 38px;
+}
+#larchives h3 span{
+    font-size: 0px;
+}
+#larchives h3{
+    background: url("img/aboutus.jpg") no-repeat;
+    height: 35px;
+    width: 50%;
+    margin-left: 38px;
+}
+#footer{
+   width: 50%;
+    float: right;
+    margin-top: 300px;
+}
